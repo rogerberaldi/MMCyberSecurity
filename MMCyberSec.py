@@ -63,25 +63,62 @@ def analyze_domain(domain, args):
 
 def main():
     parser = argparse.ArgumentParser(description="Automatiza a análise de segurança de domínios.")
-    parser.add_argument("--dominios", required=True, help="Lista de domínios separados por vírgula (ex: dominio1.com,dominio2.net)")
-    parser.add_argument("--modulo", default="all", choices=['foot', 'finger', 'all'], help="Módulo a ser executado: foot (Footprint), finger (Fingerprint) ou all (Ambos). Padrão: all")
-    parser.add_argument("--verbose", default="INFO", choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'], help="Nível de verbosidade do logging. Padrão: INFO")
-    parser.add_argument("--threads", type=int, default=5, help="Número máximo de threads paralelas. Padrão: 5")
-    parser.add_argument("--output_dir", default="output", help="Diretório base para salvar os resultados. Padrão: output")
-    parser.add_argument("--log_file", default="logs/script.log", help="Arquivo de log. Padrão: logs/script.log")
+    
+    
+    # Grupo para entrada de alvos mutuamente exclusiva
+    target_group = parser.add_mutually_exclusive_group(required=True)
+    target_group.add_argument("--dominios", help="Lista de domínios separados por vírgula (ex: dominio1.com,dominio2.net)")
+    target_group.add_argument("--ips",      help="Lista de IPs separados por vírgula (ex: 1.1.1.1,8.8.8.8,2001:db8::1)")
+    
+    #parser.add_argument("--dominios", required=True, help="Lista de domínios separados por vírgula (ex: dominio1.com,dominio2.net)")
+    parser.add_argument("--modulo", 
+                        default="all", 
+                        choices=['foot', 'finger', 'all'], 
+                        help="Módulo a ser executado: foot (Footprint), finger (Fingerprint) ou all (Ambos). Padrão: all")
+    
+    parser.add_argument("--verbose", 
+                        default="INFO", 
+                        choices=['DEBUG', 'INFO', 'WARNING', 'ERROR'], 
+                        help="Nível de verbosidade do logging. Padrão: INFO")
+    
+    parser.add_argument("--threads", 
+                        type=int, 
+                        default=5, 
+                        help="Número máximo de threads paralelas. Padrão: 5")
+    
+    parser.add_argument("--output_dir", 
+                        default="output", 
+                        help="Diretório base para salvar os resultados. Padrão: output")
+    
+    parser.add_argument("--log_file", 
+                        default="logs/script.log", 
+                        help="Arquivo de log. Padrão: logs/script.log")
 
     args = parser.parse_args()
 
+    target_list = []
+    is_domain_input = False # Flag para saber o tipo de entrada
+
+    if args.dominios:
+        target_list = [d.strip() for d in args.dominios.split(',')]
+        is_domain_input = True
+        logger.info(f"Script de análise iniciado para DOMÍNIOS: {target_list}")
+
+    elif args.ips:
+        target_list = [ip.strip() for ip in args.ips.split(',')]
+        is_domain_input = False
+        logger.info(f"Script de análise iniciado para IPs: {target_list}")
+
     logger = setup_logging(level=args.verbose, log_file=args.log_file)
     logger.info("Script de análise de segurança de domínios iniciado.")
+    logger.info(f"Tipo de entrada: {'Domínios' if is_domain_input else 'IPs'}")
     logger.info(f"Nível de verbosidade: {args.verbose}")
     logger.info(f"Módulo selecionado: {args.modulo}")
     logger.info(f"Threads máximas: {args.threads}")
     logger.info(f"Diretório de output: {args.output_dir}")
     logger.info(f"Arquivo de log: {args.log_file}")
 
-    domains = [domain.strip() for domain in args.dominios.split(',')]
-    logger.info(f"Domínios alvo: {domains}")
+    logger.info(f"Alvo(s): {target_list}")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.threads) as executor:
         futures = [executor.submit(analyze_domain, domain, args) for domain in domains]

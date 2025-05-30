@@ -41,9 +41,17 @@ def perform_service_enumeration(domain, output_dir):
     start_time = time.time()
     output_file = f"{output_dir}/service_scan.xml"
     ports_argument = ",".join(map(str, open_ports))
-    command = ["/usr/bin/sudo", "nmap", "-sV", "-p", ports_argument, "-oX", output_file, domain] # -sV para detecção de serviço
+    
+    command = [
+        "/usr/bin/sudo", "nmap", 
+        "-sV", # -sV para detecção de serviço
+        "-p", ports_argument, 
+        "-oX", output_file, 
+        domain
+    ] 
     stdout, stderr, returncode = execute_command(command)
     end_time = time.time()
+    
     record_time(start_time, end_time, f"Enumeração de serviços para {domain}")
 
     if returncode == 0:
