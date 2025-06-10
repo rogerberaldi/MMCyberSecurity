@@ -33,33 +33,33 @@ def perform_geolocation(domain, output_dir):
     geolocation_data = []
     ips = set()
 
-    try:
-        ip_address = socket.gethostbyname(domain)
-        ips.add(ip_address)
-    except socket.gaierror:
-        logger.warning(f"Não foi possível resolver o IP para o domínio: {domain}")
-
-    subdomains_file = f"{output_dir}/all_subdomains.txt"
-    if os.path.exists(subdomains_file):
-        with open(subdomains_file, 'r') as f:
-            for subdomain in f:
-                subdomain = subdomain.strip()
-                try:
-                    ip_address = socket.gethostbyname(subdomain)
-                    ips.add(ip_address)
-                except socket.gaierror:
-                    logger.debug(f"Não foi possível resolver o IP para o subdomínio: {subdomain}")
-
-    ip_asn_file = f"{output_dir}/ip_asn.json"
-    if os.path.exists(ip_asn_file):
-        try:
-            with open(ip_asn_file, 'r') as f:
-                ip_asn_data = json.load(f)
-                for item in ip_asn_data:
-                    if 'ip' in item:
-                        ips.add(item['ip'])
-        except json.JSONDecodeError:
-            logger.warning(f"Erro ao decodificar o arquivo JSON de IP/ASN: {ip_asn_file}")
+#    try:
+#        ip_address = socket.gethostbyname(domain)
+#        ips.add(ip_address)
+#    except socket.gaierror:
+#        logger.warning(f"Não foi possível resolver o IP para o domínio: {domain}")
+#
+#    subdomains_file = f"{output_dir}/all_subdomains.txt"
+#    if os.path.exists(subdomains_file):
+#        with open(subdomains_file, 'r') as f:
+#            for subdomain in f:
+#                subdomain = subdomain.strip()
+#                try:
+#                    ip_address = socket.gethostbyname(subdomain)
+#                    ips.add(ip_address)
+#                except socket.gaierror:
+#                    logger.debug(f"Não foi possível resolver o IP para o subdomínio: {subdomain}")
+#
+#    ip_asn_file = f"{output_dir}/ip_asn.json"
+#    if os.path.exists(ip_asn_file):
+#        try:
+#            with open(ip_asn_file, 'r') as f:
+#                ip_asn_data = json.load(f)
+#                for item in ip_asn_data:
+#                    if 'ip' in item:
+#                        ips.add(item['ip'])
+#        except json.JSONDecodeError:
+#            logger.warning(f"Erro ao decodificar o arquivo JSON de IP/ASN: {ip_asn_file}")
 
     for ip in sorted(list(ips)):
         geo_info = geolocate_ip(ip)
