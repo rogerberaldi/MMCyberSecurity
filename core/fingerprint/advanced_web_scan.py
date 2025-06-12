@@ -5,24 +5,10 @@ import os
 import time
 import yaml  # Para lidar com a saída do nuclei (pode ser YAML ou JSON)
 from Wappalyzer import Wappalyzer, WebPage  # Importar as classes do python-wappalyzer
+from core.utils import record_time, execute_command, verify_tool_availability
+
 
 logger = logging.getLogger(__name__)
-
-def verify_tool_availability(tool_name):
-    """Verifica se uma ferramenta de linha de comando está disponível."""
-    command = ["which", tool_name]
-    stdout, stderr, returncode = execute_command(command)
-    if returncode == 0:
-        logger.debug(f"Ferramenta '{tool_name}' encontrada em: {stdout.strip()}")
-        return True
-    else:
-        logger.warning(f"Ferramenta '{tool_name}' não encontrada. Certifique-se de que está instalada e no PATH.")
-        return False
-
-def execute_command(command):
-    """Executa um comando e retorna a saída, erro e código de retorno."""
-    process = subprocess.run(command, capture_output=True, text=True, check=False)
-    return process.stdout.strip(), process.stderr.strip(), process.returncode
 
 def analyze_with_wappalyzer(html_content, url):
     """Analisa o conteúdo HTML usando python-wappalyzer."""
@@ -35,24 +21,65 @@ def analyze_with_wappalyzer(html_content, url):
         logger.error(f"Erro ao analisar com Wappalyzer: {e}")
         return None
 
-def run_nuclei(domain, output_file, templates=None):
-    """Executa a ferramenta nuclei para o domínio e salva a saída em JSON."""
-    if not verify_tool_availability("nuclei"):
-        return False
 
-    command = ["nuclei", "-target", domain, "-j", "-o", output_file]
+def run_nuclei(target, output_file, templates=None, severity_filter=None):
+    """
+    Executa o Nuclei em um alvo com templates e filtros de severidade específicos.
+    """
+    if not verify_tool_availability("nuclei"):
+        return None
+
+    start_time = time.time()
+    command = ["nuclei", "-target", target, "-j", "-o", output_file]
+
     if templates:
+        # Nuclei aceita múltiplos templates separados por vírgula
         command.extend(["-t", templates])
 
-    stdout, stderr, returncode = execute_command(command)
+    if severity_filter:
+        # Filtra os resultados por severidade (ex: "medium,high,critical")
+        command.extend(["-severity", severity_filter])
 
-    if returncode == 0:
-        logger.info(f"Saída do nuclei salva em: {output_file}")
-        #logger.debug(f"Stdout do nuclei: {stdout}")
-        return True
+    # Adicionar outras flags úteis
+    command.extend(["-no-color"]) # Para saídas de log mais limpas
+    command.extend(["-stats"])    # Para estatísticas detalhadas no final
+
+    logger.info(f"Executando Nuclei em {target} (Comando: {' '.join(command)})")
+    stdout, stderr, returncode = execute_command(command)
+    end_time = time.time()
+    record_time(start_time, end_time, f"Nuclei em {target}")
+
+    if returncode == 0 and os.path.exists(output_file):
+        logger.info(f"Nuclei scan para {target} concluído. Resultados salvos em: {output_file}")
+        return output_file
     else:
-        logger.error(f"Erro ao executar nuclei para {domain}: {stderr}")
-        return False
+        # O Nuclei às vezes retorna 1 mesmo com sucesso se não encontrar nada,
+        # então verificamos a existência do arquivo de saída.
+        if os.path.exists(output_file) and os.path.getsize(output_file) > 0:
+             logger.info(f"Nuclei scan para {target} concluído (código de retorno {returncode}, mas com resultados). Resultados em: {output_file}")
+             return output_file
+
+        logger.error(f"Erro ou nenhum resultado encontrado ao executar Nuclei em {target}. stderr: {stderr}")
+        return None
+
+#def run_nuclei(domain, output_file, templates=None):
+#    """Executa a ferramenta nuclei para o domínio e salva a saída em JSON."""
+#    if not verify_tool_availability("nuclei"):
+#        return False
+#
+#    command = ["nuclei", "-target", domain, "-j", "-o", output_file]
+#    if templates:
+#        command.extend(["-t", templates])
+#
+#    stdout, stderr, returncode = execute_command(command)
+#
+#    if returncode == 0:
+#        logger.info(f"Saída do nuclei salva em: {output_file}")
+#        #logger.debug(f"Stdout do nuclei: {stdout}")
+#        return True
+#    else:
+#        logger.error(f"Erro ao executar nuclei para {domain}: {stderr}")
+#        return False
 
 def analyze_nuclei_output(output_file):
     """Analisa o arquivo JSON de saída do nuclei."""

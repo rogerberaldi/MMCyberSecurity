@@ -15,6 +15,18 @@ def execute_command(command, output_file=None, error_file=None):
     stderr_decoded = stderr.decode('utf-8', errors='ignore').strip()
     return stdout_decoded, stderr_decoded, process.returncode
 
+def verify_tool_availability(tool_name):
+    """Verifica se uma ferramenta de linha de comando está disponível."""
+    command = ["which", tool_name]
+    stdout, stderr, returncode = execute_command(command)
+    if returncode == 0:
+        logger.debug(f"Ferramenta '{tool_name}' encontrada em: {stdout.strip()}")
+        return True
+    else:
+        logger.warning(f"Ferramenta '{tool_name}' não encontrada. Certifique-se de que está instalada e no PATH.")
+        return False
+
+
 def save_json(data, filename):
     """Salva dados em formato JSON."""
     try:

@@ -65,7 +65,7 @@ def run_nmap_service_scan_on_ip(target_ip, tcp_ports_list, output_dir, nmap_cli_
             logger.error(f"Nmap stdout: {stdout}")
         return None
 
-def refactored_perform_service_enumeration(consolidated_open_ports_json_file, base_output_dir, original_target_context=""):
+def refactored_perform_service_enumeration(consolidated_open_ports_json_file, base_output_dir, original_target_context="", enable_vuln_scan=False):
     """
     Realiza a enumeração de serviços Nmap para cada IP encontrado no arquivo JSON.
 
@@ -98,7 +98,7 @@ def refactored_perform_service_enumeration(consolidated_open_ports_json_file, ba
 
     service_scan_xml_map = {}
     logger.info(f"Iniciando enumeração de serviços Nmap para múltiplos IPs. Contexto: {original_target_context}")
-
+    nmap_args_for_ip = []  # Argumentos Nmap específicos para cada IP
     for ip_address, tcp_ports in open_ports_data_map.items():
         if not tcp_ports:
             logger.info(f"Nenhuma porta TCP listada para o IP {ip_address} em {original_target_context}. Pulando Nmap scan para este IP.")
@@ -112,10 +112,14 @@ def refactored_perform_service_enumeration(consolidated_open_ports_json_file, ba
         # -sC: executa scripts NSE padrão. Bom para descoberta e algumas verificações de segurança leves.
         # --version-intensity 9: Tenta mais probes para detecção de versão (mais lento).
         # --script=vuln: Focado em scripts de vulnerabilidade (PODE SER MUITO LENTO e INTRUSIVO).
+        
         # Para um bom equilíbrio inicial, -sC é uma ótima adição ao -sV.
         # Você pode tornar isso configurável no futuro.
         nmap_args_for_ip = ["-sC"] # Adiciona scripts padrão
-        # nmap_args_for_ip.extend(["--version-intensity", "9"]) # Opcional: mais detalhado, mais lento
+        if enable_vuln_scan:
+            logger.warning(f"MODO INTRUSIVO HABILITADO para {ip_address}: Adicionando Nmap --script=vuln.")
+            nmap_args_for_ip.append("--script=default,vuln") 
+            nmap_args_for_ip.extend(["--version-intensity", "9"]) # Opcional: mais detalhado, mais lento
         # nmap_args_for_ip.extend(["--script=default,discovery,version,vuln"]) # Exemplo mais agressivo
 
         logger.info(f"Iniciando Nmap scan de serviço/script para IP: {ip_address} (Portas: {tcp_ports}) "

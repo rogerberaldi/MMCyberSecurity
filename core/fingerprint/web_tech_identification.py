@@ -11,21 +11,41 @@ import subprocess
 import tempfile
 
 from core.fingerprint.advanced_web_scan import analyze_with_wappalyzer, run_nuclei, analyze_nuclei_output
+#from service_enumeration import parse_nmap_xml_for_open_tcp_ports # Precisaremos de um parser de serviço, não só portas
 
-from core.utils import save_json, record_time, execute_command
+
+from core.utils import save_json, record_time, execute_command, verify_tool_availability
 
 logger = logging.getLogger(__name__)
 
-def verify_tool_availability(tool_name):
-    """Verifica se uma ferramenta de linha de comando está disponível."""
-    command = ["which", tool_name]
-    stdout, stderr, returncode = execute_command(command)
-    if returncode == 0:
-        logger.debug(f"Ferramenta '{tool_name}' encontrada em: {stdout.strip()}")
-        return True
-    else:
-        logger.warning(f"Ferramenta '{tool_name}' não encontrada. Certifique-se de que está instalada e no PATH.")
-        return False
+
+# Vamos criar um parser de serviço Nmap mais completo (pode ir em service_enumeration.py ou utils.py)
+def parse_nmap_service_scan_xml(xml_file_path):
+    # Esta função parsearia o XML do Nmap -sV -sC e extrairia
+    # não apenas a porta, mas também o 'name', 'product', 'version', 'extrainfo', e 'script' outputs
+    # Por simplicidade, vamos assumir que essa função existe e retorna uma lista de dicionários.
+    # A implementação completa pode ser complexa, mas o conceito é ler o XML e extrair esses campos.
+    # Para o propósito desta refatoração, vamos simular seu comportamento.
+    # TODO: Implementar um parser detalhado para XML de serviço do Nmap.
+    # Por agora, vamos focar no fluxo e usar um parser mais simples.
+    
+    # A função analyze_nmap_service_scan que você já tem em web_tech_identification.py
+    # pode ser o ponto de partida. Vamos garantir que ela exista e a utilizaremos.
+    pass # A função analyze_nmap_service_scan já deve estar neste arquivo.
+
+
+
+def _is_web_service(service_info):
+    """Verifica se um serviço é provavelmente um serviço web com base nas informações do Nmap."""
+    name = service_info.get("name", "").lower()
+    product = service_info.get("product", "").lower()
+    return "http" in name or "www" in name or "ssl/http" in name or "http" in product
+
+def _make_url(ip, port, service_name):
+    """Cria uma URL com http ou https com base no nome do serviço Nmap."""
+    scheme = "https" if "ssl" in service_name or "https" in service_name or port == "443" else "http"
+    return f"{scheme}://{ip}:{port}"
+
 
 def analyze_http_headers(headers):
     """Analisa os cabeçalhos HTTP em busca de informações de tecnologias."""
@@ -180,83 +200,173 @@ def analyze_nmap_service_scan(xml_file):
             logger.warning(f"Erro ao analisar o arquivo XML do Nmap: {xml_file} - {e}")
     return services
 
-def run_whatweb(domain, log_file):
-    """Executa a ferramenta whatweb para identificar tecnologias web e salva a saída em JSON."""
+# Em core/fingerprint/web_tech_identification.py
+# ... (imports e outras funções)
+
+# Função run_whatweb refatorada
+def run_whatweb(target_url, output_json_file, aggression_level=3):
+    """
+    Executa o WhatWeb em uma URL específica com um nível de agressão.
+
+    Args:
+        target_url (str): A URL completa a ser escaneada (ex: http://1.2.3.4:8080).
+        output_json_file (str): Caminho para salvar a saída JSON.
+        aggression_level (int): Nível de agressão do WhatWeb (1-4). Padrão: 3.
+    """
     if not verify_tool_availability("whatweb"):
-        return False
+        return None
 
-    command = ["whatweb", "-v", "--log-json", log_file, domain]
-    stdout, stderr, returncode = execute_command(command)
-
-    # Salva o stdout em um arquivo .out
-    output_file = f"{log_file}.out"
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write(stdout)
-
-    if returncode == 0:
-        logger.info(f"Saída do whatweb salva em: {log_file}")
-        logger.info(f"Conteúdo do stdout salvo em: {output_file}")
-        return True
-    else:
-        logger.error(f"Erro ao executar whatweb para {domain}: {stderr}")
-        return False
-
-def perform_web_tech_identification(domain, output_dir):
-    """Identifica tecnologias web utilizadas no domínio."""
     start_time = time.time()
-    logger.info(f"Iniciando identificação de tecnologias web para: {domain}")
-    web_technologies = {"services": []}
-    service_scan_xml = f"{output_dir}/service_scan.xml"
-    whatweb_json_file = f"{output_dir}/whatweb_results.json"
-    nuclei_json_file = f"{output_dir}/nuclei_results.json"
+    # Nível de agressão 3 (stealthy) é um bom equilíbrio entre detalhes e discrição/velocidade.
+    # Nível 4 ('heavy') é muito mais barulhento.
+    command = [
+        "whatweb",
+        f"--aggression={aggression_level}",
+        "--log-json", output_json_file,
+        target_url
+    ]
+
+    logger.info(f"Executando WhatWeb em {target_url} com agressão nível {aggression_level}.")
+    stdout, stderr, returncode = execute_command(command)
+    end_time = time.time()
+    record_time(start_time, end_time, f"WhatWeb em {target_url}")
+
+    if returncode == 0 and os.path.exists(output_json_file):
+        logger.info(f"WhatWeb scan para {target_url} concluído. Resultados em: {output_json_file}")
+        return output_json_file
+    else:
+        logger.error(f"Erro ao executar WhatWeb em {target_url}: {stderr}")
+        return None
+
+
+def refactored_perform_web_tech_identification(
+    service_scan_xml_map, # <<< Entrada principal: {ip: caminho_xml_servico}
+    base_fingerprint_dir,
+    original_target_context=""
+):
+    """
+    Orquestra a identificação de tecnologias web e varredura de vulnerabilidades
+    em serviços web identificados.
+    """
+    logger.info(f"Iniciando identificação de tecnologias web para o alvo: {original_target_context}")
+    all_web_results = {} # Estrutura para consolidar todos os resultados
+
+    if not service_scan_xml_map:
+        logger.warning(f"Nenhum resultado de scan de serviço Nmap fornecido para {original_target_context}. Pulando identificação web.")
+        return None
+
+    for ip, nmap_xml_file in service_scan_xml_map.items():
+        logger.info(f"Processando serviços para o IP: {ip}")
+        all_web_results[ip] = {}
+        ip_specific_output_dir = os.path.join(base_fingerprint_dir, ip.replace('.', '_').replace(':', '_'), "web_scans")
+        os.makedirs(ip_specific_output_dir, exist_ok=True)
+        
+        # O parser analyze_nmap_service_scan já existe no seu arquivo, vamos usá-lo.
+        services_on_ip = analyze_nmap_service_scan(nmap_xml_file)
+        
+        web_services = [s for s in services_on_ip if _is_web_service(s)]
+
+        if not web_services:
+            logger.info(f"Nenhum serviço web identificado no IP {ip}.")
+            continue
+        
+        logger.info(f"Serviços web identificados em {ip}: {[s.get('port') for s in web_services]}")
+
+        for service in web_services:
+            port = service.get("port")
+            if not port: continue
+
+            target_url = _make_url(ip, port, service.get("name", ""))
+            logger.info(f"--- Analisando URL: {target_url} ---")
+            
+            url_results = {"nmap_info": service}
+
+            # 1. Executar WhatWeb
+            whatweb_out_file = os.path.join(ip_specific_output_dir, f"whatweb_{port}.json")
+            if run_whatweb(target_url, whatweb_out_file, aggression_level=3):
+                # TODO: Implementar um parser para o JSON do WhatWeb
+                url_results["whatweb_file"] = whatweb_out_file
+
+            # 2. Executar Nuclei - Múltiplas varreduras para diferentes propósitos
+            # 2.1 Nuclei para Detecção de Tecnologia
+            nuclei_tech_out = os.path.join(ip_specific_output_dir, f"nuclei_tech_{port}.json")
+            if run_nuclei(target_url, nuclei_tech_out, templates="technologies"):
+                url_results["nuclei_tech_results"] = analyze_nuclei_output(nuclei_tech_out)
+
+            # 2.2 Nuclei para Vulnerabilidades (mais intrusivo)
+            nuclei_vuln_out = os.path.join(ip_specific_output_dir, f"nuclei_vulns_{port}.json")
+            # Focando em vulnerabilidades de alta prioridade
+            if run_nuclei(target_url, nuclei_vuln_out, 
+                          templates="cves,vulnerabilities,misconfiguration,exposures",
+                          severity_filter="medium,high,critical"):
+                url_results["nuclei_vuln_results"] = analyze_nuclei_output(nuclei_vuln_out)
+
+            all_web_results[ip][port] = url_results
+
+    # Salvar o resultado consolidado final
+    consolidated_web_results_file = os.path.join(base_fingerprint_dir, "web_technologies_consolidated.json")
+    save_json(all_web_results, consolidated_web_results_file)
+    logger.info(f"Resultados consolidados da identificação web salvos em: {consolidated_web_results_file}")
+
+    return consolidated_web_results_file
+
+
+#def perform_web_tech_identification(domain, output_dir):
+#    """Identifica tecnologias web utilizadas no domínio."""
+#    start_time = time.time()
+#    logger.info(f"Iniciando identificação de tecnologias web para: {domain}")
+#    web_technologies = {"services": []}
+#    service_scan_xml = f"{output_dir}/service_scan.xml"
+#    whatweb_json_file = f"{output_dir}/whatweb_results.json"
+#    nuclei_json_file = f"{output_dir}/nuclei_results.json"
 #    nuclei_tech_json_file = f"{output_dir}/nuclei_tech_results.json"
 #    nuclei_cves_json_file = f"{output_dir}/nuclei_cves_results.json"
 #    nuclei_vulns_json_file = f"{output_dir}/nuclei_vulns_results.json"
-    html_content = None
-    response_url = None
-
-    try:
-        url = f"http://{domain}" # Tentar com HTTP primeiro
-        with httpx.Client() as client:
-            response = client.get(url, follow_redirects=True, timeout=10)
-            response.raise_for_status()
-            html_content = response.text
-            response_url = str(response.url)
-            http_tech = analyze_http_headers(response.headers)
-            html_tech = analyze_html_content(BeautifulSoup(response.text, 'html.parser'), {})
-            js_tech = analyze_javascript(BeautifulSoup(response.text, 'html.parser'), {})
-            web_technologies.update(http_tech)
-            web_technologies.update(html_tech)
-            web_technologies.update(js_tech)
-
-            # Analisar com Wappalyzer
-            wappalyzer_results = analyze_with_wappalyzer(response.text, str(response.url))
-            if wappalyzer_results:
-                web_technologies['wappalyzer'] = wappalyzer_results
-
-    except httpx.RequestError as e:
-        logger.warning(f"Erro ao acessar {domain}: {e}.")
-
-    except httpx.HTTPStatusError as e:
-        logger.warning(f"Erro de status HTTP ao acessar {domain}: {e}")
-
-    except Exception as e:
-        logger.error(f"Erro inesperado ao acessar {domain}: {e}")
-
-    # Analisar com Wappalyzer (agora fora do bloco try da requisição principal)
-    if html_content and response_url:
-        wappalyzer_results = analyze_with_wappalyzer(html_content, response_url)
-        if wappalyzer_results:
-            web_technologies['wappalyzer'] = wappalyzer_results
-
-    # Executar e analisar Nuclei
-    nuclei_success = run_nuclei(domain, nuclei_json_file)
-    if nuclei_success and os.path.exists(nuclei_json_file):
-        nuclei_results = analyze_nuclei_output(nuclei_json_file)
-        if nuclei_results:
-            web_technologies['nuclei'] = nuclei_results
-        os.remove(nuclei_json_file)
-
+#    html_content = None
+#    response_url = None
+#
+#    try:
+#        url = f"http://{domain}" # Tentar com HTTP primeiro
+#        with httpx.Client() as client:
+#            response = client.get(url, follow_redirects=True, timeout=10)
+#            response.raise_for_status()
+#            html_content = response.text
+#            response_url = str(response.url)
+#            http_tech = analyze_http_headers(response.headers)
+#            html_tech = analyze_html_content(BeautifulSoup(response.text, 'html.parser'), {})
+#            js_tech = analyze_javascript(BeautifulSoup(response.text, 'html.parser'), {})
+#            web_technologies.update(http_tech)
+#            web_technologies.update(html_tech)
+#            web_technologies.update(js_tech)
+#
+#            # Analisar com Wappalyzer
+#            wappalyzer_results = analyze_with_wappalyzer(response.text, str(response.url))
+#            if wappalyzer_results:
+#                web_technologies['wappalyzer'] = wappalyzer_results
+#
+#    except httpx.RequestError as e:
+#        logger.warning(f"Erro ao acessar {domain}: {e}.")
+#
+#    except httpx.HTTPStatusError as e:
+#        logger.warning(f"Erro de status HTTP ao acessar {domain}: {e}")
+#
+#    except Exception as e:
+#        logger.error(f"Erro inesperado ao acessar {domain}: {e}")
+#
+#    # Analisar com Wappalyzer (agora fora do bloco try da requisição principal)
+#    if html_content and response_url:
+#        wappalyzer_results = analyze_with_wappalyzer(html_content, response_url)
+#        if wappalyzer_results:
+#            web_technologies['wappalyzer'] = wappalyzer_results
+#
+#    # Executar e analisar Nuclei
+#    nuclei_success = run_nuclei(domain, nuclei_json_file)
+#    if nuclei_success and os.path.exists(nuclei_json_file):
+#        nuclei_results = analyze_nuclei_output(nuclei_json_file)
+#        if nuclei_results:
+#            web_technologies['nuclei'] = nuclei_results
+#        os.remove(nuclei_json_file)
+#
     # Executar e analisar Nuclei para tecnologias
  #   nuclei_success = run_nuclei(domain, nuclei_tech_json_file, templates="tech/")
  #   if nuclei_success and os.path.exists(nuclei_tech_json_file):
@@ -281,30 +391,30 @@ def perform_web_tech_identification(domain, output_dir):
 #            web_technologies['nuclei_vulns'] = nuclei_results
 #        os.remove(nuclei_vulns_json_file)
 
-    # Executar WhatWeb (já integrado)
-    if run_whatweb(domain, whatweb_json_file) and os.path.exists(whatweb_json_file):
-        try:
-            with open(whatweb_json_file, 'r') as f:
-                whatweb_output_list = json.load(f)
-                if whatweb_output_list and isinstance(whatweb_output_list, list) and len(whatweb_output_list) > 0:
-                    whatweb_results = whatweb_output_list[0].get('plugins')
-                    if whatweb_results:
-                        web_technologies['whatweb'] = whatweb_results
-        except json.JSONDecodeError as e:
-            logger.error(f"Erro ao decodificar o JSON do whatweb de {whatweb_json_file}: {e}")
-        finally:
-            if os.path.exists(whatweb_json_file):
-                os.remove(whatweb_json_file)
-
-    # Adicionar resultados do Nmap (executado mesmo em caso de erro na requisição web)
-    nmap_services = analyze_nmap_service_scan(service_scan_xml)
-    web_technologies["services"].extend(nmap_services)
-
-    save_json({"domain": domain, "web_technologies": web_technologies}, f"{output_dir}/web_tech.json")
-    end_time = time.time()
-    record_time(start_time, end_time, f"Identificação de tecnologias web para {domain}")
-    logger.info(f"Tecnologias web identificadas para {domain} e salvas em: {output_dir}/web_tech.json")
-    return web_technologies
+#    # Executar WhatWeb (já integrado)
+#    if run_whatweb(domain, whatweb_json_file) and os.path.exists(whatweb_json_file):
+#        try:
+#            with open(whatweb_json_file, 'r') as f:
+#                whatweb_output_list = json.load(f)
+#                if whatweb_output_list and isinstance(whatweb_output_list, list) and len(whatweb_output_list) > 0:
+#                    whatweb_results = whatweb_output_list[0].get('plugins')
+#                    if whatweb_results:
+#                        web_technologies['whatweb'] = whatweb_results
+#        except json.JSONDecodeError as e:
+#            logger.error(f"Erro ao decodificar o JSON do whatweb de {whatweb_json_file}: {e}")
+#        finally:
+#            if os.path.exists(whatweb_json_file):
+#                os.remove(whatweb_json_file)
+#
+#    # Adicionar resultados do Nmap (executado mesmo em caso de erro na requisição web)
+#    nmap_services = analyze_nmap_service_scan(service_scan_xml)
+#    web_technologies["services"].extend(nmap_services)
+#
+#    save_json({"domain": domain, "web_technologies": web_technologies}, f"{output_dir}/web_tech.json")
+#    end_time = time.time()
+#    record_time(start_time, end_time, f"Identificação de tecnologias web para {domain}")
+#    logger.info(f"Tecnologias web identificadas para {domain} e salvas em: {output_dir}/web_tech.json")
+#    return web_technologies
 
 if __name__ == '__main__':
     from core.logging_config import setup_logging
@@ -329,7 +439,7 @@ if __name__ == '__main__':
     with open(f"{test_output_dir}/service_scan.xml", 'w') as f:
         f.write(nmap_output_content)
 
-    web_tech_results = perform_web_tech_identification(test_domain, test_output_dir)
+    web_tech_results = refactored_perform_web_tech_identification(test_domain, test_output_dir)
     if web_tech_results:
         logger.debug(f"Tecnologias web para {test_domain}: {web_tech_results}")
     import shutil

@@ -340,8 +340,14 @@ def perform_port_scanning(domain_context, output_dir, ips_list=None):
     rustscan_map = run_rustscan(ips_list, output_dir, port_range="1-65535")
     if rustscan_map:
         results["rustscan_ports_by_ip"] = rustscan_map
+        rustscan_json_path = os.path.join(output_dir, "rustscan_open_ports_by_ip.json")
         # O JSON apenas do Rustscan pode ser útil para depuração, mas o principal será o consolidado.
-        # save_json(rustscan_map, f"{output_dir}/rustscan_open_ports_by_ip.json") 
+        try:
+            save_json(rustscan_map, rustscan_json_path)
+            logger.info(f"Resultados brutos do Rustscan salvos em: {rustscan_json_path}")
+            results["rustscan_output_json_file"] = rustscan_json_path
+        except Exception as e:
+            logger.error(f"Falha ao salvar o arquivo JSON dos resultados do Rustscan: {e}")
 
     # 4. Consolidar todas as portas TCP encontradas
     logger.info("Iniciando consolidação de portas TCP abertas de todas as fontes...")

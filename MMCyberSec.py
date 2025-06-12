@@ -18,7 +18,7 @@ from core.footprint.related_domains import perform_related_domains
 
 from core.fingerprint.port_scanning import perform_port_scanning
 from core.fingerprint.service_enumeration import refactored_perform_service_enumeration
-from core.fingerprint.web_tech_identification import perform_web_tech_identification
+from core.fingerprint.web_tech_identification import refactored_perform_web_tech_identification
 
 from core.utils import create_output_directory, record_time
 
@@ -129,13 +129,25 @@ def analyze_target(target_item, is_domain_target, args): # Novo parâmetro is_do
             logger.warning(f"Nenhum IP disponível para fingerprinting do alvo {target_item}. Pulando módulo Fingerprint.")
         else:
             logger.info(f"Executando módulo de Fingerprint para {target_item} nos IPs: {final_ips_to_scan}")
-            
-            # perform_port_scanning já foi refatorada para aceitar uma lista de IPs.
-            # O primeiro argumento 'domain' em perform_port_scanning é usado para contexto/logging.
-            port_scan_results = perform_port_scanning(target_item, fingerprint_dir, ips_list=final_ips_to_scan) #
+            # Inicializa as variáveis de resultado
+            port_scan_results = {}
+            service_scan_results_map = {}
 
-            #open_ports_json_file_path = port_scan_results.get("open_ports_by_ip_json_file")
-            consolidated_ports_file = port_scan_results.get("consolidated_open_ports_by_ip_json_file") 
+            consolidated_ports_file = os.path.join(fingerprint_dir, "consolidated_open_tcp_ports_by_ip.json")
+
+            if not args.refresh and os.path.exists(consolidated_ports_file):
+                logger.info(f"Arquivo de portas consolidadas já existe em '{consolidated_ports_file}'. Pulando varredura de portas.")
+                logger.info("Use a flag --refresh para forçar a re-execução desta etapa.")
+
+                # Popula o dicionário de resultados com o caminho do arquivo existente para as próximas etapas
+                port_scan_results["consolidated_open_ports_by_ip_json_file"] = consolidated_ports_file
+            else:
+                if args.refresh and os.path.exists(consolidated_ports_file):
+                    logger.info(f"Flag --refresh detectada. Re-executando varredura de portas para {target_item}.")
+
+                logger.info(f"Executando varredura de portas para {target_item} nos IPs: {final_ips_to_scan}")
+                port_scan_results = perform_port_scanning(target_item, fingerprint_dir, ips_list=final_ips_to_scan)
+                consolidated_ports_file = port_scan_results.get("consolidated_open_ports_by_ip_json_file") 
 
             if consolidated_ports_file and os.path.exists(consolidated_ports_file):
                 logger.info(f"Iniciando enumeração de serviço Nmap baseada em {consolidated_ports_file} para {target_item}")
@@ -143,10 +155,18 @@ def analyze_target(target_item, is_domain_target, args): # Novo parâmetro is_do
                 service_scan_results_map = refactored_perform_service_enumeration(
                                             consolidated_ports_file,
                                             fingerprint_dir, # Os resultados por IP serão salvos em subdirs de fingerprint_dir
-                                            original_target_context=target_item
+                                            original_target_context=target_item,
+                                            enable_vuln_scan=args.vuln_scan
                                         ) # Passa o caminho do JSON e o diretório base para salvar os XMLs de serviço
                 if service_scan_results_map:
-                   logger.info(f"Resultados da enumeração de serviço Nmap (mapa IP->XML): {service_scan_results_map}")
+                    logger.info(f"Resultados da enumeração de serviço Nmap (mapa IP->XML): {service_scan_results_map}")
+                    final_web_tech_file = os.path.join(fingerprint_dir, "web_technologies_consolidated.json")
+                    if not args.refresh and os.path.exists(final_web_tech_file):
+                        logger.info(f"Arquivo de tecnologias web consolidado já existe: '{final_web_tech_file}'. Pulando etapa.")
+                        logger.info("Use a flag --refresh para forçar a re-execução.")
+                    else:
+                        # A função agora recebe o mapa de resultados do scan de serviço
+                        refactored_perform_web_tech_identification(service_scan_results_map,fingerprint_dir,original_target_context=target_item)
                 else:
                     logger.info(f"Nenhum resultado da enumeração de serviço Nmap para {target_item}.")
             elif port_scan_results.get("rustscan_ports_by_ip"): # Fallback se o arquivo JSON não foi criado mas temos o mapa
@@ -220,9 +240,21 @@ def main():
                         default="logs/script.log", 
                         help="Arquivo de log. Padrão: logs/script.log")
     
+    parser.add_argument("--voip", action="store_true", default=False,
+                    help="Habilita a varredura de portas UDP para VoIP. Padrão: Desabilitado.")
+                         
     parser.add_argument("--ipv6", action="store_true", default=False,
                     help="Habilita a varredura de endereços IPv6. "
                          "Requer configuração IPv6 na interface de origem. Padrão: Desabilitado.")
+    
+    parser.add_argument("--refresh", action="store_true", default=False,
+                    help="Força a re-execução de todas as etapas de varredura, "
+                         "ignorando resultados previamente salvos.")
+
+    parser.add_argument("--vuln-scan", action="store_true", default=False,
+                    help="Habilita a varredura de vulnerabilidades com Nmap (--script=vuln) "
+                         "durante a enumeração de serviço. "
+                         "Esta etapa é INTRUSIVA e pode ser lenta.")
 
     args = parser.parse_args()
     logger = setup_logging(level=args.verbose, log_file=args.log_file)
@@ -245,11 +277,19 @@ def main():
     logger.info(f"Nível de verbosidade: {args.verbose}")
     logger.info(f"Módulo selecionado: {args.modulo}")
     logger.info(f"Threads máximas: {args.threads}")
+    logger.info(f"Varredura VoIP: {'Habilitada' if args.ipv6 else 'Desabilitada'}")
     logger.info(f"Varredura IPv6: {'Habilitada' if args.ipv6 else 'Desabilitada'}")
     logger.info(f"Diretório de output: {args.output_dir}")
     logger.info(f"Arquivo de log: {args.log_file}")
     logger.info(f"Alvo(s): {target_list}")
 
+    if args.refresh:
+        logger.info("Flag --refresh detectada. Todas as etapas de varredura serão re-executadas.")
+
+    if args.vuln_scan:
+        logger.info("Varredura de vulnerabilidades com Nmap (--script=vuln) habilitada. "
+                    "Esta etapa é INTRUSIVA e pode ser lenta.")
+      
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.threads) as executor:
         futures = [executor.submit(analyze_target, target_item, is_domain_input, args) for target_item in target_list]
         #futures = [executor.submit(analyze_domain, domain, args) for domain in domains]
