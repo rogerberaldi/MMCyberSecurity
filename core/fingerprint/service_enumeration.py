@@ -2,6 +2,8 @@ import logging
 import json
 import os
 import time
+import socket 
+
 from core.utils import execute_command, save_json, record_time
 
 logger = logging.getLogger(__name__)
@@ -134,49 +136,6 @@ def refactored_perform_service_enumeration(consolidated_open_ports_json_file, ba
     return service_scan_xml_map
 
 
-def perform_service_enumeration(domain, output_dir):
-    """Realiza a enumeração de serviços usando o nmap."""
-    if not verify_nmap_availability():
-        return None
-
-    open_ports_file = f"{output_dir}/open_ports.json"
-    if not os.path.exists(open_ports_file):
-        logger.warning(f"Arquivo de portas abertas não encontrado: {open_ports_file}. Execute o módulo de port scanning primeiro.")
-        return None
-
-    try:
-        with open(open_ports_file, 'r') as f:
-            open_ports = json.load(f)
-    except json.JSONDecodeError:
-        logger.error(f"Erro ao decodificar o arquivo JSON de portas abertas: {open_ports_file}")
-        return None
-
-    if not open_ports:
-        logger.info(f"Nenhuma porta aberta encontrada para {domain}. A enumeração de serviços não será executada.")
-        return None
-
-    start_time = time.time()
-    output_file = f"{output_dir}/service_scan.xml"
-    ports_argument = ",".join(map(str, open_ports))
-    
-    command = [
-        "/usr/bin/sudo", "nmap", 
-        "-sV", # -sV para detecção de serviço
-        "-p", ports_argument, 
-        "-oX", output_file, 
-        domain
-    ] 
-    stdout, stderr, returncode = execute_command(command)
-    end_time = time.time()
-    
-    record_time(start_time, end_time, f"Enumeração de serviços para {domain}")
-
-    if returncode == 0:
-        logger.info(f"Enumeração de serviços para {domain} concluída. Resultados salvos em: {output_file}")
-        return output_file
-    else:
-        logger.error(f"Erro ao executar nmap para enumeração de serviços em {domain}: {stderr}")
-        return None
 
 if __name__ == '__main__':
     from core.logging_config import setup_logging
@@ -188,7 +147,7 @@ if __name__ == '__main__':
     # Crie um arquivo open_ports.json de teste
     with open(f"{test_output_dir}/open_ports.json", 'w') as f:
         json.dump([80, 443, 22], f)
-    service_scan_output = perform_service_enumeration(test_domain, test_output_dir)
+    service_scan_output = refactored_perform_service_enumeration(test_domain, test_output_dir)
     if service_scan_output:
         logger.debug(f"Saída da enumeração de serviços para {test_domain}: {service_scan_output}")
     import shutil

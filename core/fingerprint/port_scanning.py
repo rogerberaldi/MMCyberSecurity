@@ -240,64 +240,9 @@ def parse_nmap_xml_for_open_tcp_ports(xml_file_path):
     except Exception as e:
         logger.error(f"Erro inesperado ao ler ou parsear arquivo XML do Nmap {xml_file_path}: {e}")
         return []
-
-
-def perform_port_scanning_old(domain, output_dir, ips_list=None): # Renomeado 'ips' para 'ips_list' para clareza
-    """
-    Realiza a varredura de portas TCP e UDP em uma lista de IPs.
-    O argumento 'domain' é mantido para contexto geral ou logging, se necessário,
-    mas os scans são direcionados aos IPs em 'ips_list'.
-    """
-    logger.info(f"Iniciando varredura de portas para o domínio '{domain}' nos IPs: {ips_list}")
     
-    results = {
-        "nmap_tcp_scan_outputs": {},        # Resultados do Nmap TCP (-sT -p-) por IP
-        "nmap_udp_voip_scan_outputs": {}, # Resultados do Nmap UDP VoIP por IP
-        "masscan_output_file": None,      # Arquivo de saída do Masscan
-        "rustscan_ports_by_ip": {},       # Portas TCP abertas encontradas pelo Rustscan, por IP
-        "open_ports_by_ip_json_file": None # JSON com as portas do Rustscan
-    }
 
-    if not ips_list:
-        logger.warning(f"Nenhuma lista de IPs fornecida para varredura de portas do domínio {domain}. Pulando scans baseados em IP.")
-        return results
-
-    # --- Scans Nmap por IP ---
-    for ip in ips_list:
-        logger.info(f"Processando IP {ip} para scans Nmap individuais.")
-        
-        # Nmap TCP Scan (-sT -p-)
-        tcp_scan_xml = run_nmap(ip, output_dir)
-        if tcp_scan_xml:
-            results["nmap_tcp_scan_outputs"][ip] = tcp_scan_xml
-        
-        # Nmap UDP VoIP Scan
-        udp_voip_scan_xml = run_nmap_udp_voip(ip, output_dir) # Usando portas padrão
-        if udp_voip_scan_xml:
-            results["nmap_udp_voip_scan_outputs"][ip] = udp_voip_scan_xml
-
-    # --- Masscan (já opera em lista de IPs) ---
-    # Usando a versão sugerida anteriormente que pode ter taxa configurável
-    # Exemplo: masscan_rate = "10000" (você pode pegar isso de uma config)
-    results["masscan_output_file"] = run_masscan(ips_list, output_dir) # Ajuste a taxa conforme necessário
-
-    # --- Rustscan (já opera em lista de IPs e retorna um mapa) ---
-    # Usando a versão sugerida anteriormente que pode ter range de portas configurável
-    # Exemplo: rustscan_port_range = "1-65535"
-    rustscan_map = run_rustscan(ips_list, output_dir, port_range="1-65535")
-    if rustscan_map:
-        results["rustscan_ports_by_ip"] = rustscan_map
-        json_path = f"{output_dir}/open_ports_by_ip.json"
-        save_json(rustscan_map, json_path)
-        results["open_ports_by_ip_json_file"] = json_path
-        logger.info(f"Portas TCP abertas (Rustscan) por IP salvas em: {json_path}")
-    else:
-        logger.info(f"Nenhuma porta TCP aberta encontrada pelo Rustscan para os IPs fornecidos.")
-        
-    logger.info(f"Varredura de portas para o domínio '{domain}' concluída. Resultados agregados: {results}")
-    return results
-
-def perform_port_scanning(domain_context, output_dir, ips_list=None):
+def perform_port_scanning(domain_context, output_dir, ips_list=None, voip=False):
     logger.info(f"Iniciando varredura DE PORTAS CONSOLIDADA para '{domain_context}' nos IPs: {ips_list}")
 
     results = {
@@ -324,10 +269,13 @@ def perform_port_scanning(domain_context, output_dir, ips_list=None):
             if nmap_sT_ports:
                 results["nmap_sT_ports_by_ip"][ip] = nmap_sT_ports
 
-        # Nmap UDP VoIP Scan (já implementado para ser por IP)
-        udp_voip_scan_xml = run_nmap_udp_voip(ip, output_dir)
-        if udp_voip_scan_xml:
-            results["nmap_udp_voip_scan_outputs_by_ip"][ip] = udp_voip_scan_xml
+        if voip:
+            # Se voip for True, executar o Nmap UDP VoIP scan
+            logger.info(f"Iniciando varredura Nmap UDP VoIP para o IP: {ip}")
+            # Nmap UDP VoIP Scan (já implementado para ser por IP)
+            udp_voip_scan_xml = run_nmap_udp_voip(ip, output_dir)
+            if udp_voip_scan_xml:
+                results["nmap_udp_voip_scan_outputs_by_ip"][ip] = udp_voip_scan_xml
 
     # 2. Executar Masscan
     masscan_file = run_masscan(ips_list, output_dir) # Ajuste a taxa
@@ -385,19 +333,24 @@ def perform_port_scanning(domain_context, output_dir, ips_list=None):
         if unique_int_ports:
              # Agora unique_int_ports contém apenas inteiros únicos
              consolidated_ports_map[ip] = sorted(list(unique_int_ports)) 
-    
+
+
+    consolidated_json_path = os.path.join(output_dir, "consolidated_open_tcp_ports_by_ip.json")
+    save_json(consolidated_ports_map, consolidated_json_path)
+
     if consolidated_ports_map:
-        consolidated_json_path = os.path.join(output_dir, "consolidated_open_tcp_ports_by_ip.json")
-        save_json(consolidated_ports_map, consolidated_json_path)
         results["consolidated_open_ports_by_ip_json_file"] = consolidated_json_path
         logger.info(f"Portas TCP abertas CONSOLIDADAS por IP salvas em: {consolidated_json_path}")
         # Log para verificar o conteúdo
         logger.debug(f"Conteúdo do JSON consolidado para {domain_context}: {consolidated_ports_map}")
     else:
-        logger.info(f"Nenhuma porta TCP aberta encontrada por nenhuma ferramenta para os IPs em {domain_context}.")
+        logger.info(f"Nenhuma porta TCP aberta encontrada por nenhuma ferramenta para os IPs em {domain_context}. {consolidated_json_path} criado, mas vazio.")
         
     logger.info(f"Varredura de portas consolidada para '{domain_context}' concluída.")
     return results
+
+
+
 
 if __name__ == '__main__':
     from core.logging_config import setup_logging

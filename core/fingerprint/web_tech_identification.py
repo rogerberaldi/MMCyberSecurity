@@ -200,8 +200,6 @@ def analyze_nmap_service_scan(xml_file):
             logger.warning(f"Erro ao analisar o arquivo XML do Nmap: {xml_file} - {e}")
     return services
 
-# Em core/fingerprint/web_tech_identification.py
-# ... (imports e outras funções)
 
 # Função run_whatweb refatorada
 def run_whatweb(target_url, output_json_file, aggression_level=3):
@@ -241,7 +239,7 @@ def run_whatweb(target_url, output_json_file, aggression_level=3):
 
 def refactored_perform_web_tech_identification(
     service_scan_xml_map, # <<< Entrada principal: {ip: caminho_xml_servico}
-    base_fingerprint_dir,
+    base_ip_fingerprint_dir,
     original_target_context=""
 ):
     """
@@ -251,6 +249,11 @@ def refactored_perform_web_tech_identification(
     logger.info(f"Iniciando identificação de tecnologias web para o alvo: {original_target_context}")
     all_web_results = {} # Estrutura para consolidar todos os resultados
 
+    # Cria um diretório de saída específico para o subdomínio, dentro do diretório do IP
+    sanitized_hostname = original_target_context.replace('.', '_').replace(':', '_')
+    web_scans_output_dir = os.path.join(base_ip_fingerprint_dir, "web_scans", sanitized_hostname)
+    os.makedirs(web_scans_output_dir, exist_ok=True)
+
     if not service_scan_xml_map:
         logger.warning(f"Nenhum resultado de scan de serviço Nmap fornecido para {original_target_context}. Pulando identificação web.")
         return None
@@ -258,7 +261,7 @@ def refactored_perform_web_tech_identification(
     for ip, nmap_xml_file in service_scan_xml_map.items():
         logger.info(f"Processando serviços para o IP: {ip}")
         all_web_results[ip] = {}
-        ip_specific_output_dir = os.path.join(base_fingerprint_dir, ip.replace('.', '_').replace(':', '_'), "web_scans")
+        ip_specific_output_dir = os.path.join(base_ip_fingerprint_dir, ip.replace('.', '_').replace(':', '_'), "web_scans")
         os.makedirs(ip_specific_output_dir, exist_ok=True)
         
         # O parser analyze_nmap_service_scan já existe no seu arquivo, vamos usá-lo.
@@ -276,27 +279,32 @@ def refactored_perform_web_tech_identification(
             port = service.get("port")
             if not port: continue
 
-            target_url = _make_url(ip, port, service.get("name", ""))
-            logger.info(f"--- Analisando URL: {target_url} ---")
+            #target_url = _make_url(ip, port, service.get("name", ""))
+            #logger.info(f"--- Analisando URL: {target_url} ---")
             
+            target_url_for_connection = _make_url(ip, port, service.get("name", ""))
+            target_host_for_analysis = _make_url(original_target_context, port, service.get("name", ""))
+
+            logger.info(f"--- Analisando Host: {target_host_for_analysis} (Conectando a: {target_url_for_connection}) ---")
+
             url_results = {"nmap_info": service}
 
             # 1. Executar WhatWeb
-            whatweb_out_file = os.path.join(ip_specific_output_dir, f"whatweb_{port}.json")
-            if run_whatweb(target_url, whatweb_out_file, aggression_level=3):
+            whatweb_out_file = os.path.join(web_scans_output_dir, f"whatweb_{port}.json")
+            if run_whatweb(target_host_for_analysis, whatweb_out_file, aggression_level=3):
                 # TODO: Implementar um parser para o JSON do WhatWeb
                 url_results["whatweb_file"] = whatweb_out_file
 
             # 2. Executar Nuclei - Múltiplas varreduras para diferentes propósitos
             # 2.1 Nuclei para Detecção de Tecnologia
-            nuclei_tech_out = os.path.join(ip_specific_output_dir, f"nuclei_tech_{port}.json")
-            if run_nuclei(target_url, nuclei_tech_out, templates="technologies"):
+            nuclei_tech_out = os.path.join(web_scans_output_dir, f"nuclei_tech_{port}.json")
+            if run_nuclei(target_host_for_analysis, nuclei_tech_out, templates="technologies"):
                 url_results["nuclei_tech_results"] = analyze_nuclei_output(nuclei_tech_out)
 
             # 2.2 Nuclei para Vulnerabilidades (mais intrusivo)
-            nuclei_vuln_out = os.path.join(ip_specific_output_dir, f"nuclei_vulns_{port}.json")
+            nuclei_vuln_out = os.path.join(web_scans_output_dir, f"nuclei_vulns_{port}.json")
             # Focando em vulnerabilidades de alta prioridade
-            if run_nuclei(target_url, nuclei_vuln_out, 
+            if run_nuclei(target_host_for_analysis, nuclei_vuln_out, 
                           templates="cves,vulnerabilities,misconfiguration,exposures",
                           severity_filter="medium,high,critical"):
                 url_results["nuclei_vuln_results"] = analyze_nuclei_output(nuclei_vuln_out)
@@ -304,7 +312,7 @@ def refactored_perform_web_tech_identification(
             all_web_results[ip][port] = url_results
 
     # Salvar o resultado consolidado final
-    consolidated_web_results_file = os.path.join(base_fingerprint_dir, "web_technologies_consolidated.json")
+    consolidated_web_results_file = os.path.join(web_scans_output_dir, "web_technologies_consolidated.json")
     save_json(all_web_results, consolidated_web_results_file)
     logger.info(f"Resultados consolidados da identificação web salvos em: {consolidated_web_results_file}")
 

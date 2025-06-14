@@ -146,7 +146,7 @@ def analyze_target(target_item, is_domain_target, args): # Novo parâmetro is_do
                     logger.info(f"Flag --refresh detectada. Re-executando varredura de portas para {target_item}.")
 
                 logger.info(f"Executando varredura de portas para {target_item} nos IPs: {final_ips_to_scan}")
-                port_scan_results = perform_port_scanning(target_item, fingerprint_dir, ips_list=final_ips_to_scan)
+                port_scan_results = perform_port_scanning(target_item, fingerprint_dir, ips_list=final_ips_to_scan, voip=args.voip)
                 consolidated_ports_file = port_scan_results.get("consolidated_open_ports_by_ip_json_file") 
 
             if consolidated_ports_file and os.path.exists(consolidated_ports_file):
@@ -165,8 +165,9 @@ def analyze_target(target_item, is_domain_target, args): # Novo parâmetro is_do
                         logger.info(f"Arquivo de tecnologias web consolidado já existe: '{final_web_tech_file}'. Pulando etapa.")
                         logger.info("Use a flag --refresh para forçar a re-execução.")
                     else:
+                        pass
                         # A função agora recebe o mapa de resultados do scan de serviço
-                        refactored_perform_web_tech_identification(service_scan_results_map,fingerprint_dir,original_target_context=target_item)
+                        #refactored_perform_web_tech_identification(service_scan_results_map,fingerprint_dir,original_target_context=target_item)
                 else:
                     logger.info(f"Nenhum resultado da enumeração de serviço Nmap para {target_item}.")
             elif port_scan_results.get("rustscan_ports_by_ip"): # Fallback se o arquivo JSON não foi criado mas temos o mapa
@@ -207,8 +208,175 @@ def analyze_target(target_item, is_domain_target, args): # Novo parâmetro is_do
     record_time(start_time_target, end_time_target, f"Análise completa para {target_item}")
 
 
+
+def run_focused_web_scan(target_host, args):
+    """
+    Executa um fluxo de análise web granular e eficiente para um host/subdomínio.
+    Reutiliza scans de porta/serviço de IP existentes sempre que possível.
+    """
+    start_time_target = time.time()
+    logger.info(f"Iniciando varredura WEB FOCADA para o alvo: {target_host}")
+
+    # --- ETAPA 1: SETUP E RESOLUÇÃO DE IP ---
+    try:
+        ip_address = socket.gethostbyname(target_host)
+        logger.info(f"Host '{target_host}' resolvido para o IP: {ip_address}")
+    except socket.gaierror as e:
+        logger.error(f"Não foi possível resolver o host '{target_host}': {e}")
+        return
+
+    # Padroniza nomes de diretório para IP e Host. Usaremos o diretório do IP como base para resultados de infra.
+    sanitized_ip_name = ip_address.replace(':', '_').replace('/', '_')
+    ip_output_dir, _, ip_fingerprint_dir = create_output_directory(args.output_dir, sanitized_ip_name)
+
+    # --- ETAPA 2: OBTER DADOS DE PORTAS DO IP (EXECUTAR SCAN APENAS SE NECESSÁRIO) ---
+    consolidated_ports_file = os.path.join(ip_fingerprint_dir, "consolidated_open_tcp_ports_by_ip.json")
+    
+    if not args.refresh and os.path.exists(consolidated_ports_file):
+        logger.info(f"Resultados de Port Scan para o IP {ip_address} já existem. Reutilizando dados de '{consolidated_ports_file}'.")
+    else:
+        logger.info(f"Nenhum resultado de Port Scan encontrado para o IP {ip_address} (ou --refresh ativado). Executando varredura de portas completa...")
+        # A saída de perform_port_scanning (incluindo o JSON consolidado) será salva em ip_fingerprint_dir
+        perform_port_scanning(
+            target_host,          # Passa o host original para contexto de logging
+            ip_fingerprint_dir,   # Salva os resultados no diretório do IP
+            ips_list=[ip_address],
+            voip=args.voip
+        )
+    
+    # Se o arquivo ainda não existir (ex: scan falhou ou não encontrou portas), não podemos continuar.
+    if not os.path.exists(consolidated_ports_file):
+        logger.warning(f"Varredura de portas concluída, mas nenhum arquivo de portas consolidadas foi gerado para {ip_address}. Finalizando análise para {target_host}.")
+        record_time(start_time_target, time.time(), f"Análise web focada concluída (sem portas) para {target_host}")
+        return
+
+    # --- ETAPA 3: OBTER DADOS DE SERVIÇOS DO IP (EXECUTAR SCAN APENAS SE NECESSÁRIO) ---
+    # Precisamos de uma forma de saber se a enumeração de serviço já foi feita.
+    # Podemos verificar a existência dos arquivos XML de serviço.
+    service_scan_results_map = {}
+    service_enum_needed = True
+
+    if not args.refresh:
+        # Lógica para verificar se os scans de serviço já existem
+        # Por simplicidade, vamos assumir que se o primeiro arquivo XML esperado existir, todos existem.
+        # Uma lógica mais robusta poderia verificar todos.
+        # Para este exemplo, vamos manter o fluxo de re-executar se a etapa final (web scan) não estiver pronta.
+        # A lógica de pular a enumeração de serviço pode ser adicionada depois se necessário.
+        pass
+
+    logger.info(f"Iniciando enumeração de serviço Nmap para o IP {ip_address} (baseado em {consolidated_ports_file})")
+    service_scan_results_map = refactored_perform_service_enumeration(
+        consolidated_ports_file,
+        ip_fingerprint_dir, # Os XMLs de serviço serão salvos no diretório do IP
+        original_target_context=target_host,
+        enable_vuln_scan=args.vuln_scan
+    )
+
+    if not service_scan_results_map:
+        logger.warning(f"Nenhum serviço pôde ser enumerado para o IP {ip_address}. Não é possível prosseguir com a análise web para {target_host}.")
+        record_time(start_time_target, time.time(), f"Análise web focada concluída (sem serviços enumerados) para {target_host}")
+        return
+
+    # --- ETAPA 4: EXECUTAR ANÁLISE WEB (ESPECÍFICA PARA O SUBDOMÍNIO) ---
+    # Esta etapa deve sempre ser executada para o target_host, pois é a análise de aplicação.
+    logger.info(f"Executando análise de tecnologia e vulnerabilidades web direcionada para o SUBDOMÍNIO: {target_host}")
+    refactored_perform_web_tech_identification(
+        service_scan_results_map,
+        ip_fingerprint_dir, # O diretório base ainda é o do IP
+        original_target_context=target_host # Passa o subdomínio para ser usado nos scans web
+    )
+
+    record_time(start_time_target, time.time(), f"Análise web focada completa para {target_host}")
+
+def old_run_focused_web_scan(target_host, args):
+    """
+    Executa um fluxo de fingerprint COMPLETO focado em análise web para um único host.
+    1. Resolve o host para IP.
+    2. Verifica se resultados completos já existem (a menos que --refresh seja usado).
+    3. Executa a varredura COMPLETA de todas as portas TCP.
+    4. Executa a enumeração de serviços nas portas encontradas.
+    5. Executa a identificação de tecnologias e vulnerabilidades web.
+    """
+    start_time_target = time.time()
+
+    # 3. Resolver Host para IP (etapa necessária para todas as ferramentas baseadas em IP)
+    try:
+        ip_address = socket.gethostbyname(target_host)
+        logger.info(f"Host '{target_host}' resolvido para o IP: {ip_address}")
+    except socket.gaierror as e:
+        logger.error(f"Não foi possível resolver o host '{target_host}': {e}")
+        return
+    
+    sanitized_target_name = target_host.replace(':', '_').replace('/', '_')
+    sanitized_target_ip = ip_address.replace(':', '_').replace('/', '_')
+    logger.info(f"Iniciando varredura WEB COMPLETA para o alvo: {target_host} (IP: {ip_address})")
+
+    target_output_dir, footprint_dir, fingerprint_dir_ip = create_output_directory(args.output_dir, sanitized_target_ip)
+    consolidated_ports_file = os.path.join(fingerprint_dir_ip, "consolidated_open_tcp_ports_by_ip.json")
+
+    target_output_dir, footprint_dir, fingerprint_dir = create_output_directory(args.output_dir, sanitized_target_name)
+    
+    port_scan_results = {}
+
+    if not args.refresh and os.path.exists(consolidated_ports_file):
+        logger.info(f"Arquivo de portas consolidadas já existe em '{consolidated_ports_file}'. Pulando varredura de portas. Usando resultados existentes.")
+        logger.info("Use a flag --refresh para forçar a re-execução desta etapa.")
+
+        # Popula o dicionário de resultados com o caminho do arquivo existente para as próximas etapas
+        port_scan_results["consolidated_open_ports_by_ip_json_file"] = consolidated_ports_file
+
+    else:
+        # 2. Lógica Inteligente de "Skip" baseada em sua sugestão
+        # Verificamos a existência do arquivo de resultado final desta análise.
+        final_web_tech_file = os.path.join(fingerprint_dir, "web_technologies_consolidated.json")
+        if not args.refresh and os.path.exists(final_web_tech_file):
+            logger.info(f"Resultado completo da varredura web já existe para '{target_host}' em '{final_web_tech_file}'.")
+            logger.info("Pulando varredura. Use a flag --refresh para forçar a re-execução.")
+            record_time(start_time_target, time.time(), f"Varredura web focada pulada (resultados existentes) para {target_host}")
+            return
+
+        # 4. Executar a Varredura COMPLETA de Portas (Reutilizando a função principal)
+        # Esta função já executa Rustscan, Masscan, e Nmap -sT, e consolida os resultados.
+        logger.info(f"Executando varredura de portas completa para {target_host} ({ip_address}) para encontrar todos os serviços...")
+        port_scan_results = perform_port_scanning(
+            target_host, 
+            fingerprint_dir_ip, 
+            ips_list=[ip_address],
+            voip=args.voip
+        )
+
+    # 5. Executar Enumeração de Serviço nos Resultados Consolidados
+    service_scan_results_map = {}
+    consolidated_ports_file = port_scan_results.get("consolidated_open_ports_by_ip_json_file")
+    
+    if consolidated_ports_file:
+        logger.info(f"Iniciando enumeração de serviço Nmap baseada em {consolidated_ports_file} para {target_host}")
+        service_scan_results_map = refactored_perform_service_enumeration(
+            consolidated_ports_file,
+            fingerprint_dir,
+            original_target_context=target_host,
+            enable_vuln_scan=args.vuln_scan # Respeita a flag --vuln-scan
+        )
+    else:
+        logger.warning(f"Nenhuma porta aberta encontrada na varredura completa para {target_host}. Não é possível prosseguir com a análise web.")
+        record_time(start_time_target, time.time(), f"Análise web focada concluída (sem portas abertas) para {target_host}")
+        return
+
+    # 6. Executar Identificação de Tecnologias e Vulnerabilidades Web
+    if service_scan_results_map:
+        logger.info(f"Serviços enumerados. Prosseguindo com a análise de tecnologia e vulnerabilidades web para {target_host}.")
+        refactored_perform_web_tech_identification(
+            service_scan_results_map,
+            fingerprint_dir,
+            original_target_context=target_host
+        )
+    else:
+        logger.warning(f"Nenhum serviço pode ser enumerado para {target_host}. Não é possível prosseguir com a análise web.")
+
+    record_time(start_time_target, time.time(), f"Análise web focada completa para {target_host}")
+
 def main():
-    parser = argparse.ArgumentParser(description="Automatiza a análise de segurança de domínios.")
+    parser = argparse.ArgumentParser(description="Automatiza a análise de segurança de domínios.", formatter_class=argparse.RawTextHelpFormatter)
     
     
     # Grupo para entrada de alvos mutuamente exclusiva
@@ -217,10 +385,17 @@ def main():
     target_group.add_argument("--ips",      help="Lista de IPs separados por vírgula (ex: 1.1.1.1,8.8.8.8,2001:db8::1)")
     
     #parser.add_argument("--dominios", required=True, help="Lista de domínios separados por vírgula (ex: dominio1.com,dominio2.net)")
-    parser.add_argument("--modulo", 
-                        default="all", 
-                        choices=['foot', 'finger', 'all'], 
-                        help="Módulo a ser executado: foot (Footprint), finger (Fingerprint) ou all (Ambos). Padrão: all")
+    #parser.add_argument("--modulo", 
+    #                    default="all", 
+    #                    choices=['foot', 'finger', 'all'], 
+    #                    help="Módulo a ser executado: foot (Footprint), finger (Fingerprint) ou all (Ambos). Padrão: all")
+    # Grupo para modo de execução
+    mode_group = parser.add_argument_group('Modo de Execução')
+    mode_exclusive_group = mode_group.add_mutually_exclusive_group()
+    mode_exclusive_group.add_argument("--modulo", default="all", choices=['foot', 'finger', 'all'], 
+                                       help="Módulo de análise completa: foot, finger ou all. Padrão: all")
+    mode_exclusive_group.add_argument("--web-scan", action="store_true", default=False,
+                                       help="MODO RÁPIDO: Executa uma varredura focada apenas em serviços web no(s) alvo(s) especificado(s).")
     
     parser.add_argument("--verbose", 
                         default="INFO", 
@@ -259,9 +434,6 @@ def main():
     args = parser.parse_args()
     logger = setup_logging(level=args.verbose, log_file=args.log_file)
 
-    target_list = []
-    is_domain_input = False # Flag para saber o tipo de entrada
-
     if args.dominios:
         target_list = [d.strip() for d in args.dominios.split(',')]
         is_domain_input = True
@@ -289,18 +461,43 @@ def main():
     if args.vuln_scan:
         logger.info("Varredura de vulnerabilidades com Nmap (--script=vuln) habilitada. "
                     "Esta etapa é INTRUSIVA e pode ser lenta.")
-      
-    with concurrent.futures.ThreadPoolExecutor(max_workers=args.threads) as executor:
-        futures = [executor.submit(analyze_target, target_item, is_domain_input, args) for target_item in target_list]
-        #futures = [executor.submit(analyze_domain, domain, args) for domain in domains]
-        for future in concurrent.futures.as_completed(futures):
-            try:
-                future.result()
-            except Exception as e:
-                
-                logger.error(f"Erro durante a análise de um dos alvos: {e}", exc_info=True) # exc_info=True para traceback
+    if args.web_scan:
+        if not args.dominios:
+            parser.error("--web-scan é melhor utilizado com --dominios para especificar o(s) subdomínio(s) alvo.")      
+        logger.info("Modo RÁPIDO ativado: Executando varredura focada em serviços web.")
+        
+        target_list = [d.strip() for d in args.dominios.split(',')]
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.threads) as executor:
+            futures = [executor.submit(run_focused_web_scan, target_item, args) for target_item in target_list]
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    future.result()
+                except Exception as e:
+                    logger.error(f"Erro durante a análise de um dos alvos: {e}", exc_info=True) # exc_info=True para traceback
+
+    else:
+        target_list = []
+        is_domain_input = False # Flag para saber o tipo de entrada
+
+        if args.dominios:
+            target_list = [d.strip() for d in args.dominios.split(',')]
+            is_domain_input = True
+
+        elif args.ips:
+            target_list = [ip.strip() for ip in args.ips.split(',')]
+
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.threads) as executor:
+            futures = [executor.submit(analyze_target, target_item, is_domain_input, args) for target_item in target_list]
+            #futures = [executor.submit(analyze_domain, domain, args) for domain in domains]
+            for future in concurrent.futures.as_completed(futures):
+                try:
+                    future.result()
+                except Exception as e:
+                    logger.error(f"Erro durante a análise de um dos alvos: {e}", exc_info=True) # exc_info=True para traceback
 
     logger.info("Análise de todos os domínios concluída.")
-
+    
 if __name__ == "__main__":
     main()

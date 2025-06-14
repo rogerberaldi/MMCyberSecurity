@@ -62,24 +62,7 @@ def run_nuclei(target, output_file, templates=None, severity_filter=None):
         logger.error(f"Erro ou nenhum resultado encontrado ao executar Nuclei em {target}. stderr: {stderr}")
         return None
 
-#def run_nuclei(domain, output_file, templates=None):
-#    """Executa a ferramenta nuclei para o domínio e salva a saída em JSON."""
-#    if not verify_tool_availability("nuclei"):
-#        return False
-#
-#    command = ["nuclei", "-target", domain, "-j", "-o", output_file]
-#    if templates:
-#        command.extend(["-t", templates])
-#
-#    stdout, stderr, returncode = execute_command(command)
-#
-#    if returncode == 0:
-#        logger.info(f"Saída do nuclei salva em: {output_file}")
-#        #logger.debug(f"Stdout do nuclei: {stdout}")
-#        return True
-#    else:
-#        logger.error(f"Erro ao executar nuclei para {domain}: {stderr}")
-#        return False
+
 
 def analyze_nuclei_output(output_file):
     """Analisa o arquivo JSON de saída do nuclei."""
