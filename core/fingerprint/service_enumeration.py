@@ -122,7 +122,7 @@ def refactored_perform_service_enumeration(consolidated_open_ports_json_file, ba
             logger.warning(f"MODO INTRUSIVO HABILITADO para {ip_address}: Adicionando Nmap --script=vuln.")
             nmap_args_for_ip.append("--script=default,vuln") 
             nmap_args_for_ip.extend(["--version-intensity", "9"]) # Opcional: mais detalhado, mais lento
-        # nmap_args_for_ip.extend(["--script=default,discovery,version,vuln"]) # Exemplo mais agressivo
+        #   nmap_args_for_ip.extend(["--script=default,discovery,version,vuln"]) # Exemplo mais agressivo
 
         logger.info(f"Iniciando Nmap scan de serviço/script para IP: {ip_address} (Portas: {tcp_ports}) "
                     f"Contexto: {original_target_context}")
