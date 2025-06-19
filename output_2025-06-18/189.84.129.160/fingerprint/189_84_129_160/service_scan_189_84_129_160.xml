@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun 14 06:56:51 2025 as: nmap -sV -sC -p 5001,5060,5061,5090,60050 -oX output/189.84.129.160/fingerprint/189_84_129_160/service_scan_189_84_129_160.xml 189.84.129.160 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 5001,5060,5061,5090,60050 -oX output/189.84.129.160/fingerprint/189_84_129_160/service_scan_189_84_129_160.xml 189.84.129.160" start="1749895011" startstr="Sat Jun 14 06:56:51 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="5" services="5001,5060-5061,5090,60050"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.129.160" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749895012" endtime="1749895044"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.129.160" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="5001"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="http" product="nginx" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-title" output="3CX Webclient"><elem key="title">3CX Webclient</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="http-robots.txt" output="1 disallowed entry &#xa;/"/><script id="ssl-cert" output="Subject: commonName=gruporodrigues.my3cx.com.br&#xa;Subject Alternative Name: DNS:gruporodrigues.my3cx.com.br&#xa;Not valid before: 2025-05-31T03:58:05&#xa;Not valid after:  2025-08-29T03:58:04"><table key="subject">
+<elem key="commonName">gruporodrigues.my3cx.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">R11</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">Let&apos;s Encrypt</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">CA091C311CE3C699C646376EFDEB7506E92D412F1E418AE5A2B674C2A5C472263DAADD96633E2710D39A4402EA07463333F8073C99265D065214A6780D40819D7E5F14D6DB01B94EC0DFA17EF6131DBD94EDA1AF6644236799C26BE194BC94B64A0B2646CA3B3CA82FB1CE5744526ACE0924AE9BFA3CD971B93045E449BF02EA43125EB43C07C16CA82FD08C2E91B775C1070F973B1EE8E93533E5026EDC0AF08A80189E01D8B97AB207A26F84F5DCB63119C8F54F54FEE3F75B93E3721C2C03CA8CFCE26C9E5810DFE55CE1EA572F2800C376370B894DED66EBD2C1FDAB752D4624BB070D7A4E6A8D0593FC8373DEAE3F69F95B57957F0E63CE04835F22ACED</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">D5:23:14:0E:8F:26:E4:F9:3C:72:25:11:E2:AD:C6:AA:EA:1D:BB:9C</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">C5:CF:46:A4:EA:F4:C3:C0:7A:6C:95:C4:2D:B0:5E:92:2F:26:E3:B9</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://r11.i.lencr.org/</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:gruporodrigues.my3cx.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://r11.c.lencr.org/124.crl</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : CC:FB:0F:6A:85:71:09:65:FE:95:9B:53:CE:E9:B2:7C:&#xa;                22:E9:85:5C:0D:97:8D:B6:A9:7E:54:C0:FE:4C:0D:B0&#xa;    Timestamp : May 31 04:56:35.225 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:8B:02:55:B2:22:7A:52:2D:30:EA:7C:&#xa;                5D:78:B0:29:99:32:7D:54:AF:0D:29:48:24:46:D1:87:&#xa;                18:AC:9E:82:41:02:20:36:D7:38:11:31:3A:EE:A3:45:&#xa;                54:0F:E0:80:2A:06:C0:31:21:8F:2A:80:1C:EB:30:46:&#xa;                EF:1D:AE:F7:5F:9F:42&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : A4:42:C5:06:49:60:61:54:8F:0F:D4:EA:9C:FB:7A:2D:&#xa;                26:45:4D:87:A9:7F:2F:DF:45:59:F6:27:4F:3A:84:54&#xa;    Timestamp : May 31 04:56:35.221 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:6B:5D:B1:5D:26:0A:06:0B:46:95:23:70:&#xa;                20:83:94:86:0B:32:A1:45:49:DB:E8:71:24:E8:27:4D:&#xa;                F1:80:F4:95:02:20:7F:7E:42:0A:75:F7:D2:F2:31:A3:&#xa;                2E:92:0E:23:26:2B:C9:D6:78:F2:49:30:31:26:BF:ED:&#xa;                DD:10:45:42:AD:2D</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2025-05-31T03:58:05</elem>
+<elem key="notAfter">2025-08-29T03:58:04</elem>
+</table>
+<elem key="md5">8745929f7b02ec012768ad40019a9960</elem>
+<elem key="sha1">233f503f6a958c5eb9aa698b8081ec9791defb72</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIFEjCCA/qgAwIBAgISBdJ9h1NvS2q01kjOAngMi8b7MA0GCSqGSIb3DQEBCwUA&#xa;MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD&#xa;EwNSMTEwHhcNMjUwNTMxMDM1ODA1WhcNMjUwODI5MDM1ODA0WjAmMSQwIgYDVQQD&#xa;ExtncnVwb3JvZHJpZ3Vlcy5teTNjeC5jb20uYnIwggEiMA0GCSqGSIb3DQEBAQUA&#xa;A4IBDwAwggEKAoIBAQDKCRwxHOPGmcZGN27963UG6S1BLx5BiuWitnTCpcRyJj2q&#xa;3ZZjPicQ05pEAuoHRjMz+Ac8mSZdBlIUpngNQIGdfl8U1tsBuU7A36F+9hMdvZTt&#xa;oa9mRCNnmcJr4ZS8lLZKCyZGyjs8qC+xzldEUmrOCSSum/o82XG5MEXkSb8C6kMS&#xa;XrQ8B8FsqC/QjC6Rt3XBBw+XOx7o6TUz5QJu3ArwioAYngHYuXqyB6JvhPXctjEZ&#xa;yPVPVP7j91uT43IcLAPKjPzibJ5YEN/lXOHqVy8oAMN2NwuJTe1m69LB/at1LUYk&#xa;uwcNek5qjQWT/INz3q4/aflbV5V/DmPOBINfIqztAgMBAAGjggIrMIICJzAOBgNV&#xa;HQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1Ud&#xa;EwEB/wQCMAAwHQYDVR0OBBYEFNUjFA6PJuT5PHIlEeKtxqrqHbucMB8GA1UdIwQY&#xa;MBaAFMXPRqTq9MPAemyVxC2wXpIvJuO5MDMGCCsGAQUFBwEBBCcwJTAjBggrBgEF&#xa;BQcwAoYXaHR0cDovL3IxMS5pLmxlbmNyLm9yZy8wJgYDVR0RBB8wHYIbZ3J1cG9y&#xa;b2RyaWd1ZXMubXkzY3guY29tLmJyMBMGA1UdIAQMMAowCAYGZ4EMAQIBMC8GA1Ud&#xa;HwQoMCYwJKAioCCGHmh0dHA6Ly9yMTEuYy5sZW5jci5vcmcvMTI0LmNybDCCAQMG&#xa;CisGAQQB1nkCBAIEgfQEgfEA7wB2AMz7D2qFcQll/pWbU87psnwi6YVcDZeNtql+&#xa;VMD+TA2wAAABlySy7JkAAAQDAEcwRQIhAIsCVbIielItMOp8XXiwKZkyfVSvDSlI&#xa;JEbRhxisnoJBAiA21zgRMTruo0VUD+CAKgbAMSGPKoAc6zBG7x2u91+fQgB1AKRC&#xa;xQZJYGFUjw/U6pz7ei0mRU2HqX8v30VZ9idPOoRUAAABlySy7JUAAAQDAEYwRAIg&#xa;a12xXSYKBgtGlSNwIIOUhgsyoUVJ2+hxJOgnTfGA9JUCIH9+Qgp199LyMaMukg4j&#xa;JivJ1njySTAxJr/t3RBFQq0tMA0GCSqGSIb3DQEBCwUAA4IBAQBVy+YJi7qefn0M&#xa;EYlPNshmziFMVjLLAwuZFnN9bZr+ATpVb9HSV3BjhO2mOhcuF8fIBCtL6FQ5q+bJ&#xa;mPyRDvTjsC88fdWvKnUx/byqDUwXHE/idPXjTDruXeX6ZGosW/aRo82z53+iqg45&#xa;G7uwPUXcgkGYLnHUk1ZR78J/2euF2MJ475btaHWAxRKeipsnRkEV3Q7kf9p4mU5i&#xa;0t8QcI6Ph4EbxFOXaIthheRHNnhCBfSDhp84yJx8NG4WeQxkciKwT5AvHt709T+D&#xa;fP1cblkt7E4d+x655cKiF/bnq/e0jBGFmlW2x1yQfRTCethcO6o+cud8wmszlSZ6&#xa;9bOZw6xF&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="60"/><service name="sip" extrainfo="SIP end point; Status: 200 OK" servicefp="SF-Port5060-TCP:V=7.92%I=7%D=6/14%Time=684D4777%P=x86_64-redhat-linux-gnu%r(SIPOptions,1A0,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20192\.168\.1\.64:54612;branch=foo\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=53932061\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nAccept:\x20application/sdp\r\nAccept-Language:\x20en\r\nAllow:\x20INVITE,\x20ACK,\x20CANCEL,\x20OPTIONS,\x20BYE,\x20REGISTER,\x20SUBSCRIBE,\x20NOTIFY,\x20REFER,\x20INFO,\x20MESSAGE,\x20UPDATE\r\nSupported:\x20replaces,\x20timer\r\nAllow-Events:\x20message-summary,\x20dialog,\x20call-info,\x20line-seize\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:54612;branch=foo&#xa;    &lt;sip:nm2@nm2&gt;;tag=53932061&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Accept: application/sdp&#xa;    Accept-Language: en&#xa;    Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REGISTER, SUBSCRIBE, NOTIFY, REFER, INFO, MESSAGE, UPDATE&#xa;    Supported: replaces, timer&#xa;    Allow-Events: message-summary, dialog, call-info, line-seize&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:54612;branch=foo&#xa;    &lt;sip:nm2@nm2&gt;;tag=53932061&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Accept: application/sdp&#xa;    Accept-Language: en&#xa;    Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REGISTER, SUBSCRIBE, NOTIFY, REFER, INFO, MESSAGE, UPDATE&#xa;    Supported: replaces, timer&#xa;    Allow-Events: message-summary, dialog, call-info, line-seize&#xa;    Content-Length: 0</elem>
+</script></port>
+<port protocol="tcp" portid="5061"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="sip" extrainfo="SIP end point; Status: 482 Merged Request" servicefp="SF-Port5061-TCP:V=7.92%T=SSL%I=7%D=6/14%Time=684D4778%P=x86_64-redhat-linux-gnu%r(SIPOptions,DA,&quot;SIP/2\.0\x20482\x20Merged\x20Request\r\nVia:\x20SIP/2\.0/TCP\x20nm;branch=foo;received=38\.43\.101\.69\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=e252860a\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nAccept-Language:\x20en\r\nContent-Length:\x200\r\n\r\n&quot;);" tunnel="ssl" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 482 Merged Request&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69&#xa;    &lt;sip:nm2@nm2&gt;;tag=e252860a&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Accept-Language: en&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 482 Merged Request&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69&#xa;    &lt;sip:nm2@nm2&gt;;tag=e252860a&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Accept-Language: en&#xa;    Content-Length: 0</elem>
+</script><script id="ssl-cert" output="Subject: commonName=gruporodrigues.my3cx.com.br&#xa;Subject Alternative Name: DNS:gruporodrigues.my3cx.com.br&#xa;Not valid before: 2025-05-31T03:58:05&#xa;Not valid after:  2025-08-29T03:58:04"><table key="subject">
+<elem key="commonName">gruporodrigues.my3cx.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">R11</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">Let&apos;s Encrypt</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">CA091C311CE3C699C646376EFDEB7506E92D412F1E418AE5A2B674C2A5C472263DAADD96633E2710D39A4402EA07463333F8073C99265D065214A6780D40819D7E5F14D6DB01B94EC0DFA17EF6131DBD94EDA1AF6644236799C26BE194BC94B64A0B2646CA3B3CA82FB1CE5744526ACE0924AE9BFA3CD971B93045E449BF02EA43125EB43C07C16CA82FD08C2E91B775C1070F973B1EE8E93533E5026EDC0AF08A80189E01D8B97AB207A26F84F5DCB63119C8F54F54FEE3F75B93E3721C2C03CA8CFCE26C9E5810DFE55CE1EA572F2800C376370B894DED66EBD2C1FDAB752D4624BB070D7A4E6A8D0593FC8373DEAE3F69F95B57957F0E63CE04835F22ACED</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">D5:23:14:0E:8F:26:E4:F9:3C:72:25:11:E2:AD:C6:AA:EA:1D:BB:9C</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">C5:CF:46:A4:EA:F4:C3:C0:7A:6C:95:C4:2D:B0:5E:92:2F:26:E3:B9</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://r11.i.lencr.org/</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:gruporodrigues.my3cx.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://r11.c.lencr.org/124.crl</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : CC:FB:0F:6A:85:71:09:65:FE:95:9B:53:CE:E9:B2:7C:&#xa;                22:E9:85:5C:0D:97:8D:B6:A9:7E:54:C0:FE:4C:0D:B0&#xa;    Timestamp : May 31 04:56:35.225 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:8B:02:55:B2:22:7A:52:2D:30:EA:7C:&#xa;                5D:78:B0:29:99:32:7D:54:AF:0D:29:48:24:46:D1:87:&#xa;                18:AC:9E:82:41:02:20:36:D7:38:11:31:3A:EE:A3:45:&#xa;                54:0F:E0:80:2A:06:C0:31:21:8F:2A:80:1C:EB:30:46:&#xa;                EF:1D:AE:F7:5F:9F:42&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : A4:42:C5:06:49:60:61:54:8F:0F:D4:EA:9C:FB:7A:2D:&#xa;                26:45:4D:87:A9:7F:2F:DF:45:59:F6:27:4F:3A:84:54&#xa;    Timestamp : May 31 04:56:35.221 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:6B:5D:B1:5D:26:0A:06:0B:46:95:23:70:&#xa;                20:83:94:86:0B:32:A1:45:49:DB:E8:71:24:E8:27:4D:&#xa;                F1:80:F4:95:02:20:7F:7E:42:0A:75:F7:D2:F2:31:A3:&#xa;                2E:92:0E:23:26:2B:C9:D6:78:F2:49:30:31:26:BF:ED:&#xa;                DD:10:45:42:AD:2D</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2025-05-31T03:58:05</elem>
+<elem key="notAfter">2025-08-29T03:58:04</elem>
+</table>
+<elem key="md5">8745929f7b02ec012768ad40019a9960</elem>
+<elem key="sha1">233f503f6a958c5eb9aa698b8081ec9791defb72</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIFEjCCA/qgAwIBAgISBdJ9h1NvS2q01kjOAngMi8b7MA0GCSqGSIb3DQEBCwUA&#xa;MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD&#xa;EwNSMTEwHhcNMjUwNTMxMDM1ODA1WhcNMjUwODI5MDM1ODA0WjAmMSQwIgYDVQQD&#xa;ExtncnVwb3JvZHJpZ3Vlcy5teTNjeC5jb20uYnIwggEiMA0GCSqGSIb3DQEBAQUA&#xa;A4IBDwAwggEKAoIBAQDKCRwxHOPGmcZGN27963UG6S1BLx5BiuWitnTCpcRyJj2q&#xa;3ZZjPicQ05pEAuoHRjMz+Ac8mSZdBlIUpngNQIGdfl8U1tsBuU7A36F+9hMdvZTt&#xa;oa9mRCNnmcJr4ZS8lLZKCyZGyjs8qC+xzldEUmrOCSSum/o82XG5MEXkSb8C6kMS&#xa;XrQ8B8FsqC/QjC6Rt3XBBw+XOx7o6TUz5QJu3ArwioAYngHYuXqyB6JvhPXctjEZ&#xa;yPVPVP7j91uT43IcLAPKjPzibJ5YEN/lXOHqVy8oAMN2NwuJTe1m69LB/at1LUYk&#xa;uwcNek5qjQWT/INz3q4/aflbV5V/DmPOBINfIqztAgMBAAGjggIrMIICJzAOBgNV&#xa;HQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1Ud&#xa;EwEB/wQCMAAwHQYDVR0OBBYEFNUjFA6PJuT5PHIlEeKtxqrqHbucMB8GA1UdIwQY&#xa;MBaAFMXPRqTq9MPAemyVxC2wXpIvJuO5MDMGCCsGAQUFBwEBBCcwJTAjBggrBgEF&#xa;BQcwAoYXaHR0cDovL3IxMS5pLmxlbmNyLm9yZy8wJgYDVR0RBB8wHYIbZ3J1cG9y&#xa;b2RyaWd1ZXMubXkzY3guY29tLmJyMBMGA1UdIAQMMAowCAYGZ4EMAQIBMC8GA1Ud&#xa;HwQoMCYwJKAioCCGHmh0dHA6Ly9yMTEuYy5sZW5jci5vcmcvMTI0LmNybDCCAQMG&#xa;CisGAQQB1nkCBAIEgfQEgfEA7wB2AMz7D2qFcQll/pWbU87psnwi6YVcDZeNtql+&#xa;VMD+TA2wAAABlySy7JkAAAQDAEcwRQIhAIsCVbIielItMOp8XXiwKZkyfVSvDSlI&#xa;JEbRhxisnoJBAiA21zgRMTruo0VUD+CAKgbAMSGPKoAc6zBG7x2u91+fQgB1AKRC&#xa;xQZJYGFUjw/U6pz7ei0mRU2HqX8v30VZ9idPOoRUAAABlySy7JUAAAQDAEYwRAIg&#xa;a12xXSYKBgtGlSNwIIOUhgsyoUVJ2+hxJOgnTfGA9JUCIH9+Qgp199LyMaMukg4j&#xa;JivJ1njySTAxJr/t3RBFQq0tMA0GCSqGSIb3DQEBCwUAA4IBAQBVy+YJi7qefn0M&#xa;EYlPNshmziFMVjLLAwuZFnN9bZr+ATpVb9HSV3BjhO2mOhcuF8fIBCtL6FQ5q+bJ&#xa;mPyRDvTjsC88fdWvKnUx/byqDUwXHE/idPXjTDruXeX6ZGosW/aRo82z53+iqg45&#xa;G7uwPUXcgkGYLnHUk1ZR78J/2euF2MJ475btaHWAxRKeipsnRkEV3Q7kf9p4mU5i&#xa;0t8QcI6Ph4EbxFOXaIthheRHNnhCBfSDhp84yJx8NG4WeQxkciKwT5AvHt709T+D&#xa;fP1cblkt7E4d+x655cKiF/bnq/e0jBGFmlW2x1yQfRTCethcO6o+cud8wmszlSZ6&#xa;9bOZw6xF&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="5090"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="3cx-tunnel" product="3CX Tunnel Protocol" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="60050"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="2585" rttvar="2418" to="100000"/>
+</host>
+<runstats><finished time="1749895044" timestr="Sat Jun 14 06:57:24 2025" summary="Nmap done at Sat Jun 14 06:57:24 2025; 1 IP address (1 host up) scanned in 32.68 seconds" elapsed="32.68" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

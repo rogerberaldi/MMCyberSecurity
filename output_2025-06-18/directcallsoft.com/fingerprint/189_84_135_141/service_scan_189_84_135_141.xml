@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 06:33:50 2025 as: nmap -sV -sC -p 5060,5061,5064,25060 -oX output/directcallsoft.com/fingerprint/189_84_135_141/service_scan_189_84_135_141.xml 189.84.135.141 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 5060,5061,5064,25060 -oX output/directcallsoft.com/fingerprint/189_84_135_141/service_scan_189_84_135_141.xml 189.84.135.141" start="1749288830" startstr="Sat Jun  7 06:33:50 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="4" services="5060-5061,5064,25060"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.135.141" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749288831" endtime="1749288928"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.135.141" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="60"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+<port protocol="tcp" portid="5061"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="sip" product="Kamailio" version="5.6.3" extrainfo="x86_64" ostype="Linux" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssl-cert" output="Subject: commonName=*.solidqi.com.br&#xa;Subject Alternative Name: DNS:*.solidqi.com.br, DNS:solidqi.com.br&#xa;Not valid before: 2024-09-03T00:00:00&#xa;Not valid after:  2025-09-19T23:59:59"><table key="subject">
+<elem key="commonName">*.solidqi.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">Thawte TLS RSA CA G1</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">DigiCert Inc</elem>
+<elem key="organizationalUnitName">www.digicert.com</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">943ED273594EB856C68C2A5CCD523C1DFA440DC81ED1D4D34A98F553E7FD120719495E11602277EC26A2C5D9EAE264F30D62F1D17021F18E820C4C8260CF4FFFF34EF470C486AED8E360EFDCBF5FF61729AAF770BCCAB92D8DC8BAA002CEECDF56D5C38F287D53FBADCC70D6DB22A625AA6127313A07D6E5ABF9B0B14BAA3AAF91846B163294F0C7C828D496073D7035A2A49A2E9C1F02B8BFCCDB65854224F56C8E241E5B406A26351A60CC4315F61A229B15A509CCCC53C9EB564F66B07E727A171433FC0F46DDA7998FC418C191351BB2E472271A6603395E632E738C90451D4195DFFE2052363CB85A783302C8B55B4614FD1E59E1BE359ECEF314A2A3D9</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">A5:8C:FE:32:CC:EB:0F:2C:D4:19:C6:08:B8:00:24:88:5D:C3:C5:B7</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">D7:B5:C6:0B:01:12:13:18:11:DD:65:C0:2A:16:5F:EA:27:B2:1C:5F</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.solidqi.com.br, DNS:solidqi.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;  CPS: http://www.digicert.com/CPS</elem>
+</table>
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://cdp.thawte.com/ThawteTLSRSACAG1.crl</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">OCSP - URI:http://status.thawte.com&#xa;CA Issuers - URI:http://cacerts.thawte.com/ThawteTLSRSACAG1.crt</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Sep  3 19:23:44.610 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:D1:35:4E:94:BF:65:B9:11:9A:CA:DF:&#xa;                78:C8:B9:C9:08:AB:DA:0B:C2:54:9C:78:A6:69:B7:C0:&#xa;                F0:1B:A8:E1:BD:02:20:66:8F:2A:62:16:24:B6:1B:B2:&#xa;                62:20:16:34:F7:3E:79:8C:59:6D:FF:66:D6:FA:31:97:&#xa;                A1:FA:60:52:E3:44:07&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Sep  3 19:23:44.469 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:42:F9:32:DD:AC:7F:AE:A4:42:D3:80:ED:&#xa;                7C:69:A0:51:0C:89:81:88:01:6B:28:85:22:0F:EF:AB:&#xa;                87:20:DC:37:02:21:00:B9:87:93:2A:BF:35:29:3D:E3:&#xa;                AC:4B:F5:15:37:02:0F:57:41:7C:32:CE:C3:CC:8D:9A:&#xa;                0C:A2:D2:5D:2E:79:56&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : E6:D2:31:63:40:77:8C:C1:10:41:06:D7:71:B9:CE:C1:&#xa;                D2:40:F6:96:84:86:FB:BA:87:32:1D:FD:1E:37:8E:50&#xa;    Timestamp : Sep  3 19:23:44.493 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:46:02:21:00:C5:0A:EA:02:BD:93:EF:6A:2E:8F:BF:&#xa;                11:84:C6:84:BB:B7:11:F7:38:05:03:29:19:E4:83:00:&#xa;                52:59:44:81:D8:02:21:00:A1:9D:6B:CC:26:46:4F:B1:&#xa;                16:F1:39:B8:F0:B5:8B:B7:F0:3E:9B:71:F6:A5:2A:15:&#xa;                FF:98:3B:E5:88:24:51:28</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-09-03T00:00:00</elem>
+<elem key="notAfter">2025-09-19T23:59:59</elem>
+</table>
+<elem key="md5">f7d4cab407c56a574e7e3b5f0df679c5</elem>
+<elem key="sha1">e1a292b73585f98e4d0605edd359f022ab90e02a</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGJTCCBQ2gAwIBAgIQDpe31sWuYYFaap5giWCmhjANBgkqhkiG9w0BAQsFADBe&#xa;MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3&#xa;d3cuZGlnaWNlcnQuY29tMR0wGwYDVQQDExRUaGF3dGUgVExTIFJTQSBDQSBHMTAe&#xa;Fw0yNDA5MDMwMDAwMDBaFw0yNTA5MTkyMzU5NTlaMBsxGTAXBgNVBAMMECouc29s&#xa;aWRxaS5jb20uYnIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUPtJz&#xa;WU64VsaMKlzNUjwd+kQNyB7R1NNKmPVT5/0SBxlJXhFgInfsJqLF2eriZPMNYvHR&#xa;cCHxjoIMTIJgz0//8070cMSGrtjjYO/cv1/2Fymq93C8yrktjci6oALO7N9W1cOP&#xa;KH1T+63McNbbIqYlqmEnMToH1uWr+bCxS6o6r5GEaxYylPDHyCjUlgc9cDWipJou&#xa;nB8CuL/M22WFQiT1bI4kHltAaiY1GmDMQxX2GiKbFaUJzMxTyetWT2awfnJ6FxQz&#xa;/A9G3aeZj8QYwZE1G7LkcicaZgM5XmMuc4yQRR1Bld/+IFI2PLhaeDMCyLVbRhT9&#xa;HlnhvjWezvMUoqPZAgMBAAGjggMgMIIDHDAfBgNVHSMEGDAWgBSljP4yzOsPLNQZ&#xa;xgi4ACSIXcPFtzAdBgNVHQ4EFgQU17XGCwESExgR3WXAKhZf6ieyHF8wKwYDVR0R&#xa;BCQwIoIQKi5zb2xpZHFpLmNvbS5icoIOc29saWRxaS5jb20uYnIwPgYDVR0gBDcw&#xa;NTAzBgZngQwBAgEwKTAnBggrBgEFBQcCARYbaHR0cDovL3d3dy5kaWdpY2VydC5j&#xa;b20vQ1BTMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYB&#xa;BQUHAwIwOwYDVR0fBDQwMjAwoC6gLIYqaHR0cDovL2NkcC50aGF3dGUuY29tL1Ro&#xa;YXd0ZVRMU1JTQUNBRzEuY3JsMHAGCCsGAQUFBwEBBGQwYjAkBggrBgEFBQcwAYYY&#xa;aHR0cDovL3N0YXR1cy50aGF3dGUuY29tMDoGCCsGAQUFBzAChi5odHRwOi8vY2Fj&#xa;ZXJ0cy50aGF3dGUuY29tL1RoYXd0ZVRMU1JTQUNBRzEuY3J0MAwGA1UdEwEB/wQC&#xa;MAAwggF/BgorBgEEAdZ5AgQCBIIBbwSCAWsBaQB2ABLxTjS9U3JMhAYZw48/ehP4&#xa;57Vih4icbTAFhOvlhiY6AAABkblXzGIAAAQDAEcwRQIhANE1TpS/ZbkRmsrfeMi5&#xa;yQir2gvCVJx4pmm3wPAbqOG9AiBmjypiFiS2G7JiIBY09z55jFlt/2bW+jGXofpg&#xa;UuNEBwB2AH1ZHhLheCp7HGFnfF79+NCHXBSgTpWeuQMv2Q6MLnm4AAABkblXy9UA&#xa;AAQDAEcwRQIgQvky3ax/rqRC04DtfGmgUQyJgYgBayiFIg/vq4cg3DcCIQC5h5Mq&#xa;vzUpPeOsS/UVNwIPV0F8Ms7DzI2aDKLSXS55VgB3AObSMWNAd4zBEEEG13G5zsHS&#xa;QPaWhIb7uocyHf0eN45QAAABkblXy+0AAAQDAEgwRgIhAMUK6gK9k+9qLo+/EYTG&#xa;hLu3Efc4BQMpGeSDAFJZRIHYAiEAoZ1rzCZGT7EW8Tm48LWLt/A+m3H2pSoV/5g7&#xa;5YgkUSgwDQYJKoZIhvcNAQELBQADggEBAK5tWU8uOs+HyUUraoCGpsiuPTdoq1Tt&#xa;7n6KvonuiKo1UMNWHodORZx3wiySKB/zsWlbXAhzLyP97EDocym0D7j8e3XgZDes&#xa;C5XaT2sxoQHmmIZFdUiCs4l3c54/vFZ1cmahpdswtgCyguznARouVuWuiMg49+JA&#xa;DxYnmkFQVNsZgioJLUnRNOplpO5IpzfKaFfz0/a+rzergDq7LEJD9JQM+UJ66ak6&#xa;KGQX84uP++HIc/j0KdeuWJfd+Z4QZC09/XGKH0Uy8mwP+ocELwSc4I4ySjA5n9WU&#xa;OHiYrWNsZJWVD4q9nrcUQMkQKllgjZplPUzWrSfNGzT/WW+6pU5RS5o=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="5064"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="sip" product="Kamailio" version="5.6.3" extrainfo="x86_64" ostype="Linux" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/o:linux:linux_kernel</cpe></service><script id="ssl-cert" output="Subject: commonName=*.solidqi.com.br&#xa;Subject Alternative Name: DNS:*.solidqi.com.br, DNS:solidqi.com.br&#xa;Not valid before: 2024-09-03T00:00:00&#xa;Not valid after:  2025-09-19T23:59:59"><table key="subject">
+<elem key="commonName">*.solidqi.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">Thawte TLS RSA CA G1</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">DigiCert Inc</elem>
+<elem key="organizationalUnitName">www.digicert.com</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">943ED273594EB856C68C2A5CCD523C1DFA440DC81ED1D4D34A98F553E7FD120719495E11602277EC26A2C5D9EAE264F30D62F1D17021F18E820C4C8260CF4FFFF34EF470C486AED8E360EFDCBF5FF61729AAF770BCCAB92D8DC8BAA002CEECDF56D5C38F287D53FBADCC70D6DB22A625AA6127313A07D6E5ABF9B0B14BAA3AAF91846B163294F0C7C828D496073D7035A2A49A2E9C1F02B8BFCCDB65854224F56C8E241E5B406A26351A60CC4315F61A229B15A509CCCC53C9EB564F66B07E727A171433FC0F46DDA7998FC418C191351BB2E472271A6603395E632E738C90451D4195DFFE2052363CB85A783302C8B55B4614FD1E59E1BE359ECEF314A2A3D9</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">A5:8C:FE:32:CC:EB:0F:2C:D4:19:C6:08:B8:00:24:88:5D:C3:C5:B7</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">D7:B5:C6:0B:01:12:13:18:11:DD:65:C0:2A:16:5F:EA:27:B2:1C:5F</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.solidqi.com.br, DNS:solidqi.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;  CPS: http://www.digicert.com/CPS</elem>
+</table>
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://cdp.thawte.com/ThawteTLSRSACAG1.crl</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">OCSP - URI:http://status.thawte.com&#xa;CA Issuers - URI:http://cacerts.thawte.com/ThawteTLSRSACAG1.crt</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Sep  3 19:23:44.610 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:D1:35:4E:94:BF:65:B9:11:9A:CA:DF:&#xa;                78:C8:B9:C9:08:AB:DA:0B:C2:54:9C:78:A6:69:B7:C0:&#xa;                F0:1B:A8:E1:BD:02:20:66:8F:2A:62:16:24:B6:1B:B2:&#xa;                62:20:16:34:F7:3E:79:8C:59:6D:FF:66:D6:FA:31:97:&#xa;                A1:FA:60:52:E3:44:07&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Sep  3 19:23:44.469 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:42:F9:32:DD:AC:7F:AE:A4:42:D3:80:ED:&#xa;                7C:69:A0:51:0C:89:81:88:01:6B:28:85:22:0F:EF:AB:&#xa;                87:20:DC:37:02:21:00:B9:87:93:2A:BF:35:29:3D:E3:&#xa;                AC:4B:F5:15:37:02:0F:57:41:7C:32:CE:C3:CC:8D:9A:&#xa;                0C:A2:D2:5D:2E:79:56&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : E6:D2:31:63:40:77:8C:C1:10:41:06:D7:71:B9:CE:C1:&#xa;                D2:40:F6:96:84:86:FB:BA:87:32:1D:FD:1E:37:8E:50&#xa;    Timestamp : Sep  3 19:23:44.493 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:46:02:21:00:C5:0A:EA:02:BD:93:EF:6A:2E:8F:BF:&#xa;                11:84:C6:84:BB:B7:11:F7:38:05:03:29:19:E4:83:00:&#xa;                52:59:44:81:D8:02:21:00:A1:9D:6B:CC:26:46:4F:B1:&#xa;                16:F1:39:B8:F0:B5:8B:B7:F0:3E:9B:71:F6:A5:2A:15:&#xa;                FF:98:3B:E5:88:24:51:28</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-09-03T00:00:00</elem>
+<elem key="notAfter">2025-09-19T23:59:59</elem>
+</table>
+<elem key="md5">f7d4cab407c56a574e7e3b5f0df679c5</elem>
+<elem key="sha1">e1a292b73585f98e4d0605edd359f022ab90e02a</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGJTCCBQ2gAwIBAgIQDpe31sWuYYFaap5giWCmhjANBgkqhkiG9w0BAQsFADBe&#xa;MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3&#xa;d3cuZGlnaWNlcnQuY29tMR0wGwYDVQQDExRUaGF3dGUgVExTIFJTQSBDQSBHMTAe&#xa;Fw0yNDA5MDMwMDAwMDBaFw0yNTA5MTkyMzU5NTlaMBsxGTAXBgNVBAMMECouc29s&#xa;aWRxaS5jb20uYnIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUPtJz&#xa;WU64VsaMKlzNUjwd+kQNyB7R1NNKmPVT5/0SBxlJXhFgInfsJqLF2eriZPMNYvHR&#xa;cCHxjoIMTIJgz0//8070cMSGrtjjYO/cv1/2Fymq93C8yrktjci6oALO7N9W1cOP&#xa;KH1T+63McNbbIqYlqmEnMToH1uWr+bCxS6o6r5GEaxYylPDHyCjUlgc9cDWipJou&#xa;nB8CuL/M22WFQiT1bI4kHltAaiY1GmDMQxX2GiKbFaUJzMxTyetWT2awfnJ6FxQz&#xa;/A9G3aeZj8QYwZE1G7LkcicaZgM5XmMuc4yQRR1Bld/+IFI2PLhaeDMCyLVbRhT9&#xa;HlnhvjWezvMUoqPZAgMBAAGjggMgMIIDHDAfBgNVHSMEGDAWgBSljP4yzOsPLNQZ&#xa;xgi4ACSIXcPFtzAdBgNVHQ4EFgQU17XGCwESExgR3WXAKhZf6ieyHF8wKwYDVR0R&#xa;BCQwIoIQKi5zb2xpZHFpLmNvbS5icoIOc29saWRxaS5jb20uYnIwPgYDVR0gBDcw&#xa;NTAzBgZngQwBAgEwKTAnBggrBgEFBQcCARYbaHR0cDovL3d3dy5kaWdpY2VydC5j&#xa;b20vQ1BTMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYB&#xa;BQUHAwIwOwYDVR0fBDQwMjAwoC6gLIYqaHR0cDovL2NkcC50aGF3dGUuY29tL1Ro&#xa;YXd0ZVRMU1JTQUNBRzEuY3JsMHAGCCsGAQUFBwEBBGQwYjAkBggrBgEFBQcwAYYY&#xa;aHR0cDovL3N0YXR1cy50aGF3dGUuY29tMDoGCCsGAQUFBzAChi5odHRwOi8vY2Fj&#xa;ZXJ0cy50aGF3dGUuY29tL1RoYXd0ZVRMU1JTQUNBRzEuY3J0MAwGA1UdEwEB/wQC&#xa;MAAwggF/BgorBgEEAdZ5AgQCBIIBbwSCAWsBaQB2ABLxTjS9U3JMhAYZw48/ehP4&#xa;57Vih4icbTAFhOvlhiY6AAABkblXzGIAAAQDAEcwRQIhANE1TpS/ZbkRmsrfeMi5&#xa;yQir2gvCVJx4pmm3wPAbqOG9AiBmjypiFiS2G7JiIBY09z55jFlt/2bW+jGXofpg&#xa;UuNEBwB2AH1ZHhLheCp7HGFnfF79+NCHXBSgTpWeuQMv2Q6MLnm4AAABkblXy9UA&#xa;AAQDAEcwRQIgQvky3ax/rqRC04DtfGmgUQyJgYgBayiFIg/vq4cg3DcCIQC5h5Mq&#xa;vzUpPeOsS/UVNwIPV0F8Ms7DzI2aDKLSXS55VgB3AObSMWNAd4zBEEEG13G5zsHS&#xa;QPaWhIb7uocyHf0eN45QAAABkblXy+0AAAQDAEgwRgIhAMUK6gK9k+9qLo+/EYTG&#xa;hLu3Efc4BQMpGeSDAFJZRIHYAiEAoZ1rzCZGT7EW8Tm48LWLt/A+m3H2pSoV/5g7&#xa;5YgkUSgwDQYJKoZIhvcNAQELBQADggEBAK5tWU8uOs+HyUUraoCGpsiuPTdoq1Tt&#xa;7n6KvonuiKo1UMNWHodORZx3wiySKB/zsWlbXAhzLyP97EDocym0D7j8e3XgZDes&#xa;C5XaT2sxoQHmmIZFdUiCs4l3c54/vFZ1cmahpdswtgCyguznARouVuWuiMg49+JA&#xa;DxYnmkFQVNsZgioJLUnRNOplpO5IpzfKaFfz0/a+rzergDq7LEJD9JQM+UJ66ak6&#xa;KGQX84uP++HIc/j0KdeuWJfd+Z4QZC09/XGKH0Uy8mwP+ocELwSc4I4ySjA5n9WU&#xa;OHiYrWNsZJWVD4q9nrcUQMkQKllgjZplPUzWrSfNGzT/WW+6pU5RS5o=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="25060"><state state="open" reason="syn-ack" reason_ttl="59"/></port>
+</ports>
+<times srtt="2628" rttvar="2230" to="100000"/>
+</host>
+<runstats><finished time="1749288928" timestr="Sat Jun  7 06:35:28 2025" summary="Nmap done at Sat Jun  7 06:35:28 2025; 1 IP address (1 host up) scanned in 98.17 seconds" elapsed="98.17" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

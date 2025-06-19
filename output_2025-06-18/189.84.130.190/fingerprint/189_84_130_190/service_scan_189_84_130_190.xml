@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Jun 17 05:15:51 2025 as: nmap -sV -sC -p 80,443,5060 -oX output/189.84.130.190/fingerprint/189_84_130_190/service_scan_189_84_130_190.xml 189.84.130.190 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 80,443,5060 -oX output/189.84.130.190/fingerprint/189_84_130_190/service_scan_189_84_130_190.xml 189.84.130.190" start="1750148151" startstr="Tue Jun 17 05:15:51 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="3" services="80,443,5060"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.190" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750148151" endtime="1750148170"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.190" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="http" product="nginx" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-title" output="403 Forbidden"><elem key="title">403 Forbidden</elem>
+</script></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="http" product="nginx" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-title" output="3CX Webclient"><elem key="title">3CX Webclient</elem>
+</script><script id="http-robots.txt" output="1 disallowed entry &#xa;/"/><script id="ssl-cert" output="Subject: commonName=domtec.my3cx.com.br&#xa;Subject Alternative Name: DNS:domtec.my3cx.com.br&#xa;Not valid before: 2025-05-29T04:05:32&#xa;Not valid after:  2025-08-27T04:05:31"><table key="subject">
+<elem key="commonName">domtec.my3cx.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">R10</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">Let&apos;s Encrypt</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">99A6DA9D5FBAB0FA2BFC6A884AC390F24B757E2066AC1512C98A5DD2D7801C4A52BC34FE0866FD0F6637600301EC0E5502183741F66F4106BBD31BBD1CCF487AB07FACBDE5611773854DAADB616460547D861601E1054BD5728E4C8745DF93BA7468D40767C75276F006B34C987A7BCE891A3CD9AE6A41E0571BB07BA71EB39B40AE4C00A995F7285521E57A1F48B1C39203A2976F242114F0213FE6FC522A20E9F5221AB7CA325BAC517540571A1878D54021A0694B6F91A8C8586A85347FAC2EE60B461E78A95CE5C8AB2B72FD95C7D3764EA1E3747B81B3293DEFCD55D7BC1E76EE5E2FB46A99AE03C0973F14FE0481978D3A0A7FE1B7E079B8FB76AB8EBB</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">AC:2E:DF:9B:6B:B7:32:AF:F7:4D:69:76:46:54:C4:C7:0D:0D:D1:2F</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BB:BC:C3:47:A5:E4:BC:A9:C6:C3:A4:72:0C:10:8D:A2:35:E1:C8:E8</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://r10.i.lencr.org/</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:domtec.my3cx.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://r10.c.lencr.org/74.crl</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : A4:42:C5:06:49:60:61:54:8F:0F:D4:EA:9C:FB:7A:2D:&#xa;                26:45:4D:87:A9:7F:2F:DF:45:59:F6:27:4F:3A:84:54&#xa;    Timestamp : May 29 05:04:02.274 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:36:B9:F9:6D:DF:25:12:49:4D:07:0B:4E:&#xa;                8A:4A:50:F7:04:E3:5C:7F:77:66:0F:93:3A:35:A0:98:&#xa;                E5:8E:06:3D:02:21:00:9F:B2:14:3C:8C:43:A2:8A:27:&#xa;                33:BB:9E:4A:B1:6C:A2:F2:5D:A7:E5:3B:CC:39:37:40:&#xa;                B4:D9:5D:28:D5:05:20&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : CC:FB:0F:6A:85:71:09:65:FE:95:9B:53:CE:E9:B2:7C:&#xa;                22:E9:85:5C:0D:97:8D:B6:A9:7E:54:C0:FE:4C:0D:B0&#xa;    Timestamp : May 29 05:04:02.282 2025 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:65:48:51:9A:2A:10:C5:5A:3A:58:6C:2B:&#xa;                DE:69:92:83:77:33:E2:EB:1F:42:73:8A:B7:1C:24:F4:&#xa;                C3:4A:0B:98:02:21:00:CA:B4:D8:4B:03:3E:F2:A6:29:&#xa;                71:60:F7:42:9A:26:26:6E:E7:E6:AA:DD:AD:E8:A5:46:&#xa;                23:32:98:43:13:77:20</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2025-05-29T04:05:32</elem>
+<elem key="notAfter">2025-08-27T04:05:31</elem>
+</table>
+<elem key="md5">9137dc6ab4ca08dd0d046581fe95ece8</elem>
+<elem key="sha1">22aebe56f4f8df89b0f287cd2d15b22c406427bc</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIFAjCCA+qgAwIBAgISBUNe/SHPdQ+4ijmfg/1doE1JMA0GCSqGSIb3DQEBCwUA&#xa;MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD&#xa;EwNSMTAwHhcNMjUwNTI5MDQwNTMyWhcNMjUwODI3MDQwNTMxWjAeMRwwGgYDVQQD&#xa;ExNkb210ZWMubXkzY3guY29tLmJyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB&#xa;CgKCAQEAmabanV+6sPor/GqISsOQ8kt1fiBmrBUSyYpd0teAHEpSvDT+CGb9D2Y3&#xa;YAMB7A5VAhg3QfZvQQa70xu9HM9IerB/rL3lYRdzhU2q22FkYFR9hhYB4QVL1XKO&#xa;TIdF35O6dGjUB2fHUnbwBrNMmHp7zokaPNmuakHgVxuwe6ces5tArkwAqZX3KFUh&#xa;5XofSLHDkgOil28kIRTwIT/m/FIqIOn1Ihq3yjJbrFF1QFcaGHjVQCGgaUtvkajI&#xa;WGqFNH+sLuYLRh54qVzlyKsrcv2Vx9N2TqHjdHuBsyk9781V17wedu5eL7Rqma4D&#xa;wJc/FP4EgZeNOgp/4bfgebj7dquOuwIDAQABo4ICIzCCAh8wDgYDVR0PAQH/BAQD&#xa;AgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAA&#xa;MB0GA1UdDgQWBBSsLt+ba7cyr/dNaXZGVMTHDQ3RLzAfBgNVHSMEGDAWgBS7vMNH&#xa;peS8qcbDpHIMEI2iNeHI6DAzBggrBgEFBQcBAQQnMCUwIwYIKwYBBQUHMAKGF2h0&#xa;dHA6Ly9yMTAuaS5sZW5jci5vcmcvMB4GA1UdEQQXMBWCE2RvbXRlYy5teTNjeC5j&#xa;b20uYnIwEwYDVR0gBAwwCjAIBgZngQwBAgEwLgYDVR0fBCcwJTAjoCGgH4YdaHR0&#xa;cDovL3IxMC5jLmxlbmNyLm9yZy83NC5jcmwwggEEBgorBgEEAdZ5AgQCBIH1BIHy&#xa;APAAdgCkQsUGSWBhVI8P1Oqc+3otJkVNh6l/L99FWfYnTzqEVAAAAZcabQbiAAAE&#xa;AwBHMEUCIDa5+W3fJRJJTQcLTopKUPcE41x/d2YPkzo1oJjljgY9AiEAn7IUPIxD&#xa;ooonM7ueSrFsovJdp+U7zDk3QLTZXSjVBSAAdgDM+w9qhXEJZf6Vm1PO6bJ8IumF&#xa;XA2XjbapflTA/kwNsAAAAZcabQbqAAAEAwBHMEUCIGVIUZoqEMVaOlhsK95pkoN3&#xa;M+LrH0JzirccJPTDSguYAiEAyrTYSwM+8qYpcWD3QpomJm7n5qrdreilRiMymEMT&#xa;dyAwDQYJKoZIhvcNAQELBQADggEBAEGjejusVkij4hvdzCuLflDb63+XxpoebZoo&#xa;D0nckl0KSP9DlLuZ4zKJehgkV7iJDINKg9+5aZ7UJ8gnpz6raX9X8Y7XDoVUZCAH&#xa;vXrDD0Mvp29XmJf2VdMEygX2+ekGxVt42YOHeDA0o2JC/nI6O1QeqUM6OJUoEFRw&#xa;dvOKRh+EK00Qf+vOoHAu/0sLmwtHD1R7IkNU/wwFqPst22D24LAw2KgvBp4DJb6U&#xa;qQJkIOxndfzyZnX68FrEOZ7iPbfxD6JfwS+6hTLywLpS9QANU3tsrnt4uDBxjOs1&#xa;wzH+JtxDXrdI9vS7jfVaLUJEB0S1T4OD6Z7B9KWT5y78EYHmf8g=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="56"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+</ports>
+<times srtt="5201" rttvar="6875" to="100000"/>
+</host>
+<runstats><finished time="1750148170" timestr="Tue Jun 17 05:16:10 2025" summary="Nmap done at Tue Jun 17 05:16:10 2025; 1 IP address (1 host up) scanned in 19.01 seconds" elapsed="19.01" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,3 @@
+[
+{"target":"https://www.directdial.com.br:443","http_status":302,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Cookies":{"string":["DIRECTDIAL"]},"Country":{"string":["UNITED STATES"],"module":["US"]},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.112.1"]},"RedirectLocation":{"string":["http://www.directcall.com.br"]},"UncommonHeaders":{"string":["total,x-varnish,nel,cf-cache-status,report-to,cf-ray,alt-svc"]},"Varnish":{},"Via-Proxy":{"string":["1.1 varnish-v4"]}}}
+]

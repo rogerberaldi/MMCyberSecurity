@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Jun 15 19:46:51 2025 as: nmap -sV -sC -p 1313,1571,5060,5061 -oX output/189.84.130.32/fingerprint/189_84_130_32/service_scan_189_84_130_32.xml 189.84.130.32 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 1313,1571,5060,5061 -oX output/189.84.130.32/fingerprint/189_84_130_32/service_scan_189_84_130_32.xml 189.84.130.32" start="1750027611" startstr="Sun Jun 15 19:46:51 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="4" services="1313,1571,5060-5061"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.32" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750027612" endtime="1750027843"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.32" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="1313"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port1313-TCP:V=7.92%I=7%D=6/15%Time=684F4D67%P=x86_64-redhat-linux-gnu%r(GenericLines,2,&quot;\r\n&quot;)%r(SIPOptions,1C0,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20nm;branch=foo;received=38\.43\.101\.69;rport=24264\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=S71mv9N59gNmD\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.32:1313&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24264&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=S71mv9N59gNmD&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:1313&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24264&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=S71mv9N59gNmD&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:1313&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0</elem>
+</script><script id="sip-methods" output="INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY"><elem>INVITE</elem>
+<elem>ACK</elem>
+<elem>BYE</elem>
+<elem>CANCEL</elem>
+<elem>OPTIONS</elem>
+<elem>MESSAGE</elem>
+<elem>INFO</elem>
+<elem>UPDATE</elem>
+<elem>REGISTER</elem>
+<elem>REFER</elem>
+<elem>NOTIFY</elem>
+</script></port>
+<port protocol="tcp" portid="1571"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port1571-TCP:V=7.92%I=7%D=6/15%Time=684F4D67%P=x86_64-redhat-linux-gnu%r(GenericLines,2,&quot;\r\n&quot;)%r(SIPOptions,1C0,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20nm;branch=foo;received=38\.43\.101\.69;rport=24284\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=pmp0K5agvtmKS\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.32:1571&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24284&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=pmp0K5agvtmKS&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:1571&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24284&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=pmp0K5agvtmKS&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:1571&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0</elem>
+</script><script id="sip-methods" output="INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY"><elem>INVITE</elem>
+<elem>ACK</elem>
+<elem>BYE</elem>
+<elem>CANCEL</elem>
+<elem>OPTIONS</elem>
+<elem>MESSAGE</elem>
+<elem>INFO</elem>
+<elem>UPDATE</elem>
+<elem>REGISTER</elem>
+<elem>REFER</elem>
+<elem>NOTIFY</elem>
+</script></port>
+<port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="56"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port5060-TCP:V=7.92%I=7%D=6/15%Time=684F4D6E%P=x86_64-redhat-linux-gnu%r(SIPOptions,1B5,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20192\.168\.1\.64:43434;branch=foo;rport=24868\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=KUm5vv4vcaSHQ\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.32&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:43434;branch=foo;rport=24868&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=KUm5vv4vcaSHQ&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:43434;branch=foo;rport=24868&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=KUm5vv4vcaSHQ&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0</elem>
+</script><script id="sip-methods" output="INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY"><elem>INVITE</elem>
+<elem>ACK</elem>
+<elem>BYE</elem>
+<elem>CANCEL</elem>
+<elem>OPTIONS</elem>
+<elem>MESSAGE</elem>
+<elem>INFO</elem>
+<elem>UPDATE</elem>
+<elem>REGISTER</elem>
+<elem>REFER</elem>
+<elem>NOTIFY</elem>
+</script></port>
+<port protocol="tcp" portid="5061"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port5061-TCP:V=7.92%I=7%D=6/15%Time=684F4D71%P=x86_64-redhat-linux-gnu%r(GenericLines,2,&quot;\r\n&quot;)%r(SIPOptions,1C0,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20nm;branch=foo;received=38\.43\.101\.69;rport=24062\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=H9py3pXeBHSBm\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.32:5061&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24062&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=H9py3pXeBHSBm&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:5061&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP nm;branch=foo;received=38.43.101.69;rport=24062&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=H9py3pXeBHSBm&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.32:5061&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0</elem>
+</script><script id="sip-methods" output="INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY"><elem>INVITE</elem>
+<elem>ACK</elem>
+<elem>BYE</elem>
+<elem>CANCEL</elem>
+<elem>OPTIONS</elem>
+<elem>MESSAGE</elem>
+<elem>INFO</elem>
+<elem>UPDATE</elem>
+<elem>REGISTER</elem>
+<elem>REFER</elem>
+<elem>NOTIFY</elem>
+</script></port>
+</ports>
+<times srtt="5439" rttvar="5783" to="100000"/>
+</host>
+<runstats><finished time="1750027843" timestr="Sun Jun 15 19:50:43 2025" summary="Nmap done at Sun Jun 15 19:50:43 2025; 1 IP address (1 host up) scanned in 232.04 seconds" elapsed="232.04" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Jun 15 19:51:13 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.130.33/fingerprint/nmap_udp_voip_scan_189_84_130_33.xml 189.84.130.33 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.130.33/fingerprint/nmap_udp_voip_scan_189_84_130_33.xml 189.84.130.33" start="1750027873" startstr="Sun Jun 15 19:51:13 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.33" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750027873" endtime="1750028403"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.33" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="open|filtered" count="96">
+<extrareasons reason="no-response" count="96" proto="udp" ports="3478,5004,5061,16384-16431,16433-16434,16436-16456,16458-16470,16473-16480,16482"/>
+</extraports>
+<port protocol="udp" portid="5060"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/><service name="sip" method="table" conf="3"/></port>
+<port protocol="udp" portid="16432"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/></port>
+<port protocol="udp" portid="16435"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/><service name="unknown" method="table" conf="3"/></port>
+<port protocol="udp" portid="16457"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/></port>
+<port protocol="udp" portid="16471"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/></port>
+<port protocol="udp" portid="16472"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/></port>
+<port protocol="udp" portid="16481"><state state="filtered" reason="port-unreach" reason_ttl="64" reason_ip="192.168.1.116"/></port>
+</ports>
+<times srtt="1129" rttvar="1160" to="100000"/>
+</host>
+<runstats><finished time="1750028403" timestr="Sun Jun 15 20:00:03 2025" summary="Nmap done at Sun Jun 15 20:00:03 2025; 1 IP address (1 host up) scanned in 529.44 seconds" elapsed="529.44" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

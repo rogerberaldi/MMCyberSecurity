@@ -1,0 +1,38 @@
+{
+  "domain_name": "directcallsoft.com.br",
+  "registrant_name": "SIGNALLINK INFORMATICA LTDA",
+  "registrant_id": "02.677.129/0001-64",
+  "country": "BR",
+  "owner_c": "HUGAL",
+  "admin_c": null,
+  "tech_c": "DRA2",
+  "billing_c": null,
+  "name_server": [
+    "malcolm.ns.cloudflare.com",
+    "rita.ns.cloudflare.com"
+  ],
+  "nsstat": "20250606 AA",
+  "nslastaa": "20250606",
+  "saci": null,
+  "creation_date": [
+    "2008-09-19 00:00:00",
+    "2007-03-16 00:00:00",
+    "1998-07-11 00:00:00"
+  ],
+  "updated_date": [
+    "2024-09-05 00:00:00",
+    "2023-09-20 00:00:00",
+    "2024-01-08 00:00:00"
+  ],
+  "expiration_date": "2034-09-19 00:00:00",
+  "status": "published",
+  "nic_hdl_br": [
+    "HUGAL",
+    "DRA2"
+  ],
+  "person": [
+    "Hudson Galvino",
+    "Djalmo Rodrigues Aquino"
+  ],
+  "email": "contasapagar@directcall.com.br"
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 06:42:15 2025 as: nmap -sV -sC -p 443 -oX output/directcallsoft.com/fingerprint/189_84_133_173/service_scan_189_84_133_173.xml 189.84.133.173 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 443 -oX output/directcallsoft.com/fingerprint/189_84_133_173/service_scan_189_84_133_173.xml 189.84.133.173" start="1749289335" startstr="Sat Jun  7 06:42:15 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.133.173" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749289335" endtime="1749289350"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.133.173" addrtype="ipv4"/>
+<hostnames>
+<hostname name="mx1.globallink.net.br" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="http" product="nginx" version="1.2.1" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx:1.2.1</cpe></service><script id="http-title" output="Autentica\xC3\xA7\xC3\xA3o Directcall&#xa;Requested resource was /auth/entrar/"><elem key="title">Autentica\xC3\xA7\xC3\xA3o Directcall</elem>
+<elem key="redirect_url">/auth/entrar/</elem>
+</script><script id="ssl-cert" output="Subject: commonName=*.directcallsoft.com/organizationName=SIGNALLINK INFORMATICA LTDA/stateOrProvinceName=Paran\xC3\xA1/countryName=BR&#xa;Subject Alternative Name: DNS:*.directcallsoft.com, DNS:directcallsoft.com&#xa;Not valid before: 2023-10-30T00:00:00&#xa;Not valid after:  2024-10-05T23:59:59"><table key="subject">
+<elem key="commonName">*.directcallsoft.com</elem>
+<elem key="countryName">BR</elem>
+<elem key="organizationName">SIGNALLINK INFORMATICA LTDA</elem>
+<elem key="stateOrProvinceName">Paran\xC3\xA1</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">Sectigo RSA Organization Validation Secure Server CA</elem>
+<elem key="countryName">GB</elem>
+<elem key="localityName">Salford</elem>
+<elem key="organizationName">Sectigo Limited</elem>
+<elem key="stateOrProvinceName">Greater Manchester</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">E9AC1490547ED7A623ED0FBE97413421C464F1044D9F9BB11BDF30970501DE6504AE9798C13CE3D455BFCDCBBB7F06852309E5E418C118DE6050B4A99620B4E30F76F59EFD1DA4D3BBD6A611510CBAC97B18A453ED3F2B1F8C837FD7AEE4E1D06B50B38C1BA2613A3C22718B1BE57E5E7102A588A2F3DF03FF213BB2A45117A0923AF1EE32025F553F75E4C2420E8D2EAD9EC24861F3C2B43550EDEC20CDBE88E663660FDDA95D2EB8DECAD006B85C51EDA8205D921FD2BBCA171851501155140667D02497358F8F989F9D999FBA27F67F691BB72A7CE15365EFB67793887CDE068975E0E621E035328C574090D349A9083A861F509F12DA4522FBA85D9AEE9D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">17:D9:D6:25:27:67:F9:31:C2:49:43:D9:30:36:44:8C:6C:A9:4F:EB</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">1B:A2:6D:A1:DC:53:8B:47:AD:BC:E0:E6:B1:F5:29:85:25:9E:99:F4</elem>
+</table>
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 1.3.6.1.4.1.6449.1.2.1.3.4&#xa;  CPS: https://sectigo.com/CPS&#xa;Policy: 2.23.140.1.2.2</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.sectigo.com/SectigoRSAOrganizationValidationSecureServerCA.crl</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://crt.sectigo.com/SectigoRSAOrganizationValidationSecureServerCA.crt&#xa;OCSP - URI:http://ocsp.sectigo.com</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.directcallsoft.com, DNS:directcallsoft.com</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 76:FF:88:3F:0A:B6:FB:95:51:C2:61:CC:F5:87:BA:34:&#xa;                B4:A4:CD:BB:29:DC:68:42:0A:9F:E6:67:4C:5A:3A:74&#xa;    Timestamp : Oct 30 12:20:18.012 2023 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:30:BE:2A:CA:75:0D:E9:72:06:C2:F2:5D:&#xa;                1C:7D:DF:27:FC:6B:06:7A:6E:CE:C3:19:55:63:FB:93:&#xa;                A4:35:04:F5:02:20:02:E3:36:E5:41:43:05:49:09:F7:&#xa;                CF:D3:41:36:99:79:62:EB:E8:5C:77:BC:6A:BD:E3:D6:&#xa;                10:6F:90:9A:56:D6&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : DA:B6:BF:6B:3F:B5:B6:22:9F:9B:C2:BB:5C:6B:E8:70:&#xa;                91:71:6C:BB:51:84:85:34:BD:A4:3D:30:48:D7:FB:AB&#xa;    Timestamp : Oct 30 12:20:18.105 2023 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:DF:37:9E:ED:60:9E:FA:AD:2E:3A:B2:&#xa;                E5:D4:6A:B5:55:99:60:B9:ED:2B:CC:9F:ED:B2:2F:5A:&#xa;                F0:71:69:EB:A2:02:20:22:16:1A:BC:3A:DC:15:F8:68:&#xa;                30:74:74:A0:10:64:C7:8E:54:67:40:E2:6D:D4:73:61:&#xa;                F4:BB:6A:E5:F4:EF:A2&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : EE:CD:D0:64:D5:DB:1A:CE:C5:5C:B7:9D:B4:CD:13:A2:&#xa;                32:87:46:7C:BC:EC:DE:C3:51:48:59:46:71:1F:B5:9B&#xa;    Timestamp : Oct 30 12:20:18.059 2023 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:21:E7:ED:E4:DA:DF:4E:60:C7:02:C8:DE:&#xa;                E4:A3:C5:F8:19:7B:16:C4:49:3D:DB:F3:80:FC:1D:29:&#xa;                E4:66:52:0F:02:20:04:76:F3:EF:B5:8C:3E:1C:6A:93:&#xa;                04:10:E5:9F:D6:FC:DC:A2:C1:21:DF:3A:98:73:94:45:&#xa;                F5:5A:F7:1B:53:FC</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2023-10-30T00:00:00</elem>
+<elem key="notAfter">2024-10-05T23:59:59</elem>
+</table>
+<elem key="md5">c342209b3e20e807e8daefff2dfbe22d</elem>
+<elem key="sha1">feda9f264452d02eb438df60f3bee4d27252da13</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIG8jCCBdqgAwIBAgIRAKI4pXAeo+LrwEh4GNiDVDUwDQYJKoZIhvcNAQELBQAw&#xa;gZUxCzAJBgNVBAYTAkdCMRswGQYDVQQIExJHcmVhdGVyIE1hbmNoZXN0ZXIxEDAO&#xa;BgNVBAcTB1NhbGZvcmQxGDAWBgNVBAoTD1NlY3RpZ28gTGltaXRlZDE9MDsGA1UE&#xa;AxM0U2VjdGlnbyBSU0EgT3JnYW5pemF0aW9uIFZhbGlkYXRpb24gU2VjdXJlIFNl&#xa;cnZlciBDQTAeFw0yMzEwMzAwMDAwMDBaFw0yNDEwMDUyMzU5NTlaMGQxCzAJBgNV&#xa;BAYTAkJSMRAwDgYDVQQIDAdQYXJhbsOhMSQwIgYDVQQKExtTSUdOQUxMSU5LIElO&#xa;Rk9STUFUSUNBIExUREExHTAbBgNVBAMMFCouZGlyZWN0Y2FsbHNvZnQuY29tMIIB&#xa;IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA6awUkFR+16Yj7Q++l0E0IcRk&#xa;8QRNn5uxG98wlwUB3mUErpeYwTzj1FW/zcu7fwaFIwnl5BjBGN5gULSpliC04w92&#xa;9Z79HaTTu9amEVEMusl7GKRT7T8rH4yDf9eu5OHQa1CzjBuiYTo8InGLG+V+XnEC&#xa;pYii898D/yE7sqRRF6CSOvHuMgJfVT915MJCDo0urZ7CSGHzwrQ1UO3sIM2+iOZj&#xa;Zg/dqV0uuN7K0Aa4XFHtqCBdkh/Su8oXGFFQEVUUBmfQJJc1j4+Yn52Zn7on9n9p&#xa;G7cqfOFTZe+2d5OIfN4GiXXg5iHgNTKMV0CQ00mpCDqGH1CfEtpFIvuoXZrunQID&#xa;AQABo4IDazCCA2cwHwYDVR0jBBgwFoAUF9nWJSdn+THCSUPZMDZEjGypT+swHQYD&#xa;VR0OBBYEFBuibaHcU4tHrbzg5rH1KYUlnpn0MA4GA1UdDwEB/wQEAwIFoDAMBgNV&#xa;HRMBAf8EAjAAMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBKBgNVHSAE&#xa;QzBBMDUGDCsGAQQBsjEBAgEDBDAlMCMGCCsGAQUFBwIBFhdodHRwczovL3NlY3Rp&#xa;Z28uY29tL0NQUzAIBgZngQwBAgIwWgYDVR0fBFMwUTBPoE2gS4ZJaHR0cDovL2Ny&#xa;bC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBT3JnYW5pemF0aW9uVmFsaWRhdGlvblNl&#xa;Y3VyZVNlcnZlckNBLmNybDCBigYIKwYBBQUHAQEEfjB8MFUGCCsGAQUFBzAChklo&#xa;dHRwOi8vY3J0LnNlY3RpZ28uY29tL1NlY3RpZ29SU0FPcmdhbml6YXRpb25WYWxp&#xa;ZGF0aW9uU2VjdXJlU2VydmVyQ0EuY3J0MCMGCCsGAQUFBzABhhdodHRwOi8vb2Nz&#xa;cC5zZWN0aWdvLmNvbTAzBgNVHREELDAqghQqLmRpcmVjdGNhbGxzb2Z0LmNvbYIS&#xa;ZGlyZWN0Y2FsbHNvZnQuY29tMIIBfAYKKwYBBAHWeQIEAgSCAWwEggFoAWYAdQB2&#xa;/4g/Crb7lVHCYcz1h7o0tKTNuyncaEIKn+ZnTFo6dAAAAYuAhxPcAAAEAwBGMEQC&#xa;IDC+Ksp1DelyBsLyXRx93yf8awZ6bs7DGVVj+5OkNQT1AiAC4zblQUMFSQn3z9NB&#xa;Npl5YuvoXHe8ar3j1hBvkJpW1gB2ANq2v2s/tbYin5vCu1xr6HCRcWy7UYSFNL2k&#xa;PTBI1/urAAABi4CHFDkAAAQDAEcwRQIhAN83nu1gnvqtLjqy5dRqtVWZYLntK8yf&#xa;7bIvWvBxaeuiAiAiFhq8OtwV+GgwdHSgEGTHjlRnQOJt1HNh9Ltq5fTvogB1AO7N&#xa;0GTV2xrOxVy3nbTNE6Iyh0Z8vOzew1FIWUZxH7WbAAABi4CHFAsAAAQDAEYwRAIg&#xa;Ieft5NrfTmDHAsje5KPF+Bl7FsRJPdvzgPwdKeRmUg8CIAR28++1jD4capMEEOWf&#xa;1vzcosEh3zqYc5RF9Vr3G1P8MA0GCSqGSIb3DQEBCwUAA4IBAQA7ApYX9wZn8+5c&#xa;X5BlXCaeDC9E4xYNUdCkGTUEjW/DcpdTHV8bKB6pRP+hSXaBbSPoq/3KhHTW1f2+&#xa;vRAgRizlL3w7KCzlZROMxj5VO4wfbG1fAGJmlTu0Gexa0ttt0oeM+Ns3es+ugNdN&#xa;vTHKSUz/0r8oz7Q/BoxgsmejUxTQdiVxL2Qhw2JU+HWEQoHYyp8bwPom0jDQa15o&#xa;pPliFWEsN8iEe7wPI1YmHyAXxnxbpfe/V6BBGCBfrA1fo8qT3A2skslZaxvqHS6m&#xa;kjR7RnwgweXWEotexGWfPh5u+CkDL5oqNFM3GSbxsseM+uM4N0sw7+TqlKQnQqWp&#xa;yQiS6d+c&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="http-server-header" output="nginx/1.2.1"><elem>nginx/1.2.1</elem>
+</script></port>
+</ports>
+<times srtt="2803" rttvar="4041" to="100000"/>
+</host>
+<runstats><finished time="1749289350" timestr="Sat Jun  7 06:42:30 2025" summary="Nmap done at Sat Jun  7 06:42:30 2025; 1 IP address (1 host up) scanned in 15.28 seconds" elapsed="15.28" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

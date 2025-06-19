@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Mon Jun 16 00:10:24 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.130.54/fingerprint/nmap_udp_voip_scan_189_84_130_54.xml 189.84.130.54 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.130.54/fingerprint/nmap_udp_voip_scan_189_84_130_54.xml 189.84.130.54" start="1750043424" startstr="Mon Jun 16 00:10:24 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.54" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750043424" endtime="1750043565"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.54" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="101">
+<extrareasons reason="port-unreach" count="101" proto="udp" ports="3478,5004,16384-16482"/>
+</extraports>
+<port protocol="udp" portid="5060"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port5060-UDP:V=7.92%I=7%D=6/16%Time=684F8B8F%P=x86_64-redhat-linux-gnu%r(SIPOptions,1B5,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/UDP\x20192\.168\.1\.64:48221;branch=foo;rport=24251\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=grBNv736er3NQ\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.54&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+<port protocol="udp" portid="5061"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port5061-UDP:V=7.92%I=7%D=6/16%Time=684F8BA8%P=x86_64-redhat-linux-gnu%r(SIPOptions,1C0,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/UDP\x20nm;branch=foo;rport=24059;received=38\.43\.101\.69\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=prgg6BcF1XSmN\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.54:5061&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+</ports>
+<times srtt="11162" rttvar="335" to="100000"/>
+</host>
+<runstats><finished time="1750043565" timestr="Mon Jun 16 00:12:45 2025" summary="Nmap done at Mon Jun 16 00:12:45 2025; 1 IP address (1 host up) scanned in 140.77 seconds" elapsed="140.77" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

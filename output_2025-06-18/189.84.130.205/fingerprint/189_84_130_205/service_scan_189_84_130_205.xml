@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Jun 17 08:18:42 2025 as: nmap -sV -sC -p 5060 -oX output/189.84.130.205/fingerprint/189_84_130_205/service_scan_189_84_130_205.xml 189.84.130.205 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 5060 -oX output/189.84.130.205/fingerprint/189_84_130_205/service_scan_189_84_130_205.xml 189.84.130.205" start="1750159122" startstr="Tue Jun 17 08:18:42 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="5060"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.205" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750159122" endtime="1750159122"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.205" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="5060"><state state="filtered" reason="admin-prohibited" reason_ttl="253" reason_ip="38.43.102.128"/><service name="sip" method="table" conf="3"/></port>
+</ports>
+<times srtt="2055" rttvar="3938" to="100000"/>
+</host>
+<runstats><finished time="1750159122" timestr="Tue Jun 17 08:18:42 2025" summary="Nmap done at Tue Jun 17 08:18:42 2025; 1 IP address (1 host up) scanned in 0.51 seconds" elapsed="0.51" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

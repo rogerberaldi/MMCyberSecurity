@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Jun 17 07:47:18 2025 as: nmap -sV -sC -p 53 -oX output/189.84.130.202/fingerprint/189_84_130_202/service_scan_189_84_130_202.xml 189.84.130.202 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 53 -oX output/189.84.130.202/fingerprint/189_84_130_202/service_scan_189_84_130_202.xml 189.84.130.202" start="1750157238" startstr="Tue Jun 17 07:47:18 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="53"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.202" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750157239" endtime="1750157252"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.202" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="domain" product="PowerDNS Authoritative Server" version="4.1.8" method="probed" conf="10"><cpe>cpe:/a:powerdns:authoritative:4.1.8</cpe></service><script id="dns-nsid" output="&#xa;  NSID: dnsmaster2.ebt.dc (646e736d6173746572322e6562742e6463)&#xa;  id.server: dnsmaster2.ebt.dc&#xa;  bind.version: PowerDNS Authoritative Server 4.1.8 (built Mar 22 2019 12:42:33 by buildbot@c5a1335af0d9)"><table key="NSID">
+<elem key="hex">646e736d6173746572322e6562742e6463</elem>
+<elem key="raw">dnsmaster2.ebt.dc</elem>
+</table>
+<elem key="id.server">dnsmaster2.ebt.dc</elem>
+<elem key="bind.version">PowerDNS Authoritative Server 4.1.8 (built Mar 22 2019 12:42:33 by buildbot@c5a1335af0d9)</elem>
+</script></port>
+</ports>
+<times srtt="2992" rttvar="5816" to="100000"/>
+</host>
+<runstats><finished time="1750157252" timestr="Tue Jun 17 07:47:32 2025" summary="Nmap done at Tue Jun 17 07:47:32 2025; 1 IP address (1 host up) scanned in 13.80 seconds" elapsed="13.80" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

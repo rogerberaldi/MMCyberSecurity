@@ -1,0 +1,4 @@
+# Masscan 1.3.2 scan initiated Tue Jun 17 21:25:47 2025
+# Ports scanned: TCP(65536;0-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Timestamp: 1750195558	Host: 189.84.130.249 ()	Ports: 179/open/tcp//bgp//
+# Masscan done at Tue Jun 17 21:26:20 2025

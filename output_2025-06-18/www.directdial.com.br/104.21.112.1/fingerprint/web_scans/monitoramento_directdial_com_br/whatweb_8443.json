@@ -1,0 +1,3 @@
+[
+{"target":"https://monitoramento.directdial.com.br:8443","http_status":522,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTML5":{},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.64.1"]},"Script":{},"Title":{"string":["directdial.com.br | 522: Connection timed out"]},"UncommonHeaders":{"string":["cf-ray"]},"X-UA-Compatible":{"string":["IE=Edge"]}}}
+]

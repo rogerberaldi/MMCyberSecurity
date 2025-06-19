@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jun  5 02:29:02 2025 as: nmap -sV -sC -p 25 -oX output/directdial.com.br/fingerprint/186_202_4_42/service_scan_186_202_4_42.xml 186.202.4.42 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 25 -oX output/directdial.com.br/fingerprint/186_202_4_42/service_scan_186_202_4_42.xml 186.202.4.42" start="1749101342" startstr="Thu Jun  5 02:29:02 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="25"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="186.202.4.42" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749101343" endtime="1749101490"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="186.202.4.42" addrtype="ipv4"/>
+<hostnames>
+<hostname name="mx.a.locaweb.com.br" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="25"><state state="open" reason="syn-ack" reason_ttl="58"/><service name="smtp" servicefp="SF-Port25-TCP:V=7.92%I=7%D=6/5%Time=68412B25%P=x86_64-redhat-linux-gnu%r(NULL,53,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n&quot;)%r(Hello,8D,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n503\x205\.7\.0\x20Error:\x20access\x20denied\x20for\x20unknown\[38\.43\.101\.69\]\r\n&quot;)%r(Help,8D,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n503\x205\.7\.0\x20Error:\x20access\x20denied\x20for\x20unknown\[38\.43\.101\.69\]\r\n&quot;)%r(GenericLines,8D,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n500\x205\.5\.2\x20Error:\x20bad\x20syntax\r\n500\x205\.5\.2\x20Error:\x20bad\x20syntax\r\n&quot;)%r(GetRequest,86,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n221\x202\.7\.0\x20Error:\x20I\x20can\x20break\x20rules,\x20too\.\x20Goodbye\.\r\n&quot;)%r(HTTPOptions,AA,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n503\x205\.7\.0\x20Error:\x20access\x20denied\x20for\x20unknown\[38\.43\.101\.69\]\r\n500\x205\.5\.2\x20Error:\x20bad\x20syntax\r\n&quot;)%r(RTSPRequest,AA,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n503\x205\.7\.0\x20Error:\x20access\x20denied\x20for\x20unknown\[38\.43\.101\.69\]\r\n500\x205\.5\.2\x20Error:\x20bad\x20syntax\r\n&quot;)%r(RPCCheck,53,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n&quot;)%r(DNSVersionBindReqTCP,53,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n&quot;)%r(DNSStatusRequestTCP,53,&quot;450\x204\.7\.1\x20Client\x20host\x20rejected:\x20cannot\x20find\x20your\x20reverse\x20hostname,\x20\[38\.43\.101\.69\]\r\n&quot;);" method="table" conf="3"/><script id="smtp-commands" output="SMTP: EHLO 503 5.7.0 Error: access denied for unknown[38.43.101.69]&#xd;&#xa;"/><script id="fingerprint-strings" output="&#xa;  DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck: &#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;  GenericLines: &#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.5.2 Error: bad syntax&#xa;    5.5.2 Error: bad syntax&#xa;  GetRequest: &#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    2.7.0 Error: I can break rules, too. Goodbye.&#xa;  HTTPOptions, RTSPRequest: &#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.7.0 Error: access denied for unknown[38.43.101.69]&#xa;    5.5.2 Error: bad syntax&#xa;  Hello, Help: &#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.7.0 Error: access denied for unknown[38.43.101.69]"><elem key="DNSStatusRequestTCP, DNSVersionBindReqTCP, NULL, RPCCheck">&#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]</elem>
+<elem key="GenericLines">&#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.5.2 Error: bad syntax&#xa;    5.5.2 Error: bad syntax</elem>
+<elem key="GetRequest">&#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    2.7.0 Error: I can break rules, too. Goodbye.</elem>
+<elem key="HTTPOptions, RTSPRequest">&#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.7.0 Error: access denied for unknown[38.43.101.69]&#xa;    5.5.2 Error: bad syntax</elem>
+<elem key="Hello, Help">&#xa;    450 4.7.1 Client host rejected: cannot find your reverse hostname, [38.43.101.69]&#xa;    5.7.0 Error: access denied for unknown[38.43.101.69]</elem>
+</script></port>
+</ports>
+<times srtt="2800" rttvar="5502" to="100000"/>
+</host>
+<runstats><finished time="1749101490" timestr="Thu Jun  5 02:31:30 2025" summary="Nmap done at Thu Jun  5 02:31:30 2025; 1 IP address (1 host up) scanned in 148.16 seconds" elapsed="148.16" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

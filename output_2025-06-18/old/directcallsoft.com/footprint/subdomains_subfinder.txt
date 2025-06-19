@@ -1,0 +1,15 @@
+woocommerce.directcallsoft.com
+siptrunk3cx.directcallsoft.com
+webrtcdev.directcallsoft.com
+mkt-staging.directcallsoft.com
+siptrunktls.directcallsoft.com
+vodiahomolog.directcallsoft.com
+api.directcallsoft.com
+siptrunk3cx.directcallsoft.com
+www.siptrunk3cx.directcallsoft.com
+woocommerce.directcallsoft.com
+woocommerce.directcallsoft.com
+sbc.directcallsoft.com
+directcallsoft.com
+www.directcallsoft.com
+doc.directcallsoft.com

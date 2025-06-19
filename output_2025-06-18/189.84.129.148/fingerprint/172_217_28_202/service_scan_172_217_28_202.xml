@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun 14 04:33:30 2025 as: nmap -sV -sC -p 443 -oX output/189.84.129.148/fingerprint/172_217_28_202/service_scan_172_217_28_202.xml 172.217.28.202 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 443 -oX output/189.84.129.148/fingerprint/172_217_28_202/service_scan_172_217_28_202.xml 172.217.28.202" start="1749886410" startstr="Sat Jun 14 04:33:30 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="443"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="172.217.28.202" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749886411" endtime="1749886481"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="172.217.28.202" addrtype="ipv4"/>
+<hostnames>
+<hostname name="pngrub-af-in-f10.1e100.net" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="122"/><service name="https" product="gws" servicefp="SF-Port443-TCP:V=7.92%T=SSL%I=7%D=6/14%Time=684D25D7%P=x86_64-redhat-linux-gnu%r(GetRequest,2AA0,&quot;HTTP/1\.0\x20200\x20OK\r\nDate:\x20Sat,\x2014\x20Jun\x202025\x2007:33:43\x20GMT\r\nExpires:\x20-1\r\nCache-Control:\x20private,\x20max-age=0\r\nContent-Type:\x20text/html;\x20charset=ISO-8859-1\r\nContent-Security-Policy-Report-Only:\x20object-src\x20&apos;none&apos;;base-uri\x20&apos;self&apos;;script-src\x20&apos;nonce-bDvzFaybcY0mu8ownndqPg&apos;\x20&apos;strict-dynamic&apos;\x20&apos;report-sample&apos;\x20&apos;unsafe-eval&apos;\x20&apos;unsafe-inline&apos;\x20https:\x20http:;report-uri\x20https://csp\.withgoogle\.com/csp/gws/other-hp\r\nAccept-CH:\x20Sec-CH-Prefers-Color-Scheme\r\nP3P:\x20CP=\&quot;This\x20is\x20not\x20a\x20P3P\x20policy!\x20See\x20g\.co/p3phelp\x20for\x20more\x20info\.\&quot;\r\nServer:\x20gws\r\nX-XSS-Protection:\x200\r\nX-Frame-Options:\x20SAMEORIGIN\r\nSet-Cookie:\x20AEC=AVh_V2jECeglVZD6_fEIFUiT9fCNSWDwQ6ZTXemThYf3be0RnSX1jU4kWQ;\x20expires=Thu,\x2011-Dec-2025\x2007:33:43\x20GMT;\x20path=/;\x20domain=\.google\.com;\x20Secure;\x20HttpOnly;\x20SameSite=lax\r\nSet-Cookie:\x20NID=524=XepNPNpxAXTmAjlTh44l5E2aLVXX1s2Q0z3okBDk0jbGQLCFREDpMjp48Lc5xOTcPxcDHogwA7hevu8naeuaaC4OH3h9J4VasCVeUqouFP-J73JlTQBXRnoZ1phM_hLuuo4607ibna4UO&quot;)%r(DNSVersionBindReqTCP,B3,&quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nContent-Length:\x2054\r\nContent-Type:\x20text/html;\x20charset=UTF-8\r\nDate:\x20Sat,\x2014\x20Jun\x202025\x2007:33:54\x20GMT\r\n\r\n&lt;html&gt;&lt;title&gt;Error\x20400\x20\(Bad\x20Request\)!!1&lt;/title&gt;&lt;/html&gt;&quot;)%r(SSLSessionReq,B3,&quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nContent-Length:\x2054\r\nContent-Type:\x20text/html;\x20charset=UTF-8\r\nDate:\x20Sat,\x2014\x20Jun\x202025\x2007:33:55\x20GMT\r\n\r\n&lt;html&gt;&lt;title&gt;Error\x20400\x20\(Bad\x20Request\)!!1&lt;/title&gt;&lt;/html&gt;&quot;)%r(Kerberos,B3,&quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nContent-Length:\x2054\r\nContent-Type:\x20text/html;\x20charset=UTF-8\r\nDate:\x20Sat,\x2014\x20Jun\x202025\x2007:33:55\x20GMT\r\n\r\n&lt;html&gt;&lt;title&gt;Error\x20400\x20\(Bad\x20Request\)!!1&lt;/title&gt;&lt;/html&gt;&quot;)%r(TerminalServer,B3,&quot;HTTP/1\.0\x20400\x20Bad\x20Request\r\nContent-Length:\x2054\r\nContent-Type:\x20text/html;\x20charset=UTF-8\r\nDate:\x20Sat,\x2014\x20Jun\x202025\x2007:34:16\x20GMT\r\n\r\n&lt;html&gt;&lt;title&gt;Error\x20400\x20\(Bad\x20Request\)!!1&lt;/title&gt;&lt;/html&gt;&quot;);" tunnel="ssl" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  DNSVersionBindReqTCP: &#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:33:54 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;&#xa;  GetRequest: &#xa;    HTTP/1.0 200 OK&#xa;    Date: Sat, 14 Jun 2025 07:33:43 GMT&#xa;    Expires: -1&#xa;    Cache-Control: private, max-age=0&#xa;    Content-Type: text/html; charset=ISO-8859-1&#xa;    Content-Security-Policy-Report-Only: object-src &apos;none&apos;;base-uri &apos;self&apos;;script-src &apos;nonce-bDvzFaybcY0mu8ownndqPg&apos; &apos;strict-dynamic&apos; &apos;report-sample&apos; &apos;unsafe-eval&apos; &apos;unsafe-inline&apos; https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp&#xa;    Accept-CH: Sec-CH-Prefers-Color-Scheme&#xa;    P3P: CP=&quot;This is not a P3P policy! See g.co/p3phelp for more info.&quot;&#xa;    Server: gws&#xa;    X-XSS-Protection: 0&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    Set-Cookie: AEC=AVh_V2jECeglVZD6_fEIFUiT9fCNSWDwQ6ZTXemThYf3be0RnSX1jU4kWQ; expires=Thu, 11-Dec-2025 07:33:43 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=lax&#xa;    Set-Cookie: NID=524=XepNPNpxAXTmAjlTh44l5E2aLVXX1s2Q0z3okBDk0jbGQLCFREDpMjp48Lc5xOTcPxcDHogwA7hevu8naeuaaC4OH3h9J4VasCVeUqouFP-J73JlTQBXRnoZ1phM_hLuuo4607ibna4UO&#xa;  Kerberos, SSLSessionReq: &#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:33:55 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;&#xa;  TerminalServer: &#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:34:16 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;"><elem key="DNSVersionBindReqTCP">&#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:33:54 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;</elem>
+<elem key="GetRequest">&#xa;    HTTP/1.0 200 OK&#xa;    Date: Sat, 14 Jun 2025 07:33:43 GMT&#xa;    Expires: -1&#xa;    Cache-Control: private, max-age=0&#xa;    Content-Type: text/html; charset=ISO-8859-1&#xa;    Content-Security-Policy-Report-Only: object-src &apos;none&apos;;base-uri &apos;self&apos;;script-src &apos;nonce-bDvzFaybcY0mu8ownndqPg&apos; &apos;strict-dynamic&apos; &apos;report-sample&apos; &apos;unsafe-eval&apos; &apos;unsafe-inline&apos; https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp&#xa;    Accept-CH: Sec-CH-Prefers-Color-Scheme&#xa;    P3P: CP=&quot;This is not a P3P policy! See g.co/p3phelp for more info.&quot;&#xa;    Server: gws&#xa;    X-XSS-Protection: 0&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    Set-Cookie: AEC=AVh_V2jECeglVZD6_fEIFUiT9fCNSWDwQ6ZTXemThYf3be0RnSX1jU4kWQ; expires=Thu, 11-Dec-2025 07:33:43 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=lax&#xa;    Set-Cookie: NID=524=XepNPNpxAXTmAjlTh44l5E2aLVXX1s2Q0z3okBDk0jbGQLCFREDpMjp48Lc5xOTcPxcDHogwA7hevu8naeuaaC4OH3h9J4VasCVeUqouFP-J73JlTQBXRnoZ1phM_hLuuo4607ibna4UO</elem>
+<elem key="Kerberos, SSLSessionReq">&#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:33:55 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;</elem>
+<elem key="TerminalServer">&#xa;    HTTP/1.0 400 Bad Request&#xa;    Content-Length: 54&#xa;    Content-Type: text/html; charset=UTF-8&#xa;    Date: Sat, 14 Jun 2025 07:34:16 GMT&#xa;    &lt;html&gt;&lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;&lt;/html&gt;</elem>
+</script><script id="http-title" output="Error 404 (Not Found)!!1"><elem key="title">Error 404 (Not Found)!!1</elem>
+</script><script id="ssl-cert" output="Subject: commonName=invalid2.invalid&#xa;Not valid before: 2015-01-01T00:00:00&#xa;Not valid after:  2030-01-01T00:00:00"><table key="subject">
+<elem key="commonName">invalid2.invalid</elem>
+<elem key="organizationalUnitName">No SNI provided; please fix your client.</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">invalid2.invalid</elem>
+<elem key="organizationalUnitName">No SNI provided; please fix your client.</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">CD624FE5C31384980C05E4EF44A2A5ECDE9971901B283540B4D04D9D18488128AD5F10B32ADB7DAE9D911E42E7EFAA198DD34EDB910FA7E420322594FEB924074D18D7C39A870E5F8BCB3E2BD751BFA8BE8123A2BF68E521E5BF4B484EB305140C7D095C59043CA20BCE997930BEF0769E64B7DDEF1F16BB1ECC0EB40C44CF65ADC4C75ECE6FF70A03B7B25B36D309775B4DE223E902B7B1F2BE11B2D9A44F2E125F78006942BD1492EDEAEA6B689B2D9C8056B07A437F5FF687F0A9275FBF7D30F72E5AEB4CDAAF3C9AD50406CB999B2DA7B232BD27BFF28610910F3395FF263C739FA5FEEFEB5AEC30919DA58331A9E310417E15DDAFAFA6F649B0582526F5</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment, Certificate Sign</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:TRUE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">BB:0F:38:96:6F:3E:BE:4F:2B:46:D0:41:6A:D4:AC:B5</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2015-01-01T00:00:00</elem>
+<elem key="notAfter">2030-01-01T00:00:00</elem>
+</table>
+<elem key="md5">904ac8d5445ad06a8a10ffcd8b11be16</elem>
+<elem key="sha1">4259517cd4e48a289d332ab3f0ab52a366322824</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIDfDCCAmSgAwIBAgIJAJB2iRjpM5OgMA0GCSqGSIb3DQEBCwUAME4xMTAvBgNV&#xa;BAsMKE5vIFNOSSBwcm92aWRlZDsgcGxlYXNlIGZpeCB5b3VyIGNsaWVudC4xGTAX&#xa;BgNVBAMTEGludmFsaWQyLmludmFsaWQwHhcNMTUwMTAxMDAwMDAwWhcNMzAwMTAx&#xa;MDAwMDAwWjBOMTEwLwYDVQQLDChObyBTTkkgcHJvdmlkZWQ7IHBsZWFzZSBmaXgg&#xa;eW91ciBjbGllbnQuMRkwFwYDVQQDExBpbnZhbGlkMi5pbnZhbGlkMIIBIjANBgkq&#xa;hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzWJP5cMThJgMBeTvRKKl7N6ZcZAbKDVA&#xa;tNBNnRhIgSitXxCzKtt9rp2RHkLn76oZjdNO25EPp+QgMiWU/rkkB00Y18Oahw5f&#xa;i8s+K9dRv6i+gSOiv2jlIeW/S0hOswUUDH0JXFkEPKILzpl5ML7wdp5kt93vHxa7&#xa;HswOtAxEz2WtxMdezm/3CgO3sls20wl3W03iI+kCt7HyvhGy2aRPLhJfeABpQr0U&#xa;ku3q6mtomy2cgFawekN/X/aH8KknX799MPcuWutM2q88mtUEBsuZmy2nsjK9J7/y&#xa;hhCRDzOV/yY8c5+l/u/rWuwwkZ2lgzGp4xBBfhXdr6+m9kmwWCUm9QIDAQABo10w&#xa;WzAOBgNVHQ8BAf8EBAMCAqQwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC&#xa;MA8GA1UdEwEB/wQFMAMBAf8wGQYDVR0OBBIEELsPOJZvPr5PK0bQQWrUrLUwDQYJ&#xa;KoZIhvcNAQELBQADggEBALnZ4lRc9WHtafO4Y+0DWp4qgSdaGygzS/wtcRP+S2V+&#xa;HFOCeYDmeZ9qs0WpNlrtyeBKzBH8hOt9y8aUbZBw2M1F2Mi23Q+dhAEUfQCOKbIT&#xa;tunBuVfDTTbAHUuNl/eyr78v8Egi133z7zVgydVG1KA0AOSCB+B65glbpx+xMCpg&#xa;ZLux9THydwg3tPo/LfYbRCof+Mb8I3ZCY9O6FfZGjuxJn+0ux3SDora3NX/FmJ+i&#xa;kTCTsMtIFWhH3hoyYAamOOuITpPZHD7yP0lfbuncGDEqAQu2YWbYxRixfq2VSxgv&#xa;gWbFcmkgBLYpE8iDWT3Kdluo1+6PHaDaLg2SacOY6Go=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="tls-nextprotoneg" output="&#xa;  grpc-exp&#xa;  h2&#xa;  http/1.1"><elem>grpc-exp</elem>
+<elem>h2</elem>
+<elem>http/1.1</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="http-server-header" output="gws"><elem>gws</elem>
+</script><script id="tls-alpn" output="&#xa;  grpc-exp&#xa;  h2&#xa;  http/1.1"><elem>grpc-exp</elem>
+<elem>h2</elem>
+<elem>http/1.1</elem>
+</script></port>
+</ports>
+<times srtt="2670" rttvar="5512" to="100000"/>
+</host>
+<runstats><finished time="1749886481" timestr="Sat Jun 14 04:34:41 2025" summary="Nmap done at Sat Jun 14 04:34:41 2025; 1 IP address (1 host up) scanned in 70.40 seconds" elapsed="70.40" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

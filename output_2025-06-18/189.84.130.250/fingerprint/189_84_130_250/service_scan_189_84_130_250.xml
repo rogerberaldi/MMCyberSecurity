@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Jun 17 18:38:26 2025 as: nmap -sV -sC -p 80,443,5672 -oX output/189.84.130.250/fingerprint/189_84_130_250/service_scan_189_84_130_250.xml 189.84.130.250 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 80,443,5672 -oX output/189.84.130.250/fingerprint/189_84_130_250/service_scan_189_84_130_250.xml 189.84.130.250" start="1750196306" startstr="Tue Jun 17 18:38:26 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="3" services="80,443,5672"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.250" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750196306" endtime="1750196323"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.250" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="http" product="nginx" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-title" output="Did not follow redirect to https://189.84.130.250/"><elem key="redirect_url">https://189.84.130.250/</elem>
+</script></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="http" product="nginx" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="http-title" output="pfSense - Login"><elem key="title">pfSense - Login</elem>
+</script><script id="ssl-cert" output="Subject: commonName=vpnspnoc.directcall.com.br&#xa;Subject Alternative Name: DNS:vpnspnoc.directcall.com.br&#xa;Not valid before: 2024-03-16T01:14:15&#xa;Not valid after:  2024-06-14T01:14:14"><table key="subject">
+<elem key="commonName">vpnspnoc.directcall.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">(STAGING) Artificial Apricot R3</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">(STAGING) Let&apos;s Encrypt</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">B09E98F7C983DF5A36231ABA47D4BA906A8F336ED75CABA5B86643F06958BCD491E8513F00DEC06FCE4E6B3D3F0C12F8D25119B887CBBC7206BF95563150C08F4B08660372C2D451E981817DB16451DDCD456DAA03BC57B60402372D5DEB7EBAFB5648B1DBE2D8E518506A9C68CB2758C03BF5A3FA683467DD2931463651D62E9F606A7767C656E50F0982D240EF992D0E7DEB8118F89F902A1DA2D2D3C969FD1A3F628D029080FFD1C65C3AA77EF1FF86876D9CE7A1F91B392CFEEA18C854DD8011DBFADB666D91825CAB518AFDC19C9FA87B80ABC7EDF8EE4A4F698E259506FD5D2E6DF8E5119642ABDCB4ABF9A7D89471016C6069B11649199908190E1681</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">3C:56:5A:BF:AF:9F:4C:7E:8E:4E:AC:15:E9:EF:82:1C:D2:B9:69:53</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">DE:72:7A:48:DF:31:C3:A6:50:DF:9F:85:23:DF:57:37:4B:5D:2E:65</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">OCSP - URI:http://stg-r3.o.lencr.org&#xa;CA Issuers - URI:http://stg-r3.i.lencr.org/</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:vpnspnoc.directcall.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AA:6C:B0:C5:C9:F4:C4:9D:8D:8E:A9:0C:39:17:E0:D7:&#xa;                0A:D9:22:10:BF:05:7F:41:50:93:82:CC:35:0C:98:46&#xa;    Timestamp : Mar 16 02:14:15.859 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:3C:E9:1A:8C:2A:6B:EC:C5:86:55:44:02:&#xa;                F1:19:A1:C2:58:19:48:A1:8E:B0:07:C5:A9:27:A2:BC:&#xa;                70:6C:4B:BA:02:20:26:C6:48:9D:42:37:F0:73:63:72:&#xa;                95:53:ED:9E:60:37:AC:6C:E3:38:4C:26:DB:B3:00:16:&#xa;                56:97:3D:70:48:72&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : ED:30:C8:93:FA:2F:76:62:10:CB:DC:F2:07:18:CF:7E:&#xa;                44:56:9D:4A:2D:D9:EB:88:B5:E8:DE:DA:C1:35:03:99&#xa;    Timestamp : Mar 16 02:14:16.237 2024 GMT&#xa;    Extensions: 00:00:05:00:0E:0E:D8:A0&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:46:02:21:00:D8:F1:C6:6E:88:DB:27:7C:25:F6:A4:&#xa;                FE:23:F3:3A:0F:69:4A:E1:57:3F:47:83:36:41:45:A1:&#xa;                E0:72:FF:21:63:02:21:00:DC:9F:5B:CE:F4:53:56:82:&#xa;                45:A0:DC:D7:F8:C5:DF:15:F5:DB:E4:58:44:9D:7C:DE:&#xa;                30:DE:DA:96:22:0C:B8:DB</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-03-16T01:14:15</elem>
+<elem key="notAfter">2024-06-14T01:14:14</elem>
+</table>
+<elem key="md5">205940f24b29f37499591cd318245d33</elem>
+<elem key="sha1">696fad753cd51199652eb5abfa41b27048560880</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIFODCCBCCgAwIBAgISK3kSV1nQVEP5UWFJuFTmbO2KMA0GCSqGSIb3DQEBCwUA&#xa;MFkxCzAJBgNVBAYTAlVTMSAwHgYDVQQKExcoU1RBR0lORykgTGV0J3MgRW5jcnlw&#xa;dDEoMCYGA1UEAxMfKFNUQUdJTkcpIEFydGlmaWNpYWwgQXByaWNvdCBSMzAeFw0y&#xa;NDAzMTYwMTE0MTVaFw0yNDA2MTQwMTE0MTRaMCUxIzAhBgNVBAMTGnZwbnNwbm9j&#xa;LmRpcmVjdGNhbGwuY29tLmJyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC&#xa;AQEAsJ6Y98mD31o2Ixq6R9S6kGqPM27XXKuluGZD8GlYvNSR6FE/AN7Ab85Oaz0/&#xa;DBL40lEZuIfLvHIGv5VWMVDAj0sIZgNywtRR6YGBfbFkUd3NRW2qA7xXtgQCNy1d&#xa;6366+1ZIsdvi2OUYUGqcaMsnWMA79aP6aDRn3SkxRjZR1i6fYGp3Z8ZW5Q8JgtJA&#xa;75ktDn3rgRj4n5AqHaLS08lp/Ro/Yo0CkID/0cZcOqd+8f+Gh22c56H5Gzks/uoY&#xa;yFTdgBHb+ttmbZGCXKtRiv3BnJ+oe4Crx+347kpPaY4llQb9XS5t+OURlkKr3LSr&#xa;+afYlHEBbGBpsRZJGZkIGQ4WgQIDAQABo4ICLDCCAigwDgYDVR0PAQH/BAQDAgWg&#xa;MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8EAjAAMB0G&#xa;A1UdDgQWBBQ8Vlq/r59Mfo5OrBXp74Ic0rlpUzAfBgNVHSMEGDAWgBTecnpI3zHD&#xa;plDfn4Uj31c3S10uZTBdBggrBgEFBQcBAQRRME8wJQYIKwYBBQUHMAGGGWh0dHA6&#xa;Ly9zdGctcjMuby5sZW5jci5vcmcwJgYIKwYBBQUHMAKGGmh0dHA6Ly9zdGctcjMu&#xa;aS5sZW5jci5vcmcvMCUGA1UdEQQeMByCGnZwbnNwbm9jLmRpcmVjdGNhbGwuY29t&#xa;LmJyMBMGA1UdIAQMMAowCAYGZ4EMAQIBMIIBDAYKKwYBBAHWeQIEAgSB/QSB+gD4&#xa;AHUAqmywxcn0xJ2NjqkMORfg1wrZIhC/BX9BUJOCzDUMmEYAAAGORQnUMwAABAMA&#xa;RjBEAiA86RqMKmvsxYZVRALxGaHCWBlIoY6wB8WpJ6K8cGxLugIgJsZInUI38HNj&#xa;cpVT7Z5gN6xs4zhMJtuzABZWlz1wSHIAfwDtMMiT+i92YhDL3PIHGM9+RFadSi3Z&#xa;64i16N7awTUDmQAAAY5FCdWtAAgAAAUADg7YoAQDAEgwRgIhANjxxm6I2yd8Jfak&#xa;/iPzOg9pSuFXP0eDNkFFoeBy/yFjAiEA3J9bzvRTVoJFoNzX+MXfFfXb5FhEnXze&#xa;MN7aliIMuNswDQYJKoZIhvcNAQELBQADggEBAGzoccHojIG5yFqtz5v06Khnu5Ol&#xa;56v0gfczqAhpGySNcRKicF035rzySU7FAOkGq6nhmfnklSbzl1neE80TW3eTw2m7&#xa;gluH7I7oVIbNx99nruoSD3xiQqOlUQiStBi0Rw7BkcRVUgxSC+uAzPQwuRlOb/Us&#xa;klq4I/CHAX5R7d5B5idtwo1yPWo44AnTDmW1Kbpq0ZW2xGcg/oPTiRzqo4DAsNFL&#xa;wh3jN3k/6S7xUfWMIv6SvqmwllY54ftdA65BoIbyQKxawEyH+LOsrR1Oz51GgSCs&#xa;Zro6DPehHmKQ9pxwwQAlYbXCD37bSP0nzOExKPVH13bT/WsB4yYv+4fv5sg=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="tls-alpn" output="&#xa;  h2&#xa;  http/1.1&#xa;  http/1.0&#xa;  http/0.9"><elem>h2</elem>
+<elem>http/1.1</elem>
+<elem>http/1.0</elem>
+<elem>http/0.9</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="5672"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="amqp" method="table" conf="3"/></port>
+</ports>
+<times srtt="3703" rttvar="6212" to="100000"/>
+</host>
+<runstats><finished time="1750196323" timestr="Tue Jun 17 18:38:43 2025" summary="Nmap done at Tue Jun 17 18:38:43 2025; 1 IP address (1 host up) scanned in 16.80 seconds" elapsed="16.80" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 02:14:47 2025 as: nmap -sV -sC -p 21,22,53,80,110,143,443,465,587,993,995,1031,2077,2078,2082,2083,2086,2087,2095,2096,3306,4205,11249,13035,42307,44545,46997 -oX output/directcall.com.br/fingerprint/186_202_127_79/service_scan_186_202_127_79.xml 186.202.127.79 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 21,22,53,80,110,143,443,465,587,993,995,1031,2077,2078,2082,2083,2086,2087,2095,2096,3306,4205,11249,13035,42307,44545,46997 -oX output/directcall.com.br/fingerprint/186_202_127_79/service_scan_186_202_127_79.xml 186.202.127.79" start="1749273287" startstr="Sat Jun  7 02:14:47 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="27" services="21-22,53,80,110,143,443,465,587,993,995,1031,2077-2078,2082-2083,2086-2087,2095-2096,3306,4205,11249,13035,42307,44545,46997"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="186.202.127.79" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749273287" endtime="1749273503"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="186.202.127.79" addrtype="ipv4"/>
+<hostnames>
+<hostname name="cpanel0041.hospedagemdesites.ws" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="21"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="ftp" product="Pure-FTPd" method="probed" conf="10"><cpe>cpe:/a:pureftpd:pure-ftpd</cpe></service><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2020-09-22T20:42:38&#xa;Not valid after:  2021-10-24T20:42:38"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">AlphaSSL CA - SHA256 - G2</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">B563FFC4F26ABA75917FE8E789831F4E5223CB64DF37427DD924E95ED2FA831D4E6807DF0C59D89C2C7F07F853B7C6811282F37FAB8F023F3609E8D9045AAD028BF760DC885D8A9A00883EE84A93BB22A6E9C284B2A13731FFF86B9B6FDD19FDB9CCFAB0C7AD2FE8EE27886D11BD42661DDCA5C304C9E7423C203C61BDEB52B245E34C9F5D99A521BD425C3D186284444347ECFAE0518F25F5B92DD5B79E3180EB329B2A4DFAC2EA2FB03427468EF17C8300EE07491392A67FD27C9450C6BDEE98634FBDDD973207342064221830C5E23FAD4AE37A566F9C5B33B5AB3088E68131A98F1E48CE9C9AFF0764CFB4E61C79CD4ECC51332038689DB31CDB184B3FDB</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure2.alphassl.com/cacert/gsalphasha2g2r1.crt&#xa;OCSP - URI:http://ocsp2.globalsign.com/gsalphasha2g2</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 1.3.6.1.4.1.4146.1.10.10&#xa;  CPS: https://www.globalsign.com/repository/&#xa;Policy: 2.23.140.1.2.1</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl2.alphassl.com/gs/gsalphasha2g2.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">F5:CD:D5:3C:08:50:F9:6A:4F:3A:B7:97:DA:56:83:E6:69:D2:68:F7</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">08:B8:BB:4B:71:1D:DF:8E:34:34:02:23:81:7D:A3:A1:0E:62:6A:A3</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : EE:C0:95:EE:8D:72:64:0F:92:E3:C3:B9:1B:C7:12:A3:&#xa;                69:6A:09:7B:4B:6A:1A:14:38:E6:47:B2:CB:ED:C5:F9&#xa;    Timestamp : Sep 22 20:42:42.889 2020 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:21:00:C3:7E:D5:15:16:16:F2:59:28:E6:DB:&#xa;                17:01:0F:65:0F:40:78:F1:79:AE:69:04:6B:EF:C5:20:&#xa;                8F:E7:35:36:85:02:20:02:31:3E:C8:92:7D:A4:7C:FB:&#xa;                68:0C:ED:E7:BC:B5:10:A9:EB:43:16:82:22:90:DB:32:&#xa;                F8:CA:40:F5:3A:87:90&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : F6:5C:94:2F:D1:77:30:22:14:54:18:08:30:94:56:8E:&#xa;                E3:4D:13:19:33:BF:DF:0C:2F:20:0B:CC:4E:F1:64:E3&#xa;    Timestamp : Sep 22 20:42:42.837 2020 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:46:02:21:00:D1:96:6B:2B:AF:CA:13:C7:93:FF:90:&#xa;                03:DA:87:62:8D:7D:A9:14:20:43:B8:40:69:A1:57:1D:&#xa;                7B:55:6A:C4:5B:02:21:00:D7:A8:B0:CA:60:3A:32:7B:&#xa;                14:CF:B7:2C:BB:DA:22:90:B5:75:93:C5:40:27:AA:79:&#xa;                8B:E4:10:90:15:3D:CA:6E</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2020-09-22T20:42:38</elem>
+<elem key="notAfter">2021-10-24T20:42:38</elem>
+</table>
+<elem key="md5">f4c95a9dc6b02b79189a63786009b7cb</elem>
+<elem key="sha1">74dc6ca9acbc222d5d3761350be877c4ae7d15f2</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIF2jCCBMKgAwIBAgIMOVW7Y8iJTE9p395EMA0GCSqGSIb3DQEBCwUAMEwxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSIwIAYDVQQDExlB&#xa;bHBoYVNTTCBDQSAtIFNIQTI1NiAtIEcyMB4XDTIwMDkyMjIwNDIzOFoXDTIxMTAy&#xa;NDIwNDIzOFowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRlcy53czCCASIw&#xa;DQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALVj/8Tyarp1kX/o54mDH05SI8tk&#xa;3zdCfdkk6V7S+oMdTmgH3wxZ2Jwsfwf4U7fGgRKC83+rjwI/Ngno2QRarQKL92Dc&#xa;iF2KmgCIPuhKk7sipunChLKhNzH/+Gubb90Z/bnM+rDHrS/o7ieIbRG9QmYd3KXD&#xa;BMnnQjwgPGG961KyReNMn12ZpSG9Qlw9GGKERENH7PrgUY8l9bkt1beeMYDrMpsq&#xa;TfrC6i+wNCdGjvF8gwDuB0kTkqZ/0nyUUMa97phjT73dlzIHNCBkIhgwxeI/rUrj&#xa;elZvnFsztaswiOaBMamPHkjOnJr/B2TPtOYcec1OzFEzIDhonbMc2xhLP9sCAwEA&#xa;AaOCAuUwggLhMA4GA1UdDwEB/wQEAwIFoDCBiQYIKwYBBQUHAQEEfTB7MEIGCCsG&#xa;AQUFBzAChjZodHRwOi8vc2VjdXJlMi5hbHBoYXNzbC5jb20vY2FjZXJ0L2dzYWxw&#xa;aGFzaGEyZzJyMS5jcnQwNQYIKwYBBQUHMAGGKWh0dHA6Ly9vY3NwMi5nbG9iYWxz&#xa;aWduLmNvbS9nc2FscGhhc2hhMmcyMFcGA1UdIARQME4wQgYKKwYBBAGgMgEKCjA0&#xa;MDIGCCsGAQUFBwIBFiZodHRwczovL3d3dy5nbG9iYWxzaWduLmNvbS9yZXBvc2l0&#xa;b3J5LzAIBgZngQwBAgEwCQYDVR0TBAIwADA+BgNVHR8ENzA1MDOgMaAvhi1odHRw&#xa;Oi8vY3JsMi5hbHBoYXNzbC5jb20vZ3MvZ3NhbHBoYXNoYTJnMi5jcmwwNwYDVR0R&#xa;BDAwLoIWKi5ob3NwZWRhZ2VtZGVzaXRlcy53c4IUaG9zcGVkYWdlbWRlc2l0ZXMu&#xa;d3MwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMB8GA1UdIwQYMBaAFPXN&#xa;1TwIUPlqTzq3l9pWg+Zp0mj3MB0GA1UdDgQWBBQIuLtLcR3fjjQ0AiOBfaOhDmJq&#xa;ozCCAQUGCisGAQQB1nkCBAIEgfYEgfMA8QB2AO7Ale6NcmQPkuPDuRvHEqNpagl7&#xa;S2oaFDjmR7LL7cX5AAABdLeN4UkAAAQDAEcwRQIhAMN+1RUWFvJZKObbFwEPZQ9A&#xa;ePF5rmkEa+/FII/nNTaFAiACMT7Ikn2kfPtoDO3nvLUQqetDFoIikNsy+MpA9TqH&#xa;kAB3APZclC/RdzAiFFQYCDCUVo7jTRMZM7/fDC8gC8xO8WTjAAABdLeN4RUAAAQD&#xa;AEgwRgIhANGWayuvyhPHk/+QA9qHYo19qRQgQ7hAaaFXHXtVasRbAiEA16iwymA6&#xa;MnsUz7csu9oikLV1k8VAJ6p5i+QQkBU9ym4wDQYJKoZIhvcNAQELBQADggEBAK3A&#xa;qbcrk6ZoPzjeCGhWaQtSv5F16sMW3fK/hM0d62kkn/6+1QOdj8z/VsDtSOSYRbcL&#xa;vrQ+ynmTm3sGBtBxoJr/LVGEpA5BIVMBQzJwgyYmuFr6Zk1+Edk0eHW/jKWSpXNC&#xa;3jOSdsu9unLXOu03Z5uHfIJyo2WrEDlXFXfRMjsw3xYZuJqAN05vKqFC3FY3ABFk&#xa;R5JlPE5qNSIycU16oFwK/AbsLJZis1+x8WXL6qtRejiNdOyNUaVIq7n3bJJPuWvq&#xa;QrWM8LoRYaLQ5Xku9o+0KB4WlzbcijxWpVnEcxBzXgFKGCs6jv5Z1XfmH3pdsvS7&#xa;Ee7a0Zy3msj/KiOc7Rw=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="ssh" product="OpenSSH" version="7.4" extrainfo="protocol 2.0" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:7.4</cpe></service></port>
+<port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="domain" extrainfo="generic dns response: NOTIMP" servicefp="SF-Port53-TCP:V=7.92%I=7%D=6/7%Time=6843CACE%P=x86_64-redhat-linux-gnu%r(DNSStatusRequestTCP,E,&quot;\0\x0c\0\0\x90\x04\0\0\0\0\0\0\0\0&quot;);" method="probed" conf="10"/></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="http" product="Apache httpd" method="probed" conf="10"><cpe>cpe:/a:apache:http_server</cpe></service><script id="http-server-header" output="Apache"><elem>Apache</elem>
+</script><script id="http-title" output="403 Forbidden"><elem key="title">403 Forbidden</elem>
+</script></port>
+<port protocol="tcp" portid="110"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="pop3" product="Dovecot pop3d" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service><script id="pop3-capabilities" output="RESP-CODES AUTH-RESP-CODE TOP SASL(PLAIN LOGIN) USER UIDL STLS PIPELINING CAPA"/><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="143"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="imap" product="Dovecot imapd" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="imap-capabilities" output="NAMESPACE OK Pre-login listed LOGIN-REFERRALS IDLE more LITERAL+ capabilities post-login AUTH=PLAIN SASL-IR IMAP4rev1 ID AUTH=LOGINA0001 ENABLE STARTTLS have"/></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="http" product="Apache httpd" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:apache:http_server</cpe></service><script id="http-server-header" output="Apache"><elem>Apache</elem>
+</script><script id="tls-alpn" output="&#xa;  http/1.1"><elem>http/1.1</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="http-title" output="403 Forbidden"><elem key="title">403 Forbidden</elem>
+</script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="465"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="smtp" product="Exim smtpd" version="4.96.2" hostname="iuri0186.hospedagemdesites.ws" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:exim:exim:4.96.2</cpe></service><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="smtp-commands" output="iuri0186.hospedagemdesites.ws Hello cpanel0041.hospedagemdesites.ws [38.43.101.69], SIZE 52428800, 8BITMIME, PIPELINING, PIPECONNECT, AUTH PLAIN LOGIN, HELP&#xa; Commands supported: AUTH HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP"/></port>
+<port protocol="tcp" portid="587"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="smtp" product="Exim smtpd" version="4.96.2" hostname="iuri0186.hospedagemdesites.ws" method="probed" conf="10"><cpe>cpe:/a:exim:exim:4.96.2</cpe></service><script id="smtp-commands" output="iuri0186.hospedagemdesites.ws Hello cpanel0041.hospedagemdesites.ws [38.43.101.69], SIZE 52428800, 8BITMIME, PIPELINING, PIPECONNECT, AUTH PLAIN LOGIN, STARTTLS, HELP&#xa; Commands supported: AUTH STARTTLS HELO EHLO MAIL RCPT DATA BDAT NOOP QUIT RSET HELP"/><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="993"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="imap" product="Dovecot imapd" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="imap-capabilities" output="NAMESPACE OK Pre-login listed LOGIN-REFERRALS IMAP4rev1 more LITERAL+ capabilities post-login AUTH=PLAIN SASL-IR IDLE ID ENABLE AUTH=LOGINA0001 have"/><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+<port protocol="tcp" portid="995"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="pop3" product="Dovecot pop3d" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:dovecot:dovecot</cpe></service><script id="pop3-capabilities" output="SASL(PLAIN LOGIN) UIDL USER RESP-CODES PIPELINING AUTH-RESP-CODE TOP CAPA"/><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script></port>
+<port protocol="tcp" portid="1031"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="iad2" method="table" conf="3"/></port>
+<port protocol="tcp" portid="2077"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="tsrmagt" servicefp="SF-Port2077-TCP:V=7.92%I=7%D=6/7%Time=6843CB33%P=x86_64-redhat-linux-gnu%r(SIPOptions,1EE,&quot;HTTP/1\.1\x20200\x20OK\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:16:28\x20GMT\r\nServer:\x20cPanel\r\nPersistent-Auth:\x20false\r\nHost:\x20iuri0186\.hospedagemdesites\.ws:2077\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nConnection:\x20Keep-Alive\r\nVary:\x20Accept-Encoding\r\nAllow:\x20PROPFIND,\x20OPTIONS,\x20DELETE,\x20COPY,\x20PROPPATCH,\x20POST,\x20UNLOCK,\x20MKCOL,\x20MOVE,\x20HEAD,\x20PUT,\x20GET,\x20LOCK\r\nContent-Length:\x200\r\nContent-Type:\x20text/plain\r\nExpires:\x20Fri,\x2001\x20Jan\x201990\x2000:00:00\x20GMT\r\nDAV:\x201,\x202\r\nKeep-Alive:\x20timeout=15,\x20max=96\r\nMS-Author-Via:\x20DAV\r\n\r\n&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    HTTP/1.1 200 OK&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Server: cPanel&#xa;    Persistent-Auth: false&#xa;    Host: iuri0186.hospedagemdesites.ws:2077&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Connection: Keep-Alive&#xa;    Vary: Accept-Encoding&#xa;    Allow: PROPFIND, OPTIONS, DELETE, COPY, PROPPATCH, POST, UNLOCK, MKCOL, MOVE, HEAD, PUT, GET, LOCK&#xa;    Content-Length: 0&#xa;    Content-Type: text/plain&#xa;    Expires: Fri, 01 Jan 1990 00:00:00 GMT&#xa;    DAV: 1, 2&#xa;    Keep-Alive: timeout=15, max=96&#xa;    MS-Author-Via: DAV"><elem key="SIPOptions">&#xa;    HTTP/1.1 200 OK&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Server: cPanel&#xa;    Persistent-Auth: false&#xa;    Host: iuri0186.hospedagemdesites.ws:2077&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Connection: Keep-Alive&#xa;    Vary: Accept-Encoding&#xa;    Allow: PROPFIND, OPTIONS, DELETE, COPY, PROPPATCH, POST, UNLOCK, MKCOL, MOVE, HEAD, PUT, GET, LOCK&#xa;    Content-Length: 0&#xa;    Content-Type: text/plain&#xa;    Expires: Fri, 01 Jan 1990 00:00:00 GMT&#xa;    DAV: 1, 2&#xa;    Keep-Alive: timeout=15, max=96&#xa;    MS-Author-Via: DAV</elem>
+</script></port>
+<port protocol="tcp" portid="2078"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="http" product="cPanel httpd" extrainfo="unauthorized" tunnel="ssl" method="probed" conf="10"/><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="http-auth" output="&#xa;HTTP/1.1 401 Unauthorized&#xd;&#xa;  Basic realm=Restricted Area&#xa;"><table>
+<elem key="scheme">Basic</elem>
+<table key="params">
+<elem key="realm">Restricted Area</elem>
+</table>
+</table>
+</script><script id="http-server-header" output="cPanel"><elem>cPanel</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="http-methods" output="&#xa;  Potentially risky methods: PROPFIND DELETE COPY PROPPATCH UNLOCK MKCOL MOVE PUT LOCK"><table key="Potentially risky methods">
+<elem>PROPFIND</elem>
+<elem>DELETE</elem>
+<elem>COPY</elem>
+<elem>PROPPATCH</elem>
+<elem>UNLOCK</elem>
+<elem>MKCOL</elem>
+<elem>MOVE</elem>
+<elem>PUT</elem>
+<elem>LOCK</elem>
+</table>
+</script><script id="http-title" output="Site doesn&apos;t have a title (text/html; charset=&quot;utf-8&quot;)."></script><script id="http-webdav-scan" output="&#xa;  Server Date: Sat, 07 Jun 2025 05:17:25 GMT&#xa;  Allowed Methods: PROPFIND, OPTIONS, DELETE, COPY, PROPPATCH, POST, UNLOCK, MKCOL, MOVE, HEAD, PUT, GET, LOCK&#xa;  Server Type: cPanel&#xa;  WebDAV type: Unknown"><elem key="Server Date">Sat, 07 Jun 2025 05:17:25 GMT</elem>
+<elem key="Allowed Methods">PROPFIND, OPTIONS, DELETE, COPY, PROPPATCH, POST, UNLOCK, MKCOL, MOVE, HEAD, PUT, GET, LOCK</elem>
+<elem key="Server Type">cPanel</elem>
+<elem key="WebDAV type">Unknown</elem>
+</script></port>
+<port protocol="tcp" portid="2082"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="infowave" servicefp="SF-Port2082-TCP:V=7.92%I=7%D=6/7%Time=6843CB2C%P=x86_64-redhat-linux-gnu%r(SIPOptions,98C1,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:16:28\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20cprelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2082\r\nSet-Cookie:\x20cpsession=%3aoFAdwXb_CoUGP__f%2c843be619359c93822ba4a619b948be17;\x20HttpOnly;\x20path=/;\x20port=2082\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2082\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2082\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2082\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-Content-Type-Options:\x20nosniff\r\nContent-Length:\x2038214\r\n\r\n\n&lt;!DOCTYP&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: cpsession=%3aoFAdwXb_CoUGP__f%2c843be619359c93822ba4a619b948be17; HttpOnly; path=/; port=2082&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content-Type-Options: nosniff&#xa;    Content-Length: 38214&#xa;    &lt;!DOCTYP"><elem key="SIPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: cpsession=%3aoFAdwXb_CoUGP__f%2c843be619359c93822ba4a619b948be17; HttpOnly; path=/; port=2082&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2082&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content-Type-Options: nosniff&#xa;    Content-Length: 38214&#xa;    &lt;!DOCTYP</elem>
+</script></port>
+<port protocol="tcp" portid="2083"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="radsec" servicefp="SF-Port2083-TCP:V=7.92%T=SSL%I=7%D=6/7%Time=6843CAE2%P=x86_64-redhat-linux-gnu%r(GetRequest,A4D6,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20cprelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20cpsession=%3a5dk2DSW17iGrUhC2%2c727d415d153e3525cc8f78dc5a905cc2;\x20HttpOnly;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-Content&quot;)%r(HTTPOptions,8000,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20cprelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20cpsession=%3anWqL2xW8fdEQzkZ_%2c37aae6079160693a6c30a82eaff29bf6;\x20HttpOnly;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2083;\x20secure\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-Content&quot;);" tunnel="ssl" method="table" conf="3"/><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="fingerprint-strings" output="&#xa;  GetRequest: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: cpsession=%3a5dk2DSW17iGrUhC2%2c727d415d153e3525cc8f78dc5a905cc2; HttpOnly; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content&#xa;  HTTPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: cpsession=%3anWqL2xW8fdEQzkZ_%2c37aae6079160693a6c30a82eaff29bf6; HttpOnly; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content"><elem key="GetRequest">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: cpsession=%3a5dk2DSW17iGrUhC2%2c727d415d153e3525cc8f78dc5a905cc2; HttpOnly; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content</elem>
+<elem key="HTTPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: cprelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: cpsession=%3anWqL2xW8fdEQzkZ_%2c37aae6079160693a6c30a82eaff29bf6; HttpOnly; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2083; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content</elem>
+</script></port>
+<port protocol="tcp" portid="2086"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="gnunet" servicefp="SF-Port2086-TCP:V=7.92%I=7%D=6/7%Time=6843CB2C%P=x86_64-redhat-linux-gnu%r(SIPOptions,1FE0,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:16:28\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20whostmgrrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2086\r\nSet-Cookie:\x20whostmgrsession=%3a0Ieq3bArV_X9gO6P%2cb54a6caf2eadb3459ad1bc21f794b8c4;\x20HttpOnly;\x20path=/;\x20port=2086\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2086\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2086\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2086\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nX-Frame-Options:\x20SAMEORIGIN\r\nX-Content-Type-Options:\x20nosniff\r\nContent-Length:\x2037838\r&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: whostmgrsession=%3a0Ieq3bArV_X9gO6P%2cb54a6caf2eadb3459ad1bc21f794b8c4; HttpOnly; path=/; port=2086&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content-Type-Options: nosniff&#xa;    Content-Length: 37838"><elem key="SIPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: whostmgrsession=%3a0Ieq3bArV_X9gO6P%2cb54a6caf2eadb3459ad1bc21f794b8c4; HttpOnly; path=/; port=2086&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2086&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    X-Frame-Options: SAMEORIGIN&#xa;    X-Content-Type-Options: nosniff&#xa;    Content-Length: 37838</elem>
+</script></port>
+<port protocol="tcp" portid="2087"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="eli" servicefp="SF-Port2087-TCP:V=7.92%T=SSL%I=7%D=6/7%Time=6843CAE2%P=x86_64-redhat-linux-gnu%r(GetRequest,A394,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20whostmgrrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20whostmgrsession=%3aDFELPZVDWnnoF6NA%2ccf994de952695ede1ce5f13bc6ae0056;\x20HttpOnly;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20SAMEORIGI&quot;)%r(HTTPOptions,A394,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20whostmgrrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20whostmgrsession=%3ag97h8GGnjwHSBdFJ%2ccb13e1912dba220d1c7c00a7475ca155;\x20HttpOnly;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2087;\x20secure\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nX-Frame-Options:\x20SAMEORIGI&quot;);" tunnel="ssl" method="table" conf="3"/><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="fingerprint-strings" output="&#xa;  GetRequest: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: whostmgrsession=%3aDFELPZVDWnnoF6NA%2ccf994de952695ede1ce5f13bc6ae0056; HttpOnly; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGI&#xa;  HTTPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: whostmgrsession=%3ag97h8GGnjwHSBdFJ%2ccb13e1912dba220d1c7c00a7475ca155; HttpOnly; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGI"><elem key="GetRequest">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: whostmgrsession=%3aDFELPZVDWnnoF6NA%2ccf994de952695ede1ce5f13bc6ae0056; HttpOnly; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGI</elem>
+<elem key="HTTPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: whostmgrrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: whostmgrsession=%3ag97h8GGnjwHSBdFJ%2ccb13e1912dba220d1c7c00a7475ca155; HttpOnly; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2087; secure&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    X-Frame-Options: SAMEORIGI</elem>
+</script></port>
+<port protocol="tcp" portid="2095"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="nbx-ser" servicefp="SF-Port2095-TCP:V=7.92%I=7%D=6/7%Time=6843CB2C%P=x86_64-redhat-linux-gnu%r(SIPOptions,9942,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:16:28\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20webmailrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2095\r\nSet-Cookie:\x20webmailsession=%3akKGcGbc5rZhvHQrO%2c92f7c0f8bb843d7b10f1536a152aebf1;\x20HttpOnly;\x20path=/;\x20port=2095\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2095\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2095\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2095\r\nSet-Cookie:\x20roundcube_cookies=enabled;\x20HttpOnly;\x20expires=Sun,\x2007-Jun-2026\x2005:16:28\x20GMT;\x20path=/;\x20port=2095\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: webmailsession=%3akKGcGbc5rZhvHQrO%2c92f7c0f8bb843d7b10f1536a152aebf1; HttpOnly; path=/; port=2095&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:16:28 GMT; path=/; port=2095&#xa;    Cache-Control: no-cache, no-store, must-"><elem key="SIPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:16:28 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: webmailsession=%3akKGcGbc5rZhvHQrO%2c92f7c0f8bb843d7b10f1536a152aebf1; HttpOnly; path=/; port=2095&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2095&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:16:28 GMT; path=/; port=2095&#xa;    Cache-Control: no-cache, no-store, must-</elem>
+</script></port>
+<port protocol="tcp" portid="2096"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="nbx-dir" servicefp="SF-Port2096-TCP:V=7.92%T=SSL%I=7%D=6/7%Time=6843CAE2%P=x86_64-redhat-linux-gnu%r(GetRequest,8000,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20webmailrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20webmailsession=%3alJMBbtjsvTz9ysfj%2ce478c5be90330b2df342ecb458e8c879;\x20HttpOnly;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_cookies=enabled;\x20HttpOnly;\x20expires=Sun,\x2007-Jun-2026\x2005:15:14\x20GMT;\x20path=/;\x20port=2096;\x20&quot;)%r(HTTPOptions,A55F,&quot;HTTP/1\.0\x20200\x20OK\r\nConnection:\x20close\r\nContent-Type:\x20text/html;\x20charset=\&quot;utf-8\&quot;\r\nDate:\x20Sat,\x2007\x20Jun\x202025\x2005:15:14\x20GMT\r\nCache-Control:\x20no-cache,\x20no-store,\x20must-revalidate,\x20private\r\nPragma:\x20no-cache\r\nSet-Cookie:\x20webmailrelogin=no;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20webmailsession=%3ap_EkKBALVBnGHzoj%2c4bef8a3f743ff4136048c37125190afb;\x20HttpOnly;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_sessid=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_sessauth=expired;\x20HttpOnly;\x20domain=iuri0186\.hospedagemdesites\.ws;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20PPA_ID=expired;\x20HttpOnly;\x20expires=Thu,\x2001-Jan-1970\x2000:00:01\x20GMT;\x20path=/;\x20port=2096;\x20secure\r\nSet-Cookie:\x20roundcube_cookies=enabled;\x20HttpOnly;\x20expires=Sun,\x2007-Jun-2026\x2005:15:14\x20GMT;\x20path=/;\x20port=2096;\x20&quot;);" tunnel="ssl" method="table" conf="3"/><script id="ssl-date" output="TLS randomness does not represent time"></script><script id="ssl-cert" output="Subject: commonName=*.hospedagemdesites.ws&#xa;Subject Alternative Name: DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws&#xa;Not valid before: 2024-10-16T04:11:03&#xa;Not valid after:  2025-11-17T04:11:02"><table key="subject">
+<elem key="commonName">*.hospedagemdesites.ws</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">GlobalSign GCC R6 AlphaSSL CA 2023</elem>
+<elem key="countryName">BE</elem>
+<elem key="organizationName">GlobalSign nv-sa</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">D6B5ED4BE77420CE99497796C310B7BEE6FABD74EC25DC8CE3DA76477C0D24FA7D6B6E0061025F4F5B591C6EF2BA478952837ED8C28107FF18820B2A36B5BB62461BCCE449925C2CEDF51FD34CFE0731B450BC12D3A809E2573361E063C2DCB800BD3ACF68B8E209D7CFE414E98473C68BCA1CC58329F28430E92144B1D31473389C9AAC2924A445A576945683BA629D1589B1F4A95E8A1AA38E764D262403370097BA17F67F3EFC164B5F91E6ECA67F19AC4E1FEA94DDE700F95EE92811DBB5C751DE15B20455A1CA933054B0366AC6860C0BB0AC0E256781EA5337FA1B233E51B2C4B8B2BD24E64F15364B9BBF23B2AF50853CA852A60A6C70D5AD3ECAD80D</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">CA Issuers - URI:http://secure.globalsign.com/cacert/gsgccr6alphasslca2023.crt&#xa;OCSP - URI:http://ocsp.globalsign.com/gsgccr6alphasslca2023</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.4146.10.1.3&#xa;  CPS: https://www.globalsign.com/repository/</elem>
+</table>
+<table>
+<elem key="name">X509v3 CRL Distribution Points</elem>
+<elem key="value">Full Name:&#xa;  URI:http://crl.globalsign.com/gsgccr6alphasslca2023.crl</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:*.hospedagemdesites.ws, DNS:hospedagemdesites.ws</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">BD:05:B7:F3:8A:93:3C:73:CB:79:FA:0F:85:12:A1:77:96:18:91:74</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">6B:6F:50:60:65:84:63:34:4B:CC:1B:EA:6F:15:EA:34:05:AF:21:C9</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : AF:18:1A:28:D6:8C:A3:E0:A9:8A:4C:9C:67:AB:09:F8:&#xa;                BB:BC:22:BA:AE:BC:B1:38:A3:A1:9D:D3:F9:B6:03:0D&#xa;    Timestamp : Oct 16 04:11:05.154 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:11:7E:F4:55:9A:4F:6F:C4:69:2A:11:C1:&#xa;                C8:11:82:4E:6E:40:DB:6B:A3:93:63:4A:C7:68:F8:13:&#xa;                EE:17:0A:9D:02:21:00:B8:6D:6D:4A:F9:B7:02:80:24:&#xa;                A3:FE:2B:33:22:D1:86:D3:60:5A:A7:3D:67:02:13:AA:&#xa;                DD:6A:0D:AF:56:03:5D&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 12:F1:4E:34:BD:53:72:4C:84:06:19:C3:8F:3F:7A:13:&#xa;                F8:E7:B5:62:87:88:9C:6D:30:05:84:EB:E5:86:26:3A&#xa;    Timestamp : Oct 16 04:11:05.941 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:68:85:FC:C4:42:48:4A:1F:61:6E:91:91:&#xa;                C2:6D:B0:A8:21:08:D0:4D:61:92:96:E5:F6:B4:C8:3E:&#xa;                32:E9:BD:43:02:20:03:ED:FE:74:39:1A:26:2E:6B:D5:&#xa;                E5:9D:74:2C:47:7A:8E:C5:66:1C:71:85:7F:01:12:74:&#xa;                B0:C1:C3:81:4B:9C&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 7D:59:1E:12:E1:78:2A:7B:1C:61:67:7C:5E:FD:F8:D0:&#xa;                87:5C:14:A0:4E:95:9E:B9:03:2F:D9:0E:8C:2E:79:B8&#xa;    Timestamp : Oct 16 04:11:05.161 2024 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:7B:1E:52:AD:D0:58:3D:9B:A3:EA:29:61:&#xa;                78:B9:17:5A:29:C9:40:C8:C9:6B:B2:B0:15:E2:BC:94:&#xa;                1E:A1:B3:EC:02:21:00:91:D0:22:E0:67:F6:42:F4:8A:&#xa;                DC:05:D9:89:7E:05:52:28:1D:8E:FE:DC:B3:E6:2F:76:&#xa;                AA:16:3C:4E:B7:42:75</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2024-10-16T04:11:03</elem>
+<elem key="notAfter">2025-11-17T04:11:02</elem>
+</table>
+<elem key="md5">be0851f275345890664d46151eb4849d</elem>
+<elem key="sha1">2ee20df8dba23d346bce98f34d86b434cbb3af6d</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGdDCCBVygAwIBAgIMIL/cLHgcyxomqCzsMA0GCSqGSIb3DQEBCwUAMFUxCzAJ&#xa;BgNVBAYTAkJFMRkwFwYDVQQKExBHbG9iYWxTaWduIG52LXNhMSswKQYDVQQDEyJH&#xa;bG9iYWxTaWduIEdDQyBSNiBBbHBoYVNTTCBDQSAyMDIzMB4XDTI0MTAxNjA0MTEw&#xa;M1oXDTI1MTExNzA0MTEwMlowITEfMB0GA1UEAwwWKi5ob3NwZWRhZ2VtZGVzaXRl&#xa;cy53czCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANa17UvndCDOmUl3&#xa;lsMQt77m+r107CXcjOPadkd8DST6fWtuAGECX09bWRxu8rpHiVKDftjCgQf/GIIL&#xa;Kja1u2JGG8zkSZJcLO31H9NM/gcxtFC8EtOoCeJXM2HgY8LcuAC9Os9ouOIJ18/k&#xa;FOmEc8aLyhzFgynyhDDpIUSx0xRzOJyarCkkpEWldpRWg7pinRWJsfSpXooao452&#xa;TSYkAzcAl7oX9n8+/BZLX5Hm7KZ/GaxOH+qU3ecA+V7pKBHbtcdR3hWyBFWhypMw&#xa;VLA2asaGDAuwrA4lZ4HqUzf6GyM+UbLEuLK9JOZPFTZLm78jsq9QhTyoUqYKbHDV&#xa;rT7K2A0CAwEAAaOCA3YwggNyMA4GA1UdDwEB/wQEAwIFoDAMBgNVHRMBAf8EAjAA&#xa;MIGZBggrBgEFBQcBAQSBjDCBiTBJBggrBgEFBQcwAoY9aHR0cDovL3NlY3VyZS5n&#xa;bG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyNmFscGhhc3NsY2EyMDIzLmNydDA8&#xa;BggrBgEFBQcwAYYwaHR0cDovL29jc3AuZ2xvYmFsc2lnbi5jb20vZ3NnY2NyNmFs&#xa;cGhhc3NsY2EyMDIzMFcGA1UdIARQME4wCAYGZ4EMAQIBMEIGCisGAQQBoDIKAQMw&#xa;NDAyBggrBgEFBQcCARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3Np&#xa;dG9yeS8wRAYDVR0fBD0wOzA5oDegNYYzaHR0cDovL2NybC5nbG9iYWxzaWduLmNv&#xa;bS9nc2djY3I2YWxwaGFzc2xjYTIwMjMuY3JsMDcGA1UdEQQwMC6CFiouaG9zcGVk&#xa;YWdlbWRlc2l0ZXMud3OCFGhvc3BlZGFnZW1kZXNpdGVzLndzMB0GA1UdJQQWMBQG&#xa;CCsGAQUFBwMBBggrBgEFBQcDAjAfBgNVHSMEGDAWgBS9BbfzipM8c8t5+g+FEqF3&#xa;lhiRdDAdBgNVHQ4EFgQUa29QYGWEYzRLzBvqbxXqNAWvIckwggF9BgorBgEEAdZ5&#xa;AgQCBIIBbQSCAWkBZwB2AK8YGijWjKPgqYpMnGerCfi7vCK6rryxOKOhndP5tgMN&#xa;AAABkpOFsEIAAAQDAEcwRQIgEX70VZpPb8RpKhHByBGCTm5A22ujk2NKx2j4E+4X&#xa;Cp0CIQC4bW1K+bcCgCSj/iszItGG02Bapz1nAhOq3WoNr1YDXQB1ABLxTjS9U3JM&#xa;hAYZw48/ehP457Vih4icbTAFhOvlhiY6AAABkpOFs1UAAAQDAEYwRAIgaIX8xEJI&#xa;Sh9hbpGRwm2wqCEI0E1hkpbl9rTIPjLpvUMCIAPt/nQ5GiYua9XlnXQsR3qOxWYc&#xa;cYV/ARJ0sMHDgUucAHYAfVkeEuF4KnscYWd8Xv340IdcFKBOlZ65Ay/ZDowuebgA&#xa;AAGSk4WwSQAABAMARzBFAiB7HlKt0Fg9m6PqKWF4uRdaKclAyMlrsrAV4ryUHqGz&#xa;7AIhAJHQIuBn9kL0itwF2Yl+BVIoHY7+3LPmL3aqFjxOt0J1MA0GCSqGSIb3DQEB&#xa;CwUAA4IBAQCA8qxHXEqAI7F9r5A7CFNcr6Tn6mNt6eqE6fnOGdXK+OrBAtVhuvVo&#xa;kvWbwEgm3b4i4CaMQQtM57llsyvqIpMomiHYYjLeeTAzbnTaqtccRyAOYNHw/tBp&#xa;PTytBksDgFj8Z30Wuvl+JaLXEyqGv+RQLYQ/q/mxCtqwUGI3sCaFtjO4uqSakBFS&#xa;aTo3EvKO6NtoiGKh61DNwQjlcOLsKejwdpK+9MR7BXZXH4Q/zLipzg9Usg5If/T3&#xa;Drsl7MfLpISe4RvRhkMnFpnxqMhmdJfI75i+HdSd/dsGVYPVAXU76wwYJhlEEl05&#xa;CmS3oSjx5jMLrWUfAyLATixFJ0/nraNM&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="fingerprint-strings" output="&#xa;  GetRequest: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: webmailsession=%3alJMBbtjsvTz9ysfj%2ce478c5be90330b2df342ecb458e8c879; HttpOnly; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:15:14 GMT; path=/; port=2096;&#xa;  HTTPOptions: &#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: webmailsession=%3ap_EkKBALVBnGHzoj%2c4bef8a3f743ff4136048c37125190afb; HttpOnly; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:15:14 GMT; path=/; port=2096;"><elem key="GetRequest">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: webmailsession=%3alJMBbtjsvTz9ysfj%2ce478c5be90330b2df342ecb458e8c879; HttpOnly; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:15:14 GMT; path=/; port=2096;</elem>
+<elem key="HTTPOptions">&#xa;    HTTP/1.0 200 OK&#xa;    Connection: close&#xa;    Content-Type: text/html; charset=&quot;utf-8&quot;&#xa;    Date: Sat, 07 Jun 2025 05:15:14 GMT&#xa;    Cache-Control: no-cache, no-store, must-revalidate, private&#xa;    Pragma: no-cache&#xa;    Set-Cookie: webmailrelogin=no; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: webmailsession=%3ap_EkKBALVBnGHzoj%2c4bef8a3f743ff4136048c37125190afb; HttpOnly; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessid=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_sessauth=expired; HttpOnly; domain=iuri0186.hospedagemdesites.ws; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: PPA_ID=expired; HttpOnly; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; port=2096; secure&#xa;    Set-Cookie: roundcube_cookies=enabled; HttpOnly; expires=Sun, 07-Jun-2026 05:15:14 GMT; path=/; port=2096;</elem>
+</script></port>
+<port protocol="tcp" portid="3306"><state state="open" reason="syn-ack" reason_ttl="57"/><service name="mysql" product="MySQL" version="5.6.51-log" method="probed" conf="10"><cpe>cpe:/a:mysql:mysql:5.6.51-log</cpe></service><script id="mysql-info" output="&#xa;  Protocol: 10&#xa;  Version: 5.6.51-log&#xa;  Thread ID: 1014&#xa;  Capabilities flags: 63487&#xa;  Some Capabilities: SupportsTransactions, InteractiveClient, ConnectWithDatabase, IgnoreSigpipes, SupportsLoadDataLocal, LongColumnFlag, FoundRows, Speaks41ProtocolOld, DontAllowDatabaseTableColumn, Support41Auth, SupportsCompression, Speaks41ProtocolNew, LongPassword, IgnoreSpaceBeforeParenthesis, ODBCClient, SupportsMultipleStatments, SupportsMultipleResults, SupportsAuthPlugins&#xa;  Status: Autocommit&#xa;  Salt: `XwnDGwB$+Ju/&amp;q&apos;mqo[&#xa;  Auth Plugin Name: mysql_native_password"><elem key="Protocol">10</elem>
+<elem key="Version">5.6.51-log</elem>
+<elem key="Thread ID">1014</elem>
+<elem key="Capabilities flags">63487</elem>
+<table key="Some Capabilities">
+<elem>SupportsTransactions</elem>
+<elem>InteractiveClient</elem>
+<elem>ConnectWithDatabase</elem>
+<elem>IgnoreSigpipes</elem>
+<elem>SupportsLoadDataLocal</elem>
+<elem>LongColumnFlag</elem>
+<elem>FoundRows</elem>
+<elem>Speaks41ProtocolOld</elem>
+<elem>DontAllowDatabaseTableColumn</elem>
+<elem>Support41Auth</elem>
+<elem>SupportsCompression</elem>
+<elem>Speaks41ProtocolNew</elem>
+<elem>LongPassword</elem>
+<elem>IgnoreSpaceBeforeParenthesis</elem>
+<elem>ODBCClient</elem>
+<elem>SupportsMultipleStatments</elem>
+<elem>SupportsMultipleResults</elem>
+<elem>SupportsAuthPlugins</elem>
+</table>
+<elem key="Status">Autocommit</elem>
+<elem key="Salt">`XwnDGwB$+Ju/&amp;q&apos;mqo[</elem>
+<elem key="Auth Plugin Name">mysql_native_password</elem>
+</script></port>
+<port protocol="tcp" portid="4205"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="vrml-multi-use" method="table" conf="3"/></port>
+<port protocol="tcp" portid="11249"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="tcp" portid="13035"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="tcp" portid="42307"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="tcp" portid="44545"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+<port protocol="tcp" portid="46997"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="10540" rttvar="2134" to="100000"/>
+</host>
+<runstats><finished time="1749273503" timestr="Sat Jun  7 02:18:23 2025" summary="Nmap done at Sat Jun  7 02:18:23 2025; 1 IP address (1 host up) scanned in 216.67 seconds" elapsed="216.67" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

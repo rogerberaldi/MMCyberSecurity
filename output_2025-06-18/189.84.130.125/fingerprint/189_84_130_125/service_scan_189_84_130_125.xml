@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Mon Jun 16 15:48:28 2025 as: nmap -sV -sC -p 80,5060,42008 -oX output/189.84.130.125/fingerprint/189_84_130_125/service_scan_189_84_130_125.xml 189.84.130.125 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 80,5060,42008 -oX output/189.84.130.125/fingerprint/189_84_130_125/service_scan_189_84_130_125.xml 189.84.130.125" start="1750099708" startstr="Mon Jun 16 15:48:28 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="3" services="80,5060,42008"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.125" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750099708" endtime="1750099733"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.125" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="55"/><service name="http" product="Apache httpd" version="2.4.57" extrainfo="(Debian)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.57</cpe></service><script id="http-title" output="Apache2 Debian Default Page: It works"><elem key="title">Apache2 Debian Default Page: It works</elem>
+</script><script id="http-server-header" output="Apache/2.4.57 (Debian)"><elem>Apache/2.4.57 (Debian)</elem>
+</script></port>
+<port protocol="tcp" portid="5060"><state state="open" reason="syn-ack" reason_ttl="56"/><service name="sip" product="FS3" extrainfo="Status: 200 OK" servicefp="SF-Port5060-TCP:V=7.92%I=7%D=6/16%Time=68506710%P=x86_64-redhat-linux-gnu%r(SIPOptions,1B6,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/TCP\x20192\.168\.1\.64:50620;branch=foo;rport=24618\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=jQtB6j117ryQQ\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.130\.125&gt;\r\nUser-Agent:\x20FS3\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/><script id="fingerprint-strings" output="&#xa;  SIPOptions: &#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:50620;branch=foo;rport=24618&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=jQtB6j117ryQQ&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.125&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0"><elem key="SIPOptions">&#xa;    SIP/2.0 200 OK&#xa;    Via: SIP/2.0/TCP 192.168.1.64:50620;branch=foo;rport=24618&#xa;    From: &lt;sip:nm@nm&gt;;tag=root&#xa;    &lt;sip:nm2@nm2&gt;;tag=jQtB6j117ryQQ&#xa;    Call-ID: 50000&#xa;    CSeq: 42 OPTIONS&#xa;    Contact: &lt;sip:189.84.130.125&gt;&#xa;    User-Agent: FS3&#xa;    Accept: application/sdp&#xa;    Allow: INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY&#xa;    Supported: timer, path, replaces&#xa;    Allow-Events: talk, hold, conference, refer&#xa;    Content-Length: 0</elem>
+</script><script id="sip-methods" output="INVITE, ACK, BYE, CANCEL, OPTIONS, MESSAGE, INFO, UPDATE, REGISTER, REFER, NOTIFY"><elem>INVITE</elem>
+<elem>ACK</elem>
+<elem>BYE</elem>
+<elem>CANCEL</elem>
+<elem>OPTIONS</elem>
+<elem>MESSAGE</elem>
+<elem>INFO</elem>
+<elem>UPDATE</elem>
+<elem>REGISTER</elem>
+<elem>REFER</elem>
+<elem>NOTIFY</elem>
+</script></port>
+<port protocol="tcp" portid="42008"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="3979" rttvar="6457" to="100000"/>
+</host>
+<runstats><finished time="1750099733" timestr="Mon Jun 16 15:48:53 2025" summary="Nmap done at Mon Jun 16 15:48:53 2025; 1 IP address (1 host up) scanned in 25.83 seconds" elapsed="25.83" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

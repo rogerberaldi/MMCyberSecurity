@@ -1,0 +1,16 @@
+# Masscan 1.3.2 scan initiated Sun Jun 15 05:51:57 2025
+# Ports scanned: TCP(65536;0-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Timestamp: 1749966719	Host: 104.21.48.1 ()	Ports: 2083/open/tcp//radsec//
+Timestamp: 1749966722	Host: 104.21.48.1 ()	Ports: 443/open/tcp//https//
+Timestamp: 1749966723	Host: 104.21.48.1 ()	Ports: 2053/open/tcp//knetd//
+Timestamp: 1749966724	Host: 104.21.48.1 ()	Ports: 2086/open/tcp//gnunet//
+Timestamp: 1749966725	Host: 104.21.48.1 ()	Ports: 2096/open/tcp//nbx-dir//
+Timestamp: 1749966726	Host: 104.21.48.1 ()	Ports: 2052/open/tcp//clearvisn//
+Timestamp: 1749966727	Host: 104.21.48.1 ()	Ports: 2087/open/tcp//eli//
+Timestamp: 1749966729	Host: 104.21.48.1 ()	Ports: 80/open/tcp//http//
+Timestamp: 1749966729	Host: 104.21.48.1 ()	Ports: 8880/open/tcp//cddbp-alt//
+Timestamp: 1749966730	Host: 104.21.48.1 ()	Ports: 2095/open/tcp//nbx-ser//
+Timestamp: 1749966732	Host: 104.21.48.1 ()	Ports: 8080/open/tcp//webcache//
+Timestamp: 1749966735	Host: 104.21.48.1 ()	Ports: 2082/open/tcp//infowave//
+Timestamp: 1749966735	Host: 104.21.48.1 ()	Ports: 8443/open/tcp//pcsync-https//
+# Masscan done at Sun Jun 15 05:52:30 2025

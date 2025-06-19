@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Jun 13 15:28:06 2025 as: nmap -sV -sC -p 443,6426 -oX output/189.84.129.81/fingerprint/189_84_129_81/service_scan_189_84_129_81.xml 189.84.129.81 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 443,6426 -oX output/189.84.129.81/fingerprint/189_84_129_81/service_scan_189_84_129_81.xml 189.84.129.81" start="1749839286" startstr="Fri Jun 13 15:28:06 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="2" services="443,6426"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.129.81" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749839286" endtime="1749839300"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.129.81" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="http" product="nginx" tunnel="ssl" method="probed" conf="10"><cpe>cpe:/a:igor_sysoev:nginx</cpe></service><script id="tls-nextprotoneg" output="&#xa;  http/1.1"><elem>http/1.1</elem>
+</script><script id="ssl-cert" output="Subject: commonName=srv3dcc2cprd.oi.com.br&#xa;Subject Alternative Name: DNS:srv3dcc2cprd.oi.com.br&#xa;Not valid before: 2018-05-16T02:42:39&#xa;Not valid after:  2018-08-14T02:42:39"><table key="subject">
+<elem key="commonName">srv3dcc2cprd.oi.com.br</elem>
+</table>
+<table key="issuer">
+<elem key="commonName">Let&apos;s Encrypt Authority X3</elem>
+<elem key="countryName">US</elem>
+<elem key="organizationName">Let&apos;s Encrypt</elem>
+</table>
+<table key="pubkey">
+<elem key="type">rsa</elem>
+<elem key="bits">2048</elem>
+<elem key="modulus">BCAA56CFF5E2BA450B240E4F284A06783F93C885CBD0FB2030563EE4DEE3D9157B31AE3A3BDADA6A9D5D9E4A37472D264E09C709C5293E778D494D2354CE5381903DAB8EC8C26FC889D673209332896FE5370A1930E997A97C22868BA91AF8B7162FFE635A3408CD4B3EE4639CC9A7C19214767417979ED3E3E07B2DDC5DDE49DABA0FB0DBB7B430390D0DC060D8E3465AF4DD231901131DC2C4380AD14702759B87B6BF795D38CC48DF4CC93BF8BCBFD95E3DACFDE56C4BEB0D4273E41602333919C0448A4A434EC660FC9FF6D3D8649FF9E498653914BB090358E2DA82FFF787C082DF76E6A7F340EAEB06BBB7E04C5E3851C79498EAC6D9A862AD1CB4DAFB</elem>
+<elem key="exponent">65537</elem>
+</table>
+<table key="extensions">
+<table>
+<elem key="name">X509v3 Key Usage</elem>
+<elem key="value">Digital Signature, Key Encipherment</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Extended Key Usage</elem>
+<elem key="value">TLS Web Server Authentication, TLS Web Client Authentication</elem>
+</table>
+<table>
+<elem key="name">X509v3 Basic Constraints</elem>
+<elem key="value">CA:FALSE</elem>
+<elem key="critical">true</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Key Identifier</elem>
+<elem key="value">52:F5:54:9E:3D:F5:25:6B:A0:04:4A:EC:83:28:4C:FD:1A:CA:59:AA</elem>
+</table>
+<table>
+<elem key="name">X509v3 Authority Key Identifier</elem>
+<elem key="value">A8:4A:6A:63:04:7D:DD:BA:E6:D1:39:B7:A6:45:65:EF:F3:A8:EC:A1</elem>
+</table>
+<table>
+<elem key="name">Authority Information Access</elem>
+<elem key="value">OCSP - URI:http://ocsp.int-x3.letsencrypt.org&#xa;CA Issuers - URI:http://cert.int-x3.letsencrypt.org/</elem>
+</table>
+<table>
+<elem key="name">X509v3 Subject Alternative Name</elem>
+<elem key="value">DNS:srv3dcc2cprd.oi.com.br</elem>
+</table>
+<table>
+<elem key="name">X509v3 Certificate Policies</elem>
+<elem key="value">Policy: 2.23.140.1.2.1&#xa;Policy: 1.3.6.1.4.1.44947.1.1.1&#xa;  CPS: http://cps.letsencrypt.org&#xa;  User Notice:&#xa;    Explicit Text: This Certificate may only be relied upon by Relying Parties and only in accordance with the Certificate Policy found at https://letsencrypt.org/repository/</elem>
+</table>
+<table>
+<elem key="name">CT Precertificate SCTs</elem>
+<elem key="value">Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : DB:74:AF:EE:CB:29:EC:B1:FE:CA:3E:71:6D:2C:E5:B9:&#xa;                AA:BB:36:F7:84:71:83:C7:5D:9D:4F:37:B6:1F:BF:64&#xa;    Timestamp : May 16 03:42:39.222 2018 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:44:02:20:4B:60:4D:A8:84:1B:0C:9A:4A:33:B3:6F:&#xa;                42:1A:EF:FE:62:6D:D0:64:40:78:45:3A:5F:75:B5:B4:&#xa;                66:35:2B:D7:02:20:54:BB:F2:BC:3D:1B:7E:64:04:77:&#xa;                ED:B3:E1:D0:A7:82:EA:D9:43:A8:49:4E:F3:76:83:E4:&#xa;                8F:0A:D3:55:DB:DA&#xa;Signed Certificate Timestamp:&#xa;    Version   : v1 (0x0)&#xa;    Log ID    : 29:3C:51:96:54:C8:39:65:BA:AA:50:FC:58:07:D4:B7:&#xa;                6F:BF:58:7A:29:72:DC:A4:C3:0C:F4:E5:45:47:F4:78&#xa;    Timestamp : May 16 03:42:39.242 2018 GMT&#xa;    Extensions: none&#xa;    Signature : ecdsa-with-SHA256&#xa;                30:45:02:20:4B:5C:49:4C:68:85:F4:08:D3:9E:FE:F2:&#xa;                2E:B1:EE:E8:6B:06:90:4C:9E:87:E6:10:D6:7F:D7:C3:&#xa;                AE:94:DC:D2:02:21:00:D7:CA:E6:F2:1B:DD:24:48:01:&#xa;                17:A9:EE:11:1E:5E:EA:6D:E7:A7:D0:7E:3C:9F:41:5C:&#xa;                C0:E1:81:EA:23:6B:14</elem>
+</table>
+</table>
+<elem key="sig_algo">sha256WithRSAEncryption</elem>
+<table key="validity">
+<elem key="notBefore">2018-05-16T02:42:39</elem>
+<elem key="notAfter">2018-08-14T02:42:39</elem>
+</table>
+<elem key="md5">c82097a743062d74e0f98ea4b368b2d7</elem>
+<elem key="sha1">21c98c94f7865c9d231e098a831714027c4220a0</elem>
+<elem key="pem">-&#45;&#45;&#45;&#45;BEGIN CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;MIIGFjCCBP6gAwIBAgISAxvCjYE448gUL7fv/A62a7asMA0GCSqGSIb3DQEBCwUA&#xa;MEoxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MSMwIQYDVQQD&#xa;ExpMZXQncyBFbmNyeXB0IEF1dGhvcml0eSBYMzAeFw0xODA1MTYwMjQyMzlaFw0x&#xa;ODA4MTQwMjQyMzlaMCExHzAdBgNVBAMTFnNydjNkY2MyY3ByZC5vaS5jb20uYnIw&#xa;ggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8qlbP9eK6RQskDk8oSgZ4&#xa;P5PIhcvQ+yAwVj7k3uPZFXsxrjo72tpqnV2eSjdHLSZOCccJxSk+d41JTSNUzlOB&#xa;kD2rjsjCb8iJ1nMgkzKJb+U3Chkw6ZepfCKGi6ka+LcWL/5jWjQIzUs+5GOcyafB&#xa;khR2dBeXntPj4Hst3F3eSdq6D7Dbt7QwOQ0NwGDY40Za9N0jGQETHcLEOArRRwJ1&#xa;m4e2v3ldOMxI30zJO/i8v9lePaz95WxL6w1Cc+QWAjM5GcBEikpDTsZg/J/209hk&#xa;n/nkmGU5FLsJA1ji2oL/94fAgt925qfzQOrrBru34ExeOFHHlJjqxtmoYq0ctNr7&#xa;AgMBAAGjggMdMIIDGTAOBgNVHQ8BAf8EBAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUH&#xa;AwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFFL1VJ499SVroARK&#xa;7IMoTP0aylmqMB8GA1UdIwQYMBaAFKhKamMEfd265tE5t6ZFZe/zqOyhMG8GCCsG&#xa;AQUFBwEBBGMwYTAuBggrBgEFBQcwAYYiaHR0cDovL29jc3AuaW50LXgzLmxldHNl&#xa;bmNyeXB0Lm9yZzAvBggrBgEFBQcwAoYjaHR0cDovL2NlcnQuaW50LXgzLmxldHNl&#xa;bmNyeXB0Lm9yZy8wIQYDVR0RBBowGIIWc3J2M2RjYzJjcHJkLm9pLmNvbS5icjCB&#xa;/gYDVR0gBIH2MIHzMAgGBmeBDAECATCB5gYLKwYBBAGC3xMBAQEwgdYwJgYIKwYB&#xa;BQUHAgEWGmh0dHA6Ly9jcHMubGV0c2VuY3J5cHQub3JnMIGrBggrBgEFBQcCAjCB&#xa;ngyBm1RoaXMgQ2VydGlmaWNhdGUgbWF5IG9ubHkgYmUgcmVsaWVkIHVwb24gYnkg&#xa;UmVseWluZyBQYXJ0aWVzIGFuZCBvbmx5IGluIGFjY29yZGFuY2Ugd2l0aCB0aGUg&#xa;Q2VydGlmaWNhdGUgUG9saWN5IGZvdW5kIGF0IGh0dHBzOi8vbGV0c2VuY3J5cHQu&#xa;b3JnL3JlcG9zaXRvcnkvMIIBAwYKKwYBBAHWeQIEAgSB9ASB8QDvAHUA23Sv7ssp&#xa;7LH+yj5xbSzluaq7NveEcYPHXZ1PN7Yfv2QAAAFjZwrsdgAABAMARjBEAiBLYE2o&#xa;hBsMmkozs29CGu/+Ym3QZEB4RTpfdbW0ZjUr1wIgVLvyvD0bfmQEd+2z4dCngurZ&#xa;Q6hJTvN2g+SPCtNV29oAdgApPFGWVMg5ZbqqUPxYB9S3b79Yeily3KTDDPTlRUf0&#xa;eAAAAWNnCuyKAAAEAwBHMEUCIEtcSUxohfQI057+8i6x7uhrBpBMnofmENZ/18Ou&#xa;lNzSAiEA18rm8hvdJEgBF6nuER5e6m3np9B+PJ9BXMDhgeojaxQwDQYJKoZIhvcN&#xa;AQELBQADggEBAFnvB8zZ63CzMQE45owlrbDI2skJUD91K5opW+qcKGVEEiaNLizK&#xa;RsPJ0e1L79yKSMD3SBxlO3QjNBF7QyZYpuhAkFO9UOhId2ZjibwrubG6F8/qobFa&#xa;FuD9WvTZbOHDIaqsQDU+ai5TNSNHGhW/QL1jGXyIGjW4q9TIvjF/GNDb+5z/yACd&#xa;rqSlYBGEuVwPf2TOi98FnuaI4D8mW6LMho/wxWSVxa6galBxy4P8vDjga5Ffr9Kw&#xa;1RMtkeNysTOURVXSzKmr6cNbATYF+Eq0nbBPi73kbUSARZzYMsoiwcriEhAD26G/&#xa;2GcxCCOO39IcKcMoFczBMU3dlF2FIhAy/1g=&#xa;-&#45;&#45;&#45;&#45;END CERTIFICATE-&#45;&#45;&#45;&#45;&#xa;</elem>
+</script><script id="http-server-header" output="Varnish"><elem>Varnish</elem>
+</script><script id="ssl-date" output="2025-06-13T18:28:20+00:00; 0s from scanner time."><elem key="delta">0.0</elem>
+<elem key="date">2025-06-13T18:28:20+00:00</elem>
+</script><script id="http-title" output="503 Backend fetch failed"><elem key="title">503 Backend fetch failed</elem>
+</script></port>
+<port protocol="tcp" portid="6426"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="1978" rttvar="4059" to="100000"/>
+</host>
+<runstats><finished time="1749839300" timestr="Fri Jun 13 15:28:20 2025" summary="Nmap done at Fri Jun 13 15:28:20 2025; 1 IP address (1 host up) scanned in 14.34 seconds" elapsed="14.34" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

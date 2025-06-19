@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jun 12 12:47:29 2025 as: nmap -sV -sC -p 6696 -oX output/189.84.128.190/fingerprint/189_84_128_190/service_scan_189_84_128_190.xml 189.84.128.190 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 6696 -oX output/189.84.128.190/fingerprint/189_84_128_190/service_scan_189_84_128_190.xml 189.84.128.190" start="1749743249" startstr="Thu Jun 12 12:47:29 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="6696"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.128.190" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749743250" endtime="1749743250"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.128.190" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="6696"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="babel" method="table" conf="3"/></port>
+</ports>
+<times srtt="2096" rttvar="5000" to="100000"/>
+</host>
+<runstats><finished time="1749743250" timestr="Thu Jun 12 12:47:30 2025" summary="Nmap done at Thu Jun 12 12:47:30 2025; 1 IP address (1 host up) scanned in 0.75 seconds" elapsed="0.75" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

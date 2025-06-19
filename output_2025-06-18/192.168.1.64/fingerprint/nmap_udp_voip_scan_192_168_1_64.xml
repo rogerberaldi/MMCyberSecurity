@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Thu Jun 12 18:39:26 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/192.168.1.64/fingerprint/nmap_udp_voip_scan_192_168_1_64.xml 192.168.1.64 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/192.168.1.64/fingerprint/nmap_udp_voip_scan_192_168_1_64.xml 192.168.1.64" start="1749764366" startstr="Thu Jun 12 18:39:26 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1749764366" endtime="1749764366"><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="192.168.1.64" addrtype="ipv4"/>
+<hostnames>
+<hostname name="bar.example.org" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="103">
+<extrareasons reason="port-unreach" count="103" proto="udp" ports="3478,5004,5060-5061,16384-16482"/>
+</extraports>
+</ports>
+<times srtt="14" rttvar="1" to="100000"/>
+</host>
+<runstats><finished time="1749764366" timestr="Thu Jun 12 18:39:26 2025" summary="Nmap done at Thu Jun 12 18:39:26 2025; 1 IP address (1 host up) scanned in 0.43 seconds" elapsed="0.43" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

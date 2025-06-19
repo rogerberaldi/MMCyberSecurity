@@ -1,0 +1,30 @@
+{
+  "A": [
+    "172.67.75.203",
+    "104.26.10.195",
+    "104.26.11.195"
+  ],
+  "AAAA": [
+    "2606:4700:20::ac43:4bcb",
+    "2606:4700:20::681a:bc3",
+    "2606:4700:20::681a:ac3"
+  ],
+  "MX": [
+    "30 aspmx2.googlemail.com.",
+    "30 aspmx3.googlemail.com.",
+    "10 aspmx.l.google.com.",
+    "20 alt1.aspmx.l.google.com.",
+    "20 alt2.aspmx.l.google.com."
+  ],
+  "NS": [
+    "malcolm.ns.cloudflare.com.",
+    "rita.ns.cloudflare.com."
+  ],
+  "TXT": [
+    "\"MS=ms17378086\"",
+    "\"google-site-verification=JKg93jy8LNk2uPxkwaJG_a2oNY6lUTe7xQOyV51_uHk\""
+  ],
+  "SOA": [
+    "malcolm.ns.cloudflare.com. dns.cloudflare.com. 2372822379 10000 2400 604800 1800"
+  ]
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 06:15:05 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/directcallsoft.com/fingerprint/nmap_udp_voip_scan_189_84_135_141.xml 189.84.135.141 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/directcallsoft.com/fingerprint/nmap_udp_voip_scan_189_84_135_141.xml 189.84.135.141" start="1749287705" startstr="Sat Jun  7 06:15:05 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.135.141" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749287706" endtime="1749287914"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.135.141" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="102">
+<extrareasons reason="port-unreach" count="102" proto="udp" ports="3478,5004,5061,16384-16482"/>
+</extraports>
+<port protocol="udp" portid="5060"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" servicefp="SF-Port5060-UDP:V=7.92%I=7%D=6/7%Time=6844038F%P=x86_64-redhat-linux-gnu%r(SIPOptions,13E,&quot;SIP/2\.0\x20478\x20Unresolvable\x20destination\x20\(478/SL\)\r\nVia:\x20SIP/2\.0/UDP\x20192\.168\.1\.64:43321;branch=foo;rport=24327;received=38\.43\.101\.69\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=8276ef143e1e4d49add5ea9449f69a3b\.843331df\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nServer:\x20kamailio\x20\(5\.6\.3\x20\(x86_64/linux\)\)\r\nContent-Length:\x200\r\n\r\n&quot;);" method="table" conf="3"/></port>
+</ports>
+<times srtt="4134" rttvar="660" to="100000"/>
+</host>
+<runstats><finished time="1749287914" timestr="Sat Jun  7 06:18:34 2025" summary="Nmap done at Sat Jun  7 06:18:34 2025; 1 IP address (1 host up) scanned in 208.72 seconds" elapsed="208.72" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang='pt-BR'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MaltauroMartins - CyberSecurity Report</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body { padding-top: 50px; }
+        #sidebar { position: fixed; top: 51px; left: 0; bottom: 0; width: 250px; padding: 20px; background-color: #f5f5f5; border-right: 1px solid #eee; overflow-y: auto; }
+        #main-content { margin-left: 260px; }
+        .nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus { color: #fff; background-color: #428bca; }
+        .port-section { padding-top: 60px; margin-top: -50px; } /* Offset for navbar anchor */
+        .vuln-details summary { font-size: 1.1em; font-weight: bold; cursor: pointer; }
+        .vuln-details pre { margin-top: 10px; }
+        .whatweb-table { margin-top: 15px; }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Relatório de Segurança Cibernética - DirectCall - Web scan monitoramento.directdial.com.br</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            
+    <div id="sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Visão Geral</a></li>
+            <li><a href="#port_80">Porta 80</a></li><li><a href="#port_443">Porta 443</a></li><li><a href="#port_2052">Porta 2052</a></li><li><a href="#port_2053">Porta 2053</a></li><li><a href="#port_2082">Porta 2082</a></li><li><a href="#port_2083">Porta 2083</a></li><li><a href="#port_2086">Porta 2086</a></li><li><a href="#port_2087">Porta 2087</a></li><li><a href="#port_2095">Porta 2095</a></li><li><a href="#port_2096">Porta 2096</a></li><li><a href="#port_8080">Porta 8080</a></li><li><a href="#port_8443">Porta 8443</a></li><li><a href="#port_8880">Porta 8880</a></li>
+        </ul>
+    </div>
+    
+            <div id="main-content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                <div id="port_80" class="port-section"><h2>Porta 80 <small>(http://monitoramento.directdial.com.br:80)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.96.1"
+]</pre></td></tr></tbody></table><h4>Meta-Refresh-Redirect</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "http://monitoramento.directdial.com.br/zabbix"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-cache-status,report-to,nel,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.32.1"
+]</pre></td></tr></tbody></table><h4>RedirectLocation</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "http://monitoramento.directdial.com.br/zabbix/"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "301 Moved Permanently"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-cache-status,report-to,nel,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>Cookies</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "zbx_session"
+]</pre></td></tr></tbody></table><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTML5</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>HttpOnly</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "zbx_session"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.64.1"
+]</pre></td></tr></tbody></table><h4>Meta-Author</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "Zabbix SIA"
+]</pre></td></tr></tbody></table><h4>PasswordField</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "password"
+]</pre></td></tr></tbody></table><h4>Script</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "Zabbix"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "x-content-type-options,cf-cache-status,report-to,nel,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>X-Frame-Options</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "SAMEORIGIN"
+]</pre></td></tr></tbody></table><h4>X-UA-Compatible</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "IE=Edge"
+]</pre></td></tr></tbody></table><h4>X-XSS-Protection</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "1; mode=block"
+]</pre></td></tr></tbody></table></div><hr><div id="port_443" class="port-section"><h2>Porta 443 <small>(http://monitoramento.directdial.com.br:443)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.112.1"
+]</pre></td></tr></tbody></table><h4>Meta-Refresh-Redirect</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "http://monitoramento.directdial.com.br/zabbix"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "nel,report-to,cf-cache-status,cf-ray,alt-svc"
+]</pre></td></tr></tbody></table><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.64.1"
+]</pre></td></tr></tbody></table><h4>RedirectLocation</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "http://monitoramento.directdial.com.br/zabbix/"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "301 Moved Permanently"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-cache-status,report-to,nel,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>Cookies</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "zbx_session"
+]</pre></td></tr></tbody></table><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTML5</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>HttpOnly</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "zbx_session"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.112.1"
+]</pre></td></tr></tbody></table><h4>Meta-Author</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "Zabbix SIA"
+]</pre></td></tr></tbody></table><h4>PasswordField</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "password"
+]</pre></td></tr></tbody></table><h4>Script</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "Zabbix"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "x-content-type-options,cf-cache-status,report-to,nel,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>X-Frame-Options</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "SAMEORIGIN"
+]</pre></td></tr></tbody></table><h4>X-UA-Compatible</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "IE=Edge"
+]</pre></td></tr></tbody></table><h4>X-XSS-Protection</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "1; mode=block"
+]</pre></td></tr></tbody></table></div><hr><div id="port_2052" class="port-section"><h2>Porta 2052 <small>(http://monitoramento.directdial.com.br:2052)</small></h2></div><hr><div id="port_2053" class="port-section"><h2>Porta 2053 <small>(http://monitoramento.directdial.com.br:2053)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.112.1"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "400 The plain HTTP request was sent to HTTPS port"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-ray"
+]</pre></td></tr></tbody></table></div><hr><div id="port_2082" class="port-section"><h2>Porta 2082 <small>(http://monitoramento.directdial.com.br:2082)</small></h2></div><hr><div id="port_2083" class="port-section"><h2>Porta 2083 <small>(http://monitoramento.directdial.com.br:2083)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.48.1"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "400 The plain HTTP request was sent to HTTPS port"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-ray"
+]</pre></td></tr></tbody></table></div><hr><div id="port_2086" class="port-section"><h2>Porta 2086 <small>(http://monitoramento.directdial.com.br:2086)</small></h2></div><hr><div id="port_2087" class="port-section"><h2>Porta 2087 <small>(http://monitoramento.directdial.com.br:2087)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.112.1"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "400 The plain HTTP request was sent to HTTPS port"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-ray"
+]</pre></td></tr></tbody></table></div><hr><div id="port_2095" class="port-section"><h2>Porta 2095 <small>(http://monitoramento.directdial.com.br:2095)</small></h2></div><hr><div id="port_2096" class="port-section"><h2>Porta 2096 <small>(http://monitoramento.directdial.com.br:2096)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.32.1"
+]</pre></td></tr></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "400 The plain HTTP request was sent to HTTPS port"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cf-ray"
+]</pre></td></tr></tbody></table></div><hr><div id="port_8080" class="port-section"><h2>Porta 8080 <small>(http://monitoramento.directdial.com.br:8080)</small></h2><h3><i class='fa fa-cogs'></i> Tecnologias (Nuclei)</h3><ul><li><b>WAF Detection</b> <span class='text-muted'>(waf-detect)</span></li><li><b>Wappalyzer Technology Detection</b> <span class='text-muted'>(tech-detect)</span></li></ul><h3><i class='fa fa-info-circle'></i> Tecnologias (WhatWeb)</h3><h4>Country</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "UNITED STATES"
+]</pre></td></tr><tr><th style='width: 150px;'>Module</th><td><pre style='margin:0;'>[
+  "US"
+]</pre></td></tr></tbody></table><h4>HTML5</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>HTTPServer</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "cloudflare"
+]</pre></td></tr></tbody></table><h4>IP</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "104.21.32.1"
+]</pre></td></tr></tbody></table><h4>Script</h4><table class="table table-bordered table-striped whatweb-table"><tbody></tbody></table><h4>Title</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "monitoramento.directdial.com.br | 521: Web server is down"
+]</pre></td></tr></tbody></table><h4>UncommonHeaders</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "report-to,nel,referrer-policy,cf-ray,alt-svc,server-timing"
+]</pre></td></tr></tbody></table><h4>X-Frame-Options</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "SAMEORIGIN"
+]</pre></td></tr></tbody></table><h4>X-UA-Compatible</h4><table class="table table-bordered table-striped whatweb-table"><tbody><tr><th style='width: 150px;'>String</th><td><pre style='margin:0;'>[
+  "IE=Edge"
+]</pre></td></tr></tbody></table></div><hr><div id="port_8443" class="port-section"><h2>Porta 8443 <small>(http://monitoramento.directdial.com.br:8443)</small></h2></div><hr><div id="port_8880" class="port-section"><h2>Porta 8880 <small>(http://monitoramento.directdial.com.br:8880)</small></h2></div><hr>
+                
+    <hr style="margin-top: 40px;">
+    <footer class="footer" style="padding: 20px 0; margin-top: 20px;">
+      <div class="container">
+        
+        
+        <p class="text-muted" style="text-align: center; margin: 0; font-size: 12px; color: #777;">
+          Documento confidencial - Este relatório foi gerado pela <a href="https://maltauromartins.com">MaltauroMartins</a> para Directcall. <br/>
+          Relatório Técnico de Segurança Cibernética - Gerado em 15/06/2025.<br/>
+          <a href="https://maltauromartins.com" target="_blank" style="color: #555; text-decoration: none;">MaltauroMartins Soluções Tecnológicas</a>
+        </p>
+
+      </div>
+    </footer>
+    
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

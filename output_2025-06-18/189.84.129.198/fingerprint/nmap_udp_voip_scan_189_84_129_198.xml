@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun 14 20:25:02 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.129.198/fingerprint/nmap_udp_voip_scan_189_84_129_198.xml 189.84.129.198 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.129.198/fingerprint/nmap_udp_voip_scan_189_84_129_198.xml 189.84.129.198" start="1749943502" startstr="Sat Jun 14 20:25:02 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.129.198" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749943503" endtime="1749943625"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.129.198" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="102">
+<extrareasons reason="port-unreach" count="102" proto="udp" ports="3478,5004,5061,16384-16482"/>
+</extraports>
+<port protocol="udp" portid="5060"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" extrainfo="SIP end point; Status: 200 OK" servicefp="SF-Port5060-UDP:V=7.92%I=7%D=6/14%Time=684E0544%P=x86_64-redhat-linux-gnu%r(SIPOptions,26E,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/UDP\x20192\.168\.1\.64:35090;branch=foo;rport=24456\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=aS1tDKZr0DNjj\r\nCall-ID:\x2050000\r\nCSeq:\x2042\x20OPTIONS\r\nContact:\x20&lt;sip:189\.84\.129\.198&gt;\r\nUser-Agent:\x20FreeSWITCH-mod_sofia/1\.10\.3-release~64bit\r\nAccept:\x20application/sdp\r\nAllow:\x20INVITE,\x20ACK,\x20BYE,\x20CANCEL,\x20OPTIONS,\x20MESSAGE,\x20INFO,\x20UPDATE,\x20REGISTER,\x20REFER,\x20NOTIFY,\x20PUBLISH,\x20SUBSCRIBE\r\nSupported:\x20timer,\x20path,\x20replaces\r\nAllow-Events:\x20talk,\x20hold,\x20conference,\x20presence,\x20as-feature-event,\x20dialog,\x20line-seize,\x20call-info,\x20sla,\x20include-session-description,\x20presence\.winfo,\x20message-summary,\x20refer\r\nContent-Length:\x200\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+</ports>
+<times srtt="3646" rttvar="239" to="100000"/>
+</host>
+<runstats><finished time="1749943625" timestr="Sat Jun 14 20:27:05 2025" summary="Nmap done at Sat Jun 14 20:27:05 2025; 1 IP address (1 host up) scanned in 122.85 seconds" elapsed="122.85" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

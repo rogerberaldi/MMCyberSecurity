@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Fri Jun 13 01:52:55 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.129.12/fingerprint/nmap_udp_voip_scan_189_84_129_12.xml 189.84.129.12 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.129.12/fingerprint/nmap_udp_voip_scan_189_84_129_12.xml 189.84.129.12" start="1749790375" startstr="Fri Jun 13 01:52:55 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.129.12" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749790376" endtime="1749790603"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.129.12" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><extraports state="closed" count="100">
+<extrareasons reason="port-unreach" count="100" proto="udp" ports="5004,16384-16482"/>
+</extraports>
+<port protocol="udp" portid="3478"><state state="open" reason="udp-response" reason_ttl="59"/><service name="stun" method="table" conf="3"/></port>
+<port protocol="udp" portid="5060"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" extrainfo="SIP end point; Status: 200 OK" servicefp="SF-Port5060-UDP:V=7.92%I=7%D=6/13%Time=684BAF30%P=x86_64-redhat-linux-gnu%r(SIPOptions,12E,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/UDP\x20192\.168\.1\.64:37575;branch=foo;rport\r\nCSeq:\x2042\x20OPTIONS\r\nContent-Length:\x200\r\nCall-ID:\x2050000\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=015504437544968\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nAllow:\x20INVITE,\x20ACK,\x20OPTIONS,\x20BYE,\x20CANCEL,\x20REGISTER,\x20INFO,\x20NOTIFY,\x20MESSAGE,\x20SUBSCRIBE,\x20REFER,\x20PUBLISH,\x20UPDATE\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+<port protocol="udp" portid="5061"><state state="open" reason="udp-response" reason_ttl="0"/><service name="sip" extrainfo="SIP end point; Status: 200 OK" servicefp="SF-Port5061-UDP:V=7.92%I=7%D=6/13%Time=684BAF49%P=x86_64-redhat-linux-gnu%r(SIPOptions,11E,&quot;SIP/2\.0\x20200\x20OK\r\nVia:\x20SIP/2\.0/UDP\x20nm;branch=foo;rport\r\nCSeq:\x2042\x20OPTIONS\r\nContent-Length:\x200\r\nCall-ID:\x2050000\r\nTo:\x20&lt;sip:nm2@nm2&gt;;tag=015529437569984\r\nFrom:\x20&lt;sip:nm@nm&gt;;tag=root\r\nAllow:\x20INVITE,\x20ACK,\x20OPTIONS,\x20BYE,\x20CANCEL,\x20REGISTER,\x20INFO,\x20NOTIFY,\x20MESSAGE,\x20SUBSCRIBE,\x20REFER,\x20PUBLISH,\x20UPDATE\r\n\r\n&quot;);" method="probed" conf="10"/></port>
+</ports>
+<times srtt="4211" rttvar="410" to="100000"/>
+</host>
+<runstats><finished time="1749790603" timestr="Fri Jun 13 01:56:43 2025" summary="Nmap done at Fri Jun 13 01:56:43 2025; 1 IP address (1 host up) scanned in 227.42 seconds" elapsed="227.42" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

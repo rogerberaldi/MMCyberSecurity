@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 01:33:19 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/directcall.com.br/fingerprint/nmap_udp_voip_scan_3_163_63_57.xml 3.163.63.57 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/directcall.com.br/fingerprint/nmap_udp_voip_scan_3_163_63_57.xml 3.163.63.57" start="1749270799" startstr="Sat Jun  7 01:33:19 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="3.163.63.57" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749270799" endtime="1749271419"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="3.163.63.57" addrtype="ipv4"/>
+<hostnames>
+<hostname name="server-3-163-63-57.gru3.r.cloudfront.net" type="PTR"/>
+</hostnames>
+<ports><extraports state="open|filtered" count="103">
+<extrareasons reason="no-response" count="103" proto="udp" ports="3478,5004,5060-5061,16384-16482"/>
+</extraports>
+</ports>
+<times srtt="1682" rttvar="5000" to="100000"/>
+</host>
+<runstats><finished time="1749271419" timestr="Sat Jun  7 01:43:39 2025" summary="Nmap done at Sat Jun  7 01:43:39 2025; 1 IP address (1 host up) scanned in 620.69 seconds" elapsed="620.69" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

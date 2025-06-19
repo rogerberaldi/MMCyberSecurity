@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Tue Jun 17 19:25:40 2025 as: nmap -sV -sC -p 179 -oX output/189.84.130.254/fingerprint/189_84_130_254/service_scan_189_84_130_254.xml 189.84.130.254 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 179 -oX output/189.84.130.254/fingerprint/189_84_130_254/service_scan_189_84_130_254.xml 189.84.130.254" start="1750199140" startstr="Tue Jun 17 19:25:40 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="179"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.130.254" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750199140" endtime="1750199140"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.130.254" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="179"><state state="filtered" reason="admin-prohibited" reason_ttl="253" reason_ip="38.43.102.128"/><service name="bgp" method="table" conf="3"/></port>
+</ports>
+<times srtt="1868" rttvar="3983" to="100000"/>
+</host>
+<runstats><finished time="1750199140" timestr="Tue Jun 17 19:25:40 2025" summary="Nmap done at Tue Jun 17 19:25:40 2025; 1 IP address (1 host up) scanned in 0.55 seconds" elapsed="0.55" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

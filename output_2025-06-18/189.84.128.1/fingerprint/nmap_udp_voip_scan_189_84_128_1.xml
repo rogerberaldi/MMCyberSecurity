@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Mon Jun  9 01:02:31 2025 as: nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.128.1/fingerprint/nmap_udp_voip_scan_189_84_128_1.xml 189.84.128.1 -->
+<nmaprun scanner="nmap" args="nmap -sU -sV -p 5060,5061,3478,5004,16384-16482 -oX output/189.84.128.1/fingerprint/nmap_udp_voip_scan_189_84_128_1.xml 189.84.128.1" start="1749441751" startstr="Mon Jun  9 01:02:31 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="udp" protocol="udp" numservices="103" services="3478,5004,5060-5061,16384-16482"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.128.1" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>

@@ -1,0 +1,5918 @@
+[
+  {
+    "ip": "104.26.2.154",
+    "asn": "13335",
+    "asn_cidr": "104.26.0.0/20",
+    "asn_country_code": "US",
+    "asn_date": "2014-03-28",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET-104-16-0-0-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/104.16.0.0",
+        "https://whois.arin.net/rest/net/NET-104-16-0-0-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T06:51:26-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2014-03-28T11:30:55-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "104.16.0.0",
+      "end_address": "104.31.255.255",
+      "cidr": "104.16.0.0/12",
+      "ip_version": "v4",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET-104-0-0-0-0"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "routing",
+          "noc"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "104.26.3.154",
+    "asn": "13335",
+    "asn_cidr": "104.26.0.0/20",
+    "asn_country_code": "US",
+    "asn_date": "2014-03-28",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET-104-16-0-0-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/104.16.0.0",
+        "https://whois.arin.net/rest/net/NET-104-16-0-0-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T06:51:26-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2014-03-28T11:30:55-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "104.16.0.0",
+      "end_address": "104.31.255.255",
+      "cidr": "104.16.0.0/12",
+      "ip_version": "v4",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET-104-0-0-0-0"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "routing",
+          "noc"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "108.158.137.15",
+    "asn": "16509",
+    "asn_cidr": "108.158.136.0/21",
+    "asn_country_code": "US",
+    "asn_date": "2020-12-11",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET-108-156-0-0-2",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/108.156.0.0",
+        "https://whois.arin.net/rest/net/NET-108-156-0-0-2",
+        "https://rdap.arin.net/registry/ip/108.156.0.0/14"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2021-05-03T16:58:28-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2021-05-03T16:58:28-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "108.156.0.0",
+      "end_address": "108.159.255.255",
+      "cidr": "108.156.0.0/14",
+      "ip_version": "v4",
+      "type": "ALLOCATION",
+      "name": "AMAZON-CF",
+      "country": null,
+      "parent_handle": "NET-108-156-0-0-1"
+    },
+    "objects": {
+      "AMAZON-4": {
+        "handle": "AMAZON-4",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/AMAZON-4",
+          "https://whois.arin.net/rest/org/AMAZON-4"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2022-09-30T16:19:20-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "1995-01-23T00:00:00-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Amazon.com, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "1918 8th Ave\nSEATTLE\nWA\n98101-1244\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "ARMP-ARIN",
+          "IPROU3-ARIN",
+          "AEA8-ARIN",
+          "AANO1-ARIN",
+          "ANO24-ARIN",
+          "IPMAN40-ARIN"
+        ]
+      },
+      "ARMP-ARIN": {
+        "handle": "ARMP-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/ARMP-ARIN",
+          "https://whois.arin.net/rest/poc/ARMP-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-10-28T12:10:14-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-22T10:42:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "routing"
+        ],
+        "contact": {
+          "name": "AWS RPKI Management POC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "13200 Woodland Park Dr\nHerndon\nHerndon\nVA\n20171\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-206-555-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "aws-rpki-routing-poc@amazon.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "IPROU3-ARIN": {
+        "handle": "IPROU3-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "Report abuse incidents to our Abuse POC AEA8-ARIN.  \n\nThank you for your cooperation.",
+            "links": null
+          }
+        ],
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/IPROU3-ARIN",
+          "https://whois.arin.net/rest/poc/IPROU3-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-11T12:25:25-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2019-07-24T13:17:11-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "routing"
+        ],
+        "contact": {
+          "name": "IP Routing",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "1918 8th Ave\nSeattle\nWA\n98109\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-206-555-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "aws-routing-poc@amazon.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "AEA8-ARIN": {
+        "handle": "AEA8-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "    Abuse of Amazon Web Services - The activity you have detected originates from a dynamic hosting environment.\n    For fastest response, please submit abuse reports via the AWS webform: https://repost.aws/knowledge-center/report-aws-abuse\n    If your company system is configured to automatically send abuse reports, please send them to abuse@amazonaws.com including:\n    * src IP\n    * dest IP (your IP)\n    * dest port\n    * Accurate date/timestamp and timezone of activity\n    * Intensity/frequency (short log extracts)\n    * Your contact details (phone and email)",
+            "links": null
+          }
+        ],
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/AEA8-ARIN",
+          "https://whois.arin.net/rest/poc/AEA8-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-29T14:56:58-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2008-03-24T14:12:07-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Amazon EC2 Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "Amazon Web Services Elastic Compute Cloud, EC2\n410 Terry Avenue North\nSeattle\nWA\n98109-5210\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-206-555-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "trustandsafety@support.aws.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "AANO1-ARIN": {
+        "handle": "AANO1-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/AANO1-ARIN",
+          "https://whois.arin.net/rest/poc/AANO1-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-28T13:20:44-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-03-04T18:38:30-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "Amazon AWS Network Operations",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "410 Terry Ave N\nSeattle\nWA\n98109\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-206-555-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "amzn-noc-contact@amazon.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ANO24-ARIN": {
+        "handle": "ANO24-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/ANO24-ARIN",
+          "https://whois.arin.net/rest/poc/ANO24-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-28T13:22:58-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2005-09-19T06:00:05-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Amazon EC2 Network Operations",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "PO BOX 81226\nSeattle\nWA\n98108-1226\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-206-555-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "amzn-noc-contact@amazon.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "IPMAN40-ARIN": {
+        "handle": "IPMAN40-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "Report abuse incidents to our Abuse POC AEA8-ARIN.  \n\nThank you for your cooperation.",
+            "links": null
+          }
+        ],
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/IPMAN40-ARIN",
+          "https://whois.arin.net/rest/poc/IPMAN40-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-24T16:07:59-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2013-11-12T22:06:06-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "administrative"
+        ],
+        "contact": {
+          "name": "IP Management",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "1918 8th Ave\nSeattle\nWA\n98109\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-703-464-1336"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "ipmanagement@amazon.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "172.67.70.85",
+    "asn": "13335",
+    "asn_cidr": "172.67.64.0/20",
+    "asn_country_code": "US",
+    "asn_date": "2015-02-25",
+    "asn_registry": "asn_registry",
+    "network": {
+      "handle": "NET-172-64-0-0-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/172.64.0.0",
+        "https://whois.arin.net/rest/net/NET-172-64-0-0-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T07:54:28-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2015-02-25T20:57:09-05:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "172.64.0.0",
+      "end_address": "172.71.255.255",
+      "cidr": "172.64.0.0/13",
+      "ip_version": "v4",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET-172-0-0-0-0"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc",
+          "routing"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "181.41.198.253",
+    "asn": "212238",
+    "asn_cidr": "181.41.198.0/24",
+    "asn_country_code": "AE",
+    "asn_date": "2020-11-24",
+    "asn_registry": "ripencc",
+    "network": {
+      "handle": "181.41.198.0 - 181.41.198.255",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": null,
+          "description": "End User Organization",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Filtered",
+          "description": "This output has been filtered.",
+          "links": null
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit:",
+          "links": [
+            "https://www.ripe.net/contact-form?topic=ripe_dbm&show_form=true"
+          ]
+        },
+        {
+          "title": "Source",
+          "description": "Objects returned came from source\nRIPE",
+          "links": null
+        },
+        {
+          "title": "Terms and Conditions",
+          "description": "This is the RIPE Database query service. The objects are in RDAP format.",
+          "links": [
+            "http://www.ripe.net/db/support/db-terms-conditions.pdf"
+          ]
+        }
+      ],
+      "links": [
+        "https://geofeed.ipxo.com/geofeed.txt",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-up/181.41.198.0%20-%20181.41.198.255",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-up/181.41.198.0%20-%20181.41.198.255?status=active",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-down/181.41.198.0%20-%20181.41.198.255",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-top/181.41.198.0%20-%20181.41.198.255",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-top/181.41.198.0%20-%20181.41.198.255?status=active",
+        "https://rdap.db.ripe.net/ips/rirSearch1/rdap-bottom/181.41.198.0%20-%20181.41.198.255",
+        "https://rdap.db.ripe.net/ip/181.41.198.253",
+        "http://www.ripe.net/data-tools/support/documentation/terms"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2023-08-25T10:37:34Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2025-02-12T15:18:11Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "181.41.198.0",
+      "end_address": "181.41.198.255",
+      "cidr": "181.41.198.0/24",
+      "ip_version": "v4",
+      "type": "ASSIGNED PA",
+      "name": "NET-181-41-198-0-24",
+      "country": "SE",
+      "parent_handle": "181.41.192.0 - 181.41.223.255"
+    },
+    "objects": {
+      "CU908-RIPE": {
+        "handle": "CU908-RIPE",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": null,
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Private Customer",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "Private Residence"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": "abuse",
+              "value": "report@abuseradar.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "netutils-mnt"
+        ]
+      },
+      "netutils-mnt": {
+        "handle": "netutils-mnt",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.db.ripe.net/entity/netutils-mnt",
+          "http://www.ripe.net/data-tools/support/documentation/terms"
+        ],
+        "events": null,
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "netutils-mnt",
+          "kind": "individual",
+          "address": null,
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ORG-CU61-RIPE": {
+        "handle": "ORG-CU61-RIPE",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.db.ripe.net/entity/ORG-CU61-RIPE",
+          "http://www.ripe.net/data-tools/support/documentation/terms"
+        ],
+        "events": null,
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Private Customer",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "Private Residence"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "186.202.127.79",
+    "asn": "27715",
+    "asn_cidr": "186.202.124.0/22",
+    "asn_country_code": "BR",
+    "asn_date": "2010-04-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "186.202.0.0/16",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:21-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/186.202.0.0/16",
+        "https://rdap.registro.br/domain/202.186.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2010-04-29T14:33:06Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2022-08-04T22:33:18Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "186.202.0.0",
+      "end_address": "186.202.255.255",
+      "cidr": "186.202.0.0/16",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "143073",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02351877000152": {
+        "handle": "02351877000152",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02351877000152"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "1998-12-02T12:00:00Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2021-10-05T14:08:17Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Locaweb Servi\u00e7os de Internet S/A",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "GIM6",
+          "p2"
+        ]
+      },
+      "HOSIT": {
+        "handle": "HOSIT",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-08T14:06:58Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-11-23T21:08:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hospedagem de Sites",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@locaweb.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "INRLO": {
+        "handle": "INRLO",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2021-10-04T18:09:30Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2021-10-04T20:24:58Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Infra Redes Locaweb",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "infra-redes@locaweb.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "GIM6": {
+        "handle": "GIM6",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "remarks",
+            "description": "User GIM6",
+            "links": null
+          }
+        ],
+        "notices": [
+          {
+            "title": "Terms and Conditions",
+            "description": "This is the LACNIC RDAP service. Objects are in RDAP format.",
+            "links": [
+              "https://www.lacnic.net/registration-data-access-protocol"
+            ]
+          }
+        ],
+        "links": [
+          "https://rdap.lacnic.net/rdap/entity/GIM6"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2011-06-11T15:30:09Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2011-06-11T15:30:09Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "administrative"
+        ],
+        "contact": {
+          "name": "Giovanni Mezquita",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "Instituto Tecnologico de Merida Antigua Carr. a Progreso km. 5 Merida, Yucatan CP 97118\nCiudad\n00000\nMX"
+            }
+          ],
+          "phone": [
+            {
+              "type": "voice",
+              "value": "+52  994481134481"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "gio@itmerida.mx"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "p2": {}
+    }
+  },
+  {
+    "ip": "189.84.129.134",
+    "asn": "28369",
+    "asn_cidr": "189.84.129.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:22-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/129.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.130.186",
+    "asn": "28369",
+    "asn_cidr": "189.84.130.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:23-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/130.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.130.250",
+    "asn": "28369",
+    "asn_cidr": "189.84.130.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:23-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/130.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.111",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:24-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.134",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:24-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.161",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:25-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.176",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:25-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.59",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:26-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.133.81",
+    "asn": "28369",
+    "asn_cidr": "189.84.133.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:26-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/133.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.134.140",
+    "asn": "28369",
+    "asn_cidr": "189.84.134.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:27-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/134.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.134.143",
+    "asn": "28369",
+    "asn_cidr": "189.84.134.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:28-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/134.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.134.222",
+    "asn": "28369",
+    "asn_cidr": "189.84.134.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:28-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/134.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.134.250",
+    "asn": "28369",
+    "asn_cidr": "189.84.134.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:28-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/134.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "189.84.135.137",
+    "asn": "28369",
+    "asn_cidr": "189.84.135.0/24",
+    "asn_country_code": "BR",
+    "asn_date": "2011-07-29",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "189.84.128.0/21",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:29-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/189.84.128.0/21",
+        "https://rdap.registro.br/domain/135.84.189.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2011-07-29T17:38:57Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2013-03-07T20:00:55Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "189.84.128.0",
+      "end_address": "189.84.135.255",
+      "cidr": "189.84.128.0/21",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "168985",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02677129000164": {
+        "handle": "02677129000164",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02677129000164"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T13:01:11Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2017-07-24T19:00:38Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "SIGNALLINK INFORMATICA LTDA",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "HUGAL"
+        ]
+      },
+      "HUGAL": {
+        "handle": "HUGAL",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2007-03-16T12:37:02Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2023-09-20T12:20:15Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "abuse"
+        ],
+        "contact": {
+          "name": "Hudson Galvino",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "contasapagar@directcall.com.br"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "192.168.5.200",
+    "error": "IPv4 address 192.168.5.200 is already defined as Private-Use Networks via RFC 1918."
+  },
+  {
+    "ip": "200.146.78.119",
+    "asn": "18881",
+    "asn_cidr": "200.146.64.0/18",
+    "asn_country_code": "BR",
+    "asn_date": "2003-05-28",
+    "asn_registry": "lacnic",
+    "network": {
+      "handle": "200.146.64.0/18",
+      "status": [
+        "active"
+      ],
+      "remarks": null,
+      "notices": [
+        {
+          "title": "Use and Privacy Policy",
+          "description": "Copyright (c) Nic.br - Use of this data is governed by the Use and Privacy Policy. Distribution, commercialization, reproduction, and use for advertising or similar purposes are expressly prohibited.\n2025-05-20T21:02:30-03:00 - 38.43.101.69",
+          "links": [
+            "https://registro.br/upp"
+          ]
+        }
+      ],
+      "links": [
+        "https://rdap.registro.br/ip/200.146.64.0/18",
+        "https://rdap.registro.br/domain/78.146.200.in-addr.arpa"
+      ],
+      "events": [
+        {
+          "action": "registration",
+          "timestamp": "2003-05-28T12:00:00Z",
+          "actor": null
+        },
+        {
+          "action": "last changed",
+          "timestamp": "2016-09-09T17:58:56Z",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "200.146.64.0",
+      "end_address": "200.146.127.255",
+      "cidr": "200.146.64.0/18",
+      "ip_version": "v4",
+      "type": "ALLOCATED",
+      "name": "36165",
+      "country": "BR",
+      "parent_handle": null
+    },
+    "objects": {
+      "02558157000162": {
+        "handle": "02558157000162",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.registro.br/entity/02558157000162"
+        ],
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "1998-03-12T12:00:00Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2013-10-23T16:32:02Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "TELEF\u00d4NICA BRASIL S.A",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "ARITE"
+        ]
+      },
+      "CSTBR": {
+        "handle": "CSTBR",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2018-07-13T19:51:26Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2018-07-13T19:52:46Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "CSIRT TELEFONICA BR",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "abuse.br@telefonica.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "GVO6": {
+        "handle": "GVO6",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": null,
+        "events": [
+          {
+            "action": "registration",
+            "timestamp": "2001-06-13T12:00:00Z",
+            "actor": null
+          },
+          {
+            "action": "last changed",
+            "timestamp": "2022-03-31T19:25:10Z",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "GVT Operacao",
+          "kind": "individual",
+          "address": [
+            {
+              "type": null,
+              "value": "BR"
+            }
+          ],
+          "phone": null,
+          "email": [
+            {
+              "type": null,
+              "value": "c.servicoip.br@telefonica.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ARITE": {}
+    }
+  },
+  {
+    "ip": "216.198.53.2",
+    "asn": "209242",
+    "asn_cidr": "216.198.53.0/24",
+    "asn_country_code": "US",
+    "asn_date": "2015-05-29",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET-216-198-0-0-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "-----BEGIN CERTIFICATE-----MIIDrTCCApWgAwIBAgIUb2kE6UuyvVS6Ogv1Gl16uR/hByUwDQYJKoZIhvcNAQELBQAwZjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRAwDgYDVQQKDAdaZW5kZXNrMRQwEgYDVQQDDAt6ZW5kZXNrLmNvbTEiMCAGCSqGSIb3DQEJARYTbmV0d29ya0B6ZW5kZXNrLmNvbTAeFw0yNDAzMjAxODA3MjlaFw0yNTAzMjAxODA3MjlaMGYxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEQMA4GA1UECgwHWmVuZGVzazEUMBIGA1UEAwwLemVuZGVzay5jb20xIjAgBgkqhkiG9w0BCQEWE25ldHdvcmtAemVuZGVzay5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCh/RDULKQAoGRnK27qp2qWq9ocelBqq4auQ18xmHXS2FLMIstkjrKd9+hVc9fltpumcKenohftmxrVFCDF+dZHpdE8NlI4i3bxsWJmFEPxnYIANG02Zzr1LpbfbQr9l1FKF5DZKvaSy76ZkMFrdsDeugkFwgjyyGuzNriikN2F4Uvs3SPx1LtkSo4fYW7XQOtE9AdlKShXZJnD68w4Be5ovqkumkzLRH4SwjHaoU5PBwtH1U1KZzltAUtaR50GUCKsP0ZhXdLDUBDOZOvhN30hAxn1FzKNoAt/o6DMEFdtjS+Ztju1Drv2di9xYXclwRLPbi/ERay4O3i60FZEkCHLAgMBAAGjUzBRMB0GA1UdDgQWBBR1CpJAhT1SV9jb7/IAiWF1TaEoGDAfBgNVHSMEGDAWgBR1CpJAhT1SV9jb7/IAiWF1TaEoGDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQAAKxCseygRx1uCz9o9S2PPREA+Z5ubqPPmqsazbzk7kIhMKJyyPJY9GDy2KgUSK/2SXyeC5lsek+9R9KzJYR5wwxVOdlAjo7PXeAjwV+2xZKfKQPS8phnYsxChE9vYvqdNiKB9QF9inKtVyczCSkwCqn/PTPbsQnkvTfvyRLOHeTzsctfmRYTMuDoRS2gfHcWyJZ1Pl3f2q6zAOgfi91EUAb0QYTOF8Q0RTrxNHZ9s6rTornwIaFPFRnewiua7c3UT2NkvUZausm1ykiy7ATruol3YzWH5oCzXBWsAsXyPZVgbitMqCADjxVeYKKZLJz3yq6WPqaVAoyPyMKnI4bsG-----END CERTIFICATE-----",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/216.198.0.0",
+        "https://whois.arin.net/rest/net/NET-216-198-0-0-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-03-20T14:08:33-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2015-05-29T08:56:20-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "216.198.0.0",
+      "end_address": "216.198.63.255",
+      "cidr": "216.198.0.0/18",
+      "ip_version": "v4",
+      "type": "DIRECT ALLOCATION",
+      "name": "ZENDESK-NETWORK",
+      "country": null,
+      "parent_handle": "NET-216-0-0-0-0"
+    },
+    "objects": {
+      "ZENDE-3": {
+        "handle": "ZENDE-3",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ZENDE-3",
+          "https://whois.arin.net/rest/org/ZENDE-3"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-02-12T19:10:45-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2012-10-04T15:42:20-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Zendesk, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "989 Market St\nSan Francisco\nCA\n94103\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "NETWO5465-ARIN"
+        ]
+      },
+      "NETWO5465-ARIN": {
+        "handle": "NETWO5465-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/NETWO5465-ARIN",
+          "https://whois.arin.net/rest/poc/NETWO5465-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-04-18T18:03:02-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2012-10-03T19:48:00-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "noc",
+          "abuse",
+          "administrative",
+          "routing"
+        ],
+        "contact": {
+          "name": "Network Operations",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "989 Market St\nSan Francisco\nCA\n94103\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-415-418-7506"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "network@zendesk.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "2606:4700:20::681a:29a",
+    "asn": "13335",
+    "asn_cidr": "2606:4700:20::/44",
+    "asn_country_code": "US",
+    "asn_date": "2011-11-01",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET6-2606-4700-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/2606:4700::",
+        "https://whois.arin.net/rest/net/NET6-2606-4700-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T07:55:39-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2011-11-01T15:59:58-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "2606:4700::",
+      "end_address": "2606:4700:ffff:ffff:ffff:ffff:ffff:ffff",
+      "cidr": "2606:4700::/32",
+      "ip_version": "v6",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET6-2600-1"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc",
+          "routing"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "2606:4700:20::681a:39a",
+    "asn": "13335",
+    "asn_cidr": "2606:4700:20::/44",
+    "asn_country_code": "US",
+    "asn_date": "2011-11-01",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET6-2606-4700-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/2606:4700::",
+        "https://whois.arin.net/rest/net/NET6-2606-4700-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T07:55:39-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2011-11-01T15:59:58-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "2606:4700::",
+      "end_address": "2606:4700:ffff:ffff:ffff:ffff:ffff:ffff",
+      "cidr": "2606:4700::/32",
+      "ip_version": "v6",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET6-2600-1"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc",
+          "routing"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "2606:4700:20::ac43:4655",
+    "asn": "13335",
+    "asn_cidr": "2606:4700:20::/44",
+    "asn_country_code": "US",
+    "asn_date": "2011-11-01",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET6-2606-4700-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse\nGeofeed: https://api.cloudflare.com/local-ip-ranges.csv",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/2606:4700::",
+        "https://whois.arin.net/rest/net/NET6-2606-4700-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2024-09-04T07:55:39-04:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2011-11-01T15:59:58-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "2606:4700::",
+      "end_address": "2606:4700:ffff:ffff:ffff:ffff:ffff:ffff",
+      "cidr": "2606:4700::/32",
+      "ip_version": "v6",
+      "type": "DIRECT ALLOCATION",
+      "name": "CLOUDFLARENET",
+      "country": null,
+      "parent_handle": "NET6-2600-1"
+    },
+    "objects": {
+      "CLOUD14": {
+        "handle": "CLOUD14",
+        "status": null,
+        "remarks": null,
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD14",
+          "https://whois.arin.net/rest/org/CLOUD14"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-25T11:09:46-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2010-07-09T14:10:42-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Cloudflare, Inc.",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "CLOUD146-ARIN",
+          "ABUSE2916-ARIN",
+          "ADMIN2521-ARIN"
+        ]
+      },
+      "ABUSE2916-ARIN": {
+        "handle": "ABUSE2916-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ABUSE2916-ARIN",
+          "https://whois.arin.net/rest/poc/ABUSE2916-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-09-04T13:14:53-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-02-14T19:00:47-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse"
+        ],
+        "contact": {
+          "name": "Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "abuse@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ADMIN2521-ARIN": {
+        "handle": "ADMIN2521-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/ADMIN2521-ARIN",
+          "https://whois.arin.net/rest/poc/ADMIN2521-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-06-12T09:17:12-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:11:36-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical"
+        ],
+        "contact": {
+          "name": "Admin",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "rir@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "NOC11962-ARIN": {
+        "handle": "NOC11962-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/NOC11962-ARIN",
+          "https://whois.arin.net/rest/poc/NOC11962-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2025-03-12T06:21:55-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-04-19T16:25:31-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "noc"
+        ],
+        "contact": {
+          "name": "NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend Street\nSan Francisco\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "CLOUD146-ARIN": {
+        "handle": "CLOUD146-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/CLOUD146-ARIN",
+          "https://whois.arin.net/rest/poc/CLOUD146-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-08-21T17:22:33-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2021-07-01T14:10:58-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "routing",
+          "noc"
+        ],
+        "contact": {
+          "name": "Cloudflare-NOC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "101 Townsend St\nSan Francsico\nCA\n94107\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-319-8930"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "noc@cloudflare.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  },
+  {
+    "ip": "35.198.26.39",
+    "asn": "396982",
+    "asn_cidr": "35.198.16.0/20",
+    "asn_country_code": "US",
+    "asn_date": "2017-03-21",
+    "asn_registry": "arin",
+    "network": {
+      "handle": "NET-35-192-0-0-1",
+      "status": [
+        "active"
+      ],
+      "remarks": [
+        {
+          "title": "Registration Comments",
+          "description": "*** The IP addresses under this Org-ID are in use by Google Cloud customers *** \n\nDirect all copyright and legal complaints to \nhttps://support.google.com/legal/go/report\n\nDirect all spam and abuse complaints to \nhttps://support.google.com/code/go/gce_abuse_report\n\nFor fastest response, use the relevant forms above.\n\nComplaints can also be sent to the GC Abuse desk \n(google-cloud-compliance@google.com) \nbut may have longer turnaround times.",
+          "links": null
+        }
+      ],
+      "notices": [
+        {
+          "title": "Terms of Service",
+          "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/tou/"
+          ]
+        },
+        {
+          "title": "Whois Inaccuracy Reporting",
+          "description": "If you see inaccuracies in the results, please visit: ",
+          "links": [
+            "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+          ]
+        },
+        {
+          "title": "Copyright Notice",
+          "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+          "links": null
+        }
+      ],
+      "links": [
+        "https://rdap.arin.net/registry/ip/35.192.0.0",
+        "https://whois.arin.net/rest/net/NET-35-192-0-0-1"
+      ],
+      "events": [
+        {
+          "action": "last changed",
+          "timestamp": "2018-01-24T10:36:18-05:00",
+          "actor": null
+        },
+        {
+          "action": "registration",
+          "timestamp": "2017-03-21T09:15:46-04:00",
+          "actor": null
+        }
+      ],
+      "raw": null,
+      "start_address": "35.192.0.0",
+      "end_address": "35.207.255.255",
+      "cidr": "35.192.0.0/12",
+      "ip_version": "v4",
+      "type": "DIRECT ALLOCATION",
+      "name": "GOOGLE-CLOUD",
+      "country": null,
+      "parent_handle": "NET-35-0-0-0-0"
+    },
+    "objects": {
+      "GOOGL-2": {
+        "handle": "GOOGL-2",
+        "status": null,
+        "remarks": [
+          {
+            "title": "Registration Comments",
+            "description": "*** The IP addresses under this Org-ID are in use by Google Cloud customers *** \r\n\r\nDirect all copyright and legal complaints to \r\nhttps://support.google.com/legal/go/report\r\n\r\nDirect all spam and abuse complaints to \r\nhttps://support.google.com/code/go/gce_abuse_report\r\n\r\nFor fastest response, use the relevant forms above.\r\n\r\nComplaints can also be sent to the GC Abuse desk \r\n(google-cloud-compliance@google.com) \r\nbut may have longer turnaround times.\r\n\r\nComplaints sent to any other POC will be ignored.",
+            "links": null
+          }
+        ],
+        "notices": null,
+        "links": [
+          "https://rdap.arin.net/registry/entity/GOOGL-2",
+          "https://whois.arin.net/rest/org/GOOGL-2"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2019-11-01T05:34:25-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2006-09-29T16:40:11-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "registrant"
+        ],
+        "contact": {
+          "name": "Google LLC",
+          "kind": "org",
+          "address": [
+            {
+              "type": null,
+              "value": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+            }
+          ],
+          "phone": null,
+          "email": null,
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": [
+          "GCABU-ARIN",
+          "ZG39-ARIN"
+        ]
+      },
+      "GCABU-ARIN": {
+        "handle": "GCABU-ARIN",
+        "status": null,
+        "remarks": [
+          {
+            "title": "Unvalidated POC",
+            "description": "ARIN has attempted to validate the data for this POC, but has received no response from the POC since 2022-04-09",
+            "links": null
+          }
+        ],
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/GCABU-ARIN",
+          "https://whois.arin.net/rest/poc/GCABU-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2021-04-09T11:46:04-04:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2011-03-30T00:36:28-04:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "abuse",
+          "noc"
+        ],
+        "contact": {
+          "name": "GC Abuse",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-253-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "google-cloud-compliance@google.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      },
+      "ZG39-ARIN": {
+        "handle": "ZG39-ARIN",
+        "status": [
+          "validated"
+        ],
+        "remarks": null,
+        "notices": [
+          {
+            "title": "Terms of Service",
+            "description": "By using the ARIN RDAP/Whois service, you are agreeing to the RDAP/Whois Terms of Use",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/tou/"
+            ]
+          },
+          {
+            "title": "Whois Inaccuracy Reporting",
+            "description": "If you see inaccuracies in the results, please visit: ",
+            "links": [
+              "https://www.arin.net/resources/registry/whois/inaccuracy_reporting/"
+            ]
+          },
+          {
+            "title": "Copyright Notice",
+            "description": "Copyright 1997-2025, American Registry for Internet Numbers, Ltd.",
+            "links": null
+          }
+        ],
+        "links": [
+          "https://rdap.arin.net/registry/entity/ZG39-ARIN",
+          "https://whois.arin.net/rest/poc/ZG39-ARIN"
+        ],
+        "events": [
+          {
+            "action": "last changed",
+            "timestamp": "2024-11-11T04:27:09-05:00",
+            "actor": null
+          },
+          {
+            "action": "registration",
+            "timestamp": "2000-11-30T13:54:08-05:00",
+            "actor": null
+          }
+        ],
+        "raw": null,
+        "roles": [
+          "technical",
+          "administrative"
+        ],
+        "contact": {
+          "name": "Google LLC",
+          "kind": "group",
+          "address": [
+            {
+              "type": null,
+              "value": "1600 Amphitheatre Parkway\nMountain View\nCA\n94043\nUnited States"
+            }
+          ],
+          "phone": [
+            {
+              "type": [
+                "work",
+                "voice"
+              ],
+              "value": "+1-650-253-0000"
+            }
+          ],
+          "email": [
+            {
+              "type": null,
+              "value": "arin-contact@google.com"
+            }
+          ],
+          "role": null,
+          "title": null
+        },
+        "events_actor": null,
+        "entities": null
+      }
+    }
+  }
+]

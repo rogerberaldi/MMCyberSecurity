@@ -1,0 +1,180 @@
+WhatWeb report for [1m[34mhttp://directcall.com.br[0m
+Status    : 301 Moved Permanently
+Title     : [1m[33m<None>[0m
+IP        : 104.26.2.154
+Country   : [1m[31mUNITED STATES, US[0m
+
+Summary   : [1mCookies[0m[[0m[22mPHPSESSID,codCliente[0m], [1mHTTPServer[0m[[1m[36mcloudflare[0m], [1mRedirectLocation[0m[[0m[22mhttps://directcall.com.br/[0m], [1mUncommonHeaders[0m[[0m[22mx-redirect-by,x-turbo-charged-by,cf-cache-status,report-to,nel,cf-ray,server-timing[0m]
+
+Detected Plugins:
+[ [1mCookies[0m ]
+	Display the names of cookies in the HTTP headers. The 
+	values are not returned to save on space. 
+
+	String       : [1m[36mPHPSESSID[0m
+	String       : [1m[36mcodCliente[0m
+
+[ [1mHTTPServer[0m ]
+	HTTP server header string. This plugin also attempts to 
+	identify the operating system from the server header. 
+
+	String       : [1m[36mcloudflare[0m (from server string)
+
+[ [1mRedirectLocation[0m ]
+	HTTP Server string location. used with http-status 301 and 
+	302 
+
+	String       : [1m[36mhttps://directcall.com.br/[0m (from location)
+
+[ [1mUncommonHeaders[0m ]
+	Uncommon HTTP server headers. The blacklist includes all 
+	the standard headers and many non standard but common ones. 
+	Interesting but fairly common headers should have their own 
+	plugins, eg. x-powered-by, server and x-aspnet-version. 
+	Info about headers can be found at www.http-stats.com 
+
+	String       : [1m[36mx-redirect-by,x-turbo-charged-by,cf-cache-status,report-to,nel,cf-ray,server-timing[0m (from headers)
+
+HTTP Headers:
+	HTTP/1.1 301 Moved Permanently
+	Date: Mon, 19 May 2025 02:29:08 GMT
+	Content-Type: text/html; charset=UTF-8
+	Transfer-Encoding: chunked
+	Connection: close
+	set-cookie: PHPSESSID=ehri4g5172gfi7pk46an8irafi; path=/
+	set-cookie: codCliente=2025466023888; expires=Sun, 14 May 2045 02:29:08 GMT; Max-Age=630720000; path=/
+	pragma: no-cache
+	expires: Mon, 19 May 2025 03:29:08 GMT
+	cache-control: max-age=3600
+	x-redirect-by: WordPress
+	location: https://directcall.com.br/
+	x-turbo-charged-by: LiteSpeed
+	cf-cache-status: DYNAMIC
+	Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=QJM6NN5380MMPaq%2B1Frx%2FCJY12BR3Ou46O4dFBE83slpLKDt9iynocknhVZB6e%2FSDb4aov0u%2FSeTgOkKzMYqgObyRziZZGFLSn4Rwk6eZr7hJ%2FZMlhQZ%2FZScAhlg3zy19YYL"}],"group":"cf-nel","max_age":604800}
+	NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+	Server: cloudflare
+	CF-RAY: 94202a37796b0305-GRU
+	server-timing: cfL4;desc="?proto=TCP&rtt=8464&min_rtt=8464&rtt_var=4232&sent=1&recv=3&lost=0&retrans=0&sent_bytes=0&recv_bytes=160&delivery_rate=0&cwnd=238&unsent_bytes=0&cid=0000000000000000&ts=0&x=0"
+	
+WhatWeb report for [1m[34mhttps://directcall.com.br/[0m
+Status    : 200 OK
+Title     : [1m[33mDirectcall - Telefonia corporativa[0m
+IP        : 104.26.2.154
+Country   : [1m[31mUNITED STATES, US[0m
+
+Summary   : [1mBootstrap[0m, [1mCookies[0m[[0m[22mPHPSESSID,codCliente,menuOpen[0m], [1mFrame[0m, [1mHTML5[0m, [1mHTTPServer[0m[[1m[36mcloudflare[0m], [1mJQuery[0m, [1mMetaGenerator[0m[[0m[22mAll in One SEO Pro (AIOSEO) 4.8.2,Powered by WPBakery Page Builder - drag and drop page builder for WordPress.,Site Kit by Google 1.152.1[0m], [1mOpen-Graph-Protocol[0m[[1m[32mwebsite[0m], [1mPoweredBy[0m[[0m[22mWPBakery[0m], [1mScript[0m[[0m[22mapplication/ld+json,speculationrules,text/javascript[0m], [1mStrict-Transport-Security[0m[[0m[22mmax-age=15552000; includeSubDomains[0m], [1mUncommonHeaders[0m[[0m[22mcf-ray,link,x-turbo-charged-by,cf-cache-status,report-to,nel,server-timing[0m], [1mWordPress[0m
+
+Detected Plugins:
+[ [1mBootstrap[0m ]
+	Bootstrap is an open source toolkit for developing with 
+	HTML, CSS, and JS. 
+
+	Website     : https://getbootstrap.com/
+
+[ [1mCookies[0m ]
+	Display the names of cookies in the HTTP headers. The 
+	values are not returned to save on space. 
+
+	String       : [1m[36mPHPSESSID[0m
+	String       : [1m[36mcodCliente[0m
+	String       : [1m[36mmenuOpen[0m
+
+[ [1mFrame[0m ]
+	This plugin detects instances of frame and iframe HTML 
+	elements. 
+
+
+[ [1mHTML5[0m ]
+	HTML version 5, detected by the doctype declaration 
+
+
+[ [1mHTTPServer[0m ]
+	HTTP server header string. This plugin also attempts to 
+	identify the operating system from the server header. 
+
+	String       : [1m[36mcloudflare[0m (from server string)
+
+[ [1mJQuery[0m ]
+	A fast, concise, JavaScript that simplifies how to traverse 
+	HTML documents, handle events, perform animations, and add 
+	AJAX. 
+
+	Website     : http://jquery.com/
+
+[ [1mMetaGenerator[0m ]
+	This plugin identifies meta generator tags and extracts its 
+	value. 
+
+	String       : [1m[36mAll in One SEO Pro (AIOSEO) 4.8.2,Powered by WPBakery Page Builder - drag and drop page builder for WordPress.,Site Kit by Google 1.152.1[0m
+
+[ [1mOpen-Graph-Protocol[0m ]
+	The Open Graph protocol enables you to integrate your Web 
+	pages into the social graph. It is currently designed for 
+	Web pages representing profiles of real-world things . 
+	things like movies, sports teams, celebrities, and 
+	restaurants. Including Open Graph tags on your Web page, 
+	makes your page equivalent to a Facebook Page. 
+
+	Version      : [1m[32mwebsite[0m
+
+[ [1mPoweredBy[0m ]
+	This plugin identifies instances of 'Powered by x' text and 
+	attempts to extract the value for x. 
+
+	String       : [1m[36mWPBakery[0m
+
+[ [1mScript[0m ]
+	This plugin detects instances of script HTML elements and 
+	returns the script language/type. 
+
+	String       : [1m[36mapplication/ld+json,speculationrules,text/javascript[0m
+
+[ [1mStrict-Transport-Security[0m ]
+	Strict-Transport-Security is an HTTP header that restricts 
+	a web browser from accessing a website without the security 
+	of the HTTPS protocol. 
+
+	String       : [1m[36mmax-age=15552000; includeSubDomains[0m
+
+[ [1mUncommonHeaders[0m ]
+	Uncommon HTTP server headers. The blacklist includes all 
+	the standard headers and many non standard but common ones. 
+	Interesting but fairly common headers should have their own 
+	plugins, eg. x-powered-by, server and x-aspnet-version. 
+	Info about headers can be found at www.http-stats.com 
+
+	String       : [1m[36mcf-ray,link,x-turbo-charged-by,cf-cache-status,report-to,nel,server-timing[0m (from headers)
+
+[ [1mWordPress[0m ]
+	WordPress is an opensource blogging system commonly used as 
+	a CMS. 
+
+	Aggressive function available (check plugin file or details).
+	Google Dorks: (1)
+	Website     : http://www.wordpress.org/
+
+HTTP Headers:
+	HTTP/1.1 200 OK
+	Date: Mon, 19 May 2025 02:29:12 GMT
+	Content-Type: text/html; charset=UTF-8
+	Transfer-Encoding: chunked
+	Connection: close
+	Server: cloudflare
+	Strict-Transport-Security: max-age=15552000; includeSubDomains
+	Cf-Ray: 94202a4f3de2619d-GRU
+	Content-Encoding: gzip
+	Expires: Thu, 19 Nov 1981 08:52:00 GMT
+	Cache-Control: no-store, no-cache, must-revalidate
+	Pragma: no-cache
+	Link: <https://directcall.com.br/wp-json/>; rel="https://api.w.org/"
+	Link: <https://directcall.com.br/wp-json/wp/v2/pages/391>; rel="alternate"; title="JSON"; type="application/json"
+	Link: <https://directcall.com.br/>; rel=shortlink
+	Vary: Accept-Encoding
+	X-Turbo-Charged-By: LiteSpeed
+	Cf-Cache-Status: DYNAMIC
+	Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=oSTpVpkf4IGsYOanOFt2tdLJFHQpOkLKlBgTgDq7XKZJwPJNZg5arwCDcllXiODHd9RpKptpG625Y0oeI5zfKEzPJxtI7UsRL%2BXdsediH3X63lDcDIvAE8VpsV5vGjZpRdiT"}],"group":"cf-nel","max_age":604800}
+	Nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+	Set-Cookie: PHPSESSID=fhn5vi44s3ouoi3d1a6btnt3gk; Path=/
+	Set-Cookie: codCliente=2025466023928; Path=/; Max-Age=630720000; Expires=Sun, 14 May 2045 02:29:12 GMT
+	Set-Cookie: menuOpen=1; Path=/; Max-Age=86400; Expires=Tue, 20 May 2025 02:29:12 GMT
+	server-timing: cfL4;desc="?proto=TCP&rtt=8533&min_rtt=7674&rtt_var=3491&sent=5&recv=6&lost=0&retrans=0&sent_bytes=2842&recv_bytes=779&delivery_rate=547302&cwnd=246&unsent_bytes=0&cid=c8a9c495f590fd71&ts=722&x=0"

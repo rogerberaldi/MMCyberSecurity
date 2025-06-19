@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun 14 22:13:25 2025 as: nmap -sV -sC -p 31472 -oX output/189.84.129.207/fingerprint/189_84_129_207/service_scan_189_84_129_207.xml 189.84.129.207 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 31472 -oX output/189.84.129.207/fingerprint/189_84_129_207/service_scan_189_84_129_207.xml 189.84.129.207" start="1749950005" startstr="Sat Jun 14 22:13:25 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="31472"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.129.207" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749950005" endtime="1749950006"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.129.207" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="31472"><state state="filtered" reason="no-response" reason_ttl="0"/></port>
+</ports>
+<times srtt="2685" rttvar="5000" to="100000"/>
+</host>
+<runstats><finished time="1749950006" timestr="Sat Jun 14 22:13:26 2025" summary="Nmap done at Sat Jun 14 22:13:26 2025; 1 IP address (1 host up) scanned in 1.15 seconds" elapsed="1.15" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

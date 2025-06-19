@@ -1,0 +1,3 @@
+[
+{"target":"http://monitoramento.directdial.com.br:8080","http_status":521,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTML5":{},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.32.1"]},"Script":{},"Title":{"string":["monitoramento.directdial.com.br | 521: Web server is down"]},"UncommonHeaders":{"string":["report-to,nel,referrer-policy,cf-ray,alt-svc,server-timing"]},"X-Frame-Options":{"string":["SAMEORIGIN"]},"X-UA-Compatible":{"string":["IE=Edge"]}}}
+]
