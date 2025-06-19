@@ -1,5 +1,5 @@
 import logging
-from core.utils import execute_command, save_text, record_time, save_json
+from core.utils import execute_command, save_text, record_time, save_json, verify_tool_availability
 import os
 import json
 import re
@@ -8,349 +8,377 @@ import xml.etree.ElementTree as ET
 
 logger = logging.getLogger(__name__)
 
-def verify_tool_availability(tool_name):
-    """Verifica se uma ferramenta de linha de comando está disponível."""
-    command = ["which", tool_name]
-    stdout, stderr, returncode = execute_command(command)
-    if returncode == 0:
-        logger.debug(f"Ferramenta '{tool_name}' encontrada em: {stdout.strip()}")
-        return True
-    else:
-        logger.warning(f"Ferramenta '{tool_name}' não encontrada. Certifique-se de que está instalada e no PATH.")
-        return False
-
-def run_nmap(target_ip, output_dir): # Alterado de 'domain' para 'target_ip'
-    """Executa o nmap -sT -p- para realizar a varredura de todas as portas TCP em um IP."""
+def run_nmap(target_ip, output_dir, scan_type="tcp_full"):
+    """
+    Executa diferentes tipos de varredura Nmap.
+    
+    Args:
+        target_ip: IP alvo
+        output_dir: Diretório de saída
+        scan_type: Tipo de scan ("tcp_full", "tcp_top1000", "udp_voip")
+    """
     if not verify_tool_availability("nmap"):
         return None
     
     start_time = time.time()
-    # Nome do arquivo de saída específico para o IP
-    # Substitui '.' por '_' no IP para evitar problemas com nomes de arquivo, se houver.
-    sanitized_ip_filename = target_ip.replace('.', '_').replace(':', '_') # Adequado para IPv4 e IPv6
-    output_file = f"{output_dir}/nmap_tcp_scan_{sanitized_ip_filename}.xml"
-    
-    logger.info(f"Iniciando Nmap TCP scan (-sT -p-) para o IP: {target_ip}")
-    command = ["/usr/bin/sudo", "nmap", "-sT", "-p-", "-oX", output_file, target_ip]
-    
-    stdout, stderr, returncode = execute_command(command)
-    end_time = time.time()
-    record_time(start_time, end_time, f"Nmap TCP scan (-sT -p-) para {target_ip}")
-    
-    if returncode == 0:
-        logger.info(f"Nmap TCP scan para {target_ip} concluído. Resultados salvos em: {output_file}")
-        return output_file
-    else:
-        logger.error(f"Erro ao executar nmap TCP scan para {target_ip}: {stderr}")
-        if stdout:
-            logger.error(f"Nmap stdout: {stdout}")
-        return None
-
-
-# Lista de portas UDP comuns para VoIP/RTP/SIP. Você pode expandir esta lista.
-# RTP geralmente usa um range de portas pares.
-# SIP: 5060, 5061 (TLS)
-# RTP: Comumente na faixa 10000-20000 (pares), mas pode variar.
-#       Nmap tem '--defeat-rtp-port-scan' se você quiser evitar que o nmap
-#       trate portas RTP de forma especial durante o scan de versão, mas para
-#       identificação pode ser útil deixar o comportamento padrão.
-# STUN: 3478
-# Outros: 5004 (RTP), etc.
-DEFAULT_VOIP_UDP_PORTS = "5060,5061,3478,5004,16384-16482" # Exemplo de range RTP
-
-def run_nmap_udp_voip(target_ip, output_dir, udp_ports=DEFAULT_VOIP_UDP_PORTS): # Alterado de 'domain' para 'target_ip'
-    """Executa o nmap para realizar a varredura de portas UDP específicas para VoIP."""
-    if not verify_tool_availability("nmap"): # Reutilizando sua função de verificação
-        return None
-
-    start_time = time.time()
     sanitized_ip_filename = target_ip.replace('.', '_').replace(':', '_')
-    output_file = f"{output_dir}/nmap_udp_voip_scan_{sanitized_ip_filename}.xml"
-
-    logger.info(f"Iniciando varredura UDP (-sU -sV) em {target_ip} nas portas: {udp_ports}")
     
-    # -sU: UDP Scan
-    # -sV: Service Version Detection
-    # --version-intensity 0: (Opcional) Para scans UDP, uma intensidade menor pode ser mais rápida.
-    #                          Pode omitir para usar o padrão do Nmap ou ajustar conforme necessário.
-    # -T4: (Opcional) Template de timing. Para UDP, T3 ou T2 podem ser mais confiáveis,
-    #                mas T4 é mais rápido. Teste o que funciona melhor para sua rede/alvos.
-    #                Evite T5 para scans UDP complexos.
-    # --max-retries 1 ou 2: (Opcional) Pode acelerar scans UDP ao não tentar tantas vezes em portas que não respondem.
-    command = [
-        "/usr/bin/sudo", "nmap",
-        "-sU",          # Tipo de scan UDP
-        "-sV",          # Detecção de versão de serviço
-        # "--version-intensity", "0", # Opcional: pode acelerar
-        # "-T4",                       # Opcional: ajuste de timing
-        # "--max-retries", "1",        # Opcional: pode acelerar
-        "-p", udp_ports, # Especifica as portas UDP
+    # Define scan parameters based on type
+    scan_configs = {
+        "tcp_full": {
+            "args": ["-sT", "-p-"],
+            "output_file": f"{output_dir}/nmap_tcp_scan_{sanitized_ip_filename}.xml"
+        },
+        "tcp_top1000": {
+            "args": ["-sT", "--top-ports", "1000"],
+            "output_file": f"{output_dir}/nmap_tcp_top1000_{sanitized_ip_filename}.xml"
+        },
+        "udp_voip": {
+            "args": ["-sU", "-sV", "-p", "5060,5061,3478,5004,16384-16482"],
+            "output_file": f"{output_dir}/nmap_udp_voip_scan_{sanitized_ip_filename}.xml"
+        }
+    }
+    
+    if scan_type not in scan_configs:
+        logger.error(f"Tipo de scan inválido: {scan_type}")
+        return None
+    
+    config = scan_configs[scan_type]
+    output_file = config["output_file"]
+    
+    logger.info(f"Iniciando Nmap {scan_type} scan para o IP: {target_ip}")
+    
+    # Build command with timeout and optimization flags
+    command = ["/usr/bin/sudo", "nmap"] + config["args"] + [
         "-oX", output_file,
+        "--max-retries", "2",
+        "--host-timeout", "30m",
+        "--max-scan-delay", "10ms",
         target_ip
     ]
     
     stdout, stderr, returncode = execute_command(command)
     end_time = time.time()
-    record_time(start_time, end_time, f"Nmap UDP VoIP para {target_ip}")
-
-    if returncode == 0:
-        logger.info(f"Nmap UDP VoIP scan para {target_ip} concluído. Resultados salvos em: {output_file}")
-        # Você precisará de uma função para parsear este XML e extrair as portas UDP abertas e serviços.
-        return output_file
+    record_time(start_time, end_time, f"Nmap {scan_type} scan para {target_ip}")
+    
+    # Enhanced error checking
+    if returncode == 0 and os.path.exists(output_file):
+        # Verify XML is valid
+        try:
+            ET.parse(output_file)
+            logger.info(f"Nmap {scan_type} scan para {target_ip} concluído. Resultados salvos em: {output_file}")
+            return output_file
+        except ET.ParseError as e:
+            logger.error(f"XML inválido gerado pelo Nmap: {e}")
+            return None
     else:
-        logger.error(f"Erro ao executar nmap UDP VoIP para {target_ip}: {stderr}")
+        # Check if file exists but command failed
+        if os.path.exists(output_file) and os.path.getsize(output_file) > 0:
+            try:
+                ET.parse(output_file)
+                logger.info(f"Nmap {scan_type} scan para {target_ip} concluído com avisos (código {returncode}). Resultados em: {output_file}")
+                return output_file
+            except ET.ParseError:
+                logger.error(f"XML corrompido gerado pelo Nmap para {target_ip}")
+                return None
+
+        logger.error(f"Erro ao executar nmap {scan_type} para {target_ip}. Código: {returncode}, stderr: {stderr}")
         if stdout:
-            logger.error(f"Nmap stdout: {stdout}")
+            logger.debug(f"Nmap stdout: {stdout}")
         return None
 
-
-def run_masscan(ips, output_dir):
-    """Executa o masscan para realizar a varredura de portas em uma lista de IPs."""
+def run_masscan(ips, output_dir, rate=1000):
+    """Executa o masscan com melhor tratamento de erros."""
     if not verify_tool_availability("masscan") or not ips:
         return None
     
     output_file = f"{output_dir}/masscan_scan.txt"
     start_time = time.time()
     
+    # Validate IPs before scanning
+    valid_ips = []
+    for ip in ips:
+        if re.match(r'^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$', ip):
+            valid_ips.append(ip)
+        else:
+            logger.warning(f"IP inválido ignorado pelo Masscan: {ip}")
+    
+    if not valid_ips:
+        logger.error("Nenhum IP válido para o Masscan")
+        return None
+    
     command = [
         "/usr/bin/sudo",
         "masscan", 
-        "-p0-65535", 
-        "--rate", "3000"
-    ] + ips + ["-oG", output_file]
+        "-p1-65535", 
+        "--rate", str(rate),
+        "--wait", "3",
+        "--retries", "2"
+    ] + valid_ips + ["-oG", output_file]
 
+    logger.info(f"Executando Masscan para {len(valid_ips)} IPs com taxa {rate}")
     stdout, stderr, returncode = execute_command(command)
     end_time = time.time()
-    record_time(start_time, end_time, f"Masscan para {ips}")
-    if returncode == 0:
-        logger.info(f"Masscan scan para {', '.join(ips)} concluído. Resultados salvos em: {output_file}")
+    record_time(start_time, end_time, f"Masscan para {valid_ips}")
+    
+    if returncode == 0 and os.path.exists(output_file):
+        logger.info(f"Masscan scan concluído. Resultados salvos em: {output_file}")
         return output_file
     else:
-        logger.error(f"Erro ao executar masscan para {', '.join(ips)}: {stderr}")
+        logger.error(f"Erro ao executar masscan: {stderr}")
         return None
 
-def run_rustscan(ips, output_dir, port_range="1-65535"): # Aceita lista de IPs e range de portas
-    """Executa o rustscan para realizar a varredura de portas."""
+def run_rustscan(ips, output_dir, port_range="1-65535", timeout=3000):
+    """Executa o rustscan com configurações otimizadas."""
     if not verify_tool_availability("rustscan"):
         return None
+        
     start_time = time.time()
-    targets = ",".join(ips) 
-    logger.info(f"Executando Rustscan para {targets} nas portas {port_range}.")
+    targets = ",".join(ips)
+    
+    logger.info(f"Executando Rustscan para {targets} nas portas {port_range}")
 
-    # Adicionado -p para escanear todas as portas por padrão
-    command = ["rustscan", "-a", targets, "-r", port_range, "--ulimit", "65535", "--greppable"]
-    # Adicionado --no-nmap para evitar que o Rustscan chame o Nmap, já que você faz isso depois.
-    # Remova '--no-nmap' se você preferir que ele execute e quer parsear uma saída mais complexa (não recomendado no seu fluxo atual).
+    command = [
+        "rustscan", 
+        "-a", targets, 
+        "-r", port_range, 
+        "--ulimit", "65535", 
+        "--timeout", str(timeout),
+        "--tries", "2",
+        "--greppable"
+    ]
 
     stdout, stderr, returncode = execute_command(command)
     end_time = time.time()
-
     record_time(start_time, end_time, f"Rustscan para {targets}")
 
     found_ports_by_ip = {}
-    if returncode == 0 and stdout:
-        # Regex para capturar IP -> [portas]
-        # Exemplo de linha: 192.168.1.1 -> [80,443,8080]
-        # Ou às vezes sem espaço: 192.168.1.1->[80,443]
+    
+    if stdout:
+        # Enhanced parsing with better error handling
         ip_port_pattern = re.compile(r"([\d\.]+|\[[0-9a-fA-F:]+\])\s*->\s*\[(.*?)\]")
         for line in stdout.splitlines():
             match = ip_port_pattern.search(line)
             if match:
                 ip = match.group(1)
                 ports_str = match.group(2)
-                if ports_str: # Verifica se encontrou alguma porta
-                    found_ports_by_ip[ip] = [port.strip() for port in ports_str.split(',') if port.strip()]
+                
+                if ports_str.strip():
+                    try:
+                        # Validate port numbers
+                        ports = []
+                        for port in ports_str.split(','):
+                            port = port.strip()
+                            if port.isdigit() and 1 <= int(port) <= 65535:
+                                ports.append(port)
+                        found_ports_by_ip[ip] = ports
+                    except ValueError as e:
+                        logger.warning(f"Erro ao parsear portas para IP {ip}: {e}")
                 else:
-                    found_ports_by_ip[ip] = [] # IP encontrado, mas nenhuma porta aberta listada
+                    found_ports_by_ip[ip] = []
 
         if found_ports_by_ip:
-            logger.info(f"Rustscan scan para {targets} concluído. Portas encontradas: {found_ports_by_ip}")
+            logger.info(f"Rustscan encontrou portas: {found_ports_by_ip}")
         else:
-            logger.info(f"Rustscan scan para {targets} concluído, mas nenhuma porta parseada da saída. Saída (stdout): {stdout}")
+            logger.info(f"Rustscan não encontrou portas abertas ou falha no parsing. Saída: {stdout[:200]}...")
 
-        return found_ports_by_ip # Retorna um dicionário
-    else:
-        logger.error(f"Erro ao executar rustscan para {targets}: {stderr if stderr else 'Nenhuma saída ou erro desconhecido.'}")
-        if stdout:
-            logger.info(f"Saída (stdout) do Rustscan: {stdout}")
-        return {} # Retorna dicionário vazio em caso de erro
+    if returncode != 0 and stderr:
+        logger.warning(f"Rustscan terminou com código {returncode}: {stderr}")
 
+    return found_ports_by_ip
 
 def parse_masscan_output(file_path):
+    """Parse Masscan output with enhanced error handling."""
     ports_by_ip = {}
     if not file_path or not os.path.exists(file_path):
-        logger.warning(f"Arquivo de saída do Masscan não encontrado ou caminho nulo: {file_path}")
+        logger.warning(f"Arquivo de saída do Masscan não encontrado: {file_path}")
         return ports_by_ip
+        
     try:
         with open(file_path, 'r') as f:
-            for line in f:
-                if line.startswith("#"):
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if line.startswith("#") or not line:
                     continue
-                parts = line.split()
+                    
                 try:
-                    # Estrutura esperada: Timestamp: ... Host: <IP> ... Ports: <PORT>/open/tcp...
-                    host_keyword_idx = parts.index("Host:")
-                    ip = parts[host_keyword_idx + 1]
-
-                    ports_keyword_idx = parts.index("Ports:")
-                    port_full_info = parts[ports_keyword_idx + 1]
-                    port_str = port_full_info.split('/')[0]
-
-                    if ip not in ports_by_ip:
-                        ports_by_ip[ip] = set()
-                    ports_by_ip[ip].add(int(port_str))
-                except (ValueError, IndexError, TypeError):
-                    # ValueError se "Host:" ou "Ports:" não encontrado, ou port_str não for int
-                    # IndexError se parts[idx+1] não existir
-                    logger.warning(f"Não foi possível parsear a linha do Masscan: {line.strip()}")
+                    # Enhanced parsing for different Masscan output formats
+                    if "Host:" in line and "Ports:" in line:
+                        parts = line.split()
+                        host_idx = parts.index("Host:")
+                        ports_idx = parts.index("Ports:")
+                        
+                        if host_idx + 1 < len(parts) and ports_idx + 1 < len(parts):
+                            ip = parts[host_idx + 1]
+                            port_info = parts[ports_idx + 1]
+                            
+                            # Validate IP format
+                            if re.match(r'^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$', ip):
+                                port_str = port_info.split('/')[0]
+                                if port_str.isdigit():
+                                    port = int(port_str)
+                                    if 1 <= port <= 65535:
+                                        if ip not in ports_by_ip:
+                                            ports_by_ip[ip] = set()
+                                        ports_by_ip[ip].add(port)
+                                    
+                except (ValueError, IndexError) as e:
+                    logger.debug(f"Linha {line_num} do Masscan não pôde ser parseada: {line.strip()} - {e}")
                     continue
 
-        # Converter sets para listas ordenadas
+        # Convert sets to sorted lists
         for ip_addr in ports_by_ip:
             ports_by_ip[ip_addr] = sorted(list(ports_by_ip[ip_addr]))
-        logger.info(f"Portas parseadas do Masscan ({file_path}): {len(ports_by_ip)} IPs com portas.")
+            
+        logger.info(f"Masscan parsing concluído: {len(ports_by_ip)} IPs com portas abertas")
         return ports_by_ip
+        
     except Exception as e:
-        logger.error(f"Erro ao ler ou parsear arquivo do Masscan {file_path}: {e}")
+        logger.error(f"Erro ao ler arquivo do Masscan {file_path}: {e}")
         return {}
 
 def parse_nmap_xml_for_open_tcp_ports(xml_file_path):
+    """Parse Nmap XML with enhanced error handling."""
     open_ports = set()
     if not xml_file_path or not os.path.exists(xml_file_path):
-        logger.warning(f"Arquivo XML do Nmap não encontrado ou caminho nulo: {xml_file_path}")
-        return [] # Retorna lista de portas para um único arquivo XML (um IP)
+        logger.warning(f"Arquivo XML do Nmap não encontrado: {xml_file_path}")
+        return []
+        
     try:
         tree = ET.parse(xml_file_path)
         root = tree.getroot()
-        # Procura por portas TCP com estado 'open' dentro de qualquer host no XML
-        # Normalmente, nossos XMLs de -sT -p- por IP terão apenas um host.
+        
+        # Find all open TCP ports
         for port_element in root.findall(".//host/ports/port[@protocol='tcp']"):
             state_element = port_element.find("state[@state='open']")
             if state_element is not None:
                 portid = port_element.get('portid')
-                if portid:
-                    open_ports.add(int(portid))
+                if portid and portid.isdigit():
+                    port_num = int(portid)
+                    if 1 <= port_num <= 65535:
+                        open_ports.add(port_num)
 
         sorted_ports = sorted(list(open_ports))
-        logger.info(f"Portas TCP abertas parseadas do Nmap XML {xml_file_path}: {sorted_ports}")
+        logger.info(f"Nmap XML parsing: {len(sorted_ports)} portas TCP abertas encontradas")
         return sorted_ports
+        
     except ET.ParseError as e:
         logger.error(f"Erro de parsing no arquivo XML do Nmap {xml_file_path}: {e}")
         return []
     except Exception as e:
-        logger.error(f"Erro inesperado ao ler ou parsear arquivo XML do Nmap {xml_file_path}: {e}")
+        logger.error(f"Erro inesperado ao processar XML do Nmap {xml_file_path}: {e}")
         return []
-    
 
-def perform_port_scanning(domain_context, output_dir, ips_list=None, voip=False):
-    logger.info(f"Iniciando varredura DE PORTAS CONSOLIDADA para '{domain_context}' nos IPs: {ips_list}")
+def perform_port_scanning(domain_context, output_dir, ips_list=None, voip=False, fast_mode=False):
+    """
+    Realiza varredura de portas consolidada com modo rápido opcional.
+    
+    Args:
+        domain_context: Contexto do domínio/alvo
+        output_dir: Diretório de saída
+        ips_list: Lista de IPs para escanear
+        voip: Se deve incluir scan UDP VoIP
+        fast_mode: Se deve usar scan rápido (top 1000 portas)
+    """
+    logger.info(f"Iniciando varredura de portas para '{domain_context}' nos IPs: {ips_list}")
 
     results = {
-        "nmap_tcp_scan_outputs_by_ip": {},      # IP -> Caminho XML do Nmap TCP (-sT -p-)
-        "nmap_udp_voip_scan_outputs_by_ip": {},# IP -> Caminho XML do Nmap UDP VoIP
+        "nmap_tcp_scan_outputs_by_ip": {},
+        "nmap_udp_voip_scan_outputs_by_ip": {},
         "masscan_output_file": None,
-        "masscan_ports_by_ip": {},             # IP -> [portas] do Masscan
-        "rustscan_ports_by_ip": {},            # IP -> [portas] do Rustscan
-        "nmap_sT_ports_by_ip": {},             # IP -> [portas] do Nmap -sT
-        "consolidated_open_ports_by_ip_json_file": None # Arquivo JSON com todas as portas TCP abertas consolidadas
+        "masscan_ports_by_ip": {},
+        "rustscan_ports_by_ip": {},
+        "nmap_sT_ports_by_ip": {},
+        "consolidated_open_ports_by_ip_json_file": None
     }
 
     if not ips_list:
         logger.warning(f"Nenhuma lista de IPs fornecida para varredura (contexto: {domain_context}).")
         return results
 
-    # 1. Executar Nmap TCP (-sT -p-) para cada IP
+    # 1. Execute Nmap TCP scans for each IP
+    scan_type = "tcp_top1000" if fast_mode else "tcp_full"
     for ip in ips_list:
-        tcp_scan_xml = run_nmap(ip, output_dir) # run_nmap já salva por IP
+        tcp_scan_xml = run_nmap(ip, output_dir, scan_type)
         if tcp_scan_xml:
             results["nmap_tcp_scan_outputs_by_ip"][ip] = tcp_scan_xml
-            # Parsear imediatamente para obter as portas
             nmap_sT_ports = parse_nmap_xml_for_open_tcp_ports(tcp_scan_xml)
             if nmap_sT_ports:
                 results["nmap_sT_ports_by_ip"][ip] = nmap_sT_ports
 
+        # VoIP UDP scan if requested
         if voip:
-            # Se voip for True, executar o Nmap UDP VoIP scan
             logger.info(f"Iniciando varredura Nmap UDP VoIP para o IP: {ip}")
-            # Nmap UDP VoIP Scan (já implementado para ser por IP)
-            udp_voip_scan_xml = run_nmap_udp_voip(ip, output_dir)
+            udp_voip_scan_xml = run_nmap(ip, output_dir, "udp_voip")
             if udp_voip_scan_xml:
                 results["nmap_udp_voip_scan_outputs_by_ip"][ip] = udp_voip_scan_xml
 
-    # 2. Executar Masscan
-    masscan_file = run_masscan(ips_list, output_dir) # Ajuste a taxa
-    results["masscan_output_file"] = masscan_file
-    if masscan_file:
-        results["masscan_ports_by_ip"] = parse_masscan_output(masscan_file)
+    # 2. Execute Masscan (skip in fast mode for single IPs)
+    if not fast_mode or len(ips_list) > 1:
+        masscan_file = run_masscan(ips_list, output_dir, rate=2000)
+        results["masscan_output_file"] = masscan_file
+        if masscan_file:
+            results["masscan_ports_by_ip"] = parse_masscan_output(masscan_file)
 
-    # 3. Executar Rustscan
-
-    rustscan_map = run_rustscan(ips_list, output_dir, port_range="1-65535")
+    # 3. Execute Rustscan
+    port_range = "1-1000" if fast_mode else "1-65535"
+    rustscan_map = run_rustscan(ips_list, output_dir, port_range=port_range)
     if rustscan_map:
         results["rustscan_ports_by_ip"] = rustscan_map
-        rustscan_json_path = os.path.join(output_dir, "rustscan_open_ports_by_ip.json")
-        # O JSON apenas do Rustscan pode ser útil para depuração, mas o principal será o consolidado.
-        try:
-            save_json(rustscan_map, rustscan_json_path)
-            logger.info(f"Resultados brutos do Rustscan salvos em: {rustscan_json_path}")
-            results["rustscan_output_json_file"] = rustscan_json_path
-        except Exception as e:
-            logger.error(f"Falha ao salvar o arquivo JSON dos resultados do Rustscan: {e}")
 
-    # 4. Consolidar todas as portas TCP encontradas
-    logger.info("Iniciando consolidação de portas TCP abertas de todas as fontes...")
+    # 4. Consolidate all TCP ports found
+    logger.info("Consolidando portas TCP abertas de todas as fontes...")
     consolidated_ports_map = {}
 
     rustscan_data = results.get("rustscan_ports_by_ip", {}) or {}
     masscan_data = results.get("masscan_ports_by_ip", {}) or {}
     nmap_sT_data = results.get("nmap_sT_ports_by_ip", {}) or {}
     
-    all_ips_seen = set(rustscan_data.keys()) | \
-                       set(masscan_data.keys()) | \
-                       set(nmap_sT_data.keys())
+    all_ips_seen = set(rustscan_data.keys()) | set(masscan_data.keys()) | set(nmap_sT_data.keys())
 
     for ip in all_ips_seen:
-        unique_int_ports = set()  # Este set armazenará apenas inteiros
-        # Processar portas do Rustscan (strings, precisam de conversão para int)
+        unique_int_ports = set()
+        
+        # Process Rustscan ports
         for port_str in rustscan_data.get(ip, []):
             try:
                 unique_int_ports.add(int(port_str))
             except ValueError:
-                logger.warning(f"Não foi possível converter a porta '{port_str}' do Rustscan para inteiro para o IP {ip}.")
-        # Processar portas do Masscan (devem ser inteiros do parser)
-        for port_val in masscan_data.get(ip, []): # Esperado ser lista de ints
+                logger.warning(f"Porta inválida do Rustscan: '{port_str}' para IP {ip}")
+        
+        # Process Masscan ports
+        for port_val in masscan_data.get(ip, []):
             try:
-                unique_int_ports.add(int(port_val)) # int() é seguro mesmo se já for int
-            except ValueError: # Caso o parser do Masscan retorne algo inesperado
-                logger.warning(f"Não foi possível converter a porta '{port_val}' do Masscan para inteiro para o IP {ip}.")
-        # Processar portas do Nmap -sT (devem ser inteiros do parser)
-        for port_val in nmap_sT_data.get(ip, []): # Esperado ser lista de ints
+                unique_int_ports.add(int(port_val))
+            except ValueError:
+                logger.warning(f"Porta inválida do Masscan: '{port_val}' para IP {ip}")
+        
+        # Process Nmap ports
+        for port_val in nmap_sT_data.get(ip, []):
             try:
-                unique_int_ports.add(int(port_val)) # int() é seguro mesmo se já for int
-            except ValueError: # Caso o parser do Nmap retorne algo inesperado
-                logger.warning(f"Não foi possível converter a porta '{port_val}' do Nmap -sT para inteiro para o IP {ip}.")
+                unique_int_ports.add(int(port_val))
+            except ValueError:
+                logger.warning(f"Porta inválida do Nmap: '{port_val}' para IP {ip}")
         
         if unique_int_ports:
-             # Agora unique_int_ports contém apenas inteiros únicos
-             consolidated_ports_map[ip] = sorted(list(unique_int_ports)) 
+            consolidated_ports_map[ip] = sorted(list(unique_int_ports))
 
-
+    # Save consolidated results
     consolidated_json_path = os.path.join(output_dir, "consolidated_open_tcp_ports_by_ip.json")
     save_json(consolidated_ports_map, consolidated_json_path)
 
     if consolidated_ports_map:
         results["consolidated_open_ports_by_ip_json_file"] = consolidated_json_path
-        logger.info(f"Portas TCP abertas CONSOLIDADAS por IP salvas em: {consolidated_json_path}")
-        # Log para verificar o conteúdo
-        logger.debug(f"Conteúdo do JSON consolidado para {domain_context}: {consolidated_ports_map}")
-    else:
-        logger.info(f"Nenhuma porta TCP aberta encontrada por nenhuma ferramenta para os IPs em {domain_context}. {consolidated_json_path} criado, mas vazio.")
+        logger.info(f"Portas TCP consolidadas salvas em: {consolidated_json_path}")
         
-    logger.info(f"Varredura de portas consolidada para '{domain_context}' concluída.")
+        # Log summary
+        total_ports = sum(len(ports) for ports in consolidated_ports_map.values())
+        logger.info(f"Resumo: {len(consolidated_ports_map)} IPs, {total_ports} portas TCP abertas total")
+    else:
+        logger.info(f"Nenhuma porta TCP aberta encontrada para {domain_context}")
+        
+    logger.info(f"Varredura de portas para '{domain_context}' concluída.")
     return results
-
-
-
 
 if __name__ == '__main__':
     from core.logging_config import setup_logging
@@ -359,8 +387,12 @@ if __name__ == '__main__':
     test_output_dir = "test_output/example.com/fingerprint"
     import os
     os.makedirs(test_output_dir, exist_ok=True)
-    port_scan_results = perform_port_scanning(test_domain, test_output_dir)
+    
+    # Test with a public IP
+    test_ips = ["8.8.8.8"]
+    port_scan_results = perform_port_scanning(test_domain, test_output_dir, ips_list=test_ips, fast_mode=True)
     if port_scan_results:
         logger.debug(f"Resultados da varredura de portas para {test_domain}: {port_scan_results}")
+    
     import shutil
     shutil.rmtree("test_output", ignore_errors=True)
