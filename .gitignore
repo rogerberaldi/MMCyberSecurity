@@ -2,3 +2,4 @@
 logs
 output
 **/__pycache__/
+.env
