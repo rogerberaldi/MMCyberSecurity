@@ -1,3 +1,0 @@
-[
-{"target":"http://monitoramento.directdial.com.br:2087","http_status":400,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.112.1"]},"Title":{"string":["400 The plain HTTP request was sent to HTTPS port"]},"UncommonHeaders":{"string":["cf-ray"]}}}
-]

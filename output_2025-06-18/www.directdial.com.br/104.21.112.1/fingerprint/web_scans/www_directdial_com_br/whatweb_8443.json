@@ -1,3 +1,0 @@
-[
-{"target":"https://www.directdial.com.br:8443","http_status":521,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.80.1"]},"UncommonHeaders":{"string":["cf-cache-status,nel,report-to,cf-ray,alt-svc"]}}}
-]

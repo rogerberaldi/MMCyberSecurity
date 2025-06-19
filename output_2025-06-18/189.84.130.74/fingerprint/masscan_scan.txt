@@ -1,4 +1,0 @@
-# Masscan 1.3.2 scan initiated Mon Jun 16 07:23:18 2025
-# Ports scanned: TCP(65536;0-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
-Timestamp: 1750058598	Host: 189.84.130.74 ()	Ports: 5060/open/tcp//sip//
-# Masscan done at Mon Jun 16 07:23:51 2025
