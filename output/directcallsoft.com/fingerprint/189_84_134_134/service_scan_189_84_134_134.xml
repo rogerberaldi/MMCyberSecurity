@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sat Jun  7 06:42:48 2025 as: nmap -sV -sC -p 25 -oX output/directcallsoft.com/fingerprint/189_84_134_134/service_scan_189_84_134_134.xml 189.84.134.134 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 25 -oX output/directcallsoft.com/fingerprint/189_84_134_134/service_scan_189_84_134_134.xml 189.84.134.134" start="1749289368" startstr="Sat Jun  7 06:42:48 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="25"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.134.134" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1749289368" endtime="1749289369"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.134.134" addrtype="ipv4"/>
+<hostnames>
+<hostname name="directmail.directcall-api.com.br" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="25"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="smtp" product="Postfix smtpd" hostname=" directmail.directcallsoft.com" method="probed" conf="10"><cpe>cpe:/a:postfix:postfix</cpe></service><script id="smtp-commands" output="directmail.directcallsoft.com, PIPELINING, SIZE 25600000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME"/><script id="sslv2" output="&#xa;  SSLv2 supported&#xa;  ciphers: &#xa;    SSL2_RC4_128_EXPORT40_WITH_MD5&#xa;    SSL2_DES_192_EDE3_CBC_WITH_MD5&#xa;    SSL2_RC2_128_CBC_EXPORT40_WITH_MD5&#xa;    SSL2_RC4_128_WITH_MD5&#xa;    SSL2_DES_64_CBC_WITH_MD5&#xa;    SSL2_RC2_128_CBC_WITH_MD5"><elem>SSLv2 supported</elem>
+<table key="ciphers">
+<elem>SSL2_RC4_128_EXPORT40_WITH_MD5</elem>
+<elem>SSL2_DES_192_EDE3_CBC_WITH_MD5</elem>
+<elem>SSL2_RC2_128_CBC_EXPORT40_WITH_MD5</elem>
+<elem>SSL2_RC4_128_WITH_MD5</elem>
+<elem>SSL2_DES_64_CBC_WITH_MD5</elem>
+<elem>SSL2_RC2_128_CBC_WITH_MD5</elem>
+</table>
+</script><script id="ssl-date" output="TLS randomness does not represent time"></script></port>
+</ports>
+<times srtt="2073" rttvar="4166" to="100000"/>
+</host>
+<runstats><finished time="1749289369" timestr="Sat Jun  7 06:42:49 2025" summary="Nmap done at Sat Jun  7 06:42:49 2025; 1 IP address (1 host up) scanned in 1.41 seconds" elapsed="1.41" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

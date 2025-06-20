@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.92 scan initiated Sun Jun 15 13:16:57 2025 as: nmap -sV -sC -p 53 -oX output/ns1.directdial.com.br/189.84.133.134/fingerprint/189_84_133_134/service_scan_189_84_133_134.xml 189.84.133.134 -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p 53 -oX output/ns1.directdial.com.br/189.84.133.134/fingerprint/189_84_133_134/service_scan_189_84_133_134.xml 189.84.133.134" start="1750004217" startstr="Sun Jun 15 13:16:57 2025" version="7.92" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1" services="53"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<hosthint><status state="up" reason="unknown-response" reason_ttl="0"/>
+<address addr="189.84.133.134" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</hosthint>
+<host starttime="1750004218" endtime="1750004231"><status state="up" reason="reset" reason_ttl="64"/>
+<address addr="189.84.133.134" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="53"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="domain" product="PowerDNS Authoritative Server" version="4.1.6" method="probed" conf="10"><cpe>cpe:/a:powerdns:authoritative:4.1.6</cpe></service><script id="dns-nsid" output="&#xa;  NSID: dnsdcem (646e736463656d)&#xa;  id.server: dnsdcem&#xa;  bind.version: PowerDNS Authoritative Server 4.1.6"><table key="NSID">
+<elem key="hex">646e736463656d</elem>
+<elem key="raw">dnsdcem</elem>
+</table>
+<elem key="id.server">dnsdcem</elem>
+<elem key="bind.version">PowerDNS Authoritative Server 4.1.6</elem>
+</script></port>
+</ports>
+<times srtt="1776" rttvar="4223" to="100000"/>
+</host>
+<runstats><finished time="1750004231" timestr="Sun Jun 15 13:17:11 2025" summary="Nmap done at Sun Jun 15 13:17:11 2025; 1 IP address (1 host up) scanned in 13.71 seconds" elapsed="13.71" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

@@ -1,0 +1,463 @@
+{
+  "104.21.48.1": {
+    "80": {
+      "nmap_info": {
+        "port": "80",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_80.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "443": {
+      "nmap_info": {
+        "port": "443",
+        "protocol": "tcp",
+        "name": "https",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "cloudflare"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_443.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "2052": {
+      "nmap_info": {
+        "port": "2052",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2052.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "2053": {
+      "nmap_info": {
+        "port": "2053",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP",
+          "Nginx"
+        ],
+        "product": "nginx",
+        "cpe": "cpe:/a:igor_sysoev:nginx"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2053.json",
+      "nuclei_tech_results": [
+        {
+          "template": "http/technologies/waf-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/waf-detect",
+          "template-id": "waf-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/waf-detect.yaml",
+          "info": {
+            "name": "WAF Detection",
+            "author": [
+              "dwisiswant0",
+              "lu4nx"
+            ],
+            "tags": [
+              "waf",
+              "tech",
+              "misc"
+            ],
+            "description": "A web application firewall was detected.",
+            "reference": [
+              "https://github.com/Ekultek/WhatWaf"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            },
+            "classification": {
+              "cve-id": null,
+              "cwe-id": [
+                "cwe-200"
+              ]
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2053",
+          "port": "2053",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2053",
+          "matched-at": "http://directdial.com.br:2053",
+          "request": "POST / HTTP/1.1\r\nHost: directdial.com.br:2053\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 253\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 08:01:15 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n",
+          "ip": "104.21.64.1",
+          "timestamp": "2025-06-15T05:01:15.527924474-03:00",
+          "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: directdial.com.br:2053' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.2 Safari/605.1.15' 'http://directdial.com.br:2053'",
+          "matcher-status": true
+        },
+        {
+          "template": "http/technologies/tech-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
+          "template-id": "tech-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/tech-detect.yaml",
+          "info": {
+            "name": "Wappalyzer Technology Detection",
+            "author": [
+              "hakluke",
+              "righettod"
+            ],
+            "tags": [
+              "tech"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2053",
+          "port": "2053",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2053",
+          "matched-at": "http://directdial.com.br:2053",
+          "request": "GET / HTTP/1.1\r\nHost: directdial.com.br:2053\r\nUser-Agent: Mozilla/5.0 (Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 253\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 08:01:17 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n",
+          "ip": "104.21.64.1",
+          "timestamp": "2025-06-15T05:01:17.530666438-03:00",
+          "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Mozilla/5.0 (Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0' 'http://directdial.com.br:2053'",
+          "matcher-status": true
+        }
+      ],
+      "nuclei_vuln_results": []
+    },
+    "2082": {
+      "nmap_info": {
+        "port": "2082",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2082.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "2083": {
+      "nmap_info": {
+        "port": "2083",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP",
+          "Nginx"
+        ],
+        "product": "nginx",
+        "cpe": "cpe:/a:igor_sysoev:nginx"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2083.json",
+      "nuclei_tech_results": [
+        {
+          "template": "http/technologies/waf-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/waf-detect",
+          "template-id": "waf-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/waf-detect.yaml",
+          "info": {
+            "name": "WAF Detection",
+            "author": [
+              "dwisiswant0",
+              "lu4nx"
+            ],
+            "tags": [
+              "waf",
+              "tech",
+              "misc"
+            ],
+            "description": "A web application firewall was detected.",
+            "reference": [
+              "https://github.com/Ekultek/WhatWaf"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            },
+            "classification": {
+              "cve-id": null,
+              "cwe-id": [
+                "cwe-200"
+              ]
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2083",
+          "port": "2083",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2083",
+          "matched-at": "http://directdial.com.br:2083",
+          "request": "POST / HTTP/1.1\r\nHost: directdial.com.br:2083\r\nUser-Agent: Mozilla/5.0 (Fedora; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 655\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 08:36:10 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n",
+          "ip": "104.21.96.1",
+          "timestamp": "2025-06-15T05:36:10.564987585-03:00",
+          "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: directdial.com.br:2083' -H 'User-Agent: Mozilla/5.0 (Fedora; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36' 'http://directdial.com.br:2083'",
+          "matcher-status": true
+        },
+        {
+          "template": "http/technologies/tech-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
+          "template-id": "tech-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/tech-detect.yaml",
+          "info": {
+            "name": "Wappalyzer Technology Detection",
+            "author": [
+              "hakluke",
+              "righettod"
+            ],
+            "tags": [
+              "tech"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2083",
+          "port": "2083",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2083",
+          "matched-at": "http://directdial.com.br:2083",
+          "request": "GET / HTTP/1.1\r\nHost: directdial.com.br:2083\r\nUser-Agent: Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 655\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 08:36:12 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n",
+          "ip": "104.21.96.1",
+          "timestamp": "2025-06-15T05:36:12.651620872-03:00",
+          "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36' 'http://directdial.com.br:2083'",
+          "matcher-status": true
+        }
+      ],
+      "nuclei_vuln_results": []
+    },
+    "2086": {
+      "nmap_info": {
+        "port": "2086",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2086.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "2087": {
+      "nmap_info": {
+        "port": "2087",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP",
+          "Nginx"
+        ],
+        "product": "nginx",
+        "cpe": "cpe:/a:igor_sysoev:nginx"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2087.json",
+      "nuclei_tech_results": [
+        {
+          "template": "http/technologies/waf-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/waf-detect",
+          "template-id": "waf-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/waf-detect.yaml",
+          "info": {
+            "name": "WAF Detection",
+            "author": [
+              "dwisiswant0",
+              "lu4nx"
+            ],
+            "tags": [
+              "waf",
+              "tech",
+              "misc"
+            ],
+            "description": "A web application firewall was detected.",
+            "reference": [
+              "https://github.com/Ekultek/WhatWaf"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            },
+            "classification": {
+              "cve-id": null,
+              "cwe-id": [
+                "cwe-200"
+              ]
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2087",
+          "port": "2087",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2087",
+          "matched-at": "http://directdial.com.br:2087",
+          "request": "POST / HTTP/1.1\r\nHost: directdial.com.br:2087\r\nUser-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0 PromptMapper/9.0.3.2\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 655\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 09:11:12 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n<!-- a padding to disable MSIE and Chrome friendly error page -->\r\n",
+          "ip": "104.21.32.1",
+          "timestamp": "2025-06-15T06:11:12.419705413-03:00",
+          "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: directdial.com.br:2087' -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0 PromptMapper/9.0.3.2' 'http://directdial.com.br:2087'",
+          "matcher-status": true
+        },
+        {
+          "template": "http/technologies/tech-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/tech-detect",
+          "template-id": "tech-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/tech-detect.yaml",
+          "info": {
+            "name": "Wappalyzer Technology Detection",
+            "author": [
+              "hakluke",
+              "righettod"
+            ],
+            "tags": [
+              "tech"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2087",
+          "port": "2087",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2087",
+          "matched-at": "http://directdial.com.br:2087",
+          "request": "GET / HTTP/1.1\r\nHost: directdial.com.br:2087\r\nUser-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 253\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 09:11:15 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n",
+          "ip": "104.21.96.1",
+          "timestamp": "2025-06-15T06:11:15.526189689-03:00",
+          "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0' 'http://directdial.com.br:2087'",
+          "matcher-status": true
+        }
+      ],
+      "nuclei_vuln_results": []
+    },
+    "2095": {
+      "nmap_info": {
+        "port": "2095",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2095.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "2096": {
+      "nmap_info": {
+        "port": "2096",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP",
+          "Nginx"
+        ],
+        "product": "nginx",
+        "cpe": "cpe:/a:igor_sysoev:nginx"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_2096.json",
+      "nuclei_tech_results": [
+        {
+          "template": "http/technologies/waf-detect.yaml",
+          "template-url": "https://cloud.projectdiscovery.io/public/waf-detect",
+          "template-id": "waf-detect",
+          "template-path": "/home/beraldi/nuclei-templates/http/technologies/waf-detect.yaml",
+          "info": {
+            "name": "WAF Detection",
+            "author": [
+              "dwisiswant0",
+              "lu4nx"
+            ],
+            "tags": [
+              "waf",
+              "tech",
+              "misc"
+            ],
+            "description": "A web application firewall was detected.",
+            "reference": [
+              "https://github.com/Ekultek/WhatWaf"
+            ],
+            "severity": "info",
+            "metadata": {
+              "max-request": 1
+            },
+            "classification": {
+              "cve-id": null,
+              "cwe-id": [
+                "cwe-200"
+              ]
+            }
+          },
+          "matcher-name": "cloudflare",
+          "type": "http",
+          "host": "directdial.com.br:2096",
+          "port": "2096",
+          "scheme": "http",
+          "url": "http://directdial.com.br:2096",
+          "matched-at": "http://directdial.com.br:2096",
+          "request": "POST / HTTP/1.1\r\nHost: directdial.com.br:2096\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/9.1.2 Safari/605.1.15\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+          "response": "HTTP/1.1 400 Bad Request\r\nConnection: close\r\nContent-Length: 253\r\nCf-Ray: -\r\nContent-Type: text/html\r\nDate: Sun, 15 Jun 2025 09:45:50 GMT\r\nServer: cloudflare\r\n\r\n<html>\r\n<head><title>400 The plain HTTP request was sent to HTTPS port</title></head>\r\n<body>\r\n<center><h1>400 Bad Request</h1></center>\r\n<center>The plain HTTP request was sent to HTTPS port</center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n",
+          "ip": "104.21.48.1",
+          "timestamp": "2025-06-15T06:45:50.824583026-03:00",
+          "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: directdial.com.br:2096' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/9.1.2 Safari/605.1.15' 'http://directdial.com.br:2096'",
+          "matcher-status": true
+        }
+      ],
+      "nuclei_vuln_results": []
+    },
+    "8080": {
+      "nmap_info": {
+        "port": "8080",
+        "protocol": "tcp",
+        "name": "http",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "Cloudflare http proxy"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_8080.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    },
+    "8443": {
+      "nmap_info": {
+        "port": "8443",
+        "protocol": "tcp",
+        "name": "https-alt",
+        "technology": [
+          "HTTP"
+        ],
+        "product": "cloudflare"
+      },
+      "whatweb_file": "output/directdial.com.br/104.21.48.1/fingerprint/web_scans/directdial_com_br/whatweb_8443.json",
+      "nuclei_tech_results": [],
+      "nuclei_vuln_results": []
+    }
+  }
+}
