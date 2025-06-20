@@ -7,1216 +7,757 @@ import argparse
 import logging
 import glob
 import re
-import datetime
-import xml.etree.ElementTree as ET
-from pathlib import Path
-from collections import defaultdict
 import subprocess
+import xml.etree.ElementTree as ET
+from datetime import datetime
+from collections import defaultdict
+import ipaddress
 
-# Configure logging
+# Configuração básica de logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 class UnifiedReportGenerator:
-    def __init__(self, output_base_dir="output", report_dir="output/report"):
-        self.output_base_dir = Path(output_base_dir)
-        self.report_dir = Path(report_dir)
-        self.report_dir.mkdir(parents=True, exist_ok=True)
+    def __init__(self, output_dir="output", report_dir="output/report"):
+        self.output_dir = output_dir
+        self.report_dir = report_dir
+        self.xsl_path = "nmap-bootstrap.xsl"
         
-        # Create assets directory for logo and CSS
-        self.assets_dir = self.report_dir / "assets"
-        self.assets_dir.mkdir(exist_ok=True)
+        # Ensure report directory exists
+        os.makedirs(self.report_dir, exist_ok=True)
+        os.makedirs(f"{self.report_dir}/assets", exist_ok=True)
         
-        self.targets_data = {}
-        self.current_date = datetime.date.today().strftime("%d/%m/%Y")
+        # Copy logo if exists
+        if os.path.exists("logo.png"):
+            import shutil
+            shutil.copy2("logo.png", f"{self.report_dir}/assets/logo.png")
+
+    def execute_command(self, command):
+        """Execute shell command and return stdout, stderr, returncode"""
+        try:
+            process = subprocess.run(command, capture_output=True, text=True, check=False)
+            return process.stdout, process.stderr, process.returncode
+        except Exception as e:
+            logger.error(f"Error executing command {' '.join(command)}: {e}")
+            return None, str(e), 1
+
+    def generate_html_from_nmap_xml(self, xml_path, target_name):
+        """Convert Nmap XML to HTML using xsltproc and save to report directory"""
+        if not os.path.exists(self.xsl_path):
+            logger.error(f"XSL stylesheet not found: {self.xsl_path}")
+            return None
+            
+        # Create target-specific directory in report
+        target_report_dir = os.path.join(self.report_dir, target_name.replace('.', '_'))
+        os.makedirs(target_report_dir, exist_ok=True)
         
-    def scan_output_directory(self):
-        """Scan the output directory and organize data by target"""
-        logger.info("Scanning output directory for targets...")
+        html_filename = os.path.basename(xml_path).replace(".xml", ".html")
+        html_output_path = os.path.join(target_report_dir, html_filename)
         
-        # Find all target directories (domains/IPs)
-        for target_path in self.output_base_dir.iterdir():
-            if target_path.is_dir() and target_path.name != "report":
-                target_name = target_path.name
-                logger.info(f"Processing target: {target_name}")
-                
-                self.targets_data[target_name] = {
-                    'footprint': {},
-                    'fingerprint': {},
-                    'ips': set(),
-                    'domains': set(),
-                    'ports': set(),
-                    'services': {},
-                    'vulnerabilities': [],
-                    'web_technologies': {}
+        command = ["xsltproc", "-o", html_output_path, self.xsl_path, xml_path]
+        logger.info(f"Generating HTML: {html_output_path}")
+        
+        _, stderr, returncode = self.execute_command(command)
+
+        if returncode == 0 and os.path.exists(html_output_path):
+            logger.info(f"  -> Success: {html_filename}")
+            return html_output_path
+        else:
+            logger.error(f"  -> Failed to generate HTML from {xml_path}. Error: {stderr}")
+            return None
+
+    def categorize_ip(self, ip_str):
+        """Categorize IP into network segments"""
+        try:
+            ip = ipaddress.ip_address(ip_str)
+            if ip.is_private:
+                # For private IPs, group by /24 network
+                network = ipaddress.ip_network(f"{ip_str}/24", strict=False)
+                return f"Private-{network.network_address}"
+            else:
+                # For public IPs, group by /24 network
+                network = ipaddress.ip_network(f"{ip_str}/24", strict=False)
+                return f"Public-{network.network_address}"
+        except:
+            return f"Unknown-{ip_str}"
+
+    def discover_targets(self):
+        """Discover all targets from output directory"""
+        targets = {}
+        
+        # Scan output directory for target directories
+        for item in os.listdir(self.output_dir):
+            target_path = os.path.join(self.output_dir, item)
+            if os.path.isdir(target_path) and item != "report":
+                targets[item] = {
+                    'type': 'domain' if '.' in item else 'ip',
+                    'path': target_path,
+                    'fingerprint': os.path.join(target_path, 'fingerprint'),
+                    'footprint': os.path.join(target_path, 'footprint'),
+                    'ips': [],
+                    'subdomains': [],
+                    'reports': []
                 }
                 
-                # Process footprint data
-                footprint_dir = target_path / "footprint"
-                if footprint_dir.exists():
-                    self._process_footprint_data(target_name, footprint_dir)
+                # Discover IPs associated with this target
+                fingerprint_path = targets[item]['fingerprint']
+                if os.path.exists(fingerprint_path):
+                    # Look for IP-specific directories
+                    for ip_item in os.listdir(fingerprint_path):
+                        ip_path = os.path.join(fingerprint_path, ip_item)
+                        if os.path.isdir(ip_path) and self.is_ip(ip_item.replace('_', '.')):
+                            targets[item]['ips'].append(ip_item.replace('_', '.'))
                 
-                # Process fingerprint data
-                fingerprint_dir = target_path / "fingerprint"
-                if fingerprint_dir.exists():
-                    self._process_fingerprint_data(target_name, fingerprint_dir)
-    
-    def _process_footprint_data(self, target_name, footprint_dir):
-        """Process footprint scan data"""
-        target_data = self.targets_data[target_name]['footprint']
-        
-        # DNS enumeration
-        dns_file = footprint_dir / "dns_enumeration.json"
-        if dns_file.exists():
-            try:
-                with open(dns_file, 'r') as f:
-                    target_data['dns'] = json.load(f)
-            except json.JSONDecodeError as e:
-                logger.error(f"Error reading DNS data for {target_name}: {e}")
-        
-        # WHOIS data
-        whois_file = footprint_dir / "whois.txt"
-        if whois_file.exists():
-            with open(whois_file, 'r') as f:
-                target_data['whois'] = f.read()
-        
-        # IP/ASN mapping
-        ip_asn_file = footprint_dir / "ip_asn.json"
-        if ip_asn_file.exists():
-            try:
-                with open(ip_asn_file, 'r') as f:
-                    ip_asn_data = json.load(f)
-                    target_data['ip_asn'] = ip_asn_data
-                    # Extract IPs
-                    for item in ip_asn_data:
-                        if 'ip' in item:
-                            self.targets_data[target_name]['ips'].add(item['ip'])
-            except json.JSONDecodeError as e:
-                logger.error(f"Error reading IP/ASN data for {target_name}: {e}")
-        
-        # Subdomains
-        subdomains_file = footprint_dir / "all_subdomains.txt"
-        if subdomains_file.exists():
-            with open(subdomains_file, 'r') as f:
-                subdomains = [line.strip() for line in f if line.strip()]
-                target_data['subdomains'] = subdomains
-                self.targets_data[target_name]['domains'].update(subdomains)
-        
-        # Geolocation
-        geo_file = footprint_dir / "geolocation.json"
-        if geo_file.exists():
-            try:
-                with open(geo_file, 'r') as f:
-                    target_data['geolocation'] = json.load(f)
-            except json.JSONDecodeError as e:
-                logger.error(f"Error reading geolocation data for {target_name}: {e}")
-    
-    def _process_fingerprint_data(self, target_name, fingerprint_dir):
-        """Process fingerprint scan data"""
-        target_data = self.targets_data[target_name]['fingerprint']
-        
-        # Consolidated ports
-        ports_file = fingerprint_dir / "consolidated_open_tcp_ports_by_ip.json"
-        if ports_file.exists():
-            try:
-                with open(ports_file, 'r') as f:
-                    ports_data = json.load(f)
-                    target_data['ports'] = ports_data
-                    
-                    # Extract IPs and ports
-                    for ip, ports in ports_data.items():
-                        self.targets_data[target_name]['ips'].add(ip)
-                        self.targets_data[target_name]['ports'].update(ports)
-            except json.JSONDecodeError as e:
-                logger.error(f"Error reading ports data for {target_name}: {e}")
-        
-        # Service enumeration XMLs
-        service_xmls = list(fingerprint_dir.rglob("service_scan_*.xml"))
-        target_data['service_scans'] = []
-        
-        for xml_file in service_xmls:
-            services = self._parse_nmap_service_xml(xml_file)
-            if services:
-                target_data['service_scans'].append({
-                    'file': str(xml_file.relative_to(self.output_base_dir)),
-                    'services': services
-                })
-                
-                # Extract services for correlation
-                for service in services:
-                    ip = service.get('ip', 'unknown')
-                    port = service.get('port', 'unknown')
-                    service_name = service.get('name', 'unknown')
-                    
-                    if ip not in self.targets_data[target_name]['services']:
-                        self.targets_data[target_name]['services'][ip] = {}
-                    self.targets_data[target_name]['services'][ip][port] = service_name
-        
-        # Web technology scans
-        web_tech_files = list(fingerprint_dir.rglob("web_technologies_consolidated.json"))
-        for web_file in web_tech_files:
-            try:
-                with open(web_file, 'r') as f:
-                    web_data = json.load(f)
-                    target_data['web_technologies'] = web_data
-                    self.targets_data[target_name]['web_technologies'].update(web_data)
-            except json.JSONDecodeError as e:
-                logger.error(f"Error reading web tech data for {target_name}: {e}")
-        
-        # Nuclei vulnerability scans
-        nuclei_files = list(fingerprint_dir.rglob("nuclei_vulns_*.json"))
-        vulnerabilities = []
-        
-        for nuclei_file in nuclei_files:
-            vulns = self._parse_nuclei_vulnerabilities(nuclei_file)
-            vulnerabilities.extend(vulns)
-        
-        target_data['vulnerabilities'] = vulnerabilities
-        self.targets_data[target_name]['vulnerabilities'].extend(vulnerabilities)
-    
-    def _parse_nmap_service_xml(self, xml_file):
-        """Parse Nmap service scan XML"""
-        services = []
+                # Discover subdomains from web scans
+                web_scans_path = os.path.join(fingerprint_path, 'web_scans')
+                if os.path.exists(web_scans_path):
+                    for subdomain_item in os.listdir(web_scans_path):
+                        subdomain_path = os.path.join(web_scans_path, subdomain_item)
+                        if os.path.isdir(subdomain_path):
+                            subdomain = subdomain_item.replace('_', '.')
+                            if subdomain not in targets[item]['subdomains']:
+                                targets[item]['subdomains'].append(subdomain)
+
+        return targets
+
+    def is_ip(self, text):
+        """Check if text is a valid IP address"""
         try:
-            tree = ET.parse(xml_file)
-            root = tree.getroot()
-            
-            for host in root.findall('host'):
-                host_ip = None
-                address_elem = host.find('address')
-                if address_elem is not None:
-                    host_ip = address_elem.get('addr')
-                
-                for port_elem in host.findall('ports/port'):
-                    port_id = port_elem.get('portid')
-                    protocol = port_elem.get('protocol')
-                    
-                    state_elem = port_elem.find('state')
-                    state = state_elem.get('state') if state_elem is not None else 'unknown'
-                    
-                    service_elem = port_elem.find('service')
-                    service_info = {
-                        'ip': host_ip,
-                        'port': port_id,
-                        'protocol': protocol,
-                        'state': state
-                    }
-                    
-                    if service_elem is not None:
-                        service_info.update({
-                            'name': service_elem.get('name', ''),
-                            'product': service_elem.get('product', ''),
-                            'version': service_elem.get('version', ''),
-                            'extrainfo': service_elem.get('extrainfo', '')
-                        })
-                    
-                    services.append(service_info)
-        
-        except ET.ParseError as e:
-            logger.error(f"Error parsing XML {xml_file}: {e}")
-        
-        return services
-    
-    def _parse_nuclei_vulnerabilities(self, nuclei_file):
-        """Parse Nuclei vulnerability JSON files"""
-        vulnerabilities = []
-        
-        if not nuclei_file.exists() or nuclei_file.stat().st_size == 0:
-            return vulnerabilities
-        
+            ipaddress.ip_address(text)
+            return True
+        except:
+            return False
+
+    def parse_nuclei_file(self, file_path):
+        """Parse Nuclei JSON output file"""
+        findings = []
+        if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
+            return findings
         try:
-            with open(nuclei_file, 'r') as f:
+            with open(file_path, 'r') as f:
                 for line in f:
-                    line = line.strip()
-                    if line:
-                        try:
-                            vuln_data = json.loads(line)
-                            
-                            # Extract vulnerability information
-                            vuln = {
-                                'template_id': vuln_data.get('template-id', ''),
-                                'name': vuln_data.get('info', {}).get('name', ''),
-                                'severity': vuln_data.get('info', {}).get('severity', 'info'),
-                                'host': vuln_data.get('host', ''),
-                                'matched_at': vuln_data.get('matched-at', ''),
-                                'timestamp': vuln_data.get('timestamp', ''),
-                                'description': vuln_data.get('info', {}).get('description', ''),
-                                'tags': vuln_data.get('info', {}).get('tags', [])
-                            }
-                            
-                            vulnerabilities.append(vuln)
-                            
-                        except json.JSONDecodeError as e:
-                            logger.debug(f"Error parsing line in {nuclei_file}: {e}")
-                            continue
-        
+                    if line.strip():
+                        finding = json.loads(line)
+                        findings.append(finding)
         except Exception as e:
-            logger.error(f"Error reading nuclei file {nuclei_file}: {e}")
-        
-        return vulnerabilities
-    
-    def generate_target_html_report(self, target_name):
-        """Generate HTML report for a specific target"""
-        target_data = self.targets_data[target_name]
-        
-        # Create target-specific directory
-        target_report_dir = self.report_dir / target_name
-        target_report_dir.mkdir(exist_ok=True)
-        
-        # Generate HTML content
-        html_content = self._generate_target_html_content(target_name, target_data)
-        
-        # Write HTML file
-        html_file = target_report_dir / "index.html"
-        with open(html_file, 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        
-        logger.info(f"Generated HTML report for {target_name}: {html_file}")
-        return html_file
-    
-    def _generate_target_html_content(self, target_name, target_data):
-        """Generate HTML content for target report"""
-        
-        # Get vulnerability counts by severity
-        vuln_counts = defaultdict(int)
-        for vuln in target_data['vulnerabilities']:
-            severity = vuln.get('severity', 'info')
-            vuln_counts[severity] += 1
-        
-        # Generate sections
-        footprint_section = self._generate_footprint_html_section(target_data.get('footprint', {}))
-        fingerprint_section = self._generate_fingerprint_html_section(target_data.get('fingerprint', {}))
-        vulnerability_section = self._generate_vulnerability_html_section(target_data['vulnerabilities'])
-        correlation_section = self._generate_correlation_html_section(target_data)
-        
-        html_content = f"""
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MaltauroMartins - CyberSecurity Report - {target_name}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .severity-critical {{ background-color: #dc3545; color: white; }}
-        .severity-high {{ background-color: #fd7e14; color: white; }}
-        .severity-medium {{ background-color: #ffc107; color: black; }}
-        .severity-low {{ background-color: #20c997; color: white; }}
-        .severity-info {{ background-color: #0dcaf0; color: black; }}
-        .port-matrix {{ font-size: 0.8em; }}
-        .port-matrix td {{ padding: 2px 4px; }}
-        .service-open {{ background-color: #d4edda; }}
-        .service-filtered {{ background-color: #fff3cd; }}
-        .service-closed {{ background-color: #f8d7da; }}
-        .collapsible-section {{ margin-bottom: 20px; }}
-        .search-box {{ margin-bottom: 15px; }}
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="bg-dark text-white py-3">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-2">
-                    <img src="../assets/logo.png" alt="MaltauroMartins Logo" class="img-fluid" style="max-height: 50px;">
-                </div>
-                <div class="col-md-10">
-                    <h1 class="h3 mb-0">Relatório de Segurança Cibernética - DirectCall - {target_name}</h1>
-                </div>
-            </div>
-        </div>
-    </header>
+            logger.error(f"Error parsing Nuclei file {file_path}: {e}")
+        return findings
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <div class="navbar-nav">
-                <a class="nav-link" href="#overview">Visão Geral</a>
-                <a class="nav-link" href="#footprint">Footprint</a>
-                <a class="nav-link" href="#fingerprint">Fingerprint</a>
-                <a class="nav-link" href="#vulnerabilities">Vulnerabilidades</a>
-                <a class="nav-link" href="#correlation">Correlação</a>
-            </div>
-        </div>
-    </nav>
+    def parse_whatweb_file(self, file_path):
+        """Parse WhatWeb JSON output file"""
+        if not os.path.exists(file_path) or os.path.getsize(file_path) < 5:
+            return []
+        try:
+            with open(file_path, 'r') as f:
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"Error parsing WhatWeb file {file_path}: {e}")
+        return []
 
-    <!-- Main Content -->
-    <div class="container mt-4">
-        <!-- Overview Section -->
-        <section id="overview" class="mb-5">
-            <h2><i class="fas fa-chart-pie"></i> Visão Geral</h2>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">{len(target_data['ips'])}</h5>
-                            <p class="card-text">IPs Identificados</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">{len(target_data['ports'])}</h5>
-                            <p class="card-text">Portas Abertas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">{len(target_data['domains'])}</h5>
-                            <p class="card-text">Domínios/Subdomínios</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">{len(target_data['vulnerabilities'])}</h5>
-                            <p class="card-text">Vulnerabilidades</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Vulnerability Summary -->
-            {self._generate_vulnerability_summary_cards(vuln_counts)}
-        </section>
-
-        <!-- Search and Filter -->
-        <section class="mb-4">
-            <div class="row">
-                <div class="col-md-4">
-                    <input type="text" id="searchIPs" class="form-control" placeholder="Buscar IPs...">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" id="searchPorts" class="form-control" placeholder="Buscar Portas...">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" id="searchDomains" class="form-control" placeholder="Buscar Domínios...">
-                </div>
-            </div>
-        </section>
-
-        {footprint_section}
-        {fingerprint_section}
-        {vulnerability_section}
-        {correlation_section}
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer bg-light mt-5 py-4">
-        <div class="container">
-            <p class="text-muted text-center mb-0" style="font-size: 12px;">
-                Documento confidencial - Este relatório foi gerado pela <a href="https://maltauromartins.com">MaltauroMartins</a> para Directcall.<br/>
-                Relatório Técnico de Segurança Cibernética - Gerado em {self.current_date}.<br/>
-                <a href="https://maltauromartins.com" target="_blank" style="color: #555; text-decoration: none;">MaltauroMartins Soluções Tecnológicas</a>
-            </p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Simple search functionality
-        function setupSearch() {{
-            const searchIPs = document.getElementById('searchIPs');
-            const searchPorts = document.getElementById('searchPorts');
-            const searchDomains = document.getElementById('searchDomains');
-            
-            function filterTable(searchInput, columnIndex, tableId) {{
-                searchInput.addEventListener('keyup', function() {{
-                    const filter = this.value.toLowerCase();
-                    const table = document.getElementById(tableId);
-                    if (!table) return;
-                    
-                    const rows = table.getElementsByTagName('tr');
-                    for (let i = 1; i < rows.length; i++) {{
-                        const cell = rows[i].getElementsByTagName('td')[columnIndex];
-                        if (cell) {{
-                            const textValue = cell.textContent || cell.innerText;
-                            rows[i].style.display = textValue.toLowerCase().indexOf(filter) > -1 ? '' : 'none';
-                        }}
-                    }}
-                }});
-            }}
-            
-            // Apply filters to relevant tables
-            filterTable(searchIPs, 0, 'portsTable');
-            filterTable(searchPorts, 1, 'portsTable');
-            filterTable(searchDomains, 0, 'domainsTable');
-        }}
-        
-        document.addEventListener('DOMContentLoaded', setupSearch);
-    </script>
-</body>
-</html>
-        """
-        
-        return html_content
-    
-    def _generate_vulnerability_summary_cards(self, vuln_counts):
-        """Generate vulnerability summary cards"""
-        if not vuln_counts:
-            return ""
-        
-        cards_html = '<div class="row mt-3">'
-        
-        severity_order = ['critical', 'high', 'medium', 'low', 'info']
-        severity_icons = {
-            'critical': 'fas fa-exclamation-triangle',
-            'high': 'fas fa-fire',
-            'medium': 'fas fa-exclamation-circle',
-            'low': 'fas fa-info-circle',
-            'info': 'fas fa-info'
+    def get_severity_color(self, severity):
+        """Get color for vulnerability severity"""
+        colors = {
+            "critical": "#dc3545",
+            "high": "#fd7e14", 
+            "medium": "#ffc107",
+            "low": "#28a745",
+            "info": "#17a2b8"
         }
+        return colors.get(severity.lower(), "#6c757d")
+
+    def generate_navigation_tree(self, targets):
+        """Generate hierarchical navigation tree"""
+        # Organize IPs by network segments
+        ip_tree = defaultdict(list)
+        domain_tree = defaultdict(list)
         
-        for severity in severity_order:
-            if severity in vuln_counts:
-                count = vuln_counts[severity]
-                icon = severity_icons.get(severity, 'fas fa-question')
+        for target_name, target_data in targets.items():
+            if target_data['type'] == 'ip':
+                category = self.categorize_ip(target_name)
+                ip_tree[category].append(target_name)
+            else:
+                # It's a domain
+                domain_tree[target_name] = target_data['subdomains']
                 
-                cards_html += f'''
-                <div class="col-md-2">
-                    <div class="card severity-{severity}">
-                        <div class="card-body text-center">
-                            <i class="{icon} fa-2x mb-2"></i>
-                            <h5 class="card-title">{count}</h5>
-                            <p class="card-text">{severity.title()}</p>
-                        </div>
-                    </div>
-                </div>
-                '''
-        
-        cards_html += '</div>'
-        return cards_html
-    
-    def _generate_footprint_html_section(self, footprint_data):
-        """Generate footprint section HTML"""
-        if not footprint_data:
-            return ""
-        
-        # DNS Section
-        dns_html = ""
-        if 'dns' in footprint_data:
-            dns_html = "<h4>DNS Records</h4><div class='table-responsive'><table class='table table-striped'><thead><tr><th>Type</th><th>Records</th></tr></thead><tbody>"
-            for record_type, records in footprint_data['dns'].items():
-                records_str = ', '.join(records) if isinstance(records, list) else str(records)
-                dns_html += f"<tr><td>{record_type}</td><td>{records_str}</td></tr>"
-            dns_html += "</tbody></table></div>"
-        
-        # Subdomains Section
-        subdomains_html = ""
-        if 'subdomains' in footprint_data:
-            subdomains_html = f"<h4>Subdomínios ({len(footprint_data['subdomains'])})</h4>"
-            subdomains_html += "<div class='table-responsive'><table id='domainsTable' class='table table-striped'><thead><tr><th>Subdomínio</th></tr></thead><tbody>"
-            for subdomain in footprint_data['subdomains']:
-                subdomains_html += f"<tr><td>{subdomain}</td></tr>"
-            subdomains_html += "</tbody></table></div>"
-        
-        # IP/ASN Section
-        ip_asn_html = ""
-        if 'ip_asn' in footprint_data:
-            ip_asn_html = "<h4>IP/ASN Information</h4><div class='table-responsive'><table class='table table-striped'><thead><tr><th>IP</th><th>ASN</th><th>Network</th><th>Country</th></tr></thead><tbody>"
-            for item in footprint_data['ip_asn']:
-                ip = item.get('ip', 'N/A')
-                asn = item.get('asn', 'N/A')
-                network = item.get('network', {}).get('name', 'N/A')
-                country = item.get('asn_country_code', 'N/A')
-                ip_asn_html += f"<tr><td>{ip}</td><td>{asn}</td><td>{network}</td><td>{country}</td></tr>"
-            ip_asn_html += "</tbody></table></div>"
-        
-        return f"""
-        <section id="footprint" class="mb-5">
-            <h2><i class="fas fa-search"></i> Footprint Analysis</h2>
-            <div class="collapsible-section">
-                {dns_html}
-                {subdomains_html}
-                {ip_asn_html}
-            </div>
-        </section>
-        """
-    
-    def _generate_fingerprint_html_section(self, fingerprint_data):
-        """Generate fingerprint section HTML"""
-        if not fingerprint_data:
-            return ""
-        
-        # Ports Summary
-        ports_html = ""
-        if 'ports' in fingerprint_data:
-            ports_html = "<h4>Open Ports by IP</h4><div class='table-responsive'><table id='portsTable' class='table table-striped'><thead><tr><th>IP Address</th><th>Open Ports</th><th>Port Count</th></tr></thead><tbody>"
-            for ip, ports in fingerprint_data['ports'].items():
-                ports_str = ', '.join(map(str, sorted(ports)))
-                ports_html += f"<tr><td>{ip}</td><td>{ports_str}</td><td>{len(ports)}</td></tr>"
-            ports_html += "</tbody></table></div>"
-        
-        # Services Summary
-        services_html = ""
-        if 'service_scans' in fingerprint_data:
-            services_html = "<h4>Detected Services</h4><div class='table-responsive'><table class='table table-striped'><thead><tr><th>IP</th><th>Port</th><th>Service</th><th>Product</th><th>Version</th></tr></thead><tbody>"
-            for scan in fingerprint_data['service_scans']:
-                for service in scan['services']:
-                    if service.get('state') == 'open':
-                        services_html += f"""
-                        <tr class="service-open">
-                            <td>{service.get('ip', 'N/A')}</td>
-                            <td>{service.get('port', 'N/A')}</td>
-                            <td>{service.get('name', 'N/A')}</td>
-                            <td>{service.get('product', 'N/A')}</td>
-                            <td>{service.get('version', 'N/A')}</td>
-                        </tr>
-                        """
-            services_html += "</tbody></table></div>"
-        
-        # Web Technologies
-        web_tech_html = ""
-        if 'web_technologies' in fingerprint_data:
-            web_tech_html = "<h4>Web Technologies</h4>"
-            for ip, ports_data in fingerprint_data['web_technologies'].items():
-                web_tech_html += f"<h5>IP: {ip}</h5>"
-                for port, tech_data in ports_data.items():
-                    web_tech_html += f"<h6>Port {port}</h6>"
-                    if 'nmap_info' in tech_data:
-                        nmap_info = tech_data['nmap_info']
-                        web_tech_html += f"<p><strong>Service:</strong> {nmap_info.get('name', 'N/A')} - {nmap_info.get('product', 'N/A')}</p>"
-                    
-                    if 'nuclei_tech_results' in tech_data and tech_data['nuclei_tech_results']:
-                        web_tech_html += "<p><strong>Technologies detected:</strong></p><ul>"
-                        for tech in tech_data['nuclei_tech_results']:
-                            tech_name = tech.get('info', {}).get('name', 'Unknown')
-                            web_tech_html += f"<li>{tech_name}</li>"
-                        web_tech_html += "</ul>"
-        
-        return f"""
-        <section id="fingerprint" class="mb-5">
-            <h2><i class="fas fa-fingerprint"></i> Fingerprint Analysis</h2>
-            <div class="collapsible-section">
-                {ports_html}
-                {services_html}
-                {web_tech_html}
-            </div>
-        </section>
-        """
-    
-    def _generate_vulnerability_html_section(self, vulnerabilities):
-        """Generate vulnerabilities section HTML"""
-        if not vulnerabilities:
-            return """
-            <section id="vulnerabilities" class="mb-5">
-                <h2><i class="fas fa-shield-alt"></i> Vulnerabilities</h2>
-                <div class="alert alert-success">
-                    <i class="fas fa-check-circle"></i> No vulnerabilities detected.
-                </div>
-            </section>
-            """
-        
-        # Group vulnerabilities by severity
-        vuln_by_severity = defaultdict(list)
-        for vuln in vulnerabilities:
-            severity = vuln.get('severity', 'info')
-            vuln_by_severity[severity].append(vuln)
-        
-        vuln_html = ""
-        severity_order = ['critical', 'high', 'medium', 'low', 'info']
-        
-        for severity in severity_order:
-            if severity in vuln_by_severity:
-                vuln_list = vuln_by_severity[severity]
-                vuln_html += f"""
-                <h4 class="severity-{severity} p-2 rounded">
-                    <i class="fas fa-exclamation-triangle"></i> {severity.title()} ({len(vuln_list)})
-                </h4>
-                <div class="table-responsive mb-4">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Host</th>
-                                <th>Template ID</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                """
-                
-                for vuln in vuln_list:
-                    vuln_html += f"""
-                    <tr>
-                        <td>{vuln.get('name', 'N/A')}</td>
-                        <td>{vuln.get('host', 'N/A')}</td>
-                        <td><code>{vuln.get('template_id', 'N/A')}</code></td>
-                        <td>{vuln.get('description', 'N/A')[:100]}...</td>
-                    </tr>
-                    """
-                
-                vuln_html += "</tbody></table></div>"
-        
-        return f"""
-        <section id="vulnerabilities" class="mb-5">
-            <h2><i class="fas fa-shield-alt"></i> Vulnerabilities</h2>
-            <div class="collapsible-section">
-                {vuln_html}
-            </div>
-        </section>
-        """
-    
-    def _generate_correlation_html_section(self, target_data):
-        """Generate correlation matrix section"""
-        services = target_data.get('services', {})
-        if not services:
-            return ""
-        
-        # Create port/service correlation matrix
-        all_ports = set()
-        for ip_services in services.values():
-            all_ports.update(ip_services.keys())
-        
-        all_ports = sorted(all_ports, key=lambda x: int(x) if x.isdigit() else 999999)
-        
-        matrix_html = """
-        <h4>Port/Service Correlation Matrix</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered port-matrix">
-                <thead>
-                    <tr>
-                        <th>IP Address</th>
-        """
-        
-        for port in all_ports:
-            matrix_html += f"<th>{port}</th>"
-        
-        matrix_html += "</tr></thead><tbody>"
-        
-        for ip in sorted(services.keys()):
-            matrix_html += f"<tr><td><strong>{ip}</strong></td>"
-            for port in all_ports:
-                service_name = services[ip].get(port, '')
-                cell_class = "service-open" if service_name else "service-closed"
-                display_text = service_name[:8] if service_name else '-'
-                matrix_html += f'<td class="{cell_class}" title="{service_name}">{display_text}</td>'
-            matrix_html += "</tr>"
-        
-        matrix_html += "</tbody></table></div>"
-        
-        return f"""
-        <section id="correlation" class="mb-5">
-            <h2><i class="fas fa-project-diagram"></i> Service Correlation</h2>
-            <div class="collapsible-section">
-                {matrix_html}
-            </div>
-        </section>
-        """
-    
-    def generate_latex_report(self, target_name):
-        """Generate LaTeX report for a specific target"""
-        target_data = self.targets_data[target_name]
-        
-        # Create target-specific directory
-        target_report_dir = self.report_dir / target_name
-        target_report_dir.mkdir(exist_ok=True)
-        
-        latex_content = self._generate_latex_content(target_name, target_data)
-        
-        # Write LaTeX file
-        latex_file = target_report_dir / f"{target_name.replace('.', '_')}.tex"
-        with open(latex_file, 'w', encoding='utf-8') as f:
-            f.write(latex_content)
-        
-        logger.info(f"Generated LaTeX report for {target_name}: {latex_file}")
-        return latex_file
-    
-    def _generate_latex_content(self, target_name, target_data):
-        """Generate LaTeX content for target report"""
-        
-        # Required packages
-        packages = [
-            "\\usepackage{hyperref}",
-            "\\usepackage{longtable}",
-            "\\usepackage{booktabs}",
-            "\\usepackage{array}",
-            "\\usepackage{xcolor}",
-            "\\usepackage{graphicx}",
-            "\\usepackage{tabularx}",
-            "\\usepackage{multicol}"
-        ]
-        
-        packages_section = "% Required packages:\n" + "\n".join([f"% {pkg}" for pkg in packages])
-        
-        # Generate sections
-        footprint_section = self._generate_footprint_latex_section(target_data.get('footprint', {}))
-        fingerprint_section = self._generate_fingerprint_latex_section(target_data.get('fingerprint', {}))
-        vulnerability_section = self._generate_vulnerability_latex_section(target_data['vulnerabilities'])
-        
-        latex_content = f"""
-{packages_section}
+                # Also categorize associated IPs
+                for ip in target_data['ips']:
+                    category = self.categorize_ip(ip)
+                    if ip not in ip_tree[category]:
+                        ip_tree[category].append(ip)
 
-\\section{{Relatório de Segurança Cibernética - {target_name.replace('_', '\\_')}}}
+        return ip_tree, domain_tree
 
-\\subsection{{Resumo Executivo}}
-
-Este relatório apresenta os resultados da análise de segurança cibernética realizada para o alvo \\texttt{{{target_name.replace('_', '\\_')}}}.
-
-\\begin{{itemize}}
-\\item \\textbf{{IPs Identificados:}} {len(target_data['ips'])}
-\\item \\textbf{{Portas Abertas:}} {len(target_data['ports'])}
-\\item \\textbf{{Domínios/Subdomínios:}} {len(target_data['domains'])}
-\\item \\textbf{{Vulnerabilidades:}} {len(target_data['vulnerabilities'])}
-\\end{{itemize}}
-
-{footprint_section}
-
-{fingerprint_section}
-
-{vulnerability_section}
-
-\\subsection{{Conclusões}}
-
-A análise identificou {len(target_data['ips'])} endereços IP associados ao alvo, com {len(target_data['ports'])} portas abertas e {len(target_data['vulnerabilities'])} vulnerabilidades detectadas.
-
-\\textbf{{Recomendações:}}
-\\begin{{itemize}}
-\\item Revisar e corrigir as vulnerabilidades identificadas
-\\item Implementar monitoramento contínuo de segurança
-\\item Realizar testes de penetração regulares
-\\end{{itemize}}
-        """
-        
-        return latex_content
-    
-    def _generate_footprint_latex_section(self, footprint_data):
-        """Generate footprint section for LaTeX"""
-        if not footprint_data:
-            return ""
-        
-        section = "\\subsection{Análise de Footprint}\n\n"
-        
-        # DNS Records
-        if 'dns' in footprint_data:
-            section += "\\subsubsection{Registros DNS}\n\n"
-            section += "\\begin{longtable}{|l|p{10cm}|}\n"
-            section += "\\hline\n"
-            section += "\\textbf{Tipo} & \\textbf{Registros} \\\\ \\hline\n"
-            
-            for record_type, records in footprint_data['dns'].items():
-                records_str = ', '.join(records) if isinstance(records, list) else str(records)
-                records_str = records_str.replace('_', '\\_').replace('&', '\\&')
-                section += f"{record_type} & {records_str} \\\\ \\hline\n"
-            
-            section += "\\end{longtable}\n\n"
-        
-        # Subdomains
-        if 'subdomains' in footprint_data:
-            section += f"\\subsubsection{{Subdomínios ({len(footprint_data['subdomains'])})}}\n\n"
-            section += "\\begin{multicols}{2}\n"
-            section += "\\begin{itemize}\n"
-            
-            for subdomain in footprint_data['subdomains'][:50]:  # Limit to first 50
-                subdomain_escaped = subdomain.replace('_', '\\_').replace('&', '\\&')
-                section += f"\\item \\texttt{{{subdomain_escaped}}}\n"
-            
-            if len(footprint_data['subdomains']) > 50:
-                section += f"\\item ... e mais {len(footprint_data['subdomains']) - 50} subdomínios\n"
-            
-            section += "\\end{itemize}\n"
-            section += "\\end{multicols}\n\n"
-        
-        return section
-    
-    def _generate_fingerprint_latex_section(self, fingerprint_data):
-        """Generate fingerprint section for LaTeX"""
-        if not fingerprint_data:
-            return ""
-        
-        section = "\\subsection{Análise de Fingerprint}\n\n"
-        
-        # Ports Summary
-        if 'ports' in fingerprint_data:
-            section += "\\subsubsection{Portas Abertas por IP}\n\n"
-            section += "\\begin{longtable}{|l|p{8cm}|c|}\n"
-            section += "\\hline\n"
-            section += "\\textbf{Endereço IP} & \\textbf{Portas Abertas} & \\textbf{Total} \\\\ \\hline\n"
-            
-            for ip, ports in fingerprint_data['ports'].items():
-                ports_str = ', '.join(map(str, sorted(ports)))
-                if len(ports_str) > 60:
-                    ports_str = ports_str[:60] + "..."
-                section += f"{ip} & {ports_str} & {len(ports)} \\\\ \\hline\n"
-            
-            section += "\\end{longtable}\n\n"
-        
-        # Services Summary
-        if 'service_scans' in fingerprint_data:
-            section += "\\subsubsection{Serviços Detectados}\n\n"
-            section += "\\begin{longtable}{|l|c|l|l|l|}\n"
-            section += "\\hline\n"
-            section += "\\textbf{IP} & \\textbf{Porta} & \\textbf{Serviço} & \\textbf{Produto} & \\textbf{Versão} \\\\ \\hline\n"
-            
-            for scan in fingerprint_data['service_scans']:
-                for service in scan['services']:
-                    if service.get('state') == 'open':
-                        ip = service.get('ip', 'N/A')
-                        port = service.get('port', 'N/A')
-                        name = service.get('name', 'N/A').replace('_', '\\_')
-                        product = service.get('product', 'N/A').replace('_', '\\_')
-                        version = service.get('version', 'N/A').replace('_', '\\_')
-                        
-                        section += f"{ip} & {port} & {name} & {product} & {version} \\\\ \\hline\n"
-            
-            section += "\\end{longtable}\n\n"
-        
-        return section
-    
-    def _generate_vulnerability_latex_section(self, vulnerabilities):
-        """Generate vulnerabilities section for LaTeX"""
-        if not vulnerabilities:
-            return "\\subsection{Vulnerabilidades}\n\nNenhuma vulnerabilidade foi detectada durante a análise.\n\n"
-        
-        section = "\\subsection{Vulnerabilidades}\n\n"
-        
-        # Group by severity
-        vuln_by_severity = defaultdict(list)
-        for vuln in vulnerabilities:
-            severity = vuln.get('severity', 'info')
-            vuln_by_severity[severity].append(vuln)
-        
-        severity_order = ['critical', 'high', 'medium', 'low', 'info']
-        severity_colors = {
-            'critical': 'red',
-            'high': 'orange',
-            'medium': 'yellow',
-            'low': 'green',
-            'info': 'blue'
-        }
-        
-        for severity in severity_order:
-            if severity in vuln_by_severity:
-                vuln_list = vuln_by_severity[severity]
-                color = severity_colors.get(severity, 'black')
-                
-                section += f"\\subsubsection{{\\textcolor{{{color}}}{{{severity.title()} ({len(vuln_list)})}}}}\n\n"
-                section += "\\begin{longtable}{|p{4cm}|p{3cm}|p{6cm}|}\n"
-                section += "\\hline\n"
-                section += "\\textbf{Nome} & \\textbf{Host} & \\textbf{Descrição} \\\\ \\hline\n"
-                
-                for vuln in vuln_list:
-                    name = vuln.get('name', 'N/A').replace('_', '\\_').replace('&', '\\&')
-                    host = vuln.get('host', 'N/A').replace('_', '\\_')
-                    description = vuln.get('description', 'N/A').replace('_', '\\_').replace('&', '\\&')
-                    
-                    # Truncate long descriptions
-                    if len(description) > 100:
-                        description = description[:100] + "..."
-                    
-                    section += f"{name} & {host} & {description} \\\\ \\hline\n"
-                
-                section += "\\end{longtable}\n\n"
-        
-        return section
-    
-    def generate_master_index(self):
+    def generate_master_index(self, targets):
         """Generate master index.html with frame navigation"""
+        ip_tree, domain_tree = self.generate_navigation_tree(targets)
         
-        # Copy logo if it exists
-        logo_source = Path("logo.png")
-        logo_dest = self.assets_dir / "logo.png"
-        if logo_source.exists():
-            import shutil
-            shutil.copy2(logo_source, logo_dest)
+        # Generate navigation HTML
+        nav_html = ""
         
-        # Generate navigation tree
-        nav_tree = self._generate_navigation_tree()
+        # IP Section
+        nav_html += '<div class="nav-section">'
+        nav_html += '<h6 class="nav-header" onclick="toggleSection(\'ip-section\')">📍 IPs <span class="toggle-icon">▼</span></h6>'
+        nav_html += '<div id="ip-section" class="nav-content">'
         
-        # Create main index.html
-        index_content = f"""
-<!DOCTYPE html>
+        for network, ips in sorted(ip_tree.items()):
+            network_id = network.replace('.', '_').replace('-', '_')
+            nav_html += f'<div class="nav-subsection">'
+            nav_html += f'<div class="nav-subheader" onclick="toggleSubsection(\'{network_id}\')">🌐 {network} <span class="toggle-icon">▼</span></div>'
+            nav_html += f'<div id="{network_id}" class="nav-subcontent">'
+            
+            for ip in sorted(ips):
+                ip_safe = ip.replace('.', '_')
+                nav_html += f'<div class="nav-item" onclick="loadReport(\'{ip_safe}\', \'ip\')" data-search="{ip}">'
+                nav_html += f'<span class="nav-icon">🖥️</span> {ip}</div>'
+            
+            nav_html += '</div></div>'
+        
+        nav_html += '</div></div>'
+        
+        # Domains Section
+        nav_html += '<div class="nav-section">'
+        nav_html += '<h6 class="nav-header" onclick="toggleSection(\'domain-section\')">🌍 Domains <span class="toggle-icon">▼</span></h6>'
+        nav_html += '<div id="domain-section" class="nav-content">'
+        
+        for domain, subdomains in sorted(domain_tree.items()):
+            domain_safe = domain.replace('.', '_')
+            nav_html += f'<div class="nav-subsection">'
+            nav_html += f'<div class="nav-subheader" onclick="toggleSubsection(\'{domain_safe}\')">🏠 {domain} <span class="toggle-icon">▼</span></div>'
+            nav_html += f'<div id="{domain_safe}" class="nav-subcontent">'
+            
+            # Main domain
+            nav_html += f'<div class="nav-item" onclick="loadReport(\'{domain_safe}\', \'domain\')" data-search="{domain}">'
+            nav_html += f'<span class="nav-icon">🌐</span> {domain}</div>'
+            
+            # Subdomains
+            for subdomain in sorted(subdomains):
+                subdomain_safe = subdomain.replace('.', '_')
+                nav_html += f'<div class="nav-item subdomain" onclick="loadReport(\'{subdomain_safe}\', \'subdomain\')" data-search="{subdomain}">'
+                nav_html += f'<span class="nav-icon">📄</span> {subdomain}</div>'
+            
+            nav_html += '</div></div>'
+        
+        nav_html += '</div></div>'
+
+        html_content = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaltauroMartins - CyberSecurity Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body, html {{
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }}
+        body {{ margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }}
         
         .header {{
-            height: 80px;
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
+            padding: 15px 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 80px;
         }}
         
-        .header img {{
+        .header-content {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }}
+        
+        .logo {{
             height: 50px;
             margin-right: 20px;
         }}
         
-        .header h1 {{
+        .header-title {{
+            font-size: 1.5rem;
+            font-weight: 600;
             margin: 0;
-            font-size: 24px;
-            font-weight: 300;
         }}
         
-        .container {{
-            display: flex;
-            height: calc(100vh - 80px);
+        .search-container {{
+            position: relative;
+            width: 300px;
+        }}
+        
+        .search-input {{
+            width: 100%;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
         }}
         
         .sidebar {{
-            width: 300px;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 350px;
+            height: calc(100vh - 80px);
             background: #f8f9fa;
             border-right: 1px solid #dee2e6;
             overflow-y: auto;
-            padding: 20px;
+            padding: 20px 0;
+            z-index: 999;
         }}
         
-        .content {{
-            flex: 1;
+        .main-content {{
+            margin-left: 350px;
+            margin-top: 80px;
+            padding: 20px;
+            min-height: calc(100vh - 80px);
+        }}
+        
+        .nav-section {{
+            margin-bottom: 15px;
+        }}
+        
+        .nav-header {{
+            background: #e9ecef;
+            padding: 12px 20px;
+            margin: 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #495057;
+            border-left: 4px solid #007bff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }}
+        
+        .nav-header:hover {{
+            background: #dee2e6;
+        }}
+        
+        .nav-content {{
             background: white;
         }}
         
-        .content iframe {{
-            width: 100%;
-            height: 100%;
-            border: none;
+        .nav-subsection {{
+            border-left: 2px solid #e9ecef;
+            margin-left: 20px;
         }}
         
-        .nav-tree {{
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .nav-subheader {{
+            padding: 10px 15px;
+            background: #f8f9fa;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6c757d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }}
         
-        .nav-tree li {{
-            margin: 5px 0;
-        }}
-        
-        .nav-tree a {{
-            display: block;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: #495057;
-            border-radius: 4px;
-            transition: all 0.2s;
-        }}
-        
-        .nav-tree a:hover {{
+        .nav-subheader:hover {{
             background: #e9ecef;
-            color: #212529;
         }}
         
-        .nav-tree a.active {{
-            background: #007bff;
+        .nav-subcontent {{
+            background: white;
+        }}
+        
+        .nav-item {{
+            padding: 8px 20px;
+            cursor: pointer;
+            color: #495057;
+            border-bottom: 1px solid #f8f9fa;
+            display: flex;
+            align-items: center;
+        }}
+        
+        .nav-item:hover {{
+            background: #e3f2fd;
+            color: #1976d2;
+        }}
+        
+        .nav-item.active {{
+            background: #2196f3;
             color: white;
         }}
         
-        .nav-group {{
-            margin: 15px 0;
+        .nav-item.subdomain {{
+            margin-left: 20px;
+            font-size: 0.9rem;
         }}
         
-        .nav-group-title {{
-            font-weight: bold;
-            color: #6c757d;
-            margin-bottom: 8px;
-            padding: 5px 0;
-            border-bottom: 1px solid #dee2e6;
+        .nav-icon {{
+            margin-right: 8px;
+            font-size: 0.9rem;
         }}
         
-        .nav-subitem {{
-            padding-left: 20px;
+        .toggle-icon {{
+            font-size: 0.8rem;
+            transition: transform 0.3s;
         }}
         
-        .search-box {{
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 14px;
+        .toggle-icon.rotated {{
+            transform: rotate(-90deg);
+        }}
+        
+        .hidden {{
+            display: none !important;
         }}
         
         .footer {{
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
             background: #f8f9fa;
+            padding: 20px;
+            margin-top: 40px;
             border-top: 1px solid #dee2e6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #6c757d;
-            z-index: 1000;
+            text-align: center;
         }}
         
-        .container {{
-            height: calc(100vh - 140px); /* Adjust for header and footer */
+        .welcome-content {{
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }}
+        
+        .welcome-content h2 {{
+            color: #495057;
+            margin-bottom: 20px;
+        }}
+        
+        .stats-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }}
+        
+        .stat-card {{
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }}
+        
+        .stat-number {{
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007bff;
+        }}
+        
+        .stat-label {{
+            color: #6c757d;
+            margin-top: 5px;
         }}
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
-        <img src="assets/logo.png" alt="MaltauroMartins Logo" onerror="this.style.display='none'">
-        <h1>Relatório de Segurança Cibernética - DirectCall</h1>
-    </div>
-    
-    <!-- Main Container -->
-    <div class="container">
-        <!-- Sidebar Navigation -->
-        <div class="sidebar">
-            <input type="text" class="search-box" id="searchBox" placeholder="Buscar relatórios...">
-            <nav>
-                {nav_tree}
-            </nav>
-        </div>
-        
-        <!-- Content Frame -->
-        <div class="content">
-            <iframe id="contentFrame" src="about:blank"></iframe>
+        <div class="header-content">
+            <div style="display: flex; align-items: center;">
+                <img src="assets/logo.png" alt="MaltauroMartins" class="logo" onerror="this.style.display='none'">
+                <h1 class="header-title">Relatório de Segurança Cibernética - DirectCall</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar IPs, portas, domínios..." onkeyup="performSearch()">
+            </div>
         </div>
     </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-        <p>
-            Documento confidencial - Este relatório foi gerado pela 
-            <a href="https://maltauromartins.com" target="_blank">MaltauroMartins</a> para Directcall.<br/>
-            Relatório Técnico de Segurança Cibernética - Gerado em {self.current_date}.<br/>
-            <a href="https://maltauromartins.com" target="_blank">MaltauroMartins Soluções Tecnológicas</a>
-        </p>
+
+    <div class="sidebar">
+        {nav_html}
     </div>
-    
-    <script>
-        // Navigation functionality
-        function loadContent(url, element) {{
-            document.getElementById('contentFrame').src = url;
+
+    <div class="main-content">
+        <div id="reportContent" class="welcome-content">
+            <h2>Bem-vindo ao Relatório de Segurança Cibernética</h2>
+            <p>Selecione um item na navegação lateral para visualizar os resultados detalhados.</p>
             
-            // Update active state
-            document.querySelectorAll('.nav-tree a').forEach(a => a.classList.remove('active'));
-            element.classList.add('active');
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{len([t for t in targets.values() if t['type'] == 'domain'])}</div>
+                    <div class="stat-label">Domínios Analisados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{sum(len(t['ips']) for t in targets.values())}</div>
+                    <div class="stat-label">IPs Identificados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{sum(len(t['subdomains']) for t in targets.values())}</div>
+                    <div class="stat-label">Subdomínios Encontrados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{len(targets)}</div>
+                    <div class="stat-label">Alvos Totais</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSection(sectionId) {{
+            const content = document.getElementById(sectionId);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            if (content.style.display === 'none' || content.style.display === '') {{
+                content.style.display = 'block';
+                icon.classList.remove('rotated');
+            }} else {{
+                content.style.display = 'none';
+                icon.classList.add('rotated');
+            }}
         }}
         
-        // Search functionality
-        document.getElementById('searchBox').addEventListener('input', function() {{
-            const filter = this.value.toLowerCase();
-            const navItems = document.querySelectorAll('.nav-tree a');
+        function toggleSubsection(subsectionId) {{
+            const content = document.getElementById(subsectionId);
+            const header = content.previousElementSibling;
+            const icon = header.querySelector('.toggle-icon');
+            
+            if (content.style.display === 'none' || content.style.display === '') {{
+                content.style.display = 'block';
+                icon.classList.remove('rotated');
+            }} else {{
+                content.style.display = 'none';
+                icon.classList.add('rotated');
+            }}
+        }}
+        
+        function loadReport(targetId, type) {{
+            // Remove active class from all items
+            document.querySelectorAll('.nav-item').forEach(item => {{
+                item.classList.remove('active');
+            }});
+            
+            // Add active class to clicked item
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Load report content
+            const reportContent = document.getElementById('reportContent');
+            reportContent.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div><p>Carregando relatório...</p></div>';
+            
+            // Try to load the specific report
+            const reportPath = targetId + '/index.html';
+            
+            fetch(reportPath)
+                .then(response => {{
+                    if (response.ok) {{
+                        return response.text();
+                    }}
+                    throw new Error('Report not found');
+                }})
+                .then(html => {{
+                    reportContent.innerHTML = html;
+                }})
+                .catch(error => {{
+                    reportContent.innerHTML = `
+                        <div class="alert alert-warning">
+                            <h4>Relatório não encontrado</h4>
+                            <p>O relatório para <strong>${{targetId.replace('_', '.')}}</strong> ainda não foi gerado ou não está disponível.</p>
+                            <p>Verifique se os scans foram executados corretamente para este alvo.</p>
+                        </div>
+                    `;
+                }});
+        }}
+        
+        function performSearch() {{
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.nav-section');
+            const subsections = document.querySelectorAll('.nav-subsection');
+            
+            if (searchTerm === '') {{
+                // Show all items when search is empty
+                navItems.forEach(item => {{
+                    item.style.display = 'flex';
+                }});
+                sections.forEach(section => {{
+                    section.style.display = 'block';
+                }});
+                subsections.forEach(subsection => {{
+                    subsection.style.display = 'block';
+                }});
+                return;
+            }}
+            
+            let hasVisibleItems = false;
+            
+            // Hide all sections first
+            sections.forEach(section => {{
+                section.style.display = 'none';
+            }});
+            
+            subsections.forEach(subsection => {{
+                subsection.style.display = 'none';
+            }});
             
             navItems.forEach(item => {{
-                const text = item.textContent.toLowerCase();
-                const parent = item.closest('li');
-                parent.style.display = text.includes(filter) ? 'block' : 'none';
+                const searchData = item.getAttribute('data-search') || '';
+                if (searchData.toLowerCase().includes(searchTerm)) {{
+                    item.style.display = 'flex';
+                    hasVisibleItems = true;
+                    
+                    // Show parent section and subsection
+                    let parent = item.closest('.nav-section');
+                    if (parent) {{
+                        parent.style.display = 'block';
+                        // Expand the section
+                        const content = parent.querySelector('.nav-content');
+                        if (content) content.style.display = 'block';
+                    }}
+                    
+                    let parentSub = item.closest('.nav-subsection');
+                    if (parentSub) {{
+                        parentSub.style.display = 'block';
+                        // Expand the subsection
+                        const content = parentSub.querySelector('.nav-subcontent');
+                        if (content) content.style.display = 'block';
+                    }}
+                }} else {{
+                    item.style.display = 'none';
+                }}
             }});
-        }});
-        
-        // Load default content
-        window.addEventListener('load', function() {{
-            const firstLink = document.querySelector('.nav-tree a');
-            if (firstLink) {{
-                loadContent(firstLink.getAttribute('onclick').match(/'([^']+)'/)[1], firstLink);
+            
+            if (!hasVisibleItems) {{
+                // Show "no results" message
+                document.getElementById('reportContent').innerHTML = `
+                    <div class="alert alert-info">
+                        <h4>Nenhum resultado encontrado</h4>
+                        <p>Não foram encontrados resultados para "<strong>${{searchTerm}}</strong>".</p>
+                        <p>Tente buscar por IPs, domínios ou portas.</p>
+                    </div>
+                `;
             }}
+        }}
+        
+        // Initialize - show all sections expanded by default
+        document.addEventListener('DOMContentLoaded', function() {{
+            document.querySelectorAll('.nav-content').forEach(content => {{
+                content.style.display = 'block';
+            }});
+            document.querySelectorAll('.nav-subcontent').forEach(content => {{
+                content.style.display = 'block';
+            }});
         }});
     </script>
 </body>
-</html>
-        """
+</html>"""
+
+        index_path = os.path.join(self.report_dir, "index.html")
+        with open(index_path, 'w', encoding='utf-8') as f:
+            f.write(html_content)
         
-        # Write master index
-        index_file = self.report_dir / "index.html"
-        with open(index_file, 'w', encoding='utf-8') as f:
-            f.write(index_content)
+        logger.info(f"Master index generated: {index_path}")
+        return index_path
+
+    def generate_target_report(self, target_name, target_data):
+        """Generate individual target report"""
+        target_safe = target_name.replace('.', '_')
+        target_dir = os.path.join(self.report_dir, target_safe)
+        os.makedirs(target_dir, exist_ok=True)
         
-        logger.info(f"Generated master index: {index_file}")
-        return index_file
+        # Generate HTML reports from Nmap XMLs
+        nmap_reports = []
+        fingerprint_path = target_data['fingerprint']
+        
+        if os.path.exists(fingerprint_path):
+            # Find all Nmap XML files
+            xml_files = glob.glob(os.path.join(fingerprint_path, "**/*.xml"), recursive=True)
+            for xml_file in xml_files:
+                if "nmap" in os.path.basename(xml_file):
+                    html_report = self.generate_html_from_nmap_xml(xml_file, target_safe)
+                    if html_report:
+                        nmap_reports.append({
+                            'name': os.path.basename(html_report),
+                            'path': os.path.relpath(html_report, target_dir),
+                            'type': 'nmap'
+                        })
+
+        # Generate target-specific index
+        target_html = f"""<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - {target_name}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <h1>Relatório de Segurança - {target_name}</h1>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <h3>Relatórios Nmap Disponíveis</h3>
+                <div class="list-group">
+"""
+        
+        for report in nmap_reports:
+            target_html += f"""
+                    <a href="{report['path']}" class="list-group-item list-group-item-action" target="_blank">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{report['name']}</h5>
+                            <small class="text-muted">{report['type'].upper()}</small>
+                        </div>
+                        <p class="mb-1">Relatório detalhado de varredura de portas e serviços</p>
+                    </a>
+"""
+        
+        target_html += """
+                </div>
+            </div>
+        </div>
+    </div>
     
-    def _generate_navigation_tree(self):
-        """Generate navigation tree HTML"""
-        nav_html = '<ul class="nav-tree">'
+    <footer class="footer mt-5" style="padding: 20px 0; background: #f8f9fa; border-top: 1px solid #dee2e6;">
+        <div class="container">
+            <p class="text-muted text-center" style="margin: 0; font-size: 12px; color: #777;">
+                Documento confidencial - Este relatório foi gerado pela <a href="https://maltauromartins.com">MaltauroMartins</a> para Directcall. <br/>
+                Relatório Técnico de Segurança Cibernética - Gerado em """ + datetime.now().strftime("%d/%m/%Y") + """.<br/>
+                <a href="https://maltauromartins.com" target="_blank" style="color: #555; text-decoration: none;">MaltauroMartins Soluções Tecnológicas</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>"""
+
+        target_index_path = os.path.join(target_dir, "index.html")
+        with open(target_index_path, 'w', encoding='utf-8') as f:
+            f.write(target_html)
         
-        for target_name in sorted(self.targets_data.keys()):
-            target_data = self.targets_data[target_name]
-            
-            nav_html += f'''
-            <li class="nav-group">
-                <div class="nav-group-title">{target_name}</div>
-                <ul class="nav-tree">
-                    <li><a href="#" onclick="loadContent('{target_name}/index.html', this)">📊 Relatório Completo</a></li>
-            '''
-            
-            # Add IP-specific reports
-            for ip in sorted(target_data['ips']):
-                ip_safe = ip.replace('.', '_').replace(':', '_')
-                
-                # Check for existing Nmap HTML reports
-                nmap_files = list(self.output_base_dir.glob(f"**/*{ip_safe}*.html"))
-                if nmap_files:
-                    nav_html += f'<li class="nav-subitem"><a href="#" onclick="loadContent(\'../output/{nmap_files[0].relative_to(self.output_base_dir)}\', this)">🔍 {ip} - Nmap Scan</a></li>'
-                
-                # Check for service scans
-                service_files = list(self.output_base_dir.glob(f"**/service_scan_{ip_safe}.html"))
-                if service_files:
-                    nav_html += f'<li class="nav-subitem"><a href="#" onclick="loadContent(\'../output/{service_files[0].relative_to(self.output_base_dir)}\', this)">⚙️ {ip} - Services</a></li>'
-            
-            # Add web scan reports
-            web_scan_files = list(self.output_base_dir.glob(f"{target_name}/**/web_scans/**/*.html"))
-            for web_file in web_scan_files:
-                web_name = web_file.stem
-                nav_html += f'<li class="nav-subitem"><a href="#" onclick="loadContent(\'../output/{web_file.relative_to(self.output_base_dir)}\', this)">🌐 {web_name}</a></li>'
-            
-            nav_html += '</ul></li>'
-        
-        nav_html += '</ul>'
-        return nav_html
-    
-    def generate_all_reports(self):
-        """Generate all reports for all targets"""
+        logger.info(f"Target report generated: {target_index_path}")
+
+    def generate_all_reports(self, target_filter=None):
+        """Generate all reports"""
         logger.info("Starting unified report generation...")
         
-        # Scan output directory
-        self.scan_output_directory()
+        # Discover all targets
+        targets = self.discover_targets()
         
-        if not self.targets_data:
-            logger.warning("No targets found in output directory")
+        if target_filter:
+            targets = {k: v for k, v in targets.items() if target_filter in k}
+        
+        if not targets:
+            logger.warning("No targets found for report generation")
             return
         
-        # Generate reports for each target
-        for target_name in self.targets_data.keys():
-            logger.info(f"Generating reports for {target_name}")
-            
-            # Generate HTML report
-            self.generate_target_html_report(target_name)
-            
-            # Generate LaTeX report
-            self.generate_latex_report(target_name)
+        logger.info(f"Found {len(targets)} targets: {list(targets.keys())}")
+        
+        # Generate individual target reports
+        for target_name, target_data in targets.items():
+            logger.info(f"Generating report for: {target_name}")
+            self.generate_target_report(target_name, target_data)
         
         # Generate master index
-        self.generate_master_index()
+        self.generate_master_index(targets)
         
-        logger.info("All reports generated successfully!")
-        
-        # Print summary
-        print(f"\n{'='*60}")
-        print("REPORT GENERATION SUMMARY")
-        print(f"{'='*60}")
-        print(f"Targets processed: {len(self.targets_data)}")
-        print(f"Reports location: {self.report_dir}")
-        print(f"Master index: {self.report_dir}/index.html")
-        print(f"{'='*60}")
+        logger.info(f"All reports generated successfully in: {self.report_dir}")
 
 def main():
     parser = argparse.ArgumentParser(description="Unified MMCyberSec Report Generator")
-    parser.add_argument("--output-dir", default="output", help="Base output directory (default: output)")
-    parser.add_argument("--report-dir", default="output/report", help="Report output directory (default: output/report)")
+    parser.add_argument("--output-dir", default="output", help="Output directory containing scan results")
+    parser.add_argument("--report-dir", default="output/report", help="Report output directory")
     parser.add_argument("--target", help="Generate report for specific target only")
     parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
     
@@ -1225,21 +766,8 @@ def main():
     if args.verbose:
         logging.getLogger().setLevel(logging.DEBUG)
     
-    # Initialize generator
     generator = UnifiedReportGenerator(args.output_dir, args.report_dir)
-    
-    if args.target:
-        # Generate report for specific target
-        generator.scan_output_directory()
-        if args.target in generator.targets_data:
-            generator.generate_target_html_report(args.target)
-            generator.generate_latex_report(args.target)
-            logger.info(f"Report generated for {args.target}")
-        else:
-            logger.error(f"Target {args.target} not found")
-    else:
-        # Generate all reports
-        generator.generate_all_reports()
+    generator.generate_all_reports(args.target)
 
 if __name__ == "__main__":
     main()
