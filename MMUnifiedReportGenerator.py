@@ -8,10 +8,8 @@ import logging
 import glob
 import re
 import subprocess
-import xml.etree.ElementTree as ET
 from datetime import datetime
 from collections import defaultdict
-import ipaddress
 
 # Configuração básica de logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
@@ -25,6 +23,7 @@ class UnifiedReportGenerator:
         
         # Ensure report directory exists
         os.makedirs(self.report_dir, exist_ok=True)
+        os.makedirs(f"{self.report_dir}/html", exist_ok=True)
         os.makedirs(f"{self.report_dir}/assets", exist_ok=True)
         
         # Copy logo if exists
@@ -41,21 +40,17 @@ class UnifiedReportGenerator:
             logger.error(f"Error executing command {' '.join(command)}: {e}")
             return None, str(e), 1
 
-    def generate_html_from_nmap_xml(self, xml_path, target_name):
-        """Convert Nmap XML to HTML using xsltproc and save to report directory"""
+    def generate_html_from_nmap_xml(self, xml_path):
+        """Convert Nmap XML to HTML using xsltproc and save to report/html directory"""
         if not os.path.exists(self.xsl_path):
             logger.error(f"XSL stylesheet not found: {self.xsl_path}")
             return None
             
-        # Create target-specific directory in report
-        target_report_dir = os.path.join(self.report_dir, target_name.replace('.', '_'))
-        os.makedirs(target_report_dir, exist_ok=True)
-        
         html_filename = os.path.basename(xml_path).replace(".xml", ".html")
-        html_output_path = os.path.join(target_report_dir, html_filename)
+        html_output_path = os.path.join(self.report_dir, "html", html_filename)
         
         command = ["xsltproc", "-o", html_output_path, self.xsl_path, xml_path]
-        logger.info(f"Generating HTML: {html_output_path}")
+        logger.info(f"Generating HTML: {html_filename}")
         
         _, stderr, returncode = self.execute_command(command)
 
@@ -66,179 +61,147 @@ class UnifiedReportGenerator:
             logger.error(f"  -> Failed to generate HTML from {xml_path}. Error: {stderr}")
             return None
 
-    def categorize_ip(self, ip_str):
-        """Categorize IP into network segments"""
-        try:
-            ip = ipaddress.ip_address(ip_str)
-            if ip.is_private:
-                # For private IPs, group by /24 network
-                network = ipaddress.ip_network(f"{ip_str}/24", strict=False)
-                return f"Private-{network.network_address}"
-            else:
-                # For public IPs, group by /24 network
-                network = ipaddress.ip_network(f"{ip_str}/24", strict=False)
-                return f"Public-{network.network_address}"
-        except:
-            return f"Unknown-{ip_str}"
-
-    def discover_targets(self):
-        """Discover all targets from output directory"""
-        targets = {}
-        
-        # Scan output directory for target directories
-        for item in os.listdir(self.output_dir):
-            target_path = os.path.join(self.output_dir, item)
-            if os.path.isdir(target_path) and item != "report":
-                targets[item] = {
-                    'type': 'domain' if '.' in item else 'ip',
-                    'path': target_path,
-                    'fingerprint': os.path.join(target_path, 'fingerprint'),
-                    'footprint': os.path.join(target_path, 'footprint'),
-                    'ips': [],
-                    'subdomains': [],
-                    'reports': []
-                }
-                
-                # Discover IPs associated with this target
-                fingerprint_path = targets[item]['fingerprint']
-                if os.path.exists(fingerprint_path):
-                    # Look for IP-specific directories
-                    for ip_item in os.listdir(fingerprint_path):
-                        ip_path = os.path.join(fingerprint_path, ip_item)
-                        if os.path.isdir(ip_path) and self.is_ip(ip_item.replace('_', '.')):
-                            targets[item]['ips'].append(ip_item.replace('_', '.'))
-                
-                # Discover subdomains from web scans
-                web_scans_path = os.path.join(fingerprint_path, 'web_scans')
-                if os.path.exists(web_scans_path):
-                    for subdomain_item in os.listdir(web_scans_path):
-                        subdomain_path = os.path.join(web_scans_path, subdomain_item)
-                        if os.path.isdir(subdomain_path):
-                            subdomain = subdomain_item.replace('_', '.')
-                            if subdomain not in targets[item]['subdomains']:
-                                targets[item]['subdomains'].append(subdomain)
-
-        return targets
-
-    def is_ip(self, text):
-        """Check if text is a valid IP address"""
-        try:
-            ipaddress.ip_address(text)
-            return True
-        except:
-            return False
-
-    def parse_nuclei_file(self, file_path):
-        """Parse Nuclei JSON output file"""
-        findings = []
-        if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
-            return findings
-        try:
-            with open(file_path, 'r') as f:
-                for line in f:
-                    if line.strip():
-                        finding = json.loads(line)
-                        findings.append(finding)
-        except Exception as e:
-            logger.error(f"Error parsing Nuclei file {file_path}: {e}")
-        return findings
-
-    def parse_whatweb_file(self, file_path):
-        """Parse WhatWeb JSON output file"""
-        if not os.path.exists(file_path) or os.path.getsize(file_path) < 5:
+    def read_full_tree(self):
+        """Read the full tree structure from report/full_tree.txt"""
+        tree_file = os.path.join("report", "full_tree.txt")
+        if not os.path.exists(tree_file):
+            logger.warning(f"Tree file not found: {tree_file}")
             return []
+        
         try:
-            with open(file_path, 'r') as f:
-                return json.load(f)
+            with open(tree_file, 'r') as f:
+                return [line.strip() for line in f.readlines() if line.strip()]
         except Exception as e:
-            logger.error(f"Error parsing WhatWeb file {file_path}: {e}")
-        return []
+            logger.error(f"Error reading tree file: {e}")
+            return []
 
-    def get_severity_color(self, severity):
-        """Get color for vulnerability severity"""
-        colors = {
-            "critical": "#dc3545",
-            "high": "#fd7e14", 
-            "medium": "#ffc107",
-            "low": "#28a745",
-            "info": "#17a2b8"
+    def parse_tree_structure(self):
+        """Parse the tree structure and extract relevant information"""
+        tree_lines = self.read_full_tree()
+        
+        data = {
+            'domains': set(),
+            'subdomains': set(),
+            'ips': set(),
+            'ports': set(),
+            'nmap_xmls': [],
+            'service_xmls': [],
+            'nuclei_files': [],
+            'whatweb_files': [],
+            'web_scans': []
         }
-        return colors.get(severity.lower(), "#6c757d")
-
-    def generate_navigation_tree(self, targets):
-        """Generate hierarchical navigation tree"""
-        # Organize IPs by network segments
-        ip_tree = defaultdict(list)
-        domain_tree = defaultdict(list)
         
-        for target_name, target_data in targets.items():
-            if target_data['type'] == 'ip':
-                category = self.categorize_ip(target_name)
-                ip_tree[category].append(target_name)
-            else:
-                # It's a domain
-                domain_tree[target_name] = target_data['subdomains']
+        for line in tree_lines:
+            # Extract file path from tree structure
+            clean_path = re.sub(r'^[├└│\s\-]+', '', line)
+            
+            if not clean_path or clean_path.startswith('report/'):
+                continue
                 
-                # Also categorize associated IPs
-                for ip in target_data['ips']:
-                    category = self.categorize_ip(ip)
-                    if ip not in ip_tree[category]:
-                        ip_tree[category].append(ip)
+            # Extract domains from path
+            if '.com.br' in clean_path or '.com' in clean_path:
+                domain_match = re.search(r'([a-zA-Z0-9.-]+\.(com\.br|com|net|org))', clean_path)
+                if domain_match:
+                    domain = domain_match.group(1)
+                    if 'www.' in domain or 'monitoramento.' in domain:
+                        data['subdomains'].add(domain)
+                    else:
+                        data['domains'].add(domain)
+            
+            # Extract IPs from path
+            ip_matches = re.findall(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', clean_path)
+            for ip in ip_matches:
+                data['ips'].add(ip)
+            
+            # Extract ports from filenames
+            port_matches = re.findall(r'_(\d{1,5})\.', clean_path)
+            for port in port_matches:
+                if 1 <= int(port) <= 65535:
+                    data['ports'].add(port)
+            
+            # Categorize files
+            if clean_path.endswith('.xml'):
+                if 'nmap' in clean_path:
+                    data['nmap_xmls'].append(clean_path)
+                elif 'service' in clean_path:
+                    data['service_xmls'].append(clean_path)
+            elif 'nuclei' in clean_path and clean_path.endswith('.json'):
+                data['nuclei_files'].append(clean_path)
+            elif 'whatweb' in clean_path and clean_path.endswith('.json'):
+                data['whatweb_files'].append(clean_path)
+            elif 'web_scans' in clean_path:
+                data['web_scans'].append(clean_path)
+        
+        # Convert sets to sorted lists
+        for key in ['domains', 'subdomains', 'ips', 'ports']:
+            data[key] = sorted(list(data[key]))
+        
+        return data
 
-        return ip_tree, domain_tree
+    def generate_search_data(self, data):
+        """Generate search data for the frontend"""
+        search_items = []
+        
+        # Add domains
+        for domain in data['domains']:
+            search_items.append({
+                'type': 'domain',
+                'value': domain,
+                'display': f"🌍 {domain}",
+                'category': 'Domínios'
+            })
+        
+        # Add subdomains
+        for subdomain in data['subdomains']:
+            search_items.append({
+                'type': 'subdomain', 
+                'value': subdomain,
+                'display': f"📄 {subdomain}",
+                'category': 'Subdomínios'
+            })
+        
+        # Add IPs
+        for ip in data['ips']:
+            search_items.append({
+                'type': 'ip',
+                'value': ip,
+                'display': f"🖥️ {ip}",
+                'category': 'IPs'
+            })
+        
+        # Add ports
+        for port in data['ports']:
+            search_items.append({
+                'type': 'port',
+                'value': port,
+                'display': f"🔌 Porta {port}",
+                'category': 'Portas'
+            })
+        
+        return search_items
 
-    def generate_master_index(self, targets):
-        """Generate master index.html with frame navigation"""
-        ip_tree, domain_tree = self.generate_navigation_tree(targets)
+    def process_all_nmap_xmls(self, data):
+        """Process all Nmap XML files to generate HTML reports"""
+        html_reports = []
         
-        # Generate navigation HTML
-        nav_html = ""
+        for xml_path in data['nmap_xmls'] + data['service_xmls']:
+            full_xml_path = os.path.join(self.output_dir, xml_path)
+            if os.path.exists(full_xml_path):
+                html_path = self.generate_html_from_nmap_xml(full_xml_path)
+                if html_path:
+                    html_reports.append({
+                        'name': os.path.basename(html_path),
+                        'path': f"html/{os.path.basename(html_path)}",
+                        'xml_source': xml_path,
+                        'type': 'nmap' if 'nmap' in xml_path else 'service'
+                    })
         
-        # IP Section
-        nav_html += '<div class="nav-section">'
-        nav_html += '<h6 class="nav-header" onclick="toggleSection(\'ip-section\')">📍 IPs <span class="toggle-icon">▼</span></h6>'
-        nav_html += '<div id="ip-section" class="nav-content">'
-        
-        for network, ips in sorted(ip_tree.items()):
-            network_id = network.replace('.', '_').replace('-', '_')
-            nav_html += f'<div class="nav-subsection">'
-            nav_html += f'<div class="nav-subheader" onclick="toggleSubsection(\'{network_id}\')">🌐 {network} <span class="toggle-icon">▼</span></div>'
-            nav_html += f'<div id="{network_id}" class="nav-subcontent">'
-            
-            for ip in sorted(ips):
-                ip_safe = ip.replace('.', '_')
-                nav_html += f'<div class="nav-item" onclick="loadReport(\'{ip_safe}\', \'ip\')" data-search="{ip}">'
-                nav_html += f'<span class="nav-icon">🖥️</span> {ip}</div>'
-            
-            nav_html += '</div></div>'
-        
-        nav_html += '</div></div>'
-        
-        # Domains Section
-        nav_html += '<div class="nav-section">'
-        nav_html += '<h6 class="nav-header" onclick="toggleSection(\'domain-section\')">🌍 Domains <span class="toggle-icon">▼</span></h6>'
-        nav_html += '<div id="domain-section" class="nav-content">'
-        
-        for domain, subdomains in sorted(domain_tree.items()):
-            domain_safe = domain.replace('.', '_')
-            nav_html += f'<div class="nav-subsection">'
-            nav_html += f'<div class="nav-subheader" onclick="toggleSubsection(\'{domain_safe}\')">🏠 {domain} <span class="toggle-icon">▼</span></div>'
-            nav_html += f'<div id="{domain_safe}" class="nav-subcontent">'
-            
-            # Main domain
-            nav_html += f'<div class="nav-item" onclick="loadReport(\'{domain_safe}\', \'domain\')" data-search="{domain}">'
-            nav_html += f'<span class="nav-icon">🌐</span> {domain}</div>'
-            
-            # Subdomains
-            for subdomain in sorted(subdomains):
-                subdomain_safe = subdomain.replace('.', '_')
-                nav_html += f'<div class="nav-item subdomain" onclick="loadReport(\'{subdomain_safe}\', \'subdomain\')" data-search="{subdomain}">'
-                nav_html += f'<span class="nav-icon">📄</span> {subdomain}</div>'
-            
-            nav_html += '</div></div>'
-        
-        nav_html += '</div></div>'
+        return html_reports
 
+    def generate_master_index(self, data, html_reports):
+        """Generate master index.html with header search"""
+        search_data = self.generate_search_data(data)
+        
         html_content = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -246,27 +209,37 @@ class UnifiedReportGenerator:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MaltauroMartins - CyberSecurity Report</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {{ margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }}
+        body {{ 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }}
         
         .header {{
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 15px 20px;
+            padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
             z-index: 1000;
-            height: 80px;
         }}
         
         .header-content {{
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }}
+        
+        .logo-section {{
+            display: flex;
+            align-items: center;
         }}
         
         .logo {{
@@ -275,370 +248,475 @@ class UnifiedReportGenerator:
         }}
         
         .header-title {{
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin: 0;
         }}
         
-        .search-container {{
+        .search-section {{
             position: relative;
-            width: 300px;
+            width: 400px;
         }}
         
         .search-input {{
             width: 100%;
-            padding: 8px 15px;
+            padding: 12px 45px 12px 15px;
             border: none;
             border-radius: 25px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             color: #333;
+            font-size: 14px;
         }}
         
-        .sidebar {{
-            position: fixed;
-            top: 80px;
+        .search-icon {{
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+        }}
+        
+        .search-results {{
+            position: absolute;
+            top: 100%;
             left: 0;
-            width: 350px;
-            height: calc(100vh - 80px);
-            background: #f8f9fa;
-            border-right: 1px solid #dee2e6;
+            right: 0;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            max-height: 400px;
             overflow-y: auto;
-            padding: 20px 0;
-            z-index: 999;
+            z-index: 1001;
+            display: none;
+        }}
+        
+        .search-result-item {{
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }}
+        
+        .search-result-item:hover {{
+            background-color: #f8f9fa;
+        }}
+        
+        .search-result-item:last-child {{
+            border-bottom: none;
+        }}
+        
+        .search-category {{
+            font-size: 0.8rem;
+            color: #6c757d;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 12px;
         }}
         
         .main-content {{
-            margin-left: 350px;
-            margin-top: 80px;
-            padding: 20px;
-            min-height: calc(100vh - 80px);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
         }}
         
-        .nav-section {{
-            margin-bottom: 15px;
-        }}
-        
-        .nav-header {{
-            background: #e9ecef;
-            padding: 12px 20px;
-            margin: 0;
-            cursor: pointer;
-            font-weight: 600;
-            color: #495057;
-            border-left: 4px solid #007bff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }}
-        
-        .nav-header:hover {{
-            background: #dee2e6;
-        }}
-        
-        .nav-content {{
-            background: white;
-        }}
-        
-        .nav-subsection {{
-            border-left: 2px solid #e9ecef;
-            margin-left: 20px;
-        }}
-        
-        .nav-subheader {{
-            padding: 10px 15px;
-            background: #f8f9fa;
-            cursor: pointer;
-            font-weight: 500;
-            color: #6c757d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }}
-        
-        .nav-subheader:hover {{
-            background: #e9ecef;
-        }}
-        
-        .nav-subcontent {{
-            background: white;
-        }}
-        
-        .nav-item {{
-            padding: 8px 20px;
-            cursor: pointer;
-            color: #495057;
-            border-bottom: 1px solid #f8f9fa;
-            display: flex;
-            align-items: center;
-        }}
-        
-        .nav-item:hover {{
-            background: #e3f2fd;
-            color: #1976d2;
-        }}
-        
-        .nav-item.active {{
-            background: #2196f3;
-            color: white;
-        }}
-        
-        .nav-item.subdomain {{
-            margin-left: 20px;
-            font-size: 0.9rem;
-        }}
-        
-        .nav-icon {{
-            margin-right: 8px;
-            font-size: 0.9rem;
-        }}
-        
-        .toggle-icon {{
-            font-size: 0.8rem;
-            transition: transform 0.3s;
-        }}
-        
-        .toggle-icon.rotated {{
-            transform: rotate(-90deg);
-        }}
-        
-        .hidden {{
-            display: none !important;
-        }}
-        
-        .footer {{
-            background: #f8f9fa;
-            padding: 20px;
-            margin-top: 40px;
-            border-top: 1px solid #dee2e6;
+        .welcome-section {{
             text-align: center;
-        }}
-        
-        .welcome-content {{
-            text-align: center;
-            padding: 60px 20px;
-            color: #6c757d;
-        }}
-        
-        .welcome-content h2 {{
-            color: #495057;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }}
         
         .stats-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            margin-top: 40px;
+            margin: 30px 0;
         }}
         
         .stat-card {{
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             text-align: center;
+            transition: transform 0.2s;
+        }}
+        
+        .stat-card:hover {{
+            transform: translateY(-2px);
         }}
         
         .stat-number {{
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #007bff;
+            margin-bottom: 5px;
         }}
         
         .stat-label {{
             color: #6c757d;
-            margin-top: 5px;
+            font-weight: 500;
+        }}
+        
+        .reports-section {{
+            margin-top: 40px;
+        }}
+        
+        .section-title {{
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }}
+        
+        .reports-table {{
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }}
+        
+        .table-controls {{
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }}
+        
+        .pagination-controls {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        
+        .pagination-controls select {{
+            padding: 5px 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }}
+        
+        .table-filter {{
+            flex: 1;
+            max-width: 300px;
+        }}
+        
+        .table-filter input {{
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }}
+        
+        .footer {{
+            background: #f8f9fa;
+            padding: 30px 0;
+            margin-top: 60px;
+            border-top: 1px solid #dee2e6;
+        }}
+        
+        .footer-content {{
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }}
+        
+        .footer-text {{
+            margin: 0;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.6;
+        }}
+        
+        .footer-text a {{
+            color: #555;
+            text-decoration: none;
+        }}
+        
+        .footer-text a:hover {{
+            text-decoration: underline;
+        }}
+        
+        .hidden {{
+            display: none !important;
         }}
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header-content">
-            <div style="display: flex; align-items: center;">
+            <div class="logo-section">
                 <img src="assets/logo.png" alt="MaltauroMartins" class="logo" onerror="this.style.display='none'">
                 <h1 class="header-title">Relatório de Segurança Cibernética - DirectCall</h1>
             </div>
-            <div class="search-container">
-                <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar IPs, portas, domínios..." onkeyup="performSearch()">
+            <div class="search-section">
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar IPs, portas, domínios..." onkeyup="performSearch()" onfocus="showSearchResults()" onblur="hideSearchResults()">
+                <i class="fas fa-search search-icon"></i>
+                <div class="search-results" id="searchResults"></div>
             </div>
         </div>
-    </div>
-
-    <div class="sidebar">
-        {nav_html}
     </div>
 
     <div class="main-content">
-        <div id="reportContent" class="welcome-content">
-            <h2>Bem-vindo ao Relatório de Segurança Cibernética</h2>
-            <p>Selecione um item na navegação lateral para visualizar os resultados detalhados.</p>
+        <div class="welcome-section">
+            <h2>Relatório de Segurança Cibernética</h2>
+            <p class="lead">Análise completa de segurança para DirectCall</p>
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">{len([t for t in targets.values() if t['type'] == 'domain'])}</div>
-                    <div class="stat-label">Domínios Analisados</div>
+                    <div class="stat-number">{len(data['domains'])}</div>
+                    <div class="stat-label">Domínios</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">{sum(len(t['ips']) for t in targets.values())}</div>
+                    <div class="stat-number">{len(data['subdomains'])}</div>
+                    <div class="stat-label">Subdomínios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{len(data['ips'])}</div>
                     <div class="stat-label">IPs Identificados</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">{sum(len(t['subdomains']) for t in targets.values())}</div>
-                    <div class="stat-label">Subdomínios Encontrados</div>
+                    <div class="stat-number">{len(data['ports'])}</div>
+                    <div class="stat-label">Portas Encontradas</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">{len(targets)}</div>
-                    <div class="stat-label">Alvos Totais</div>
+                    <div class="stat-number">{len(html_reports)}</div>
+                    <div class="stat-label">Relatórios Gerados</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="reports-section">
+            <h3 class="section-title">Relatórios Disponíveis</h3>
+            
+            <div class="reports-table">
+                <div class="table-controls">
+                    <div class="table-filter">
+                        <input type="text" id="tableFilter" placeholder="Filtrar relatórios..." onkeyup="filterTable()">
+                    </div>
+                    <div class="pagination-controls">
+                        <label>Mostrar:</label>
+                        <select id="pageSize" onchange="changePageSize()">
+                            <option value="10">10</option>
+                            <option value="25" selected>25</option>
+                            <option value="50">50</option>
+                        </select>
+                        <label>por página</label>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0" id="reportsTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Relatório</th>
+                                <th>Tipo</th>
+                                <th>Origem</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody">
+"""
+
+        # Add table rows for each report
+        for report in html_reports:
+            html_content += f"""
+                            <tr>
+                                <td><strong>{report['name']}</strong></td>
+                                <td><span class="badge bg-primary">{report['type'].upper()}</span></td>
+                                <td><small class="text-muted">{report['xml_source']}</small></td>
+                                <td>
+                                    <a href="{report['path']}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-external-link-alt"></i> Visualizar
+                                    </a>
+                                </td>
+                            </tr>
+"""
+
+        html_content += f"""
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-controls">
+                    <div id="tableInfo" class="text-muted"></div>
+                    <div id="tablePagination"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">
+                Documento confidencial - Este relatório foi gerado pela <a href="https://maltauromartins.com">MaltauroMartins</a> para Directcall.<br/>
+                Relatório Técnico de Segurança Cibernética - Gerado em {datetime.now().strftime("%d/%m/%Y")}.<br/>
+                <a href="https://maltauromartins.com" target="_blank">MaltauroMartins Soluções Tecnológicas</a>
+            </p>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function toggleSection(sectionId) {{
-            const content = document.getElementById(sectionId);
-            const header = content.previousElementSibling;
-            const icon = header.querySelector('.toggle-icon');
-            
-            if (content.style.display === 'none' || content.style.display === '') {{
-                content.style.display = 'block';
-                icon.classList.remove('rotated');
-            }} else {{
-                content.style.display = 'none';
-                icon.classList.add('rotated');
-            }}
-        }}
+        // Search data
+        const searchData = {json.dumps(search_data, ensure_ascii=False)};
         
-        function toggleSubsection(subsectionId) {{
-            const content = document.getElementById(subsectionId);
-            const header = content.previousElementSibling;
-            const icon = header.querySelector('.toggle-icon');
-            
-            if (content.style.display === 'none' || content.style.display === '') {{
-                content.style.display = 'block';
-                icon.classList.remove('rotated');
-            }} else {{
-                content.style.display = 'none';
-                icon.classList.add('rotated');
-            }}
-        }}
-        
-        function loadReport(targetId, type) {{
-            // Remove active class from all items
-            document.querySelectorAll('.nav-item').forEach(item => {{
-                item.classList.remove('active');
-            }});
-            
-            // Add active class to clicked item
-            event.target.closest('.nav-item').classList.add('active');
-            
-            // Load report content
-            const reportContent = document.getElementById('reportContent');
-            reportContent.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"></div><p>Carregando relatório...</p></div>';
-            
-            // Try to load the specific report
-            const reportPath = targetId + '/index.html';
-            
-            fetch(reportPath)
-                .then(response => {{
-                    if (response.ok) {{
-                        return response.text();
-                    }}
-                    throw new Error('Report not found');
-                }})
-                .then(html => {{
-                    reportContent.innerHTML = html;
-                }})
-                .catch(error => {{
-                    reportContent.innerHTML = `
-                        <div class="alert alert-warning">
-                            <h4>Relatório não encontrado</h4>
-                            <p>O relatório para <strong>${{targetId.replace('_', '.')}}</strong> ainda não foi gerado ou não está disponível.</p>
-                            <p>Verifique se os scans foram executados corretamente para este alvo.</p>
-                        </div>
-                    `;
-                }});
-        }}
+        // Table pagination
+        let currentPage = 1;
+        let pageSize = 25;
+        let filteredData = [];
         
         function performSearch() {{
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const navItems = document.querySelectorAll('.nav-item');
-            const sections = document.querySelectorAll('.nav-section');
-            const subsections = document.querySelectorAll('.nav-subsection');
+            const resultsContainer = document.getElementById('searchResults');
             
-            if (searchTerm === '') {{
-                // Show all items when search is empty
-                navItems.forEach(item => {{
-                    item.style.display = 'flex';
-                }});
-                sections.forEach(section => {{
-                    section.style.display = 'block';
-                }});
-                subsections.forEach(subsection => {{
-                    subsection.style.display = 'block';
-                }});
+            if (searchTerm.length < 2) {{
+                resultsContainer.style.display = 'none';
                 return;
             }}
             
-            let hasVisibleItems = false;
+            const results = searchData.filter(item => 
+                item.value.toLowerCase().includes(searchTerm) ||
+                item.display.toLowerCase().includes(searchTerm)
+            );
             
-            // Hide all sections first
-            sections.forEach(section => {{
-                section.style.display = 'none';
-            }});
+            resultsContainer.innerHTML = '';
             
-            subsections.forEach(subsection => {{
-                subsection.style.display = 'none';
-            }});
+            if (results.length === 0) {{
+                resultsContainer.innerHTML = '<div class="search-result-item">Nenhum resultado encontrado</div>';
+            }} else {{
+                results.slice(0, 10).forEach(item => {{
+                    const div = document.createElement('div');
+                    div.className = 'search-result-item';
+                    div.innerHTML = `
+                        <span>${{item.display}}</span>
+                        <span class="search-category">${{item.category}}</span>
+                    `;
+                    div.onclick = () => selectSearchResult(item);
+                    resultsContainer.appendChild(div);
+                }});
+            }}
             
-            navItems.forEach(item => {{
-                const searchData = item.getAttribute('data-search') || '';
-                if (searchData.toLowerCase().includes(searchTerm)) {{
-                    item.style.display = 'flex';
-                    hasVisibleItems = true;
-                    
-                    // Show parent section and subsection
-                    let parent = item.closest('.nav-section');
-                    if (parent) {{
-                        parent.style.display = 'block';
-                        // Expand the section
-                        const content = parent.querySelector('.nav-content');
-                        if (content) content.style.display = 'block';
-                    }}
-                    
-                    let parentSub = item.closest('.nav-subsection');
-                    if (parentSub) {{
-                        parentSub.style.display = 'block';
-                        // Expand the subsection
-                        const content = parentSub.querySelector('.nav-subcontent');
-                        if (content) content.style.display = 'block';
-                    }}
-                }} else {{
-                    item.style.display = 'none';
-                }}
-            }});
-            
-            if (!hasVisibleItems) {{
-                // Show "no results" message
-                document.getElementById('reportContent').innerHTML = `
-                    <div class="alert alert-info">
-                        <h4>Nenhum resultado encontrado</h4>
-                        <p>Não foram encontrados resultados para "<strong>${{searchTerm}}</strong>".</p>
-                        <p>Tente buscar por IPs, domínios ou portas.</p>
-                    </div>
-                `;
+            resultsContainer.style.display = 'block';
+        }}
+        
+        function showSearchResults() {{
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm.length >= 2) {{
+                document.getElementById('searchResults').style.display = 'block';
             }}
         }}
         
-        // Initialize - show all sections expanded by default
+        function hideSearchResults() {{
+            setTimeout(() => {{
+                document.getElementById('searchResults').style.display = 'none';
+            }}, 200);
+        }}
+        
+        function selectSearchResult(item) {{
+            document.getElementById('searchInput').value = item.value;
+            document.getElementById('searchResults').style.display = 'none';
+            
+            // Filter table based on selection
+            document.getElementById('tableFilter').value = item.value;
+            filterTable();
+        }}
+        
+        function filterTable() {{
+            const filterValue = document.getElementById('tableFilter').value.toLowerCase();
+            const table = document.getElementById('reportsTable');
+            const rows = table.getElementsByTagName('tr');
+            
+            filteredData = [];
+            
+            for (let i = 1; i < rows.length; i++) {{
+                const row = rows[i];
+                const text = row.textContent.toLowerCase();
+                
+                if (text.includes(filterValue)) {{
+                    filteredData.push(row);
+                    row.style.display = '';
+                }} else {{
+                    row.style.display = 'none';
+                }}
+            }}
+            
+            updatePagination();
+        }}
+        
+        function changePageSize() {{
+            pageSize = parseInt(document.getElementById('pageSize').value);
+            currentPage = 1;
+            updatePagination();
+        }}
+        
+        function updatePagination() {{
+            const totalItems = filteredData.length || document.querySelectorAll('#reportsTable tbody tr:not([style*="display: none"])').length;
+            const totalPages = Math.ceil(totalItems / pageSize);
+            
+            // Update info
+            const start = (currentPage - 1) * pageSize + 1;
+            const end = Math.min(currentPage * pageSize, totalItems);
+            document.getElementById('tableInfo').textContent = `Mostrando ${{start}} a ${{end}} de ${{totalItems}} registros`;
+            
+            // Update pagination buttons
+            const paginationContainer = document.getElementById('tablePagination');
+            paginationContainer.innerHTML = '';
+            
+            if (totalPages > 1) {{
+                const nav = document.createElement('nav');
+                const ul = document.createElement('ul');
+                ul.className = 'pagination pagination-sm mb-0';
+                
+                // Previous button
+                const prevLi = document.createElement('li');
+                prevLi.className = `page-item ${{currentPage === 1 ? 'disabled' : ''}}`;
+                prevLi.innerHTML = '<a class="page-link" href="#" onclick="changePage(${{currentPage - 1}})">Anterior</a>';
+                ul.appendChild(prevLi);
+                
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {{
+                    if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {{
+                        const li = document.createElement('li');
+                        li.className = `page-item ${{i === currentPage ? 'active' : ''}}`;
+                        li.innerHTML = `<a class="page-link" href="#" onclick="changePage(${{i}})">${{i}}</a>`;
+                        ul.appendChild(li);
+                    }} else if (i === currentPage - 3 || i === currentPage + 3) {{
+                        const li = document.createElement('li');
+                        li.className = 'page-item disabled';
+                        li.innerHTML = '<span class="page-link">...</span>';
+                        ul.appendChild(li);
+                    }}
+                }}
+                
+                // Next button
+                const nextLi = document.createElement('li');
+                nextLi.className = `page-item ${{currentPage === totalPages ? 'disabled' : ''}}`;
+                nextLi.innerHTML = '<a class="page-link" href="#" onclick="changePage(${{currentPage + 1}})">Próximo</a>';
+                ul.appendChild(nextLi);
+                
+                nav.appendChild(ul);
+                paginationContainer.appendChild(nav);
+            }}
+        }}
+        
+        function changePage(page) {{
+            const totalItems = filteredData.length || document.querySelectorAll('#reportsTable tbody tr:not([style*="display: none"])').length;
+            const totalPages = Math.ceil(totalItems / pageSize);
+            
+            if (page >= 1 && page <= totalPages) {{
+                currentPage = page;
+                updatePagination();
+            }}
+        }}
+        
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {{
-            document.querySelectorAll('.nav-content').forEach(content => {{
-                content.style.display = 'block';
-            }});
-            document.querySelectorAll('.nav-subcontent').forEach(content => {{
-                content.style.display = 'block';
-            }});
+            filterTable();
         }});
     </script>
 </body>
@@ -651,108 +729,27 @@ class UnifiedReportGenerator:
         logger.info(f"Master index generated: {index_path}")
         return index_path
 
-    def generate_target_report(self, target_name, target_data):
-        """Generate individual target report"""
-        target_safe = target_name.replace('.', '_')
-        target_dir = os.path.join(self.report_dir, target_safe)
-        os.makedirs(target_dir, exist_ok=True)
-        
-        # Generate HTML reports from Nmap XMLs
-        nmap_reports = []
-        fingerprint_path = target_data['fingerprint']
-        
-        if os.path.exists(fingerprint_path):
-            # Find all Nmap XML files
-            xml_files = glob.glob(os.path.join(fingerprint_path, "**/*.xml"), recursive=True)
-            for xml_file in xml_files:
-                if "nmap" in os.path.basename(xml_file):
-                    html_report = self.generate_html_from_nmap_xml(xml_file, target_safe)
-                    if html_report:
-                        nmap_reports.append({
-                            'name': os.path.basename(html_report),
-                            'path': os.path.relpath(html_report, target_dir),
-                            'type': 'nmap'
-                        })
-
-        # Generate target-specific index
-        target_html = f"""<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório - {target_name}</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container-fluid py-4">
-        <h1>Relatório de Segurança - {target_name}</h1>
-        
-        <div class="row mt-4">
-            <div class="col-12">
-                <h3>Relatórios Nmap Disponíveis</h3>
-                <div class="list-group">
-"""
-        
-        for report in nmap_reports:
-            target_html += f"""
-                    <a href="{report['path']}" class="list-group-item list-group-item-action" target="_blank">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{report['name']}</h5>
-                            <small class="text-muted">{report['type'].upper()}</small>
-                        </div>
-                        <p class="mb-1">Relatório detalhado de varredura de portas e serviços</p>
-                    </a>
-"""
-        
-        target_html += """
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer class="footer mt-5" style="padding: 20px 0; background: #f8f9fa; border-top: 1px solid #dee2e6;">
-        <div class="container">
-            <p class="text-muted text-center" style="margin: 0; font-size: 12px; color: #777;">
-                Documento confidencial - Este relatório foi gerado pela <a href="https://maltauromartins.com">MaltauroMartins</a> para Directcall. <br/>
-                Relatório Técnico de Segurança Cibernética - Gerado em """ + datetime.now().strftime("%d/%m/%Y") + """.<br/>
-                <a href="https://maltauromartins.com" target="_blank" style="color: #555; text-decoration: none;">MaltauroMartins Soluções Tecnológicas</a>
-            </p>
-        </div>
-    </footer>
-</body>
-</html>"""
-
-        target_index_path = os.path.join(target_dir, "index.html")
-        with open(target_index_path, 'w', encoding='utf-8') as f:
-            f.write(target_html)
-        
-        logger.info(f"Target report generated: {target_index_path}")
-
     def generate_all_reports(self, target_filter=None):
         """Generate all reports"""
         logger.info("Starting unified report generation...")
         
-        # Discover all targets
-        targets = self.discover_targets()
+        # Parse tree structure to get all data
+        data = self.parse_tree_structure()
         
-        if target_filter:
-            targets = {k: v for k, v in targets.items() if target_filter in k}
-        
-        if not targets:
-            logger.warning("No targets found for report generation")
+        if not data['nmap_xmls'] and not data['service_xmls']:
+            logger.warning("No XML files found for report generation")
             return
         
-        logger.info(f"Found {len(targets)} targets: {list(targets.keys())}")
+        logger.info(f"Found {len(data['nmap_xmls'])} Nmap XMLs and {len(data['service_xmls'])} Service XMLs")
         
-        # Generate individual target reports
-        for target_name, target_data in targets.items():
-            logger.info(f"Generating report for: {target_name}")
-            self.generate_target_report(target_name, target_data)
+        # Process all Nmap XMLs to generate HTML reports
+        html_reports = self.process_all_nmap_xmls(data)
         
         # Generate master index
-        self.generate_master_index(targets)
+        self.generate_master_index(data, html_reports)
         
-        logger.info(f"All reports generated successfully in: {self.report_dir}")
+        logger.info(f"Generated {len(html_reports)} HTML reports")
+        logger.info(f"All reports available at: {self.report_dir}/index.html")
 
 def main():
     parser = argparse.ArgumentParser(description="Unified MMCyberSec Report Generator")
