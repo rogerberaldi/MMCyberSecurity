@@ -1,3 +1,0 @@
-[
-{"target":"https://www.directdial.com.br:8443","http_status":521,"request_config":{"headers":{"User-Agent":"WhatWeb/0.5.5"}},"plugins":{"Country":{"string":["UNITED STATES"],"module":["US"]},"HTML5":{},"HTTPServer":{"string":["cloudflare"]},"IP":{"string":["104.21.16.1"]},"Script":{},"Title":{"string":["directdial.com.br | 521: Web server is down"]},"UncommonHeaders":{"string":["cf-ray"]},"X-UA-Compatible":{"string":["IE=Edge"]}}}
-]
